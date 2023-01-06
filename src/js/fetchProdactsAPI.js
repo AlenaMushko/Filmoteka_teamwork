@@ -1,184 +1,125 @@
 import axios from "axios";
-
-// import { Loading } from 'notiflix/build/notiflix-loading-aio';
-// import { Fireworks } from './canvas';
-
-// const can = document.querySelector('#blow');
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+// npm i notiflix  відображає завантаження і повідомлення
+// Notiflix.Loading.standard();   Notiflix.Loading.hourglass();
+// Notiflix.Loading.circle();     Notiflix.Loading.arrows();
+// Notiflix.Loading.dots();     Notiflix.Loading.pulse();
+Notiflix.Loading.standard('Loading...', {
+  backgroundColor: 'rgba(0,0,0,0.8)',
+});
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+const api_key = `?api_key=${KEY}`;
+const  BASE_URL = 'https://api.themoviedb.org/3/';
 
-export async function getTopFilms(allData = false) {
-  try {
-    const { data } = await axios(`/discover/movie?api_key=${KEY}&sort_by=popularity.desc`);
-    return allData ? console.log(data)  : data.results;
-    } catch (error) {
-      console.log(error);
-    }
+// export async function getTopFilms() {
+// const apiAndpoints = '&sort_by=popularity.desc'
+//   try {
+//  return await  axios.get(`${BASE_URL}/discover/movie${api_key}${apiAndpoints}`) 
+
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+
+export default class ApiService {
+  constructor() {
+    this.searchQuery = '';
+    this.page = 1;
   }
+  // fetchPopularArticles
+   getPopularFilms() {
+    const url = `${BASE_URL}/movie/popular${api_key}&page=${this.page}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(({ results }) => {
+        return results;
+      });
+  }
+  // fetchSearchArticles
+    getSearchFilms() {
+    const url = `${BASE_URL}/search/movie?${api_key}&page=${this.page}&query=${this.searchQuery}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(({ results }) => {
+        return results;
+      });
+  }
+  // fetchPopularArticlesPages() {
+  //   const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
+  //   return fetch(url).then(response => response.json());
+  // }
+  // fetchSearchArticlesPages() {
+  //   const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+  //   return fetch(url).then(response => response.json());
+  // }
+  fetchGenres() {
+    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        return data.genres;
+      });
+  }
+  insertGenresToMovieObj() {
+    return this.fetchPopularArticles().then(data => {
+      return this.fetchGenres().then(genresList => {
+        return data.map(movie => ({
+          ...movie,
+          release_date: movie.release_date.split('-')[0],
+          genres: movie.genre_ids
+            .map(id => genresList.filter(el => el.id === id))
+            .flat(),
+        }));
+      });
+    });
+  }
+  insertGenresToSearchObj() {
+    return this.fetchSearchArticles().then(data => {
+      return this.fetchGenres().then(genresList => {
+        let release_date;
+        return data.map(movie => ({
+          ...movie,
+          release_date: movie.release_date
+            ? movie.release_date.split('-')[0]
+            : 'n/a',
+          genres: movie.genre_ids
+            ? movie.genre_ids
+                .map(id => genresList.filter(el => el.id === id))
+                .flat()
+            : 'n/a',
+        }));
+      });
+    });
+  }
+  get query() {
+    return this.searchQuery;
+  }
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+  get pageNum() {
+    return this.page;
+  }
+  set pageNum(newPage) {
+    this.page = newPage;
+  }
+}
 
 
-
-
-// export class API_service {
-//   // language = localStorage.getItem('language');
-//   constructor() {
-//     this.searchQuery = '';
-//     this.page = 1;
-//     // this.language;
-//     this.id = null;
-//     this.genreId = null;
-//   }
-
-//   // fetchTrending
-//   async getTopFilms(allData = false) {
-//     try {
-   
-// // URL: /discover/movie?sort_by=popularity.desc
-//       Loading.pulse({
-//         svgColor: 'orange',
-//       });
-//       const { data } = await axios('trending/movie/day', {
-//         params: {
-//           api_key: API_KEY,
-//           language: this.language,
-//           page: this.page,
-//         },
-//       });
-
-//       Loading.remove();
-
-//       return allData ? data : data.results;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   // fetchMoviesByKeyword
-//   async getFilmsByKeyword() {
-//     try {
-//       Loading.pulse({
-//         svgColor: 'orange',
-//       });
-//       const { data } = await axios('search/movie', {
-//         params: {
-//           api_key: API_KEY,
-//           query: this.searchQuery,
-//           language: this.language,
-//         },
-//       });
-
-//       Loading.remove();
-
-//       if (this.searchQuery.toLowerCase() === 'goit') {
-//         can.classList.remove('is-hidden');
-//         new Fireworks().run();
-
-//         const closeClick = () => {
-//           can.classList.add('is-hidden');
-//           window.removeEventListener('click', closeClick);
-//         };
-//         setTimeout(closeClick, 12000);
-//         window.addEventListener('click', closeClick);
-//       }
-
-//       return data.results; //returns an OBJECT. e.g.{page: 1, results: Array(20), total_pages: 8, total_results: 147}
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   async fetchMovieById() {
-//     //will throw an error if title "undefined";
-//     try {
-//       Loading.pulse({
-//         svgColor: 'orange',
-//       });
-//       const { data } = await axios(`movie/${this.id}`, {
-//         //for this to work make sure this.searchQuery type is number!!!
-//         params: {
-//           api_key: API_KEY,
-//           language: this.language,
-//         },
-//       });
-//       Loading.remove();
-
-//       return data;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   async fetchMovieByIdForTV() {
-//     try {
-//       Loading.pulse({
-//         svgColor: 'orange',
-//       });
-//       const { data } = await axios(`tv/${this.id}`, {
-//         params: {
-//           api_key: API_KEY,
-//           language: this.language,
-//         },
-//       });
-//       Loading.remove();
-
-//       return data;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   async fetchMovieByGenre() {
-//     try {
-//       Loading.pulse({
-//         svgColor: 'orange',
-//       });
-//       const { data } = await axios(`discover/movie`, {
-//         params: {
-//           api_key: API_KEY,
-//           language: this.language,
-//           with_genres: this.genreId,
-//         },
-//       });
-//       Loading.remove();
-
-//       return data.results;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   async fetchYoutube(){
-//     try{
-//         let {data} = await axios(`/movie/${this.id}/videos`,{
-//             params: {
-//             api_key: API_KEY,
-//             language: "en - US",
-//             }
-//         });
-//         // console.log(data);
-//         return data;
-//     }
-//    catch(error){
-//        console.log("error");
-//    }
-  
-   
-//   }
-
-//   get query() {
-//     return this.searchQuery;
-//   }
-
-//   set query(newQuery) {
-//     this.searchQuery = newQuery;
-//   }
-
-//   get movieId() {
-//     return this.id;
-//   }
-
-//   set movieId(newId) {
-//     this.id = newId;
-//   }
-// }
+function getGenrisFilms() {
+const url = `${BASE_URL}genre/movie/list${api_key}`;
+    return fetch(url)
+      .then((response) => response.json())
+      .then((results) => {
+        const genresNames = results.genres;
+        const myMapGenres = new Map();
+      
+        for (let i = 0; i < genresNames.length; i+=1) {
+          let element = Object.values(genresNames[i]);
+          myMapGenres.set(element[0], element[1])
+        };
+        console.log(myMapGenres);
+        return myMapGenres
+      });
+};

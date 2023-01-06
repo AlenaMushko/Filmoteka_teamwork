@@ -8,3 +8,8 @@ export const refs = {
   arrowRight: document.querySelector('.arrow_right'),
   pageNumbers: document.querySelector('.page-numbers'),
 }
+
+ // let genre_id = ' ';
+  // for (let i = 0; i <= genre_ids.length-1; i += 1){
+  //   genre_id = await getGenrisFilms(genre_ids[i]);
+  // };
