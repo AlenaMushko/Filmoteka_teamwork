@@ -1,19 +1,19 @@
 import { refs } from "./refs";
 
-
-// export function renderProdutsItems(products) {
-//   const markup = products.map(
-//     ({ images, description, discountPercentage, brand, price, title }) => {
-//       return `
-//   <li class='products__item'>
-//   <img src='${images[0]}' alt='${description}' />
-//   <p class='product__text'>description: <span>${description}</span></p>
-//   <p class='product__text'>discount: <span>${discountPercentage}</span></p>
-//   <p class='product__text'>price: <span>${price}</span></p>
-//    <p class='product__text'>brand:<span>${brand}</span></p>
-//     <p class='product__text'>title:<span>${title}</span></p>
-//   </li>
-//   `
-//     }).join('');
-//   refs.productsList.insertAdjacentHTML('beforeend',markup);
-// }
+export function renderProdutsItems(products) {
+  const markup = products.map(
+    ({ id, poster_path, title, release_date, genre_ids }) => {
+      return `
+  <li class='products__item' data-action='${id}' data-modal-open>
+  <img   class='products__img'
+      src='${poster_path}'
+      alt= '${title}'
+      width='100%'/>
+  <h2 class='product__title'>${title}</h2>
+  <p class='product__text'>${genre_ids}</p>
+  <p class='product__text'>${release_date}</p>
+  </li>
+  `
+    }).join('');
+  refs.topFilms.insertAdjacentHTML('beforeend', markup);
+}
