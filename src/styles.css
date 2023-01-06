@@ -1,0 +1,8 @@
+header{
+  background-color: rgb(125, 177, 222);
+  padding: 20px;
+}
+
+.is-hidden {
+  display: none;
+}
