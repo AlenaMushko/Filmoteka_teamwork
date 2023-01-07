@@ -6,18 +6,16 @@ import { renderSliderFilmCard } from './rendarFunction';
 
 const apiService = new ApiService();
 
-const glide = new Glide('.glide', {
+new Glide('.glide', {
   type: 'slider',
   startAt: 0,
   perView: 5,
   gap: 20,
-  autoplay: 2500,
+  autoplay: 2000,
   keyboard: true,
   hoverpause: true,
   bound: true,
-});
-
-// glide.mount()
+}).mount()
 
 export function sliderTopFilms(films) {
   apiService.getPopularFilms(films)
@@ -27,3 +25,4 @@ export function sliderTopFilms(films) {
       return;
     });
 };
+

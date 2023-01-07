@@ -18,11 +18,14 @@ export  function renderSliderFilmCard({ results }) {
               </li>`;
     })
     .join('');
-  console.log(markup);
-  refs.glideSlides.insertAdjacentHTML('beforeend', markup);
+  // refs.glideSlides.insertAdjacentHTML('beforeend', markup);
+  refs.glideSlides.innerHTML = markup;
 }
 
-
+function renderSliderFilms(articles) {
+  sliderContainer.innerHTML = filmsCardSliderTpl(articles);
+  trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
+}
 
 export  function renderFilmCard({ results }) {
   const markup = results.map(({ id, poster_path, title, release_date, genre_ids }) => {
@@ -41,7 +44,7 @@ export  function renderFilmCard({ results }) {
               </li>`;
     })
     .join('');
-  console.log(markup);
+  // console.log(markup);
   refs.topFilms.insertAdjacentHTML('beforeend', markup);
 }
 
