@@ -1,6 +1,7 @@
 export const refs = {
   searchForm: document.querySelector('.search-form'),
   btnSearchFilms: document.querySelector('.search-films'),
+  glideSlides: document.querySelector('.glide__slides'),
   topFilms: document.querySelector('.top-films'),
    productsList: document.querySelector('.films'),
   paginationContainer: document.querySelector('#tui-pagination-container'),
@@ -9,7 +10,12 @@ export const refs = {
   pageNumbers: document.querySelector('.page-numbers'),
 }
 
- // let genre_id = ' ';
-  // for (let i = 0; i <= genre_ids.length-1; i += 1){
-  //   genre_id = await getGenrisFilms(genre_ids[i]);
-  // };
+
+
+
+
+
+
+
+
+

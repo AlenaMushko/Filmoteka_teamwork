@@ -1,27 +1,15 @@
 import axios from "axios";
+import { log } from "handlebars";
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 // npm i notiflix  відображає завантаження і повідомлення
-// Notiflix.Loading.standard();   Notiflix.Loading.hourglass();
-// Notiflix.Loading.circle();     Notiflix.Loading.arrows();
-// Notiflix.Loading.dots();     Notiflix.Loading.pulse();
-Notiflix.Loading.standard('Loading...', {
-  backgroundColor: 'rgba(0,0,0,0.8)',
-});
+
+// Loading.pulse('Loading...', {
+//   backgroundColor: 'rgba(0,0,0,0.8)',
+// });
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const  BASE_URL = 'https://api.themoviedb.org/3/';
-
-// export async function getTopFilms() {
-// const apiAndpoints = '&sort_by=popularity.desc'
-//   try {
-//  return await  axios.get(`${BASE_URL}/discover/movie${api_key}${apiAndpoints}`) 
-
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
@@ -29,13 +17,14 @@ export default class ApiService {
   }
   // fetchPopularArticles
    getPopularFilms() {
-    const url = `${BASE_URL}/movie/popular${api_key}&page=${this.page}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        return results;
-      });
-  }
+  const url = `${BASE_URL}discover/movie${api_key}&append_to_response=videos,images&sort_by = popularity.desc`;
+  return axios.get(url)
+    .then(response => {
+      if (!response) {
+        throw new Error(response.status);
+      };
+      return response.data;})
+}
   // fetchSearchArticles
     getSearchFilms() {
     const url = `${BASE_URL}/search/movie?${api_key}&page=${this.page}&query=${this.searchQuery}`;

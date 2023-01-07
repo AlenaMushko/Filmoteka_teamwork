@@ -6,3 +6,13 @@ header{
 .is-hidden {
   display: none;
 }
+
+.glide__slides{
+display: flex;
+gap: 15px;
+}
+
+.glide__slide{
+
+  width: 450px;
+}
