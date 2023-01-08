@@ -12,6 +12,7 @@ const api_key = `?api_key=${KEY}`;
 const  BASE_URL = 'https://api.themoviedb.org/3/';
 export default class ApiService {
   constructor() {
+this.totalResults = 0;
     this.searchQuery = '';
     this.page = 1;
   }
@@ -26,14 +27,18 @@ export default class ApiService {
       return response.data;})
 }
   // fetchSearchArticles
-    getSearchFilms() {
-    const url = `${BASE_URL}/search/movie?${api_key}&page=${this.page}&query=${this.searchQuery}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        return results;
-      });
-  }
+ getSearchFilms() {
+    const url = `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}`;
+    return axios.get(url)
+      .then(response => {
+      if (!response) {
+        throw new Error(response.status);
+        };
+        console.log(response.data);
+        return response.data;
+      })
+
+}
   // fetchPopularArticlesPages() {
   //   const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
   //   return fetch(url).then(response => response.json());
@@ -80,6 +85,10 @@ export default class ApiService {
         }));
       });
     });
+  };
+
+  resetPage() {
+    this.page = 1;
   }
   get query() {
     return this.searchQuery;

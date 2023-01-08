@@ -1,6 +1,7 @@
 import { refs } from './js/refs';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ApiService from './js/fetchProdactsAPI';
-import { renderFilmCard } from './js/rendarFunction';
+import { renderFilmCard } from './js/renderFunction';
 import { sliderTopFilms } from './js/slideTopFilms';
 
 
@@ -31,51 +32,74 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 // // &with_genres=28 filter
 
 let pageNumber = 1;
-let searchQuery = '';
-let totalHits = 0;
-let inputSpace = '';
+let query = '';
+let totalResults = 0;
 
+
+
+
+const inputEl = document.getElementsByName('searchQuery')[0];
+
+ inputEl.addEventListener('click', onSearchFormReset);
 refs.searchForm.addEventListener('submit', onSearchFormSubmit);
-// refs.btnLoadMoreEl.addEventListener('click', onBtnLoadMoreElClick);
 
-refs.searchForm.addEventListener('keydown', e => {
-  inputSpace = e.code;
-});
 
- function onSearchFormSubmit(e) {
-  e.preventDefault();
-  searchQuery = refs.searchForm.elements.searchQuery.value;
+function onSearchFormReset() {
+  if (apiService.query !== '') {
+    refs.searchForm.reset();
+    // refs.productsList.innerHTML = ''
+  }
+  
+   
+}
+ async function onSearchFormSubmit(e) {
+   e.preventDefault();
+   pageNumber = 1;
+
+ apiService.query = e.currentTarget.elements.searchQuery.value.trim();
   // У разі пошуку за новим ключовим словом, значення page повернути до початкового
-  pageNumber = 1;
-  //  refs.galleryEl.innerHTML = '';
-
-  if (searchQuery === '' || searchQuery === 'Space') {
+  //  apiService.resetPage();
+   console.log(  refs.filmsContainer);
+  // refs.filmsContainer.innerHTML = ''
+  if (apiService.query === '' || apiService.query === 'Space') {
     return;
    }
-   console.log(searchQuery);
-   searchFilms();
+   
+   const results = await apiService.getSearchFilms(apiService.query);
+   totalResults =  results.total_results;
+   if (totalResults < 20) {
+    refs.btnLoadMoreEl.classList.add('is-hidden');
+    refs.infoTextEl.classList.remove('is-hidden');
+  } else {
+    refs.btnLoadMoreEl.classList.remove('is-hidden');
+    refs.infoTextEl.classList.add('is-hidden');
+   };
+
+   try {
+    renderFilmCard(results);
+    if (totalResults === 0) {
+      Notify.failure(
+        'Sorry, there are no films matching your search query. Please try again.'
+      );
+      return;
+    }
+    if (totalResults >= 1) {
+      Notify.success(`Hooray! We found ${totalResults} films.`);
+      loadingLazy();
+    }
+    pageNumber += 1;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-
-// const KEY = '32432509d17cea42104bbb7507a382c7';
-// const api_key = `?api_key=${KEY}`;
-// const BASE_URL = 'https://api.themoviedb.org/3/';
-// url = `${BASE_URL}search/movie${api_key}&page=${this.page}&query=${this.searchQuery}`;
-
-
-
-function searchFilms(films) {
-getSearchFilms(films).then(renderFilmCard);
-};
-
-function getSearchFilms(searchQuery) {
-
-    const url = `${BASE_URL}search/movie${api_key}&query=${searchQuery}`;
-    return axios.get(url)
-      .then(response => {
-      if (!response) {
-        throw new Error(response.status);
-        };
-        console.log(response.data);
-      return response.data;})
+function loadingLazy() {
+  const { height: cardHeight } = document.querySelector('.top-films')
+    .firstElementChild.getBoundingClientRect();
+  // Метод getBoundingClientRect()повертає розмір елемента та його положення відносно вікна перегляду
+  window.scrollBy({
+    top: cardHeight * -1,
+    behavior: 'smooth',
+    // прокручування анімується плавно
+  });
 }

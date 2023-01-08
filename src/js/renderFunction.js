@@ -22,11 +22,6 @@ export  function renderSliderFilmCard({ results }) {
   refs.glideSlides.innerHTML = markup;
 }
 
-function renderSliderFilms(articles) {
-  sliderContainer.innerHTML = filmsCardSliderTpl(articles);
-  trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
-}
-
 export  function renderFilmCard({ results }) {
   const markup = results.map(({ id, poster_path, title, release_date, genre_ids }) => {
       let filmGenreId = '';
@@ -38,6 +33,7 @@ export  function renderFilmCard({ results }) {
       }
       return `<li class="film__item" data-id=${id}>
                  <img   class='film__img' alt= '${title}' width='100%'
+               
                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
                   <h2 class="films__title">${title}</h2>
                   <p class="films__genres">${filmGenreId}<span>|${(release_date || '2022').slice(0,4)}</span></p>

@@ -2,7 +2,7 @@ import Glide from '@glidejs/glide'
 // https://glidejs.com/docs/api/  slider
 
 import ApiService from './fetchProdactsAPI';
-import { renderSliderFilmCard } from './rendarFunction';
+import { renderSliderFilmCard } from './renderFunction';
 
 const apiService = new ApiService();
 
