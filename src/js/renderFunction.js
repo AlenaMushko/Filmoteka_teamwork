@@ -41,6 +41,6 @@ export  function renderFilmCard({ results }) {
     })
     .join('');
   // console.log(markup);
-  refs.topFilms.insertAdjacentHTML('beforeend', markup);
+  refs.topFilms.innerHTML = markup;
 }
 
