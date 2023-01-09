@@ -23,4 +23,4 @@ function topFilms(films) {
 
 backToTop();
 
-browserslist.clearCaches();
+
