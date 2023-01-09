@@ -17,11 +17,9 @@ const apiService = new ApiService();
 //  apiService.getPopularFilms(films).then(renderFilmCard);
 // };
 
+refs.searchForm.addEventListener('submit', onSearchFormSubmit);
 
-
-refs.btnLoadMoreEl.addEventListener('click', onBtnLoadMoreElClick);
-
-onSearchFormSubmit();
+// refs.btnLoadMoreEl.addEventListener('click', onBtnLoadMoreElClick);
 
 
 
