@@ -10,19 +10,7 @@ export const refs = {
   arrowLeft: document.querySelector('.arrow_left'),
   arrowRight: document.querySelector('.arrow_right'),
   pageNumbers: document.querySelector('.page-numbers'),
-  inputEl : document.getElementsByName('searchQuery')[0],
-
-infoTextEl: document.querySelector('.info-text'),
-
+  inputEl: document.getElementById('searchQuery'),
+  infoTextEl: document.querySelector('.info-text'),
   btnLoadMoreEl: document.querySelector('.load-more'),
-}
-
-
-
-
-
-
-
-
-
-
+};
