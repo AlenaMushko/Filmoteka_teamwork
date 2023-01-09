@@ -4,6 +4,7 @@ import ApiService from './js/fetchProdactsAPI';
 import { renderFilmCard } from './js/renderFunction';
 import { sliderTopFilms } from './js/slideTopFilms';
 import { onSearchFormSubmit } from './js/searchFilms';
+// import { onBtnLoadMoreElClick } from './js/pagination';
 
 const apiService = new ApiService();
 
@@ -17,8 +18,14 @@ const apiService = new ApiService();
 // };
 
 
-// onSearchFormSubmit();
 
+refs.btnLoadMoreEl.addEventListener('click', onBtnLoadMoreElClick);
+
+onSearchFormSubmit();
+
+
+
+// // onBtnLoadMoreElClick();
 
 import axios from "axios";
 
@@ -29,53 +36,48 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 
 // // &with_genres=28 filter
 
-// let pageNumber = 1;
-// let query = '';
-// let totalResults = 0;
 
-// refs.inputEl.addEventListener('click', onSearchFormReset);
-// refs.searchForm.addEventListener('submit', onSearchFormSubmit);
+// async function onBtnLoadMoreElClick() {
+ 
+//   console.log(apiService.page);
+//    apiService.page += 1;
+//    console.log(apiService.page);
+ 
+//    console.log(  apiService.searchQuery);
+//      const url = await `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
+//    return axios.get(url)
+//      .then(response => {
+//       if (!response) {
+//         throw new Error(response.status);
+//       }
+//       console.log(response.data);
+//     //  apiService.page += 1;
+//     console.log(apiService.page);
+//       return response.data;
+//     })
+//    .catch (error => { console.log(error); });
+//   }
 
-// function onSearchFormReset() {
-//   if (apiService.query !== '') {
-//     refs.searchForm.reset();
-//     return;
-//   }; 
-// };
 
-// async function onSearchFormSubmit(e) {
-//   e.preventDefault();
-//   pageNumber = 1;
-//   apiService.query = e.currentTarget.elements.searchQuery.value.trim();
-//   if (apiService.query === '') {
-//     return;
-//   };
-   
-//   const results = await apiService.getSearchFilms(apiService.query);
-//   totalResults = results.total_results;
-//   if (totalResults < 20) {
-//     refs.btnLoadMoreEl.classList.add('is-hidden');
-//     refs.infoTextEl.classList.remove('is-hidden');
-//   } else {
-//     refs.btnLoadMoreEl.classList.remove('is-hidden');
-//     refs.infoTextEl.classList.add('is-hidden');
-//   };
+  // const results = await apiService.getSearchFilms(apiService.query, apiService.page);
+  // console.log(results);
+  // try {
+  //   renderFilmCard(results);
+  //   console.log(results);
+  //   apiService.page += 1;
+  //   console.log(apiService.page);
+  //   let remainder = await apiService.totalResults - 20 * (apiService.page - 2)
+  //   if (remainder < 40) {
+  //   refs.btnLoadMoreEl.classList.add('is-hidden');
+  //   refs.infoTextEl.classList.remove('is-hidden');
+  // } else {
+  //   refs.btnLoadMoreEl.classList.remove('is-hidden');
+  //    refs.infoTextEl.classList.add('is-hidden');
+  // };
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
-//   try {
-//     renderFilmCard(results);
-//     if (totalResults === 0) {
-//       Notify.failure(
-//         'Sorry, there are no films matching your search query. Please try again.'
-//       );
-//       return;
-//     };
-//     if (totalResults >= 1) {
-//       Notify.success(`Hooray! We found ${totalResults} films.`);
-   
-//     };
-//     pageNumber += 1;
-//   } catch (error) {
-//     console.log(error);
-//   };
-// };
+
+
 

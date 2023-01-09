@@ -6,9 +6,7 @@ import { refs } from './refs';
 
 const apiService = new ApiService();
 
-let pageNumber = 1;
-let query = '';
-let totalResults = 0;
+
 
 refs.inputEl.addEventListener('click', onSearchFormReset);
 refs.searchForm.addEventListener('submit', onSearchFormSubmit);
@@ -22,15 +20,16 @@ function onSearchFormReset() {
 
 export async function onSearchFormSubmit(e) {
   e.preventDefault();
-  pageNumber = 1;
+  apiService.page = 1;
+  console.log(apiService.page);
   apiService.query = e.currentTarget.elements.searchQuery.value.trim();
   if (apiService.query === '') {
     return;
   };
    
-  const results = await apiService.getSearchFilms(apiService.query);
-  totalResults = results.total_results;
-  if (totalResults < 20) {
+  const results = await apiService.getSearchFilms(apiService.query, apiService.page);
+apiService.totalResults = results.total_results;
+  if (apiService.totalResults < 20) {
     refs.btnLoadMoreEl.classList.add('is-hidden');
     refs.infoTextEl.classList.remove('is-hidden');
   } else {
@@ -40,17 +39,18 @@ export async function onSearchFormSubmit(e) {
 
   try {
     renderFilmCard(results);
-    if (totalResults === 0) {
+    if (apiService.totalResults === 0) {
       Notify.failure(
         'Sorry, there are no films matching your search query. Please try again.'
       );
       return;
     };
-    if (totalResults >= 1) {
-      Notify.success(`Hooray! We found ${totalResults} films.`);
+    if (apiService.totalResults >= 1) {
+      Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
    
     };
-    pageNumber += 1;
+    apiService.page += 1;
+    console.log(apiService.page);
   } catch (error) {
     console.log(error);
   };
