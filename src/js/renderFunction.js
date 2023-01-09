@@ -18,7 +18,6 @@ export  function renderSliderFilmCard({ results }) {
               </li>`;
     })
     .join('');
-  // refs.glideSlides.insertAdjacentHTML('beforeend', markup);
   refs.glideSlides.innerHTML = markup;
 }
 
@@ -40,7 +39,6 @@ export  function renderFilmCard({ results }) {
               </li>`;
     })
     .join('');
-  // console.log(markup);
   refs.topFilms.innerHTML = markup;
 }
 
