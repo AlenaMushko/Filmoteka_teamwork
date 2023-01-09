@@ -1,0 +1,31 @@
+.top-films {
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* flex-basis: calc(100% - 10px) / 3; */
+}
+
+.film__item {
+    width: 395px;
+    flex-basis: calc((100% - 20px) / 3);
+    list-style: none;
+}
+
+.go-home {
+    top: 93%;
+    right: 0px;
+    position: fixed;
+    background-color: transparent;
+    border: none;
+}
+
+.go-home .icon {
+    display: inline-flex;
+    fill: var(--main-icon-fill);
+    transition: box-shadow 250ms linear, transform 250ms ease-in-out;
+}
+
+.go-home .icon:hover {
+    fill: var(--hover-icon-fill);
+}
