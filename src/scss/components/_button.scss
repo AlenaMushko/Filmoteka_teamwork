@@ -1,0 +1,51 @@
+.btn,
+.btn__modal {
+  height: 44px;
+  background-color: transparent;
+  color: $color-extra-text;
+  border-radius: 5px;
+  border: 1px solid $color-extra-text;
+  transition: $transitionDuration $cubic;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  &:hover,
+  &:focus {
+    transition: $transitionDuration $cubic;
+    background-color: $color-brand-background;
+    border-color: $color-brand-background;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
+  @include mq(mobile) {
+    width: 130px;
+  }
+  @include mq(tablet) {
+    width: 152px;
+  }
+  @include mq(desktop) {
+    width: 148px;
+    height: 42px;
+  }
+}
+
+.btn__modal {
+  border: 1px solid $color-base-text;
+  color: $color-base-text;
+  &:hover,
+  &:focus {
+    color: $color-extra-text;
+    box-shadow: none;
+  }
+  @include mq(mobile) {
+    width: 110px;
+  }
+  @include mq(tablet) {
+    width: 125px;
+  }
+  @include mq(desktop) {
+    width: 136px;
+    height: 44px;
+  }
+}
