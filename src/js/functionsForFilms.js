@@ -15,6 +15,12 @@ export function ShowFilms() {
 }
 // фільми топ, фільми за пошуком 
 
- function topFilms(films) {
-  apiService.getPopularFilms(films).then(renderFilmCard);
+async function topFilms() {
+  const results = await apiService.getPopularFilms();
+  console.log(results);
+  try {
+    renderFilmCard(results);
+  } catch (error) {
+    console.log(error);
+  }
 }
