@@ -1,6 +1,6 @@
 export const refs = {
-  searchForm: document.querySelector('.search-form'),
-  btnSearchFilms: document.querySelector('.search-form__svg'),
+  searchForm: document.querySelector('.search'),
+  btnSearchFilms: document.querySelector('.search__button'),
   glideSlides: document.querySelector('.glide__slides'),
   topFilms: document.querySelector('.top-films'),
   productsList: document.querySelector('.films'),
