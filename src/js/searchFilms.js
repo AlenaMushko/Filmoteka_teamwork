@@ -45,6 +45,7 @@ export async function onSearchFormSubmit(e) {
     if (apiService.totalResults >= 1) {
       Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
     }
+    
     apiService.page += 1;
   } catch (error) {
     console.log(error);
