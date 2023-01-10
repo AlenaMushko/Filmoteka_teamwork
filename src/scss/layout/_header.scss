@@ -15,32 +15,54 @@
     }
   }
   @include mq(desktop) {
-    background-image: url(../images/header-bg-desktop.jpg);
-    @include mq(retina) {
-      background-image: url(../images/header-bg-desktop@2x.jpg);
-    }
+    background: url(../images/left-part.png), url(../images/right-part.png),
+      #10181d;
+    background-position: left, right, center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &.library {
     color: $color-extra-text;
-    background-image: url(../images/library-bg-mobile.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/library-bg-mobile.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 230px;
     @include mq(retina) {
-      background-image: url(../images/library-bg-mobile@2x.jpg);
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/library-bg-mobile@2x.jpg);
     }
     @include mq(tablet) {
-      background-image: url(../images/library-bg-tablet.jpg);
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/library-bg-tablet.jpg);
       @include mq(retina) {
-        background-image: url(../images/library-bg-tablet@2x.jpg);
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)
+          ),
+          url(../images/library-bg-tablet@2x.jpg);
       }
     }
     @include mq(desktop) {
-      background-image: url(../images/library-bg-desktop.jpg);
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/library-bg-desktop.jpg);
       @include mq(retina) {
-        background-image: url(../images/library-bg-desktop@2x.jpg);
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)
+          ),
+          url(../images/library-bg-desktop@2x.jpg);
       }
     }
   }
@@ -148,6 +170,7 @@
   text-align: center;
 
   &__field {
+    padding-left: 10px;
     width: 100%;
     background-color: transparent;
     border: none;
@@ -156,7 +179,8 @@
     color: $color-extra-text;
     outline: none;
     border-radius: 10px;
-    transition: text-shadow $transitionDuration $cubic;
+    transition: text-shadow 500ms $cubic, border $transitionDuration $cubic,
+      background-color $transitionDuration $cubic;
     @include mq(tablet) {
       width: 50%;
     }
@@ -179,8 +203,8 @@
 
   &__button {
     position: absolute;
-    top: 3px;
-    right: 5px;
+    top: 4px;
+    right: 10px;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -191,10 +215,10 @@
       background-color $transitionDuration $cubic,
       border-radius $transitionDuration $cubic;
     @include mq(tablet) {
-      right: 180px;
+      right: 185px;
     }
     @include mq(desktop) {
-      right: 430px;
+      right: 435px;
     }
     &:hover,
     &:focus {
