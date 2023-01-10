@@ -26,7 +26,6 @@ export async function onSearchFormSubmit(e) {
 
   const results = await apiService.getSearchFilms();
   apiService.totalResults = results.total_results;
- console.log(results.results);
   if (apiService.totalResults < 20) {
     refs.btnLoadMoreEl.classList.add('is-hidden');
     refs.infoTextEl.classList.remove('is-hidden');
