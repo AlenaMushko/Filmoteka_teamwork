@@ -1,5 +1,5 @@
 .header {
-  color: #fff;
+  color: $color-extra-text;
   background-image: url(../images/header-bg-mobile.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@
   }
 
   &.library {
-    color: #fff;
+    color: $color-extra-text;
     background-image: url(../images/library-bg-mobile.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@
 
   &__warning {
     margin-top: 16px;
-    color: rgb(255, 0, 0);
+    color: $color-extra;
     @include font(400, 14, 1.1, null);
     text-align: center;
   }
@@ -90,10 +90,13 @@
     gap: 8px;
     text-shadow: none;
     transform: scale(1);
+    transition: transform $transitionDuration $cubic,
+      text-shadow $transitionDuration $cubic;
+    outline: none;
 
     &:hover,
     &:focus {
-      text-shadow: 0 5px 10px rgba(255, 107, 1, 0.6);
+      text-shadow: 0 5px 10px $color-brand-background;
       transform: scale(1.25);
     }
   }
@@ -102,18 +105,24 @@
     display: flex;
     text-transform: uppercase;
   }
-  &__item {
-    text-shadow: none;
-    transform: scale(1);
-    &:hover,
-    &:focus {
-      text-shadow: 0 5px 10px rgba(255, 107, 1, 0.6);
-      transform: scale(1.25);
-    }
-  }
 
   &__item:first-of-type {
     margin-right: 40px;
+  }
+
+  &__link {
+    display: block;
+    text-shadow: none;
+    outline: none;
+    transform: scale(1);
+    transition: transform $transitionDuration $cubic,
+      text-shadow $transitionDuration $cubic;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.25);
+      text-shadow: 0 5px 10px $color-brand-background;
+    }
   }
 
   &__link--current-page {
@@ -129,7 +138,7 @@
       height: 3px;
       width: 100%;
 
-      background-color: #ff001b;
+      background-color: $color-extra;
     }
   }
 }
@@ -142,7 +151,12 @@
     width: 100%;
     background-color: transparent;
     border: none;
-    border-bottom: 0.5px solid #fff;
+    border-bottom: 0.5px solid $color-extra-text;
+    text-shadow: none;
+    color: $color-extra-text;
+    outline: none;
+    border-radius: 10px;
+    transition: text-shadow $transitionDuration $cubic;
     @include mq(tablet) {
       width: 50%;
     }
@@ -152,29 +166,41 @@
 
     &::placeholder {
       @include font(400, 14, 1.1, null);
-      color: #fff;
+      color: $color-extra-text;
     }
 
-    text-shadow: none;
     &:hover,
     &:focus {
-      text-shadow: 0 5px 10px rgba(255, 107, 1, 0.6);
-      border-bottom: 0.5px solid #ff9900;
+      text-shadow: 0 5px 10px $color-brand-background;
+      border-bottom: 0.5px solid $color-brand-background;
+      background-color: #ff6b0169;
     }
   }
 
   &__button {
     position: absolute;
     top: 3px;
-    right: 0;
+    right: 5px;
     background-color: transparent;
     border: none;
     padding: 0;
+    cursor: pointer;
+    transform: scale(1);
+    outline: none;
+    transition: transform $transitionDuration $cubic,
+      background-color $transitionDuration $cubic,
+      border-radius $transitionDuration $cubic;
     @include mq(tablet) {
-      right: 175px;
+      right: 180px;
     }
     @include mq(desktop) {
-      right: 425px;
+      right: 430px;
+    }
+    &:hover,
+    &:focus {
+      transform: scale(1.25);
+      background-color: #ff6b0169;
+      border-radius: 5px;
     }
   }
 }
