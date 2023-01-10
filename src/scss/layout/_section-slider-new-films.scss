@@ -1,10 +1,17 @@
+
+.glide{
+margin-right: auto;
+margin-left: auto;
+}
+
 .glide__slides {
     display: flex;
     gap: 15px;
 }
 
 .glide__slide {
-
+   
+overflow: hidden;
     width: 350px;
 }
 
@@ -13,9 +20,11 @@
 }
 
 .glide__arrow {
-    font-size: 25px;
-    color: #3f51b5;
-    background-color: #ffeb3b63;
-    border: 2px solid #ffeb3b;
-    top: 90%;
+    color: #182025;
+        background-color: #780b1ed1;
+        border: 2px solid #795548;
+        font-size: 25px;
+        top: 40%;
+        border-radius: 5px;
+        padding: 5px 22px;
 }
