@@ -10,7 +10,23 @@ export default class ApiService {
     this.searchQuery = '';
     this.page = 1;
   }
+//  фільми з більшим доходом
+  async getRevenueFilms() {
+    try {
+         const url =
+                await `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=videos,images&sort_by=revenue.desc`;
+      return axios.get(url).then(response => {
+        if (!response) {
+          throw new Error(response.status);
+        }
+        return response.data;
+      });
+    } catch (error) {
+      console.error();
+    }
+  }
 
+  // фільми топові
   async getPopularFilms() {
     try {
       Loading.pulse('Loading...', {
@@ -30,6 +46,7 @@ export default class ApiService {
     }
   }
 
+  // фільми, що шукають за назвою
   async getSearchFilms() {
     try {
       Loading.pulse('Loading...', {
@@ -49,13 +66,14 @@ export default class ApiService {
       console.error();
     }
   }
-
+//  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
   }
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+  // отримуємо номер сторінки для пагінації
   get pageNum() {
     return this.page;
   }
