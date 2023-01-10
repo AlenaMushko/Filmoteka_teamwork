@@ -1,4 +1,4 @@
-import Glide from '@glidejs/glide'
+import Glide from '@glidejs/glide';
 
 import ApiService from './fetchProdactsAPI';
 import { renderSliderFilmCard } from './renderFunction';
@@ -11,18 +11,18 @@ new Glide('.glide', {
   startAt: 0,
   perView: 5,
   gap: 20,
-  autoplay: 1500,
+  autoplay: 2500,
   keyboard: true,
   hoverpause: true,
   bound: true,
-}).mount()
+}).mount();
 // слайдер
 export function sliderRevenueFilms(films) {
-  apiService.getRevenueFilms(films)
+  apiService
+    .getRevenueFilms(films)
     .then(renderSliderFilmCard)
     .catch(error => {
       console.log(error);
       return;
     });
-};
-
+}
