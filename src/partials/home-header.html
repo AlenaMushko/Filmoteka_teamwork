@@ -1,14 +1,42 @@
-<form class="search-form" id="search-form">
-    <input
-      id="searchQuery"
-      type="text"
-      name="searchQuery"
-      autocomplete="off"
-      placeholder="Search films..."
-    />
-    <button type="submit">
-      <svg class=search-form__svg icon" width="12" height="12">
-        <use href="./images/symbol-defs.svg#icon-search"></use>
-      </svg>
-    </button>
-  </form>
+<header class="header">
+  <div class="container header__container">
+    <nav class="navigation">
+      <a href="/src/index.html" class="navigation__logo logo">
+        <svg width="24" height="24">
+          <use href="./images/sprite.svg#logo"></use>
+        </svg>
+        <span class="logo__name">Filmoteka</span>
+      </a>
+      <ul class="navigation__list">
+        <li class="navigation__item">
+          <a href="" class="navigation__link navigation__link--current-page"
+            >Home</a
+          >
+        </li>
+        <li class="navigation__item">
+          <a href="#" class="navigation__link">My library</a>
+        </li>
+      </ul>
+    </nav>
+
+    <form class="search" id="search">
+      <input
+        id="searchQuery"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+        class="search__field"
+      />
+      <button type="submit" class="search__button" aria-label="movie-search">
+        <svg class="search__icon" width="12" height="12">
+          <use href="./images/sprite.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <div class="header__warning is-hidden">
+      Search result not successful. Enter the correct movie name and
+    </div>
+  </div>
+</header>
