@@ -39,6 +39,7 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
+      
         return response.data;
       });
     } catch (error) {
