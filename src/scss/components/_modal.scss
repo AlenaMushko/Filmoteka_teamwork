@@ -1,0 +1,95 @@
+// Загалінь стилі для всіх модалок (start)
+.overlay {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .25);
+    overflow-y: scroll;
+    transition: opacity $transitionDuration $cubic, visibility $transitionDuration $cubic;
+}
+
+.modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.7);
+    width: calc(100% - 40px);
+    max-width: 420px;
+    height: 400px;
+    background-color: $color-extra-text;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform $transitionDuration $cubic, opacity $transitionDuration $cubic, visibility $transitionDuration $cubic;
+
+    &.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    @include mq(tablet) {
+        width: 704px;
+        max-width: none;
+    }
+
+    @include mq(desktop) {
+        width: 806px;
+    }
+}
+
+.overlay,
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay.active,
+.modal.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal__close-btn {
+    position: absolute;
+    @include flex(flex, center, center);
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: $color-extra-text;
+    padding: 0;
+    border: none;
+    transition: color $transitionDuration $cubic;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: $color-brand-text;
+    }
+}
+
+.modal__close-icon {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+// Загалінь стилі для всіх модалок (end)
+
+// Стилі для модалки картки фільму (start)
+.film-modal {
+    padding: 48px 20px;
+
+    @include mq(tablet) {
+        padding: 40px 36px;
+    }
+
+    @include mq(desktop) {
+        padding: 40px 12px;
+    }
+}
