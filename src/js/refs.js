@@ -13,4 +13,7 @@ export const refs = {
   inputEl: document.getElementById('searchQuery'),
   infoTextEl: document.querySelector('.info-text'),
   btnLoadMoreEl: document.querySelector('.load-more'),
+  teamModal: document.querySelector('.team_modal'),
+  teamModalCloseBtn: document.querySelector('.teamModal__close__btn'),
+  teamOpenModalBtn: document.querySelector('.team_modal_btn'),
 };

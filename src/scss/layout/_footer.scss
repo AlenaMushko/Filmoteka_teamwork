@@ -1,0 +1,186 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: baseline;
+    @media screen and (min-width: 490px) {
+      gap: 3px;
+    }
+  }
+  .footer_text__block {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background: #f7f7f7;
+    @media screen and (min-width: 490px) {
+      height: 80px;
+    }
+  }
+  .icon__heart {
+    width: 14px;
+    height: 13px;
+    margin: 0 10px;
+    animation-name: heard_pulse;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+  }
+  //aminate
+  @keyframes heard_pulse {
+    0% {
+      transform: scale(0.9);
+    }
+    10% {
+      transform: scale(0.95);
+    }
+    20% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.05);
+    }
+    40% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    60% {
+      transform: scale(1.1);
+    }
+    70% {
+      transform: scale(1.05);
+    }
+  
+    80% {
+      transform: scale(1);
+    }
+    90% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+  .footer__text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    // display: flex;
+    @media screen and (max-width: 290px) {
+      font-size: 12px;
+    }
+  }
+  
+  //modal
+  .team_modal_btn {
+    margin-left: 3px;
+  }
+  .team_modal_btn {
+    outline: none;
+    background-color: inherit;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    cursor: pointer;
+    @media screen and (max-width: 290px) {
+      font-size: 12px;
+    }
+  }
+  .team__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 10px;
+  }
+  .student__text {
+    text-align: center;
+  }
+  .student_overflow {
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .team_modal {
+    background: #f7f7f7;
+    position: fixed;
+    width: 85%;
+    height: 90%;
+    overflow: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 500ms ease, opacity 500ms ease, visibility 500ms ease;
+    @media screen and (min-width: 1000px) {
+      width: 950px;
+      height: 800px;
+    }
+     &.is-hidden {
+      visibility: hidden;
+      opacity: 0;
+      transform: scale(1.2);
+      pointer-events: none;
+    }
+  }
+  .teamModal__close__btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  .team__img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .student__close__icon {
+    width: 10px;
+    height: 10px;
+  }
+  .student {
+    display: flex;
+    flex-direction: column;
+  }
+  .team__item {
+    display: flex;
+    flex-direction: column;
+  }
+  .soc_icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .soc_icon {
+    display: block;
+    scale: (1);
+    transition: scale 250 ease;
+    .icon--hoverfocus:hover & {
+      transform: scale(0.9);
+    }
+    .icon--hoverfocus:focus & {
+      transform: scale(1.1);
+    }
+  }
+  .icon_git {
+    fill: #f7f7f7;
+  }
+  .icon-linedin {
+    fill: #4169e1;
+  }
+  
+  

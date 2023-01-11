@@ -11,13 +11,17 @@ export function renderSliderFilmCard({ results }) {
           .map(({ name }) => name)
           .join(', ');
       }
-      return `<li class="glide__slide" data-id=${id}>
-                 <img   class='glide__img' alt= '${title}' width='100%'
+      return `
+      <li class="glide__slide" data-id=${id}>
+      <a class="glide__link" href= "">
+      <div class="glide__container">
+                 <img   class='glide__img' alt= '${title}' width='360'
                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
+                  <div class="glide__text">
                   <h2 class="glide__title">${title}</h2>
                   <p class="glide__genres">${filmGenreId}<span>|${(
         release_date || '2022'
-      ).slice(0, 4)}</span></p>
+      ).slice(0, 4)}</span></p></div></div></a>
               </li>`;
     })
     .join('');

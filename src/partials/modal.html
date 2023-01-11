@@ -1,0 +1,40 @@
+<!-- Класи "overlay", "modal", "modal__close-btn" і "modal__close-icon" загальні для всіх модалок. Щоби додати унікальні стилі для конкретної модалки, присвоюємо елементам додаткові класи на свій розсуд і описуємо їх стилі в файлі _modal.scss. Також ці додаткові класи використовуємо при створенні нового об'єкту модалки в файлі modal.js. -->
+
+<!-- Модалка картки фільму -->
+<div class="overlay film-modal-overlay">
+    <div class="modal film-modal">
+        <button type="button" class="modal__close-btn film-modal__close-btn">
+            <svg class="modal__close-icon" width="30" height="30">
+                <use href="./images/sprite.svg#close"></use>
+            </svg>
+        </button>
+        <!-- Сюди інджектимо розмітку контенту модалки -->
+        <!-- <include src="example"></include> -->
+    </div>
+</div>
+
+<!-- Модалка логіну/реєстрації -->
+<div class="overlay">
+    <div class="modal">
+        <button type="button" class="modal__close-btn film-modal">
+            <svg class="modal__close-icon" width="30" height="30">
+                <use href="./images/sprite.svg#close"></use>
+            </svg>
+        </button>
+        <!-- Сюди інджектимо розмітку контенту модалки -->
+        <!-- <include src="example"></include> -->
+    </div>
+</div>
+
+<!-- Модалка з переліком студентів, які виконували роботу -->
+<div class="overlay">
+    <div class="modal">
+        <button type="button" class="modal__close-btn">
+            <svg class="modal__close-icon" width="30" height="30">
+                <use href="./images/sprite.svg#close"></use>
+            </svg>
+        </button>
+        <!-- Сюди інджектимо розмітку контенту модалки -->
+        <!-- <include src="example"></include> -->
+    </div>
+</div>

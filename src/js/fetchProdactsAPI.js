@@ -10,12 +10,11 @@ export default class ApiService {
     this.searchQuery = '';
     this.page = 1;
   }
-//  фільми з більшим доходом
+  //  фільми з більшим доходом
   async getRevenueFilms() {
     try {
-         const url =
-                await `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=videos,images&sort_by=revenue.desc`;
-      return axios.get(url).then(response => {
+      const url = `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=images&sort_by=revenue.desc`;
+      return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
@@ -32,14 +31,13 @@ export default class ApiService {
       Loading.pulse('Loading...', {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url =
-        await `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=videos,images&sort_by = popularity.desc`;
-      return axios.get(url).then(response => {
+      const url = `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
+      return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
         Loading.remove();
-      
+
         return response.data;
       });
     } catch (error) {
@@ -66,7 +64,7 @@ export default class ApiService {
       console.error();
     }
   }
-//  отримуємо символи для пошуку фільму
+  //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
   }
