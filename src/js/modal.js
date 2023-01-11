@@ -1,5 +1,5 @@
 // Клас, який створює об'єкт модалки з методами закриття/відкриття
-export default class Modal {
+export  class Modal {
   constructor(openBtn, closeBtn, overlay, modal) {
     this.openBtn = document.querySelector(openBtn);
     this.closeBtn = document.querySelector(closeBtn);
