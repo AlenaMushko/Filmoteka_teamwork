@@ -18,7 +18,6 @@ export function ShowFilms() {
 
 async function topFilms() {
   const results = await apiService.getPopularFilms();
-  console.log(results);
   try {
     renderFilmCard(results);
     getPagination(results);

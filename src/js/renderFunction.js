@@ -25,16 +25,34 @@ export function renderSliderFilmCard({ results }) {
 }
 
 export function renderFilmCard({ results }) {
-  const markup = results
+   const markup = results
     .map(({ id, poster_path, title, release_date, genre_ids }) => {
       let filmGenreId = '';
+if (genre_ids.length >= 4) {
+          // console.log(">=4");
+  let newGenre_ids = genre_ids.splice(1, 3, 'other');
+  genre_ids = newGenre_ids;
+}
+// else {
+//         genre_ids = genre_ids;
+//         }       
+      console.log(genre_ids);
       if (genre_ids) {
         filmGenreId = genresId
           .filter(({ id }) => genre_ids.includes(id))
-          .map(({ name }) => name)
-          .join(', ');
+          .map(({ name }) => {
+         
+           return name
+          })
+          // .join(', ');
+      
       }
 
+          
+            // genre_ids.length >= 4 ? genre_ids : genre_ids.includes(id);
+            // console.log(genre_ids);
+            // console.log(genre_ids.slise(0, 2));
+           
       const img = `<img   class='film__img' alt= '${title}' width='100%'
       src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
 
