@@ -11,6 +11,7 @@ sliderRevenueFilms();
 // слайлдер з фільмами, що зібрали найбільшу касу
 ShowFilms();
 // фільми топ, фільми за пошуком
+
 modalWindows();
 // виклик модалки
 
@@ -19,3 +20,4 @@ backToTop();
 
 // footer
 onTeamModal();
+

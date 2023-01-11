@@ -2,7 +2,7 @@
   <div class="container header__container">
     <nav class="navigation">
       <a href="/src/index.html" class="navigation__logo logo">
-        <svg width="24" height="24">
+        <svg width="24" height="24" class="navigation__icon">
           <use href="./images/sprite.svg#logo"></use>
         </svg>
         <span class="logo__name">Filmoteka</span>
@@ -12,10 +12,19 @@
           <a
             href="/src/index.html"
             class="navigation__link navigation__link--current-page"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#home"></use></svg
             ><span class="navigation__span">Home</span></a
           >
         </li>
         <li class="navigation__item">
+          <a href="/src/my_library.html" class="navigation__link"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#enter"></use></svg
+            ><span class="navigation__span">Sign in</span></a
+          >
+        </li>
+        <li class="navigation__item navigation__item--library is-hidden">
           <a href="/src/my_library.html" class="navigation__link"
             ><span class="navigation__span">My library</span></a
           >
@@ -32,7 +41,11 @@
         placeholder="Movie search"
         class="search__field"
       />
-      <button type="submit" class="search__button" aria-label="movie-search">
+      <button
+        type="submit"
+        class="search__button button"
+        aria-label="movie-search"
+      >
         <svg class="search__icon" width="12" height="12">
           <use href="./images/sprite.svg#search"></use>
         </svg>
@@ -42,5 +55,56 @@
     <div class="header__warning is-hidden">
       Search result not successful. Enter the correct movie name
     </div>
+    <div class="header__settings settings">
+      <ul class="settings__list">
+        <li class="settings__item">
+          <button
+            type="button"
+            class="button__filters button"
+            id="button-filters"
+          >
+            <svg class="filters__icon" width="12" height="12">
+              <use href="./images/sprite.svg#filters"></use>
+            </svg>
+            Filters
+          </button>
+        </li>
+        <li class="settings__item">
+          <button type="button" class="button__settings button" id="settings">
+            <svg class="settings__icon" width="14" height="14">
+              <use href="./images/sprite.svg#settings"></use></svg
+            >Settings
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- menu-filters -->
+    <div class="is-hidden" id="menu-filters">
+      <button type="button" class="button" id="button-genres">
+        <svg class="settings__icon" width="14" height="14">
+          <use href="./images/sprite.svg#genres"></use></svg
+        >Genres
+      </button>
+      <div class="genres-container" id="genres-container"></div>
+
+      <button type="button" class="button" id="">
+        <svg class="settings__icon" width="14" height="14">
+          <use href="./images/sprite.svg#date"></use></svg
+        >Date
+      </button>
+      <button type="button" class="button" id="">
+        <svg class="settings__icon" width="14" height="14">
+          <use href="./images/sprite.svg#sort"></use></svg
+        >Sort
+      </button>
+      <button type="button" class="button" id="button-reset">
+        <svg class="settings__icon" width="14" height="14">
+          <use href="./images/sprite.svg#reset"></use></svg
+        >Reset
+      </button>
+    </div>
   </div>
+
+  <div class="menu__settings is-hidden"></div>
 </header>
+<script type="module" src="./js/menuFilters.js"></script>
