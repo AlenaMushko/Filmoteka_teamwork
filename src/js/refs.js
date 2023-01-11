@@ -16,4 +16,5 @@ export const refs = {
   teamModal: document.querySelector('.team_modal'),
   teamModalCloseBtn: document.querySelector('.teamModal__close__btn'),
   teamOpenModalBtn: document.querySelector('.team_modal_btn'),
+  paginationList: document.querySelector('.tui-pagination'),
 };
