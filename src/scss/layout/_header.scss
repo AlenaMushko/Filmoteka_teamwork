@@ -68,6 +68,8 @@
   }
 
   &__container {
+    position: relative;
+    height: 230px;
     padding-top: 40px;
     @include mq(desktop) {
       padding-top: 45px;
@@ -133,7 +135,9 @@
   }
 
   &__link {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     text-shadow: none;
     outline: none;
     transform: scale(1);
@@ -163,6 +167,9 @@
       background-color: $color-extra;
     }
   }
+  &__icon {
+    fill: $color-extra-text;
+  }
 }
 
 .search {
@@ -171,6 +178,8 @@
 
   &__field {
     padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     width: 100%;
     background-color: transparent;
     border: none;
@@ -203,17 +212,8 @@
 
   &__button {
     position: absolute;
-    top: 4px;
+    top: 11px;
     right: 10px;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transform: scale(1);
-    outline: none;
-    transition: transform $transitionDuration $cubic,
-      background-color $transitionDuration $cubic,
-      border-radius $transitionDuration $cubic;
     @include mq(tablet) {
       right: 185px;
     }
@@ -237,4 +237,74 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.button {
+  display: flex;
+  gap: 5px;
+  @include font(null, 12, 1.17, null);
+  color: inherit;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform: scale(1);
+  outline: none;
+  fill: $color-extra-text;
+  transition: transform $transitionDuration $cubic,
+    background-color $transitionDuration $cubic,
+    border-radius $transitionDuration $cubic;
+
+  &__filters {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    @include mq(tablet) {
+      left: 27%;
+    }
+    @include mq(desktop) {
+      left: 37%;
+    }
+  }
+
+  &__settings {
+    flex-direction: row-reverse;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    @include mq(tablet) {
+      right: 27%;
+    }
+    @include mq(desktop) {
+      right: 37%;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b0169;
+    border-radius: 10px;
+    transform: scale(1.25);
+  }
+}
+
+.menu-filters {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  padding: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transform: translateY(99%);
+  z-index: 1;
+  display: flex;
+  gap: 20px;
+  background-color: $color-slider;
+  @include mq(tablet) {
+    left: 10%;
+  }
+  @include mq(desktop) {
+    left: 18%;
+  }
 }
