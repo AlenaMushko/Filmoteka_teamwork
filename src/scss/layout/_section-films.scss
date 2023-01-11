@@ -1,15 +1,85 @@
-.top-films {
-    display: flex;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /* flex-basis: calc(100% - 10px) / 3; */
+:root {
+    --timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+    --animation-duration: 150ms;
 }
 
-.film__item {
-    width: 395px;
-    flex-basis: calc((100% - 20px) / 3);
-    list-style: none;
+.film-section {
+    width: 100%;
+    .films {
+        margin: 0 auto;
+        max-width: 420px;
+        padding: 0 20px;
+    .top-films {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @include mq(tablet) {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        @include flex(flex, center, center);
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: unset;
+        }
+        @include mq(desktop) {
+            column-gap: 16px;
+            row-gap: 32px;
+            align-items: unset;
+        }
+    }
+    .film__item {
+    .film__img {
+        border-radius: 5px;
+        @include mq(desktop) {
+            height: 90%;
+        //     &:hover {
+        //     transform: scale(1.02);
+        //     transition: transform var(--animation-duration) var(--timing-function);
+        // }
+    }
+    }
+    .films__title {
+        margin-top: 10px;
+        text-transform: uppercase;
+        @include font(500, 12px, 1.33, 0.04em);
+        @include mq(desktop) {
+            @include font(500, 20px, 1.2, 0.04em);
+            margin-top: 12px;
+        }
+    }
+        .films__genres {
+            color: $color-brand-text;
+            @include font(500, 12px, 1.33, 0.04em);
+        @include mq(desktop) {
+                @include font(500, 20px, 1.2, 0.04em);
+            }
+        }
+        @include mq(tablet) {
+            width: calc((100% - 32px) / 2);
+        }
+        @include mq(desktop) {
+            width: calc((100% - 32px) / 3);
+        &:hover {
+            .film__img {
+//             box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+// 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+            transform: scale(1.02);
+            transition: transform var(--animation-duration) var(--timing-function);
+            }
+    }
+    }
+    }
+    @include mq(tablet) {
+        max-width: 780px;
+        padding: 0 32px;
+    }
+    @include mq(desktop) {
+        max-width: 1600px;
+    }
+}
 }
 
 .go-home {
