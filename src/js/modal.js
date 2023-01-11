@@ -32,17 +32,17 @@ export default class Modal {
     this.closeBtn.addEventListener('click', this.closeModal.bind(this));
     this.overlay.addEventListener('click', this.closeModal.bind(this));
     document.addEventListener("keydown", this.onEscPress.bind(this));
-  }
-
-  removeClassAndListener() {
+    }
+    removeClassAndListener() {
     this.overlay.classList.remove('active');
     this.modal.classList.remove('active');
-    this.body.classList.remove('no-scroll');
-    this.closeBtn.removeEventListener('click', this.closeModal);
+      this.body.classList.remove('no-scroll');
+          this.closeBtn.removeEventListener('click', this.closeModal);
     this.overlay.removeEventListener('click', this.closeModal);
     document.removeEventListener("keydown", this.onEscPress);
   }
-}
+  }
+
 
   // Імпортуємо клас Modal в свій js-файл і створюємо його екземпляр.
   // При створенні нового екземпляра модалки, прописуємо селектори елементів ("кнопка відкриття модалки", "кнопка закриття модалки", "оверлей/бекдроп модалки", "контейнер модалки").
@@ -62,3 +62,4 @@ export default class Modal {
   //   'click',
   //   exampleModalWindow.openModal.bind(exampleModalWindow)
   // );
+
