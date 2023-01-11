@@ -6,6 +6,6 @@ const refsEl = {
   btnResetFiltersEl: document.getElementById('button-reset'),
 };
 
-refsEl.btnFiltersEl.addEventListener('mouseup', () =>
+refsEl.btnFiltersEl.addEventListener('click', () =>
   refsEl.menuFiltersEl.classList.toggle('menu-filters')
 );
