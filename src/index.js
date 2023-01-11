@@ -11,5 +11,3 @@ ShowFilms();
 backToTop();
 // кнопка повернення до гори
 
-modalWindows();
-// модальні вікна
