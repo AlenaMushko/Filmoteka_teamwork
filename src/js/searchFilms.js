@@ -2,6 +2,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
+import { cleanPagination } from './pagination';
+import { getPagination } from './pagination';
 
 const apiService = new ApiService();
 
@@ -27,26 +29,29 @@ export async function onSearchFormSubmit(e) {
   const results = await apiService.getSearchFilms();
   console.log(results);
   apiService.totalResults = results.total_results;
-  if (apiService.totalResults < 20) {
-    refs.btnLoadMoreEl.classList.add('is-hidden');
-    refs.infoTextEl.classList.remove('is-hidden');
-  } else {
-    refs.btnLoadMoreEl.classList.remove('is-hidden');
-    refs.infoTextEl.classList.add('is-hidden');
-  }
+  // if (apiService.totalResults < 20) {
+  //   refs.btnLoadMoreEl.classList.add('is-hidden');
+  //   refs.infoTextEl.classList.remove('is-hidden');
+  // } else {
+  //   refs.btnLoadMoreEl.classList.remove('is-hidden');
+  //   refs.infoTextEl.classList.add('is-hidden');
+  // }
 
   try {
     renderFilmCard(results);
+    // cleanPagination();
+    // getPagination(results);
     if (apiService.totalResults === 0) {
       Notify.failure(
         'Sorry, there are no films matching your search query. Please try again.'
       );
+      cleanPagination();
       return;
     }
     if (apiService.totalResults >= 1) {
       Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
     }
-    apiService.page += 1;
+    // apiService.page += 1;
   } catch (error) {
     console.log(error);
   }

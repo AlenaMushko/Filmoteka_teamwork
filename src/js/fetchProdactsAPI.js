@@ -5,16 +5,16 @@ const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 export default class ApiService {
-  constructor() {
+  constructor(page = 1) {
     this.totalResults = 0;
     this.searchQuery = '';
-    this.page = 1;
+    this.page = page;
   }
-//  фільми з більшим доходом
+  //  фільми з більшим доходом
   async getRevenueFilms() {
     try {
-         const url =
-                await `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=videos,images&sort_by=revenue.desc`;
+      const url =
+        await `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=videos,images&sort_by=revenue.desc`;
       return axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
@@ -39,7 +39,7 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-      
+
         return response.data;
       });
     } catch (error) {
@@ -66,7 +66,7 @@ export default class ApiService {
       console.error();
     }
   }
-//  отримуємо символи для пошуку фільму
+  //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
   }

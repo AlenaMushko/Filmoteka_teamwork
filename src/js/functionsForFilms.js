@@ -16,7 +16,7 @@ export function ShowFilms() {
 }
 // фільми топ, фільми за пошуком
 
-async function topFilms() {
+export async function topFilms() {
   const results = await apiService.getPopularFilms();
   console.log(results);
   try {

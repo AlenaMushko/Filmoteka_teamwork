@@ -1,5 +1,10 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import ApiService from './fetchProdactsAPI';
+import { renderFilmCard } from './renderFunction';
+import { topFilms } from './functionsForFilms';
+
+const paginationList = document.querySelector('.tui-pagination');
 
 export function getPagination({ page, total_results }) {
   const options = {
@@ -30,4 +35,25 @@ export function getPagination({ page, total_results }) {
   };
 
   const pagination = new Pagination('pagination', options);
+
+  pagination.on('afterMove', event => {
+    const currentPage = event.page;
+    console.log(currentPage);
+    const apiService = new ApiService(currentPage);
+    async function topFilms() {
+      const results = await apiService.getPopularFilms();
+      console.log(results);
+      try {
+        renderFilmCard(results);
+        getPagination(results);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    topFilms();
+  });
+}
+
+export function cleanPagination() {
+  paginationList.innerHTML = '';
 }
