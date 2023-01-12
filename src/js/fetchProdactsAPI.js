@@ -9,6 +9,14 @@ export default class ApiService {
     this.totalResults = 0;
     this.searchQuery = '';
     this.page = 1;
+    // deletedFilm = { watched: {}, queue: {} };
+  //   this.keys = {
+  //   GENRES_KAY: 'filmoteka-genres',
+  //   YEARS_KAY: 'filmoteka-years',
+  //   QUEUE_KAY: 'filmoteka-queue',
+  //   WATCHED_KAY: 'filmoteka-watched',
+  // };
+
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
@@ -51,9 +59,8 @@ export default class ApiService {
       Loading.pulse('Loading...', {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url =
-        await `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
-      return axios.get(url).then(response => {
+      const url = `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
+      return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
@@ -64,6 +71,27 @@ export default class ApiService {
       console.error();
     }
   }
+
+  // фільми, що шукають за жанром
+  async getSearchFilms() {
+    try {
+      Loading.pulse('Loading...', {
+        backgroundColor: 'rgba(0,0,0,0.8)',
+      });
+      
+      const url = `${BASE_URL}genre/movie/list${api_key}&query=${this.searchQuery}&page=${this.page}`;
+      return await axios.get(url).then(response => {
+        if (!response) {
+          throw new Error(response.status);
+        }
+        Loading.remove();
+        return response.data;
+      });
+    } catch (error) {
+      console.error();
+    }
+  }
+
   //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
@@ -78,4 +106,20 @@ export default class ApiService {
   set pageNum(newPage) {
     this.page = newPage;
   }
+
+
+
+  // get deletedFilm() {
+  //   return this.deletedFilm;
+  // }
+  // set deletedFilm(newDeletedFilm) {
+  //   this.deletedFilm = newDeletedFilm;
+  // }
+
+  // get keys() {
+  //   return this.keys;
+  // }
+  // set keys(newKeys) {
+  //   this.keys = newKeys;
+  // }
 }

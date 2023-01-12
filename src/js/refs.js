@@ -18,3 +18,6 @@ export const refs = {
   teamOpenModalBtn: document.querySelector('.team_modal_btn'),
   paginationList: document.querySelector('.tui-pagination'),
 };
+
+
+
