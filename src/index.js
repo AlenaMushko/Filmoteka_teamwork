@@ -21,3 +21,18 @@ backToTop();
 // footer
 onTeamModal();
 
+
+
+// закоментувати
+
+//функція авторизації
+localStorage.setItem('auth', "no");
+//функція авторизації
+
+import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
+homeHeaderLinkBntLogic ();
+
+
+
+
+// закоментувати

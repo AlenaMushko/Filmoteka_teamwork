@@ -17,4 +17,15 @@ export const refs = {
   teamModalCloseBtn: document.querySelector('.teamModal__close__btn'),
   teamOpenModalBtn: document.querySelector('.team_modal_btn'),
   paginationList: document.querySelector('.tui-pagination'),
+
+  // закоментувати
+
+//ссилки на дом вузли для логіки хедера
+  signInBtn: document.querySelector('.js__sign-in-btn'),
+  signOutBtn: document.querySelector('.js__sign-out-btn'),
+  myLibraryLink: document.querySelector('.js__my-lirbary-link'),
+  
+  
+  // закоментувати
+
 };

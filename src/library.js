@@ -7,3 +7,17 @@ sliderRevenueFilms();
 
 // backToTop();
 // // кнопка повернення до гори
+
+// закоментувати
+
+//функція авторизації
+localStorage.setItem('auth', "yes");
+//функція авторизації
+
+import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
+libraryHeaderLinkBntLogic ();
+
+
+
+
+// закоментувати
