@@ -256,30 +256,30 @@
     background-color $transitionDuration $cubic,
     border-radius $transitionDuration $cubic;
 
-  &__filters {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    @include mq(tablet) {
-      left: 27%;
-    }
-    @include mq(desktop) {
-      left: 37%;
-    }
-  }
+  // &__filters {
+  //   position: absolute;
+  //   bottom: 10px;
+  //   left: 20px;
+  //   @include mq(tablet) {
+  //     left: 27%;
+  //   }
+  //   @include mq(desktop) {
+  //     left: 37%;
+  //   }
+  // }
 
-  &__settings {
-    flex-direction: row-reverse;
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    @include mq(tablet) {
-      right: 27%;
-    }
-    @include mq(desktop) {
-      right: 37%;
-    }
-  }
+  // &__settings {
+  //   flex-direction: row-reverse;
+  //   position: absolute;
+  //   bottom: 10px;
+  //   right: 20px;
+  //   @include mq(tablet) {
+  //     right: 27%;
+  //   }
+  //   @include mq(desktop) {
+  //     right: 37%;
+  //   }
+  // }
 
   &:hover,
   &:focus {
@@ -289,22 +289,25 @@
   }
 }
 
-.menu-filters {
+.form-filters {
   position: absolute;
-  bottom: 0;
-  left: 20px;
-  padding: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  transform: translateY(99%);
-  z-index: 1;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 20px;
-  background-color: $color-slider;
   @include mq(tablet) {
-    left: 10%;
+    flex-direction: row;
+    gap: 20px;
   }
-  @include mq(desktop) {
-    left: 18%;
+  &__select {
+    background-color: transparent;
+    color: $color-extra-text;
+    border: none;
+    @include font(null, 12, 1.17, null);
+    text-transform: uppercase;
+    outline: none;
   }
+}
+option {
+  background-color: #10181d;
 }
