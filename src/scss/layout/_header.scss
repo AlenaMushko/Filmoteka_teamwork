@@ -127,10 +127,11 @@
 
   &__list {
     display: flex;
+    justify-content: space-around;
     text-transform: uppercase;
   }
 
-  &__item:first-of-type {
+  &__item:not(:last-child) {
     margin-right: 40px;
   }
 
@@ -224,7 +225,6 @@
     &:hover,
     &:focus {
       transform: scale(1.25);
-      background-color: #ff6b0169;
       border-radius: 5px;
     }
   }
@@ -284,7 +284,6 @@
 
   &:hover,
   &:focus {
-    background-color: #ff6b0169;
     border-radius: 10px;
     transform: scale(1.25);
   }
