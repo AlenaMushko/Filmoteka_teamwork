@@ -4,7 +4,7 @@ import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
 import { cleanPagination } from './pagination';
-import { paginationBackToTop } from './pagination';
+// import { paginationBackToTop } from './pagination';
 
 const apiService = new ApiService();
 
