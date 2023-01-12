@@ -38,13 +38,30 @@ export const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', loadMoreFilms);
 
 async function loadMoreFilms(event) {
+  paginationBackToTop();
   const currentPage = event.page;
   apiService.pageNum = currentPage;
-  const results = await apiService.getPopularFilms();
 
+  const results = await apiService.getPopularFilms();
   renderFilmCard(results);
 }
 
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
+}
+
+export function paginationBackToTop() {
+  let button = $('.tui-pagination');
+  $(window).on('scroll', () => {
+    if ($(this).scrollTop() >= 50) {
+      button.fadeIn();
+    } else {
+      button.fadeOut();
+    }
+  });
+  button.on('click', e => {
+    e.preventDefault();
+    $('html').animate({ scrollTop: 0 }, 100);
+  });
+  console.log('I am done');
 }
