@@ -4,6 +4,7 @@ import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
 import { cleanPagination } from './pagination';
+import { paginationBackToTop } from './pagination';
 
 const apiService = new ApiService();
 
@@ -35,6 +36,7 @@ export async function onSearchFormSubmit(e) {
     pagination.on('afterMove', loadMoreSearchFilms);
 
     async function loadMoreSearchFilms(event) {
+      paginationBackToTop();
       const currentPage = event.page;
       apiService.pageNum = currentPage;
       const results = await apiService.getSearchFilms();
