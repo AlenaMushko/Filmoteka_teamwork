@@ -1,7 +1,3 @@
-// --!!! Потрібно імпортувати та запустити в index.js
-import { registrationModalOpen } from './js/modalRegistrationFunction';
-//--!! Виткликати:
-registrationModalOpen();
 
 import { Modal } from './modal';
 

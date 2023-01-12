@@ -15,7 +15,6 @@ teamModalWindow.openBtn.addEventListener(
 
 //slider
 const checkbox = document.querySelector('.options-bound-checkbox');
-console.log(checkbox);
 const teamSlider = new Glide('.teamSlider', {
   type: 'carousel',
   bound: checkbox.checked,
