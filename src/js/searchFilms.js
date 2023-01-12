@@ -28,14 +28,6 @@ export async function onSearchFormSubmit(e) {
 
   const results = await apiService.getSearchFilms();
   apiService.totalResults = results.total_results;
-  // if (apiService.totalResults < 20) {
-  //   refs.btnLoadMoreEl.classList.add('is-hidden');
-  //   refs.infoTextEl.classList.remove('is-hidden');
-  // } else {
-  //   refs.btnLoadMoreEl.classList.remove('is-hidden');
-  //   refs.infoTextEl.classList.add('is-hidden');
-  // }
-
   try {
     renderFilmCard(results);
     pagination.reset(results.total_results);
@@ -58,7 +50,6 @@ export async function onSearchFormSubmit(e) {
     if (apiService.totalResults >= 1) {
       Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
     }
-    // apiService.page += 1;
   } catch (error) {
     console.log(error);
   }
