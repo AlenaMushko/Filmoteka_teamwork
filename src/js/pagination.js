@@ -53,7 +53,7 @@ export function cleanPagination() {
 export function paginationBackToTop() {
   let button = $('.tui-pagination');
   $(window).on('scroll', () => {
-    if ($(this).scrollTop() >= 0) {
+    if ($(this).scrollTop() >= 50) {
       button.fadeIn();
     } else {
       button.fadeOut();
