@@ -15,7 +15,7 @@ export function renderSliderFilmCard({ results }) {
       <li class="glide__slide" data-id=${id}>
       <a class="glide__link" href= "">
       <div class="glide__container">
-                 <img   class='glide__img' alt= '${title}' width='360'
+                 <img   class='glide__img' alt= '${title}' width='360' loading="lazy"
                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
                   <div class="glide__text">
                   <h2 class="glide__title">${title}</h2>
@@ -44,7 +44,7 @@ export function renderFilmCard({ results }) {
         }
       }
 
-      const img = `<img   class='film__img' alt= '${title}' width='100%'
+      const img = `<img   class='film__img' alt= '${title}' width='100%' loading="lazy"
       src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
 
       return `<li class="film__item" data-id=${id}>
