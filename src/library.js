@@ -1,9 +1,7 @@
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
-import { backToTop } from './js/scrolToHome';
-;
+// import { scrolToTop } from './js/scrolToTop';
 
 sliderRevenueFilms();
 // слайлдер з фільмами, що зібрали найбільшу касу
-
-// backToTop();
-// // кнопка повернення до гори
+// scrolToTop();
+// кнопка повернення до гори
