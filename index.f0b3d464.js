@@ -1,2 +1,0 @@
-!function(){var e={btnFiltersEl:document.getElementById("button-filters"),menuFiltersEl:document.getElementById("menu-filters"),btnGenresEl:document.getElementById("button-genres"),genresContainerEl:document.getElementById("genres-container"),btnResetFiltersEl:document.getElementById("button-reset")};e.btnFiltersEl.addEventListener("click",(function(){return e.menuFiltersEl.classList.toggle("menu-filters")}))}();
-//# sourceMappingURL=index.f0b3d464.js.map
