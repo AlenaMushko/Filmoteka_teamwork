@@ -31,7 +31,7 @@ export default class ApiService {
       Loading.pulse('Loading...', {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url = `${BASE_URL}discover/movie${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
+      const url = `${BASE_URL}trending/all/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
