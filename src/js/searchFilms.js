@@ -36,7 +36,7 @@ export async function onSearchFormSubmit(e) {
     pagination.on('afterMove', loadMoreSearchFilms);
 
     async function loadMoreSearchFilms(event) {
-      paginationBackToTop();
+      // paginationBackToTop();
       const currentPage = event.page;
       apiService.pageNum = currentPage;
       const results = await apiService.getSearchFilms();

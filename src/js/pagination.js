@@ -38,7 +38,7 @@ export const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', loadMoreFilms);
 
 async function loadMoreFilms(event) {
-  paginationBackToTop();
+  // paginationBackToTop();
   const currentPage = event.page;
   apiService.pageNum = currentPage;
 
@@ -50,18 +50,18 @@ export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
 
-export function paginationBackToTop() {
-  let button = $('.tui-pagination');
-  $(window).on('scroll', () => {
-    if ($(this).scrollTop() >= 50) {
-      button.fadeIn();
-    } else {
-      button.fadeOut();
-    }
-  });
-  button.on('click', e => {
-    e.preventDefault();
-    $('html').animate({ scrollTop: 0 }, 100);
-  });
-  console.log('I am done');
-}
+// export function paginationBackToTop() {
+//   let button = $('.tui-pagination');
+//   $(window).on('scroll', () => {
+//     if ($(this).scrollTop() >= 50) {
+//       button.fadeIn();
+//     } else {
+//       button.fadeOut();
+//     }
+//   });
+//   button.on('click', e => {
+//     e.preventDefault();
+//     $('html').animate({ scrollTop: 0 }, 100);
+//   });
+//   console.log('I am done');
+// }
