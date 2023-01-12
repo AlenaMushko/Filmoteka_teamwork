@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
@@ -9,9 +9,9 @@ const apiService = new ApiService();
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
-  visiblePages: 10,
+  visiblePages: 5,
   page: 1,
-  centerAlign: false,
+  centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
