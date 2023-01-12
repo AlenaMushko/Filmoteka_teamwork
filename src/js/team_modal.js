@@ -1,6 +1,7 @@
-
 import Glide from '@glidejs/glide';
 import { Modal } from './modal';
+import { refs } from './refs';
+
 const teamModalWindow = new Modal(
   '.team-modal-open',
   '.team-modal-close',
@@ -12,41 +13,40 @@ teamModalWindow.openBtn.addEventListener(
   teamModalWindow.openModal.bind(teamModalWindow)
 );
 
-
 //slider
-const checkbox = document.querySelector('.options-bound-checkbox');
-console.log(checkbox);
 const teamSlider = new Glide('.teamSlider', {
   type: 'carousel',
-  bound: checkbox.checked,
   perView: 1,
   autoplay: 2500,
   keyboard: true,
   focusAt: 'center',
   hoverpause: true,
-  breakpoints: {
-    800: {
-      perView: 2,
-    },
-    480: {
-      perView: 1,
-    },
-  },
 });
 
-// teamSlider.mount();
+teamSlider.mount();
+teamSlider.pause();
 
-checkbox.addEventListener('change', function () {
-  teamSlider.update({
-    bound: checkbox.checked,
-  });
-});
-
+function onTeamModalstart() {
+  teamSlider.play();
+}
+function onEscapeClickTM(e) {
+  if (e.key === 'Escape') {
+    teamModalClose();
+    removeEventListeneronWindow();
+  }
+  function removeEventListeneronWindow() {
+    window.removeEventListener('keydown', onEscapeClickTM);
+  }
+}
+function teamModalClose() {
+  teamSlider.pause();
+  window.removeEventListener('keydown', onEscapeClickTM);
+}
 export function onTeamModal() {
-  teamSlider.mount();
-  checkbox.addEventListener('change', function () {
-    teamSlider.update({
-      bound: checkbox.checked,
-    });
-  });
+  refs.teamOpenModalBtn.addEventListener('click', onTeamModalstart);
+  const clickClose = document.querySelector('.team-modal-close');
+  const clickOverlay = document.querySelector('.team-modal-overlay');
+  window.addEventListener('keydown', onEscapeClickTM);
+  clickClose.addEventListener('click', teamModalClose);
+  clickOverlay.addEventListener('click', teamModalClose);
 }
