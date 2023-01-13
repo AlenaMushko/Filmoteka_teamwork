@@ -24,7 +24,7 @@ export async function renderTrailersBtns(trailers) {
         `<li><button class="trailerButton" data-key=${trailer.key}>Watch ${trailer.name}</button></li>`
     )
     .join('');
-  trailersBtnContainer.insertAdjacentHTML('beforeend', markup);
+  trailersBtnContainer.innerHTML(markup);
 }
 
 export function TrailerModal(trailerKey) {
