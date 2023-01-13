@@ -21,3 +21,14 @@ scrolToTop();
 
 // footer
 onTeamModal();
+
+//авторизація (тимчасове рішення)
+import { authHandler } from './js/auth';
+authHandler();
+
+
+// логіка кнопок і посилань навігації хедера
+import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
+homeHeaderLinkBntLogic ();
+
+
