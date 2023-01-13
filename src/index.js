@@ -26,7 +26,8 @@ onTeamModal();
 // закоментувати
 
 //функція авторизації
-localStorage.setItem('auth', "no");
+import { authHandler } from './js/auth';
+authHandler();
 //функція авторизації
 
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';

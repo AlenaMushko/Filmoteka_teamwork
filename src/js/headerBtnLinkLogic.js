@@ -37,12 +37,9 @@ export function homeHeaderLinkBntLogic() {
 };
 
 
-/* export function libraryHeaderLinkBntLogic() {
+export function libraryHeaderLinkBntLogic() {
     
-
-    if(localStorage.auth === "yes") {
-
-
+    
         refs.signOutBtn.classList.remove('is-hidden');
         refs.signOutBtn.addEventListener('click', signOutBtnHandler);
         //refs.signOutBtn.forEach(function (btn) {btn.addEventListener('click', signOutBtnHandler)});
@@ -50,21 +47,7 @@ export function homeHeaderLinkBntLogic() {
         refs.myLibraryLink.classList.remove('is-hidden');
         //refs.myLibraryLink.addEventListener('click', myLibraryLinkHandler);
 
-        
-    } else if(localStorage.auth === "no") {
-        
-
-        refs.signOutBtn.classList.add('is-hidden');
-        refs.signOutBtn.removeEventListener('click', signOutBtnHandler);
-        //refs.signOutBtn.forEach(function (btn) {btn.removeEventListener('click', signOutBtnHandler)});
-
-        refs.myLibraryLink.classList.add('is-hidden');
-        //refs.myLibraryLink.removeEventListener('click', myLibraryLinkHandler);
-    } else {
-        // якщо в auth не є no/yes
-        
-    };  
-}; */
+};
 
 function signInBtnHandler(e) {
     //e.preventDefault();
@@ -85,12 +68,7 @@ function myLibraryLinkHandler() {
 }
 
 function authEntranceBtnHandler(e) {
-    e.preventDefault();
-    console.log("ура1");  
+    e.preventDefault();  
     localStorage.auth = "yes";
-    console.log("ура2");
-    homeHeaderLinkBntLogic()
-    console.log("ура3");
-    
-
+    homeHeaderLinkBntLogic();
 }

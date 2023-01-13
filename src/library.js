@@ -11,13 +11,10 @@ sliderRevenueFilms();
 // закоментувати
 
 //функція авторизації
-localStorage.setItem('auth', "yes");
+localStorage.auth = "yes";
 //функція авторизації
 
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
-libraryHeaderLinkBntLogic ();
-
-
-
+libraryHeaderLinkBntLogic();
 
 // закоментувати
