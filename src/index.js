@@ -8,6 +8,9 @@ import 'lazysizes';
 // import a plugin
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
+
+
+
 // Note: Never import/require the *.min.js files from the npm package.
 
 // header
