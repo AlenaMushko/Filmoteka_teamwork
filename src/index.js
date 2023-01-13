@@ -8,10 +8,10 @@ import { filmCardModalWindow } from './js/modal-film';
 import 'lazysizes';
 // import a plugin
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import { renderTrailersBtns } from './js/getTrailers';
+// import { renderTrailersBtns } from './js/getTrailers';
 
 
-renderTrailersBtns();
+// renderTrailersBtns();
 
 
 // Note: Never import/require the *.min.js files from the npm package.

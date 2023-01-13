@@ -16,7 +16,7 @@ export async function getTrailersByMovieId(movieID) {
 
 export async function renderTrailersBtns(trailers) {
   const trailersBtnContainer = document.querySelector('.trailers-btns-list');
-  console.log(trailers);
+  // console.log(trailers);
   const markup = trailers
     .slice(0, 3)
     .map(

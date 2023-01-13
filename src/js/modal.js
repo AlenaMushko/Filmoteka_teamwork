@@ -3,12 +3,12 @@ import {
   renderModalFilmCard,
   clearModalFilmCard,
 } from './manipulate-modal-film-content';
-import {
-  getTrailersByMovieId,
-  renderTrailersBtns,
-  TrailerModal,
-} from './getTrailers';
-import { filmTrailerModalWindow } from './modal-trailer';
+// import {
+//   getTrailersByMovieId,
+//   renderTrailersBtns,
+//   TrailerModal,
+// } from './getTrailers';
+// import { filmTrailerModalWindow } from './modal-trailer';
 
 const apiService = new ApiService();
 
