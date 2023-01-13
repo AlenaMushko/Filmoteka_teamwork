@@ -52,9 +52,9 @@ export function renderModalFilmCard(filmInfo) {
       <button type="button">add to watched</button>
       <button type="button">add to queue</button>
     </div>
+    <ul class="trailers-btns-list"></ul>
     </div>`;
 
-  // <div class="trailers-btns-container"></div>
   filmModalContent.innerHTML = markup;
   filmModalContent.setAttribute('film-modal-id', id);
 }

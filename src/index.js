@@ -22,9 +22,6 @@ ShowFilms();
 filmCardModalWindow();
 // модалка карточки фільму
 
-filmTrailerModalWindow();
-// модалка трейлеру
-
 scrolToTop();
 // кнопка повернення до гори
 
