@@ -8,13 +8,14 @@ sliderRevenueFilms();
 // backToTop();
 // // кнопка повернення до гори
 
-// закоментувати
 
-//функція авторизації
+/* 
+//авторизація (тимчасове рішення)
 localStorage.auth = "yes";
-//функція авторизації
 
+
+// логіка кнопок і посилань навігації хедера
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 libraryHeaderLinkBntLogic();
 
-// закоментувати
+*/

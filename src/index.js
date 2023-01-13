@@ -21,19 +21,14 @@ backToTop();
 // footer
 onTeamModal();
 
-
-
-// закоментувати
-
-//функція авторизації
+/* 
+//авторизація (тимчасове рішення)
 import { authHandler } from './js/auth';
 authHandler();
-//функція авторизації
 
+
+// логіка кнопок і посилань навігації хедера
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 homeHeaderLinkBntLogic ();
 
-
-
-
-// закоментувати
+*/
