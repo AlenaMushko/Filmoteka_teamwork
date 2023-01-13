@@ -17,7 +17,9 @@
             >Home</a
           >
         </li>
-        <li class="navigation__item navigation__item--library js__my-lirbary-link is-hidden">
+        <li
+          class="navigation__item navigation__item--library js__my-lirbary-link is-hidden"
+        >
           <a href="/src/my_library.html" class="navigation__link"
             ><svg width="12" height="12" class="navigation__icon">
               <use href="./images/sprite.svg#book"></use></svg
@@ -25,13 +27,18 @@
           >
         </li>
         <li class="navigation__item navigation__item--library js__sign-in-btn">
-          <button type="button" class="button navigation__link navigation__open--btn"
-            ><svg width="12" height="12" class="navigation__icon">
-              <use href="./images/sprite.svg#enter"></use></svg
-            >Sign in</button
+          <button
+            type="button"
+            class="button navigation__link navigation__open--btn"
           >
+            <svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#enter"></use></svg
+            >Sign in
+          </button>
         </li>
-        <li class="navigation__item navigation__item--library js__sign-out-btn is-hidden">
+        <li
+          class="navigation__item navigation__item--library js__sign-out-btn is-hidden"
+        >
           <a href="/src/index.html" class="navigation__link"
             ><svg width="12" height="12" class="navigation__icon">
               <use href="./images/sprite.svg#signout"></use></svg
@@ -40,8 +47,6 @@
         </li>
       </ul>
     </nav>
-
-    
 
     <form class="search" id="search">
       <input
@@ -66,68 +71,9 @@
       Search result not successful. Enter the correct movie name
     </div>
 
-<form class="form-filters" id="filter">
-        <select class="form-filters__select" name="genreForm" id="genreForm">
-          <option value="start">Genre</option>
-          <option value="28">Action</option>
-          <option value="12">Adventure</option>
-          <option value="16">Animation</option>
-          <option value="35">Comedy</option>
-          <option value="80">Crime</option>
-          <option value="99">Documentary</option>
-          <option value="18">Drama</option>
-          <option value="10751">Family</option>
-          <option value="14">Fantasy</option>
-          <option value="36">History</option>
-          <option value="27">Horror</option>
-          <option value="10402">Music</option>
-          <option value="9648">Mystery</option>
-          <option value="10749">Romance</option>
-          <option value="878">Science Fiction</option>
-          <option value="10770">TV Movie</option>
-          <option value="53">Thriller</option>
-          <option value="10752">War</option>
-          <option value="37">Western</option>
-        </select>
+    <!-- !button-settings-filtres -->
 
-        <select class="form-filters__select" name="yearForm" id="yearForm">
-          <option value="start">Year</option>
-          <option value="2022">2022</option>
-          <option value="2021">2021</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-          <option value="2010">2010</option>
-          <option value="2009">2009</option>
-          <option value="2008">2008</option>
-          <option value="2007">2007</option>
-          <option value="2006">2006</option>
-          <option value="2005">2005</option>
-        </select>
-
-        <!-- <select class="form-filters__select" name="sortForm" id="sortForm">
-          <option value="start">Sorting</option>
-          <option value="popularity.desc">Popularity (-)</option>
-          <option value="popularity.asc">Popularity (+)</option>
-          <option value="primary_release_date.desc">
-            Release date (-)
-          </option>
-          <option value="primary_release_date.asc">
-            Release date (+)
-          </option>
-          <option value="original_title.asc">Name (A-Z)</option>
-          <option value="original_title.desc">Name (Z-A)</option>
-        </select> -->
-
-
-    <!-- <div class="header__settings settings">
+    <div class="header__settings settings" id="settings">
       <ul class="settings__list">
         <li class="settings__item">
           <button
@@ -140,6 +86,96 @@
             </svg>
             Filters
           </button>
+          <div class="menu__filters is-hidden" id="menu-filters">
+            <div class="menu-filters--genres">
+              <button
+                type="button"
+                class="button button__genres"
+                id="button-genres"
+              >
+                <svg class="settings__icon" width="14" height="14">
+                  <use href="./images/sprite.svg#genres"></use></svg
+                >Genres
+              </button>
+              <div class="genres-container" id="genres-container">
+                <button type="button" class="button" value="28">Action</button>
+                <button type="button" class="button" value="start">
+                  Genre
+                </button>
+                <button type="button" class="button" value="12">
+                  Adventure
+                </button>
+                <button type="button" class="button" value="16">
+                  Animation
+                </button>
+                <button type="button" class="button" value="35">Comedy</button>
+                <button type="button" class="button" value="80">Crime</button>
+                <button type="button" class="button" value="99">
+                  Documentary
+                </button>
+                <button type="button" class="button" value="18">Drama</button>
+                <button type="button" class="button" value="10751">
+                  Family
+                </button>
+                <button type="button" class="button" value="14">Fantasy</button>
+                <button type="button" class="button" value="36">History</button>
+                <button type="button" class="button" value="27">Horror</button>
+                <button type="button" class="button" value="10402">
+                  Music
+                </button>
+                <button type="button" class="button" value="9648">
+                  Mystery
+                </button>
+                <button type="button" class="button" value="10749">
+                  Romance
+                </button>
+                <button type="button" class="button" value="878">
+                  Science Fiction
+                </button>
+                <button type="button" class="button" value="10770">
+                  TV Movie
+                </button>
+                <button type="button" class="button" value="53">
+                  Thriller
+                </button>
+                <button type="button" class="button" value="10752">War</button>
+                <button type="button" class="button" value="37">Western</button>
+              </div>
+            </div>
+            <div class="menu-filters--years">
+              <button type="button" class="button" id="">
+                <svg class="settings__icon" width="14" height="14">
+                  <use href="./images/sprite.svg#date"></use></svg
+                >Date
+              </button>
+              <div class="years-container" id="years-container">
+                <button type="button" class="button" value="2023">2023</button>
+                <button type="button" class="button" value="2022">2022</button>
+                <button type="button" class="button" value="2021">2021</button>
+                <button type="button" class="button" value="2020">2020</button>
+                <button type="button" class="button" value="2019">2019</button>
+                <button type="button" class="button" value="2018">2018</button>
+                <button type="button" class="button" value="2017">2017</button>
+                <button type="button" class="button" value="2016">2016</button>
+                <button type="button" class="button" value="2015">2015</button>
+                <button type="button" class="button" value="2014">2014</button>
+                <button type="button" class="button" value="2013">2013</button>
+                <button type="button" class="button" value="2012">2012</button>
+                <button type="button" class="button" value="2011">2011</button>
+                <button type="button" class="button" value="2010">2010</button>
+                <button type="button" class="button" value="2009">2009</button>
+                <button type="button" class="button" value="2008">2008</button>
+                <button type="button" class="button" value="2007">2007</button>
+                <button type="button" class="button" value="2006">2006</button>
+                <button type="button" class="button" value="2005">2005</button>
+              </div>
+            </div>
+            <button type="button" class="button" id="button-reset">
+              <svg class="settings__icon" width="14" height="14">
+                <use href="./images/sprite.svg#reset"></use></svg
+              >Reset
+            </button>
+          </div>
         </li>
         <li class="settings__item">
           <button type="button" class="button__settings button" id="settings">
@@ -147,32 +183,27 @@
               <use href="./images/sprite.svg#settings"></use></svg
             >Settings
           </button>
+          <div class="menu__settings" id="menu-filters">
+            <button
+              type="button"
+              class="button button__genres"
+              id="button-genres"
+            >
+              <svg class="settings__icon" width="14" height="14">
+                <use href="./images/sprite.svg#theme"></use>
+              </svg>
+            </button>
+            <button type="button" class="button btn-ua" value="ua">Ua</button>
+            <button
+              type="button"
+              class="button btn-en active-select"
+              value="en"
+            >
+              En
+            </button>
+          </div>
         </li>
       </ul>
     </div>
-    <div class="is-hidden" id="menu-filters">
-      <button type="button" class="button" id="button-genres">
-        <svg class="settings__icon" width="14" height="14">
-          <use href="./images/sprite.svg#genres"></use></svg
-        >Genres
-      </button>
-      <div class="genres-container" id="genres-container"></div>
-
-      <button type="button" class="button" id="">
-        <svg class="settings__icon" width="14" height="14">
-          <use href="./images/sprite.svg#date"></use></svg
-        >Date
-      </button>
-      <button type="button" class="button" id="">
-        <svg class="settings__icon" width="14" height="14">
-          <use href="./images/sprite.svg#sort"></use></svg
-        >Sort
-      </button>
-      <button type="button" class="button" id="button-reset">
-        <svg class="settings__icon" width="14" height="14">
-          <use href="./images/sprite.svg#reset"></use></svg
-        >Reset
-      </button>
-    </div> -->
   </div>
 </header>

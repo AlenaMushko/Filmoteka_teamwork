@@ -1,26 +1,26 @@
 .glide {
   position: relative;
-  //   margin: 0 auto;
-  //   @include mq(mobile) {
-  //     min-width: 480px;
-  //   }
-  //   @include mq(tablet) {
-  //     width: 768px;
-  //   }
-  //   @include mq(desktop) {
-  //     width: 1280px;
-  //   }
+  margin: 0 auto;
+  // @include mq(mobile) {
+  //   min-width: 480px;
+  // }
+  // @include mq(tablet) {
+  //   width: 768px;
+  // }
+  // @include mq(desktop) {
+  //   width: 1280px;
+  // }
 }
 .caption {
   font-weight: 500;
-  font-style: oblique;
   font-size: 20px;
   line-height: 1.2;
-  color: $color-extra-background;
-  text-shadow: 1px 1px 2px black, 0 0 20px $color-brand-background,
+  color: $color-base-text;
+  text-shadow: 0.2px 0.2px 0.5px $color-extra, 0 0 5px $color-brand-background,
     0 0 5px $color-brand-text;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 25px;
+  cursor: default;
 }
 .glide__track {
   max-width: 1200px;
@@ -59,6 +59,7 @@
 }
 
 .glide__arrow {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,18 +78,23 @@
 .glide__arrow--left {
   width: 40px;
   height: 40px;
+  top: 50%;
 }
 .glide__arrow--right {
   right: 5%;
-  top: 50%;
 }
 .glide__arrow--left {
   left: 5%;
-  top: 50%;
 }
 .glide__container {
   position: relative;
   overflow: hidden;
+  // &:hover,
+  // &:focus {
+  // box-shadow $transitionDuration $cubic;
+  //   box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
+  //     0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+  // }
 }
 .glide__title {
   color: $color-extra-text;
@@ -112,11 +118,11 @@
 .glide__text {
   position: absolute;
   width: 100%;
-  height: 100%;
-  top: 0;
+  height: 100px;
+  bottom: 0;
   left: 0;
   padding: 10px;
-
+  border-radius: 10px;
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform $transitionDuration $cubic,
@@ -125,10 +131,7 @@
 
 .glide__link:hover .glide__text,
 .glide__link:focus .glide__text {
-  transform: translateY(70%);
+  transform: translateY(0%);
   background-color: rgba(47, 48, 58, 0.8);
-  box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
-    0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
-  transition: transform $transitionDuration $cubic,
-    box-shadow $transitionDuration $cubic;
+  transition: transform $transitionDuration $cubic;
 }

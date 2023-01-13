@@ -88,14 +88,14 @@
   @include mq(mobile-only) {
     display: none;
   }
-  @include font(500, 30, 1.2, null);
+  @include font(null, 30, 1.2, null);
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include font(500, 12, 1.17, null);
+  @include font(null, 12, 1.17, null);
   margin-bottom: 54px;
   @include mq(tablet) {
     margin-bottom: 40px;
@@ -127,16 +127,17 @@
 
   &__list {
     display: flex;
-    justify-content: space-around;
     text-transform: uppercase;
   }
 
-  &__item:not(:last-child) {
+  &__item:not(:last-of-type) {
     margin-right: 40px;
+    @media screen and (max-width: 400px) {
+      margin-right: 10px;
+    }
   }
 
   &__link {
-    @include font(500, 12, 1.17, null);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -225,13 +226,10 @@
     &:hover,
     &:focus {
       transform: scale(1.25);
+      background-color: #ff6b0169;
       border-radius: 5px;
     }
   }
-}
-
-.is-hidden {
-  display: none;
 }
 
 .list__button {
@@ -243,7 +241,7 @@
 .button {
   display: flex;
   gap: 5px;
-  @include font(500, 12, 1.17, null);
+  @include font(null, 12, 1.17, null);
   color: inherit;
   text-transform: uppercase;
   background-color: transparent;
@@ -257,37 +255,125 @@
     background-color $transitionDuration $cubic,
     border-radius $transitionDuration $cubic;
 
-  // &__filters {
-  //   position: absolute;
-  //   bottom: 10px;
-  //   left: 20px;
-  //   @include mq(tablet) {
-  //     left: 27%;
-  //   }
-  //   @include mq(desktop) {
-  //     left: 37%;
-  //   }
-  // }
+  // !menu filtres on button
 
-  // &__settings {
-  //   flex-direction: row-reverse;
-  //   position: absolute;
-  //   bottom: 10px;
-  //   right: 20px;
-  //   @include mq(tablet) {
-  //     right: 27%;
-  //   }
-  //   @include mq(desktop) {
-  //     right: 37%;
-  //   }
-  // }
+  &__filters {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    padding-bottom: 10px;
+    @include mq(tablet) {
+      left: 27%;
+    }
+    @include mq(desktop) {
+      left: 37%;
+    }
+  }
+
+  &__settings {
+    flex-direction: row-reverse;
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    padding-bottom: 10px;
+    @include mq(tablet) {
+      right: 27%;
+    }
+    @include mq(desktop) {
+      right: 37%;
+    }
+  }
 
   &:hover,
   &:focus {
     border-radius: 10px;
     transform: scale(1.25);
+    text-shadow: 0 5px 10px $color-brand-background;
   }
 }
+
+.menu__filters {
+  position: absolute;
+  bottom: -10%;
+  @include mq(mobile-only) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  left: 30%;
+  display: flex;
+  z-index: 1;
+  background-color: #10181d;
+  gap: 20px;
+  padding: 5px 10px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: none;
+}
+.settings__item:first-of-type:hover .menu__filters,
+.settings__item:first-of-type:focus-within .menu__filters {
+  display: flex;
+}
+
+.menu__settings {
+  position: absolute;
+  bottom: -10%;
+  @include mq(mobile-only) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  left: 54%;
+  display: flex;
+  z-index: 1;
+  background-color: #10181d;
+  gap: 20px;
+  padding: 5px 10px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: none;
+}
+.settings__item:last-of-type:hover .menu__settings,
+.settings__item:last-of-type:focus-within .menu__settings {
+  display: flex;
+}
+
+.years-container {
+  position: absolute;
+  top: 90%;
+  left: 40%;
+  background-color: #10181d;
+  padding: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: none;
+}
+
+.genres-container {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  background-color: #10181d;
+  padding: 5px 0px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: none;
+}
+
+.genres-container .button,
+.years-container .button {
+  padding: 5px 10px;
+}
+
+.menu-filters--genres:hover .genres-container,
+.menu-filters--genres:focus .genres-container {
+  display: block;
+}
+
+.menu-filters--years:hover .years-container,
+.menu-filters--years:focus .years-container {
+  display: block;
+}
+
+// !menu filters on form
 
 .form-filters {
   position: absolute;
@@ -310,4 +396,12 @@
 }
 option {
   background-color: #10181d;
+}
+.is-hidden {
+  display: none;
+}
+
+.menu-filters--settings {
+  display: flex;
+  gap: 20px;
 }

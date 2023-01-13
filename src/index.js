@@ -8,7 +8,6 @@ import { filmCardModalWindow } from './js/modal-film';
 import 'lazysizes';
 // import a plugin
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-
 import { renderTrailersBtns } from './js/getTrailers';
 
 
