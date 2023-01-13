@@ -25,13 +25,13 @@ export const refs = {
 
   //ссилки для авторизації
 
-  //authEmailInput: document.querySelector('.js-auth__email-input'),
-  //authPasswordInput: document.querySelector('.js-auth__password-input'),
+  authEmailInput: document.querySelector('.js-auth__email-input'),
+  authPasswordInput: document.querySelector('.js-auth__password-input'),
   authEntranceBtn: document.querySelector('.js-auth__entrance-btn'),
-  //authRegistrationBtn: document.querySelector('.js-auth__registration-btn'),
-  //authAddToWatchedBtn: document.querySelector('.js-auth__add-to-watched-btn'),
-  //authAddToQueueBtn: document.querySelector('.js-auth__add-to-queue-btn'),
-  //authForm: document.querySelector('.js-auth__form'),
+  authRegistrationBtn: document.querySelector('.js-auth__registration-btn'),
+  authAddToWatchedBtn: document.querySelector('.js-auth__add-to-watched-btn'),
+  authAddToQueueBtn: document.querySelector('.js-auth__add-to-queue-btn'),
+  authForm: document.querySelector('.js-auth__form'),
 
   // my-libtary
   btnWatched: document.querySelector('.btn__watched'),
