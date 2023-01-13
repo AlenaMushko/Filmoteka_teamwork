@@ -1,17 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// import { btnClick } from './js/watched_queue' закинути в library.js
-
 // додати класи у btnWatched і btnQueue у library-section-films.html
-
-// закинути у refs
-//  btnWatched: document.querySelector('.btn__watched'),
-//  movieLibrary: document.querySelector('.library-films'),
-//  emptyTitle: document.querySelector('.library-empty__title'),
-//  emptyImg: document.querySelector('.library-empty__img'),
-//  btnQueue: document.querySelector('.btn__queue'),
-//  btnRemoveMovie: document.querySelector(''),
-//  btnRemoveQueue: document.querySelector(''),
 
 export function btnClick() {
 btnWatched.addEventListener('click', onWatchedBtnClick);
