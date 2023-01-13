@@ -1,7 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// додати класи у btnWatched і btnQueue у library-section-films.html
-
 export function btnClick() {
 btnWatched.addEventListener('click', onWatchedBtnClick);
 btnQueue.addEventListener('click', onQueueBtnClick);  

@@ -39,8 +39,7 @@ export const refs = {
   emptyTitle: document.querySelector('.library-empty__title'),
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
-  btnRemoveMovie: document.querySelector(''),
-  btnRemoveQueue: document.querySelector(''),
+ 
 
   myButton: document.getElementById('myBtn'),
 
