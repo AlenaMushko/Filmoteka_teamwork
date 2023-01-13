@@ -37,7 +37,8 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-
+         console.log(response.data);
+  console.log(response.data.results);
         return response.data;
       });
     } catch (error) {
