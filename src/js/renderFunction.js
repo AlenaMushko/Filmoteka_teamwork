@@ -1,9 +1,9 @@
 import { refs } from './refs';
 import genresId from '../genres.json';
 
-export function renderSliderFilmCard({ results }) {
+export function renderSliderFilmCard({ results, known_for}) {
   const markup = results
-    .map(({ id, poster_path, title, original_title, original_name, release_date, first_air_date, genre_ids }) => {
+    .map(({ id, poster_path, title, original_title, original_name, release_date, first_air_date, genre_ids,  }) => {
       let filmGenreId = '';
       if (genre_ids) {
         filmGenreId = genresId
