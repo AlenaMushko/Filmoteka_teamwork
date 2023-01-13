@@ -14,7 +14,11 @@ export function homeHeaderLinkBntLogic() {
 
         refs.myLibraryLink.classList.remove('is-hidden');
         //refs.myLibraryLink.addEventListener('click', myLibraryLinkHandler);
+
+        
+
     } else if(localStorage.auth === "no") {
+        
         refs.signInBtn.classList.remove('is-hidden');
         refs.signInBtn.addEventListener('click', signInBtnHandler);
 
@@ -24,13 +28,16 @@ export function homeHeaderLinkBntLogic() {
 
         refs.myLibraryLink.classList.add('is-hidden');
         //refs.myLibraryLink.removeEventListener('click', myLibraryLinkHandler);
+
+        //тимчасове рішення, поки немає авторизації
+        refs.authEntranceBtn.addEventListener('click', authEntranceBtnHandler);
     } else {
         // якщо в auth не є no/yes
     };  
 };
 
 
-export function libraryHeaderLinkBntLogic() {
+/* export function libraryHeaderLinkBntLogic() {
     
 
     if(localStorage.auth === "yes") {
@@ -42,6 +49,8 @@ export function libraryHeaderLinkBntLogic() {
 
         refs.myLibraryLink.classList.remove('is-hidden');
         //refs.myLibraryLink.addEventListener('click', myLibraryLinkHandler);
+
+        
     } else if(localStorage.auth === "no") {
         
 
@@ -55,13 +64,13 @@ export function libraryHeaderLinkBntLogic() {
         // якщо в auth не є no/yes
         
     };  
-};
+}; */
 
 function signInBtnHandler(e) {
-    e.preventDefault();
+    //e.preventDefault();
 
     //замість наступного вставити функцію відкриття модалки
-    localStorage.setItem('auth', "yes");
+    //localStorage.setItem('auth', "yes");
 };
 
 function signOutBtnHandler() {
@@ -71,6 +80,17 @@ function signOutBtnHandler() {
 
 };
 
-function myLibraryLinkHandler(e) {
+function myLibraryLinkHandler() {
     headerLogic();
+}
+
+function authEntranceBtnHandler(e) {
+    e.preventDefault();
+    console.log("ура1");  
+    localStorage.auth = "yes";
+    console.log("ура2");
+    homeHeaderLinkBntLogic()
+    console.log("ура3");
+    
+
 }
