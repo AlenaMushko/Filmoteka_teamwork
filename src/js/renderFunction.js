@@ -45,9 +45,9 @@ export function renderFilmCard({ results }) {
           filmGenre = filmGenreId.join(', ');
         }
       }
-
-      const img = `<img   class='film__img' alt= '${title}' width='100%' loading="lazy"
-      src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
+  
+      const img = `<img   class='film__img lazyload' alt= '${title}' width='100%' loading="lazy"
+      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
 
       return `<li class="film__item" data-id=${id}>
                   ${poster_path ? img : '<p>Poster is not available.</p>'}

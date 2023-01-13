@@ -18,7 +18,6 @@ export const refs = {
   teamOpenModalBtn: document.querySelector('.team_modal_btn'),
   paginationList: document.querySelector('.tui-pagination'),
 
-/* 
 //ссилки на дом вузли для логіки хедера
   signInBtn: document.querySelector('.js__sign-in-btn'),
   signOutBtn: document.querySelector('.js__sign-out-btn'),
@@ -34,6 +33,7 @@ export const refs = {
   //authAddToQueueBtn: document.querySelector('.js-auth__add-to-queue-btn'),
   //authForm: document.querySelector('.js-auth__form'),
 
-*/
+
+  myButton: document.getElementById('myBtn'),
 
 };
