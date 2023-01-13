@@ -1,14 +1,17 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 // import { btnClick } from './js/watched_queue' закинути в library.js
 
 // додати класи у btnWatched і btnQueue у library-section-films.html
 
 // закинути у refs
-//  btnWatched: document.querySelector('.btn__watched');
-//  movieLibrary: document.querySelector('.library-films');
-//  emptyTitle: document.querySelector('.library-empty__title');
-//  emptyImg: document.querySelector('.library-empty__img')
-//  btnQueue: document.querySelector('.btn__queue');
+//  btnWatched: document.querySelector('.btn__watched'),
+//  movieLibrary: document.querySelector('.library-films'),
+//  emptyTitle: document.querySelector('.library-empty__title'),
+//  emptyImg: document.querySelector('.library-empty__img'),
+//  btnQueue: document.querySelector('.btn__queue'),
+//  btnRemoveMovie: document.querySelector(''),
+//  btnRemoveQueue: document.querySelector(''),
 
 export function btnClick() {
 btnWatched.addEventListener('click', onWatchedBtnClick);
@@ -21,9 +24,9 @@ function onWatchedBtnClick() {
         if (watchedMovies.length >= 1) {
             watchedMovies = JSON.parse(watchedMovies);
             renderWatchedFilmCard(watchedMovies);
-        } else {
-              emptyTitle.classList.add('is-hidden');
-                emptyImg.classList.add('is-hidden');
+          } else {
+            emptyTitle.classList.remove('is-hidden');
+            emptyImg.classList.remove('is-hidden');
             Notify.info(
                 `Your film list is empty`
             );
@@ -41,9 +44,9 @@ function onQueueBtnClick() {
         if (queueMovie.length >= 1) {
             queueMovie = JSON.parse(queueMovie);
             renderWatchedFilmCard(queueMovie);
-        } else {
-            emptyTitle.classList.add('is-hidden');
-            emptyImg.classList.add('is-hidden');
+          } else {
+            emptyTitle.classList.remove('is-hidden');
+            emptyImg.classList.remove('is-hidden');
             Notiflix.Notify.info(
                `Your film list is empty`
     );
@@ -86,4 +89,7 @@ function renderWatchedFilmCard(key) {
     .join('');
   movieLibrary.innerHTML = markup;
 };
+
+btnRemoveMovie.addEventListener('click', movieRemovalLogic);
+btnREmoveQueue.addEventListener('click', movieRemovalLogic);
 
