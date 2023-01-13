@@ -59,6 +59,7 @@
 }
 
 .glide__arrow {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,14 +78,13 @@
 .glide__arrow--left {
   width: 40px;
   height: 40px;
+  top: 50%;
 }
 .glide__arrow--right {
   right: 5%;
-  top: 50%;
 }
 .glide__arrow--left {
   left: 5%;
-  top: 50%;
 }
 .glide__container {
   position: relative;
