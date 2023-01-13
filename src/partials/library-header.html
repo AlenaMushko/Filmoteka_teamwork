@@ -9,20 +9,34 @@
       </a>
       <ul class="navigation__list">
         <li class="navigation__item">
-          <a href="/src/index.html" class="navigation__link">Home</a>
+          <a href="/src/index.html" class="navigation__link"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#home"></use></svg
+            >Home</a
+          >
         </li>
         <li class="navigation__item">
           <a
             href="/src/my_library.html"
-            class="navigation__link navigation__link--current-page"
+            class="navigation__link navigation__link--current-page js__my-lirbary-link"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#book"></use></svg
             >My library</a
+          >
+        </li>
+        <li class="navigation__item navigation__item--library js__sign-out-btn">
+          <a href="/src/index.html" class="navigation__link"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#signout"></use></svg
+            >Sign out</a
           >
         </li>
       </ul>
     </nav>
     <ul class="list__button">
-      <li><button type="button" class="">Watched</button></li>
-      <li><button type="button" class="">Queue</button></li>
+      <li><button type="button btnWatched" class="btn__modal">Watched</button></li>
+      <li><button type="button btnQueue" class="btn__modal">Queue</button></li>
     </ul>
   </div>
 </header>
+

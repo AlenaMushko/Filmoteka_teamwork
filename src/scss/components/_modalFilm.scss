@@ -1,0 +1,74 @@
+// ⚠️ Підключити цей файл в _components.scss ⚠️
+
+.film-modal {
+  padding: 48px 20px 40px;
+
+  @include mq(tablet) {
+    padding: 40px 72px 40px 36px;
+  }
+
+  @include mq(desktop) {
+    padding: 40px 12px;
+  }
+}
+
+.film-modal__content {
+  display: flex;
+  flex-direction: column;
+  @include mq(tablet) {
+    flex-direction: row;
+  }
+}
+
+.film-modal__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 20px;
+  @include mq(tablet) {
+    width: 264px;
+    height: 374px;
+    margin: 0 68px 0 0;
+  }
+  @include mq(desktop) {
+    width: 375px;
+    height: 478px;
+    margin: 0 16px 0 0;
+  }
+}
+
+.film-modal__title {
+  @include font(500, 20px, 23px, normal);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.film-modal__stats-list {
+  margin-bottom: 20px;
+}
+
+.film-modal__stats-item {
+  display: flex;
+  @include font(500, 12px, 16px, normal);
+  margin-bottom: 8px;
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.film-modal__txt--left {
+  color: $color-second-text;
+  min-width: 108px;
+}
+
+.film-modal__txt--right {
+  @include font(500, 12px, 16px, normal);
+}
+
+.votes-info {
+  color: $color-second-text;
+}
+
+.uppercase-info {
+  text-transform: uppercase;
+}

@@ -31,13 +31,14 @@ export default class ApiService {
       Loading.pulse('Loading...', {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url = `${BASE_URL}trending/all/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
+      const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
         Loading.remove();
-
+         console.log(response.data);
+  console.log(response.data.results);
         return response.data;
       });
     } catch (error) {
@@ -58,6 +59,21 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
+        return response.data;
+      });
+    } catch (error) {
+      console.error();
+    }
+  }
+
+  // пошук фільму по id
+  async getFilmById(id) {
+    try {
+      const url = `${BASE_URL}movie/${id}${api_key}&append_to_response=images`;
+      return await axios.get(url).then(response => {
+        if (!response) {
+          throw new Error(response.status);
+        }
         return response.data;
       });
     } catch (error) {

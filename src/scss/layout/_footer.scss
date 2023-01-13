@@ -1,7 +1,6 @@
 .footer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
   align-items: baseline;
   padding: 15px;
@@ -12,12 +11,12 @@
 .footer_text__block {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .footer__container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: #f7f7f7;
+  background: $color-extra-background;
 }
 .icon__heart {
   width: 14px;
@@ -65,133 +64,63 @@
   }
 }
 .footer__text {
-  font-family: 'Roboto';
+  font-family: $mainFontFamily;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 16px;
-  @media screen and (max-width: 290px) {
+  line-height: 1.3;
+  @media screen and (max-width: 320px) {
     font-size: 12px;
   }
 }
 
 //modal
-// .team-modal__thumb{
-//   width: 500px;
-//   height: 400px;
-// }
-.team-modal-close{
+
+.team-modal-close {
   background: transparent;
 }
-.team-modal{
-  background-color: #f7f7f7;
+.team-modal {
+  background-color: $color-extra-background;
   border-radius: 30px;
-  // background-image: url(../images/header-bg-mobile.jpg);
-  // height: 100%;
-  // width: 100%;
-  // object-fit: cover;
-  // object-position: center;
-  
-  // @include mq(retina) {
-  //   background-image: url(../images/header-bg-mobile@2x.jpg);
-  // }
-  // @include mq(tablet) {
-  //   background-image: url(../images/header-bg-tablet.jpg);
-  //   @include mq(retina) {
-  //     background-image: url(../images/header-bg-tablet@2x.jpg);
-  //   }
-  // }
-  // @include mq(desktop) {
-  //   background: url(../images/left-part.png), url(../images/right-part.png),
-  //     #10181d;
-  //   background-position: left, right, center;
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
-  // }
 }
-.glide__slide__block_in{
+.glide__slide__block_in {
   padding: 20px;
 }
-
-
-
-
 .team_modal_btn {
   margin-left: 3px;
   outline: none;
   background-color: inherit;
   border: none;
-  font-family: 'Roboto';
+  font-family: $mainFontFamily;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.3;
   text-decoration: underline;
   cursor: pointer;
-  @media screen and (max-width: 290px) {
+  @media screen and (max-width: 320px) {
     font-size: 12px;
   }
+  &:hover,
+  &:focus {
+    color: $color-brand-text;
+  }
 }
-
-.glide__slide__block{
+.glide__slide__block {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
-
-// .team__list {
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 30px;
-//   justify-content: center;
-//   padding: 20px 10px;
-// }
 .student__text {
   display: inline-block;
   padding: 3px;
   text-align: center;
-
 }
-.student__text_name{
-  border-bottom: 1px solid #ff6b08;
+.student__text_name {
+  border-bottom: 1px solid $color-brand-text;
 }
-// .student_overflow {
-//   overflow: hidden;
-//   border-radius: 10px;
-// }
-// .team_modal {
-//   background: #f7f7f7;
-//   position: fixed;
-//   width: 85%;
-//   height: 90%;
-//   overflow: auto;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   border-radius: 10px;
-//   visibility: visible;
-//   opacity: 1;
-//   transform: scale(1);
-//   transition: transform 500ms ease, opacity 500ms ease, visibility 500ms ease;
-//   @media screen and (min-width: 1000px) {
-//     width: 950px;
-//     height: 800px;
-//   }
-//    &.is-hidden {
-//     visibility: hidden;
-//     opacity: 0;
-//     transform: scale(1.2);
-//     pointer-events: none;
-//   }
-// }
-// .teamModal__close__btn {
-//   position: absolute;
-//   right: 5px;
-//   top: 5px;
-// }
 .team__img {
-  background: linear-gradient(28deg, #ff6b08, #8e6549), #121111;
+  background: linear-gradient(28deg, $color-brand-text, #8e6549), #121111;
   border-radius: 50%;
   margin-bottom: 10px;
   box-shadow: 0 5px 20px #7e6858;
@@ -218,7 +147,7 @@
 .soc_icon {
   display: block;
   transform: scale(1);
-  transition: transform 0.25s ease;
+  transition: transform $transitionDuration $cubic;
   .icon--hoverfocus:hover & {
     transform: scale(1.2);
   }
@@ -227,49 +156,53 @@
   }
 }
 .icon_git {
-  fill: #f7f7f7;
+  fill: $color-extra-background;
 }
 .icon-linedin {
   fill: #4169e1;
 }
-.footer__logo_block{
-  max-width:170px;
+.footer__logo_block {
+  max-width: 170px;
 }
 .footer__logo {
   display: flex;
   align-items: center;
- 
   gap: 8px;
-  color: #ff6b08;
+  color: $color-brand-text;
   margin: 10px 0;
   transform: scale(1);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform $transitionDuration $cubic;
   &:hover,
   &:focus {
-    transform: scale(0.9);
+    transform: scale(1.1);
     text-shadow: none;
   }
 }
+.logo__name__footer {
+  display: block;
+  font-size: 20px;
+}
 .icon-soc {
-  fill: #ff6b08;
+  fill: $color-brand-text;
   // color: transparent;
 }
 .app__link {
   transform: scale(1);
-  transition: transform 0.25s ease;
-  &:hover, &:focus {
+  transition: transform $transitionDuration $cubic;
+  &:hover,
+  &:focus {
     transform: scale(1.1);
   }
 }
 .footer__soc {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 25px;
   justify-content: space-around;
-  padding: 20px 10px;
-  border: 1px solid #ff6b08;
-  border-left: #ff6b08;
-  border-right: #ff6b08;
+  padding: 10px;
+  border: 1px solid $color-brand-text;
+  border-left: $color-brand-text;
+  border-right: $color-brand-text;
 }
 .footer__networ--link {
   display: flex;
@@ -290,14 +223,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 15px;
 }
 .footer__soc-text {
-  font-family: 'Roboto';
+  font-family: $mainFontFamily;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 .footer__soc--block {
@@ -309,10 +242,13 @@
   }
 }
 .footer__soc-link {
-  font-family: 'Roboto';
+  font-family: $mainFontFamily;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
+  font-size: 14px;
+  line-height: 1.3;
+  &:hover,
+  &:focus {
+    color: $color-brand-text;
+  }
 }

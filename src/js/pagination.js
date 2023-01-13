@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
+import { onMyButtonClick } from './scrolToTop';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
@@ -38,13 +38,15 @@ export const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', loadMoreFilms);
 
 async function loadMoreFilms(event) {
+  onMyButtonClick();
   const currentPage = event.page;
   apiService.pageNum = currentPage;
-  const results = await apiService.getPopularFilms();
 
+  const results = await apiService.getPopularFilms();
   renderFilmCard(results);
 }
 
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
+

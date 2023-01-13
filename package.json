@@ -21,6 +21,7 @@
     "@glidejs/glide": "^3.6.0",
     "axios": "^1.2.2",
     "handlebars": "^4.7.7",
+    "lazysizes": "^5.3.2",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "tui-pagination": "^3.4.1"
