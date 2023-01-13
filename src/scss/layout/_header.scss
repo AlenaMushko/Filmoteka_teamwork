@@ -130,8 +130,11 @@
     text-transform: uppercase;
   }
 
-  &__item:first-of-type {
+  &__item:not(:last-of-type) {
     margin-right: 40px;
+    @media screen and (max-width: 400px) {
+      margin-right: 10px;
+    }
   }
 
   &__link {
