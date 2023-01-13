@@ -1,0 +1,105 @@
+.modal__log-in {
+  width: 475px;
+  border-radius: 5px;
+  background-color: $color-extra-text;
+  align-items: center;
+}
+.modal_login__form {
+  margin: 0 20px;
+}
+.modal_login__title_signIn,
+.modal_login__wrap_checkbox,
+.modal_login__button_register,
+.modal_login__button_confirm {
+  transition: all $transitionDuration $cubic;
+}
+
+.modal_login__title_signIn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: $color-base-text;
+  margin-bottom: 25px;
+  @include mq(desktop) {
+    line-height: 1.15;
+  }
+}
+
+.modal_login__wrap_password,
+.modal_login__wrap_email {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.modal_login__label {
+  display: block;
+  font-size: 12px;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: $color-second-text;
+  margin-bottom: 4px;
+}
+
+.modal_login__input {
+  position: relative;
+  width: 300px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 33px;
+  outline: none;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: border-color $transitionDuration $cubic;
+  @include mq(tablet) {
+    width: 320px;
+  }
+  @include mq(desktop) {
+    width: 420px;
+  }
+}
+
+.modal_login__icon {
+  position: absolute;
+  top: 32px;
+  left: 10px;
+  fill: currentColor;
+  transition: fill $transitionDuration $cubic;
+}
+
+.modal_login__input:hover,
+.modal_login__input:focus,
+.modal_login__input:hover + .modal_login__icon,
+.modal_login__input:focus + .modal_login__icon,
+.modal_login__textarea:hover,
+.modal_login__textarea:focus {
+  fill: $color-brand-text;
+  border-color: $color-brand-text;
+}
+
+.modal_login__button_show_password {
+  position: absolute;
+  right: -10px;
+  bottom: 13px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: fill $transitionDuration $cubic;
+  &:hover {
+    fill: $color-brand-text;
+  }
+}
+
+.modal_login__buttons_wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 40px;
+}
+
+.modal_login__button_confirm,
+.modal_login__button_register {
+  margin-left: 20px;
+}

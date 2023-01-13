@@ -1,0 +1,61 @@
+<form class="modal_login__form">
+  <p class="modal_login__title_signIn">Please enter your e-mail and password</p>
+  <div class="modal_login__wrap_email">
+    <label for="email" class="modal_login__label">E-mail</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      class="modal_login__input js-auth__email-input"
+      placeholder=" "
+    />
+    <svg width="18" height="18" class="modal_login__icon">
+      <use href="./images/sprite.svg#icon-email-black-18dp-1"></use>
+    </svg>
+  </div>
+  <div class="modal_login__wrap_password">
+    <label for="password" class="modal_login__label">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="modal_login__input js-auth__password-input"
+      placeholder=" "
+    />
+    <svg width="17" height="17" class="modal_login__icon">
+      <use href="./images/sprite.svg#icon-key"></use>
+    </svg>
+    <button
+      type="button"
+      class="modal_login__button_show_password"
+      id="button_show_password"
+    >
+      <svg width="18" height="18" id="icon_show_password">
+        <use href="./images/sprite.svg#icon-eye"></use>
+      </svg>
+      <svg
+        width="18"
+        height="18"
+        class="visually-hidden"
+        id="icon_un_show_password"
+      >
+        <use href="./images/sprite.svg#icon-eye-blocked"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="modal_login__buttons_wrap">
+    <button
+      type="submit"
+      class="modal_login__button_register btn__modal js-auth__registration-btn"
+      disabled
+    >
+      Sign up
+    </button>
+    <button
+      type="submit"
+      class="modal_login__button_confirm btn__modal js-auth__entrance-btn"
+    >
+      Sign in
+    </button>
+  </div>
+</form>

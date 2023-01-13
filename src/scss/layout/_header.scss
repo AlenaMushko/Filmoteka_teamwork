@@ -88,14 +88,14 @@
   @include mq(mobile-only) {
     display: none;
   }
-  @include font(null, 30, 1.2, null);
+  @include font(500, 30, 1.2, null);
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include font(null, 12, 1.17, null);
+  @include font(500, 12, 1.17, null);
   margin-bottom: 54px;
   @include mq(tablet) {
     margin-bottom: 40px;
@@ -127,14 +127,16 @@
 
   &__list {
     display: flex;
+    justify-content: space-around;
     text-transform: uppercase;
   }
 
-  &__item:first-of-type {
+  &__item:not(:last-child) {
     margin-right: 40px;
   }
 
   &__link {
+    @include font(500, 12, 1.17, null);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -223,7 +225,6 @@
     &:hover,
     &:focus {
       transform: scale(1.25);
-      background-color: #ff6b0169;
       border-radius: 5px;
     }
   }
@@ -242,7 +243,7 @@
 .button {
   display: flex;
   gap: 5px;
-  @include font(null, 12, 1.17, null);
+  @include font(500, 12, 1.17, null);
   color: inherit;
   text-transform: uppercase;
   background-color: transparent;
@@ -283,7 +284,6 @@
 
   &:hover,
   &:focus {
-    background-color: #ff6b0169;
     border-radius: 10px;
     transform: scale(1.25);
   }

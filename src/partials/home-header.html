@@ -17,20 +17,31 @@
             >Home</a
           >
         </li>
-        <li class="navigation__item">
+        <li class="navigation__item navigation__item--library js__my-lirbary-link is-hidden">
           <a href="/src/my_library.html" class="navigation__link"
             ><svg width="12" height="12" class="navigation__icon">
-              <use href="./images/sprite.svg#enter"></use></svg
-            >Sign in</a
+              <use href="./images/sprite.svg#book"></use></svg
+            >My library</a
           >
         </li>
-        <li class="navigation__item navigation__item--library is-hidden">
-          <a href="/src/my_library.html" class="navigation__link"
-            >My library</a
+        <li class="navigation__item navigation__item--library">
+          <button type="button" class="button navigation__link navigation__open--btn"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#enter"></use></svg
+            >Sign in</button
+          >
+        </li>
+        <li class="navigation__item navigation__item--library js__sign-out-btn is-hidden">
+          <a href="/src/index.html" class="navigation__link"
+            ><svg width="12" height="12" class="navigation__icon">
+              <use href="./images/sprite.svg#signout"></use></svg
+            >Sign out</a
           >
         </li>
       </ul>
     </nav>
+
+    
 
     <form class="search" id="search">
       <input
@@ -101,7 +112,7 @@
           <option value="2005">2005</option>
         </select>
 
-        <select class="form-filters__select" name="sortForm" id="sortForm">
+        <!-- <select class="form-filters__select" name="sortForm" id="sortForm">
           <option value="start">Sorting</option>
           <option value="popularity.desc">Popularity (-)</option>
           <option value="popularity.asc">Popularity (+)</option>
@@ -113,7 +124,7 @@
           </option>
           <option value="original_title.asc">Name (A-Z)</option>
           <option value="original_title.desc">Name (Z-A)</option>
-        </select>
+        </select> -->
 
 
     <!-- <div class="header__settings settings">
