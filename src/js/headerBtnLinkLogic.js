@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import { authEntranceBtnHandler } from './auth';
 
 export function homeHeaderLinkBntLogic() {
     
@@ -22,7 +23,6 @@ export function homeHeaderLinkBntLogic() {
     };
 };
 
-
 export function libraryHeaderLinkBntLogic() {
     refs.signOutBtn.classList.remove('is-hidden');
     refs.signOutBtn.addEventListener('click', signOutBtnHandler);
@@ -31,10 +31,4 @@ export function libraryHeaderLinkBntLogic() {
 
 function signOutBtnHandler() {
     localStorage.setItem('auth', "no");
-};
-
-function authEntranceBtnHandler(e) {
-    e.preventDefault();  
-    localStorage.auth = "yes";
-    homeHeaderLinkBntLogic();
 };
