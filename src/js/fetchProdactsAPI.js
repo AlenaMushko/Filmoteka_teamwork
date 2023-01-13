@@ -64,6 +64,21 @@ export default class ApiService {
       console.error();
     }
   }
+
+  // пошук фільму по id
+  async getFilmById(id) {
+    try {
+      const url = `${BASE_URL}movie/${id}${api_key}&append_to_response=images`;
+      return await axios.get(url).then(response => {
+        if (!response) {
+          throw new Error(response.status);
+        }
+        return response.data;
+      });
+    } catch (error) {
+      console.error();
+    }
+  }
   //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
