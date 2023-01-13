@@ -1,11 +1,13 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import { refs } from './refs';
+ 
 export function btnClick() {
-btnWatched.addEventListener('click', onWatchedBtnClick);
-btnQueue.addEventListener('click', onQueueBtnClick);  
+refs.btnWatched.addEventListener('click', onWatchedBtnClick);
+refs.btnQueue.addEventListener('click', onQueueBtnClick);  
 }
 
-function onWatchedBtnClick() {
+
+export  function onWatchedBtnClick() {
     try {
         let watchedMovies = localStorage.getItem(key);
         if (watchedMovies.length >= 1) {
@@ -25,7 +27,7 @@ function onWatchedBtnClick() {
 };
 // Queue
 
-function onQueueBtnClick() {
+export  function onQueueBtnClick() {
     try {
         let queueMovie = localStorage.getItem(key);
         if (queueMovie.length >= 1) {
@@ -74,9 +76,5 @@ function renderWatchedFilmCard(key) {
               </li>`;
     })
     .join('');
-  movieLibrary.innerHTML = markup;
+  refs.movieLibrary.innerHTML = markup;
 };
-
-btnRemoveMovie.addEventListener('click', movieRemovalLogic);
-btnREmoveQueue.addEventListener('click', movieRemovalLogic);
-
