@@ -1,14 +1,26 @@
 export function renderModalFilmCard(filmInfo) {
-  const filmModalContent = document.querySelector(".film-modal__content");
+  const filmModalContent = document.querySelector('.film-modal__content');
 
   if (!filmInfo) {
-    filmModalContent.innerHTML = "<p class='film-modal__error'>We are sorry but there is no detailed info about this movie.</p>";
+    filmModalContent.innerHTML =
+      "<p class='film-modal__error'>We are sorry but there is no detailed info about this movie.</p>";
     return;
-  };
+  }
 
-  const { id, poster_path, original_title, vote_average, vote_count, popularity, genres, overview } = filmInfo;
-  const filmGenres = genres.slice(0, 3).map(({ name }) => name).join(", ");
-
+  const {
+    id,
+    poster_path,
+    original_title,
+    vote_average,
+    vote_count,
+    popularity,
+    genres,
+    overview,
+  } = filmInfo;
+  const filmGenres = genres
+    .slice(0, 3)
+    .map(({ name }) => name)
+    .join(', ');
 
   const markup = `<img src="https://image.tmdb.org/t/p/original${poster_path}" alt="${original_title}"
     class="film-modal__img" width="240" height="357">
@@ -40,12 +52,16 @@ export function renderModalFilmCard(filmInfo) {
       <button type="button">add to watched</button>
       <button type="button">add to queue</button>
     </div>
-  </div>`;
+    <ul class="trailers-btns-list"></ul>
+    </div>`;
 
   filmModalContent.innerHTML = markup;
-};
+  filmModalContent.setAttribute('film-modal-id', id);
+}
 
 export function clearModalFilmCard() {
-  const filmModalContent = document.querySelector(".film-modal__content");
-  filmModalContent.innerHTML = "";
-};
+  const filmModalContent = document.querySelector('.film-modal__content');
+  filmModalContent.innerHTML = '';
+  filmModalContent.removeAttribute('film-modal-id');
+}
+
