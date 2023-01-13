@@ -17,6 +17,7 @@ export async function getTrailersByMovieId(movieID) {
 export async function renderTrailersBtns(trailers) {
   const trailersBtnContainer = document.querySelector('.trailers-btns-list');
   console.log(trailersBtnContainer);
+  getTrailersByMovieId(593643);
   const markup = trailers
     .slice(0, 3)
     .map(
@@ -24,7 +25,8 @@ export async function renderTrailersBtns(trailers) {
         `<li><button class="trailerButton">Watch ${trailer.name}</button></li>`
     )
     .join('');
-  trailersBtnContainer.insertAdjacentHTML('beforeend', markup);
+  trailersBtnContainer.innerHTML(markup);
 }
 
 // renderTrailersBtns();
+// trailers-btns-list
