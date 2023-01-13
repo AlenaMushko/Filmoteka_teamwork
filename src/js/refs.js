@@ -17,7 +17,8 @@ export const refs = {
   teamModalCloseBtn: document.querySelector('.teamModal__close__btn'),
   teamOpenModalBtn: document.querySelector('.team_modal_btn'),
   paginationList: document.querySelector('.tui-pagination'),
-
+  buttonWatched: document.querySelector('.button-watched'),
+  buttonQueue: document.querySelector('.button-queue'),
   //ссилки на дом вузли для логіки хедера
   signInBtn: document.querySelector('.js__sign-in-btn'),
   signOutBtn: document.querySelector('.js__sign-out-btn'),
@@ -39,8 +40,6 @@ export const refs = {
   emptyTitle: document.querySelector('.library-empty__title'),
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
- 
 
   myButton: document.getElementById('myBtn'),
-
 };
