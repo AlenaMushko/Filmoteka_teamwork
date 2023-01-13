@@ -1,8 +1,9 @@
-import ApiService from "./fetchProdactsAPI";
+import ApiService from './fetchProdactsAPI';
 import {
   renderModalFilmCard,
-  clearModalFilmCard
-} from "./manipulate-modal-film-content";
+  clearModalFilmCard,
+} from './manipulate-modal-film-content';
+import { getTrailersByMovieId, renderTrailersBtns } from './getTrailers';
 
 const apiService = new ApiService();
 
@@ -31,17 +32,17 @@ export class Modal {
     const filmId = e.target.parentNode.dataset.id;
     const filmIdNumber = Number(filmId);
     const filmInfo = await apiService.getFilmById(filmIdNumber);
-
+    const trailers = await getTrailersByMovieId(filmIdNumber);
     if (!filmId) {
       return;
-    };
+    }
 
     try {
       renderModalFilmCard(filmInfo);
+      renderTrailersBtns(trailers);
     } catch (error) {
       console.log(error);
-    };
-    console.log(filmInfo);
+    }
 
     this.addClassAndListener();
   }
@@ -49,13 +50,13 @@ export class Modal {
   onOverlayClick(e) {
     if (e.currentTarget === e.target) {
       this.closeModal();
-    };
+    }
   }
 
   onEscPress(e) {
-    if (e.code === "Escape") {
+    if (e.code === 'Escape') {
       this.removeClassAndListener();
-    };
+    }
   }
 
   addClassAndListener() {
@@ -64,37 +65,34 @@ export class Modal {
     this.body.classList.add('no-scroll');
     this.closeBtn.addEventListener('click', this.closeModal.bind(this));
     this.overlay.addEventListener('click', this.onOverlayClick.bind(this));
-    document.addEventListener("keydown", this.onEscPress.bind(this));
+    document.addEventListener('keydown', this.onEscPress.bind(this));
   }
-  
+
   removeClassAndListener() {
     this.overlay.classList.remove('active');
     this.modal.classList.remove('active');
     this.body.classList.remove('no-scroll');
     this.closeBtn.removeEventListener('click', this.closeModal);
     this.overlay.removeEventListener('click', this.onOverlayClick);
-    document.removeEventListener("keydown", this.onEscPress);
+    document.removeEventListener('keydown', this.onEscPress);
   }
-
 }
 
+// Імпортуємо клас Modal в свій js-файл і створюємо його екземпляр.
+// При створенні нового екземпляра модалки, прописуємо селектори елементів ("кнопка відкриття модалки", "кнопка закриття модалки", "оверлей/бекдроп модалки", "контейнер модалки").
 
-  // Імпортуємо клас Modal в свій js-файл і створюємо його екземпляр.
-  // При створенні нового екземпляра модалки, прописуємо селектори елементів ("кнопка відкриття модалки", "кнопка закриття модалки", "оверлей/бекдроп модалки", "контейнер модалки").
+// Приклад створення модалки
 
-  // Приклад створення модалки
+// const exampleModalWindow = new Modal(
+//   '.example-modal-open',
+//   '.example-modal-close',
+//   '.example-modal-overlay',
+//   '.example-modal'
+// );
 
-  // const exampleModalWindow = new Modal(
-  //   '.example-modal-open',
-  //   '.example-modal-close',
-  //   '.example-modal-overlay',
-  //   '.example-modal'
-  // );
+// Щоб модалка відкривалась, вішаємо слухача кліка на кнопку відкриття модалки
 
-  // Щоб модалка відкривалась, вішаємо слухача кліка на кнопку відкриття модалки
-
-  // exampleModalWindow.openBtn.addEventListener(
-  //   'click',
-  //   exampleModalWindow.openModal.bind(exampleModalWindow)
-  // );
-
+// exampleModalWindow.openBtn.addEventListener(
+//   'click',
+//   exampleModalWindow.openModal.bind(exampleModalWindow)
+// );

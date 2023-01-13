@@ -4,6 +4,7 @@ import { ShowFilms } from './js/functionsForFilms';
 import { onTeamModal } from './js/team_modal';
 import { registrationModalOpen } from './js/modalRegistrationFunction';
 import { filmCardModalWindow } from './js/modal-film';
+import { filmTrailerModalWindow } from './js/modal-trailer';
 import 'lazysizes';
 // import a plugin
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
@@ -21,6 +22,9 @@ ShowFilms();
 filmCardModalWindow();
 // модалка карточки фільму
 
+filmTrailerModalWindow();
+// модалка трейлеру
+
 scrolToTop();
 // кнопка повернення до гори
 
@@ -31,9 +35,6 @@ onTeamModal();
 import { authHandler } from './js/auth';
 authHandler();
 
-
 // логіка кнопок і посилань навігації хедера
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
-homeHeaderLinkBntLogic ();
-
-
+homeHeaderLinkBntLogic();
