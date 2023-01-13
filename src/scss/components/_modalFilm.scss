@@ -1,5 +1,17 @@
 // ⚠️ Підключити цей файл в _components.scss ⚠️
 
+.film-modal {
+  padding: 48px 20px 40px;
+
+  @include mq(tablet) {
+    padding: 40px 72px 40px 36px;
+  }
+
+  @include mq(desktop) {
+    padding: 40px 12px;
+  }
+}
+
 .film-modal__content {
   display: flex;
   flex-direction: column;
@@ -51,4 +63,12 @@
 
 .film-modal__txt--right {
   @include font(500, 12px, 16px, normal);
+}
+
+.votes-info {
+  color: $color-second-text;
+}
+
+.uppercase-info {
+  text-transform: uppercase;
 }

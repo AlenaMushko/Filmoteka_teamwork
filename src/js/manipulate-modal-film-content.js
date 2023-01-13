@@ -17,7 +17,7 @@ export function renderModalFilmCard(filmInfo) {
     <ul class="film-modal__stats-list">
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Vote / Votes</p>
-        <p class="film-modal__txt--right"><span>${vote_average}</span> / <span>${vote_count}</span></p>
+        <p class="film-modal__txt--right votes-info"><span>${vote_average}</span> / <span>${vote_count}</span></p>
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Popularity</p>
@@ -25,7 +25,7 @@ export function renderModalFilmCard(filmInfo) {
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Original title</p>
-        <p class="film-modal__txt--right">${original_title}</p>
+        <p class="film-modal__txt--right uppercase-info">${original_title}</p>
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Genre</p>
@@ -43,11 +43,9 @@ export function renderModalFilmCard(filmInfo) {
   </div>`;
 
   filmModalContent.innerHTML = markup;
-  filmModalContent.setAttribute("film-modal-id", id);
 };
 
 export function clearModalFilmCard() {
   const filmModalContent = document.querySelector(".film-modal__content");
   filmModalContent.innerHTML = "";
-  filmModalContent.removeAttribute("film-modal-id");
 };
