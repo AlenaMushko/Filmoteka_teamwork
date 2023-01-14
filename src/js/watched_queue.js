@@ -1,8 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import {refs} from './refs'
 // import { btnClick } from './js/watched_queue' закинути в library.js
 
-// додати класи у btnWatched і btnQueue у library-section-films.html
 
 // закинути у refs
 //  btnWatched: document.querySelector('.btn__watched'),
@@ -14,8 +13,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //  btnRemoveQueue: document.querySelector(''),
 
 export function btnClick() {
-btnWatched.addEventListener('click', onWatchedBtnClick);
-btnQueue.addEventListener('click', onQueueBtnClick);  
+refs.btnWatched.addEventListener('click', onWatchedBtnClick);
+refs.btnQueue.addEventListener('click', onQueueBtnClick);  
 }
 
 function onWatchedBtnClick() {
@@ -25,8 +24,8 @@ function onWatchedBtnClick() {
             watchedMovies = JSON.parse(watchedMovies);
             renderWatchedFilmCard(watchedMovies);
           } else {
-            emptyTitle.classList.remove('is-hidden');
-            emptyImg.classList.remove('is-hidden');
+            refs.emptyTitle.classList.remove('is-hidden');
+            refs.emptyImg.classList.remove('is-hidden');
             Notify.info(
                 `Your film list is empty`
             );
@@ -45,8 +44,8 @@ function onQueueBtnClick() {
             queueMovie = JSON.parse(queueMovie);
             renderWatchedFilmCard(queueMovie);
           } else {
-            emptyTitle.classList.remove('is-hidden');
-            emptyImg.classList.remove('is-hidden');
+            refs.emptyTitle.classList.remove('is-hidden');
+            refs.emptyImg.classList.remove('is-hidden');
             Notiflix.Notify.info(
                `Your film list is empty`
     );
@@ -87,9 +86,9 @@ function renderWatchedFilmCard(key) {
               </li>`;
     })
     .join('');
-  movieLibrary.innerHTML = markup;
+  refs.movieLibrary.innerHTML = markup;
 };
 
-btnRemoveMovie.addEventListener('click', movieRemovalLogic);
-btnREmoveQueue.addEventListener('click', movieRemovalLogic);
+// btnRemoveMovie.addEventListener('click', movieRemovalLogic);
+// btnREmoveQueue.addEventListener('click', movieRemovalLogic);
 
