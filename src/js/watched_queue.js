@@ -78,3 +78,28 @@ function renderWatchedFilmCard(key) {
     .join('');
   refs.movieLibrary.innerHTML = markup;
 };
+
+
+// import ApiService from './js/fetchProdactsAPI';
+// const apiService = new ApiService();
+ 
+
+// import { MyLibrary } from './js/localStorage';
+
+// const myLibrary = new MyLibrary;
+// const arrWatchedFilms = myLibrary.getFromWatched()
+// console.log(arrWatchedFilms);
+
+
+
+
+// export async function renderWatchedFilmInLibrary() {
+//     const results = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
+
+//   try {
+//     renderFilmCard(results);
+//     pagination.reset(results.total_results);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
