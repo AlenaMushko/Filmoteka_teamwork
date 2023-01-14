@@ -44,5 +44,10 @@ homeHeaderLinkBntLogic();
 // import { localStorage } from './js/localStorage';
 
 //передача локалстродіж в сховище фаєрбейзу
-import { giveLocalStorageToFirebaseStorage } from './js/firebaseDatastorage';
-giveLocalStorageToFirebaseStorage();
+import { giveLocalStorageToFirebaseStorage, takeLocalStorageFromFirebaseStorage } from './js/firebaseDatastorage';
+//giveLocalStorageToFirebaseStorage();
+
+if(localStorage.auth === "yes") {
+    takeLocalStorageFromFirebaseStorage();
+}
+
