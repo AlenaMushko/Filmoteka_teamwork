@@ -3,6 +3,7 @@ import { onMyButtonClick } from './scrolToTop';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
+import { getSearchByFilters } from './menuFilters';
 
 const apiService = new ApiService();
 
@@ -35,18 +36,53 @@ const options = {
 
 export const pagination = new Pagination('pagination', options);
 
-pagination.on('afterMove', loadMoreFilms);
+export function PGloadMorePopFilms(total_results) {
+  pagination.reset(total_results);
+  pagination.on('afterMove', loadMoreFilms);
 
-async function loadMoreFilms(event) {
-  onMyButtonClick();
-  const currentPage = event.page;
-  apiService.pageNum = currentPage;
+  async function loadMoreFilms(event) {
+    onMyButtonClick();
+    const currentPage = event.page;
+    apiService.pageNum = currentPage;
+    const results = await apiService.getPopularFilms();
+    renderFilmCard(results);
+    console.log('It is PG_More_Pop_Films');
+  }
+}
 
-  const results = await apiService.getPopularFilms();
-  renderFilmCard(results);
+export function PGloadMoreBySerch(total_results, query) {
+  apiService.query = query;
+  pagination.reset(total_results);
+  pagination.on('afterMove', loadMoreSearchFilms);
+
+  async function loadMoreSearchFilms(event) {
+    console.log(event);
+    onMyButtonClick();
+    const currentPage = event.page;
+    apiService.pageNum = currentPage;
+    console.log(currentPage);
+    const results = await apiService.getSearchFilms();
+
+    renderFilmCard(results);
+    console.log('It is PG by Serch');
+  }
+}
+
+export function PGLoadMoreByFiltres(query, genre, year) {
+  pagination.on('afterMove', loadMoreByFilters);
+
+  async function loadMoreByFilters(event) {
+    onMyButtonClick();
+    const page = event.page;
+    const data = await getSearchByFilters(page, query, genre, year);
+    const results = data.results;
+    pagination.reset(data.total_results);
+
+    renderFilmCard(results);
+    console.log('It is PG by Filters');
+  }
 }
 
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
-
