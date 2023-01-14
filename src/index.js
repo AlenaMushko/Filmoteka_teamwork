@@ -12,13 +12,12 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 // import { renderTrailersBtns } from './js/getTrailers';
 
-
 // renderTrailersBtns();
-
 
 // Note: Never import/require the *.min.js files from the npm package.
 
 // header
+import './js/menuFilters'; /* тимчасово поки імпортую все*/
 registrationModalOpen();
 // main
 sliderRevenueFilms();
