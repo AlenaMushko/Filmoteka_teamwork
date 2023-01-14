@@ -30,5 +30,6 @@ export function libraryHeaderLinkBntLogic() {
 };
 
 function signOutBtnHandler() {
+    localStorage.clear();
     localStorage.setItem('auth', "no");
 };
