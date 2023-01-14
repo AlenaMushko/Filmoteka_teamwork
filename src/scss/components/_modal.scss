@@ -1,13 +1,14 @@
 // Загальні стилі для всіх модалок (start)
 .overlay {
     position: fixed;
-    z-index: 20;
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .25);
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    overflow: auto;
     transition: opacity $transitionDuration $cubic, visibility $transitionDuration $cubic;
 }
 
@@ -20,7 +21,6 @@
     width: calc(100% - 40px);
     max-width: 420px;
     background-color: $color-extra-text;
-    transform: translate(-50%, -50%) scale(0);
     transition: transform $transitionDuration $cubic, opacity $transitionDuration $cubic, visibility $transitionDuration $cubic;
 
     &.active {
