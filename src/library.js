@@ -8,12 +8,12 @@ import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnClick } from './js/watched_queue';
 import  'lazysizes' ; 
 // імпорт плагіна 
-import  'lazysizes/plugins/parent-fit/ls.parent-fit' ;
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+// import { renderWatchedFilmInLibrary } from './js/watched_queue';
 
 sliderRevenueFilms();
 // слайлдер з фільмами, що зібрали найбільшу касу
 
-// btnClick();
 
 scrolToTop();
 // кнопка повернення до гори
@@ -24,6 +24,10 @@ localStorage.auth = 'yes';
 btnClick();
 // по кліку на кнопки рендериться відповідна інформація
 libraryHeaderLinkBntLogic();
+
+// рендириця картка фільму з id що в  localStorage
+// renderWatchedFilmInLibrary(); 
+
 
 // footer
 onTeamModal();
