@@ -55,6 +55,13 @@ export class Modal {
       console.log(error);
     }
 
+    // console.log(window.innerHeight);
+    // console.log(this.modal.clientHeight);
+    // if (window.innerHeight < this.modal.clientHeight) {
+    //   this.modal.style.top = "0px";
+    // } else {
+    //   this.modal.style.top = "50%";
+    // };
     this.addClassAndListener();
   }
 
