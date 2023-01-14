@@ -3,7 +3,6 @@ export class MyLibrary {
     myQueueList = 'queueMovies'
 
     getFromWatched() {
-        console.log(JSON.parse(localStorage.getItem(this.myWatchedMovies)));
         return JSON.parse(localStorage.getItem(this.myWatchedMovies));
     }
 
@@ -44,7 +43,6 @@ export class MyLibrary {
     }
 
     getFromQueue() {
-        console.log(JSON.parse(localStorage.getItem(this.myQueueList)));
         return JSON.parse(localStorage.getItem(this.myQueueList));
     }
 
