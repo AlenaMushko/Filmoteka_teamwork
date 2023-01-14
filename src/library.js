@@ -30,8 +30,7 @@ libraryHeaderLinkBntLogic();
 // footer
 onTeamModal();
 
-//передача локалстродіж в сховище фаєрбейзу
-import { giveLocalStorageToFirebaseStorage } from './js/firebaseDatastorage';
-giveLocalStorageToFirebaseStorage();
+
+
 
 
