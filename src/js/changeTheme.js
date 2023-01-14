@@ -1,7 +1,15 @@
 const themeBtn = document.getElementById('button-theme');
-const body = document.querySelector('body');
-const btnToTop = document.querySelector('.icon');
-console.log(btnToTop);
+const themeLink = document.querySelector('.theme-dark');
+console.log(themeLink);
+
+// export function onFirstLoadingMyLib() {
+//   if (localStorage.getItem('ui-theme') === 'dark') {
+//     themeLink.classList.add('is-hidden');
+//   } else {
+//     themeLink.classList.remove('is-hidden');
+//   }
+//   console.log('I am done');
+// }
 
 themeBtn.addEventListener('click', onThemeBtnClick);
 
@@ -10,20 +18,25 @@ function onThemeBtnClick(ev) {
 
   localStorage.setItem('ui-theme', result);
   if (result === 'dark') {
-    body.classList.add('theme--dark');
-    btnToTop.classList.add('icon--dark');
+    themeLink.classList.remove('is-hidden');
     ev.currentTarget.value = 'light';
+    location.reload();
   } else {
-    body.classList.remove('theme--dark');
-    btnToTop.classList.remove('icon--dark');
+    themeLink.classList.add('is-hidden');
     ev.currentTarget.value = 'dark';
+    location.reload();
   }
 }
 
 function onFirstLoading() {
+  const key = localStorage.getItem('ui-theme');
+  console.log(key);
   if (localStorage.getItem('ui-theme') === 'dark') {
-    body.classList.add('theme--dark');
+    themeLink.classList.remove('is-hidden');
     themeBtn.value = 'light';
+  } else {
+    themeLink.classList.add('is-hidden');
+    console.log('It is ELSE');
   }
 }
 
