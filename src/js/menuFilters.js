@@ -2,16 +2,11 @@ import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { cleanPagination } from './pagination';
+import { refs } from './refs';
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3';
-const refs = {
-  inputEl: document.getElementById('searchQuery'),
-  filterByGenre: document.getElementById('genres-container'),
-  filterByYear: document.getElementById('years-container'),
-  resetButton: document.getElementById('button-reset'),
-};
 
 // !функця запису в локалсторедж
 

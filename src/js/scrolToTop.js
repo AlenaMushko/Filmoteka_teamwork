@@ -4,7 +4,7 @@ export function scrolToTop() {
   window.onscroll = function () {
     scrollFunction();
   };
-  refs.myButton.addEventListener('click', onMyButtonClick);
+  refs.goToTop.addEventListener('click', onMyButtonClick);
 }
 
 export function onMyButtonClick() {
@@ -13,8 +13,8 @@ export function onMyButtonClick() {
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    refs.myButton.style.display = 'block';
+     refs.goToTop.style.display = 'block';
   } else {
-    refs.myButton.style.display = 'none';
+    refs.goToTop.style.display = 'none';
   }
 }

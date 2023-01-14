@@ -23,6 +23,11 @@ export const refs = {
   signInBtn: document.querySelector('.js__sign-in-btn'),
   signOutBtn: document.querySelector('.js__sign-out-btn'),
   myLibraryLink: document.querySelector('.js__my-lirbary-link'),
+  // !посилання на елементи в хедері
+  filterByGenre: document.getElementById('genres-container'),
+  filterByYear: document.getElementById('years-container'),
+  resetButton: document.getElementById('button-reset'),
+  warningContainer: document.getElementById('warning'),
 
   //ссилки для авторизації
 
@@ -41,5 +46,5 @@ export const refs = {
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
 
-  myButton: document.getElementById('myBtn'),
+  goToTop: document.querySelector('.go-Top'),
 };

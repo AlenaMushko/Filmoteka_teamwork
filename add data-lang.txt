@@ -1,0 +1,74 @@
+Подключить в index.js - import {} from './js/language';
+
+Hа кнопки які змінюють мову треба повісити data-btn='en' и data-btn='ua' відповідно
+
+1. index.html, my_library.html
+<title data-lang="home-page-title">Filmoteka</title>
+
+2. home-header.html
+<span data-lang="home">Home</span>
+<span data-lang="library">My library</span>
+<span data-lang="singIn">Sign in</span>
+<span data-lang="singOut">Sign out</span>
+Не разобрался - placeholder="Movie search"
+<div class="header__warning is-hidden" data-lang="searchError">
+  Search result not successful. Enter the correct movie name
+</div>
+<span data-lang="filters">Filters</span>
+<span data-lang="genres">Genres</span>
+
+<button type="button" class="button" value="start" data-lang="genre">Genre</button>
+<button type="button" class="button" value="12" data-lang="adventure">adventure</button>
+<button type="button" class="button" value="16" data-lang="animation">Animation</button>
+<button type="button" class="button" value="35" data-lang="comedy">Comedy</button>
+<button type="button" class="button" value="80" data-lang="crime">Crime</button>
+<button type="button" class="button" value="99" data-lang="documentary">Documentary</button>
+<button type="button" class="button" value="18" data-lang="drama">Drama</button>
+<button type="button" class="button" value="10751" data-lang="family">Family</button>
+<button type="button" class="button" value="14" data-lang="fantasy">Fantasy</button>
+<button type="button" class="button" value="36" data-lang="history">History</button>
+<button type="button" class="button" value="27" data-lang="horror">Horror</button>
+<button type="button" class="button" value="10402" data-lang="music">Music</button>
+<button type="button" class="button" value="9648" data-lang="mystery">Mystery</button>
+<button type="button" class="button" value="10749" data-lang="romance">Romance</button>
+<button type="button" class="button" value="878" data-lang="scienceFiction">Science Fiction</button>
+<button type="button" class="button" value="10770" data-lang="tvMovie">TV Movie</button>
+<button type="button" class="button" value="53" data-lang="thriller">Thriller</button>
+<button type="button" class="button" value="10752" data-lang="war">War</button>
+<button type="button" class="button" value="37" data-lang="western">Western</button>
+
+<span data-lang="date">Date</span>
+<span data-lang="reset">Reset</span>
+<span data-lang="settings">Settings</span>
+<span data-lang="theme">Theme</span>
+
+3. slider-new-films.html
+ <div class="glide__track" data-glide-el="track">
+
+4. library-header.html
+<span data-lang="home">Home</span>
+<span data-lang="library">My library</span>
+<span data-lang="singOut">Sign out</span>
+<li><button type="button" class="" data-lang="watched">Watched</button></li>
+<li><button type="button" class="" data-lang="queue">Queue</button></li>
+
+5. footer.html
+<p class="footer__soc-text" data-lang="application">Our Application</p>
+<p class="footer__soc-text" data-lang="support">Support</p>
+<p class="footer__soc-text" data-lang="networks">Join our networks</p>
+<p class="footer__text">&#169 2020 | <span data-lang="reserved">All Rights Reserved</span> | </p>
+<p class="footer__text" data-lang="developereloped">Developereloped with</p>
+<p class="footer__text"><span data-lang="by">by</span></p><button type="button" class="team_modal_btn team-modal-open"><span data-lang="students">GoIT Students</span></button>
+<p class="student__text student__text_name" data-lang="dev1">Developer1</p>
+<p class="student__text" data-lang="dev">Developer</p>
+<p class="student__text student__text_name" data-lang="dev2">Developer2</p>
+<p class="student__text" data-lang="dev">Developer</p>
+<p class="student__text student__text_name" data-lang="dev3">Developer3</p>
+<p class="student__text" data-lang="dev">Developer</p>
+<p class="student__text student__text_name" data-lang="dev4">Developer4</p>
+<p class="student__text" data-lang="dev">Developer</p>
+
+6. modal-registration.html
+<p class="modal_login__title_signIn" data-lang="titel-register">Please enter your e-mail and password</p>
+<label for="email" class="modal_login__label" data-lang="mail">E-mail</label>
+<label for="password" class="modal_login__label" data-lang="pass">Password</label>

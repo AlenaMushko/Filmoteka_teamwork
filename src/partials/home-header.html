@@ -67,7 +67,7 @@
         </svg>
       </button>
     </form>
-    <div class="header__warning is-hidden">
+    <div class="header__warning is-hidden" id="warning">
       Search result not successful. Enter the correct movie name
     </div>
 
@@ -181,7 +181,12 @@
             >Settings
           </button>
           <div class="menu__settings">
-            <button type="button" class="button button__genres">
+            <button
+              type="button"
+              class="button button__genres"
+              id="theme-btn"
+              value="dark"
+            >
               <svg class="settings__icon" width="14" height="14">
                 <use href="./images/sprite.svg#theme"></use>
               </svg>
