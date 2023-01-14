@@ -82,7 +82,7 @@
 }
 }
 
-.myBtn {
+.go-Top {
     top: 93%;
     right: 0px;
     position: fixed;
@@ -91,13 +91,13 @@
 cursor: pointer;
 }
 
-.myBtn .icon {
+.go-Top .icon {
     display: inline-flex;
     fill: $color-slider;
     transition: box-shadow 250ms linear, transform 250ms ease-in-out;
 }
 
-.myBtn .icon:hover {
+.go-Top .icon:hover {
     fill: $color-brand-background;
 }
 .icon {
