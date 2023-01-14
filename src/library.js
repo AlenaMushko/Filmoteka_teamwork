@@ -5,7 +5,7 @@ import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';
 // логіка кнопок і посилань навігації хедера
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
-import { onWatchedBtnClick } from './js/watched_queue';
+import { btnClick } from './js/watched_queue';
 
 
 sliderRevenueFilms();
@@ -19,9 +19,8 @@ scrolToTop();
 //авторизація (тимчасове рішення)
 localStorage.auth = "yes";
 
-
-onWatchedBtnClick();
-
+btnClick();
+// по кліку на кнопки рендериться відповідна інформація
 libraryHeaderLinkBntLogic();
 
 
