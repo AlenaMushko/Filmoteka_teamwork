@@ -18,3 +18,4 @@ function scrollFunction() {
     refs.goToTop.style.display = 'none';
   }
 }
+
