@@ -1,18 +1,17 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-import { MyLibrary } from './localStorage';
+import MyLibrary from './localStorage';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
+
+
 const myLibrary = new MyLibrary();
 const apiService = new ApiService();
 
-let arrWatchedFilms = myLibrary.getFromWatched();
-// console.log(arrWatchedFilms);
 export function btnClick() {
 refs.btnWatched.addEventListener('click', onWatchedBtnClick);
 refs.btnQueue.addEventListener('click', onQueueBtnClick);  
 }
-
 
 export  function onWatchedBtnClick() {
   try {
@@ -51,10 +50,12 @@ export  function onQueueBtnClick() {
     }
     return;
 };
+// -------------
+let arrWatchedFilms = myLibrary.getFromWatched();
 
-
-export async function renderWatchedFilmInLibrary() {
-    const results = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
+// renderWatchedFilmInLibrary()
+ async function renderWatchedFilmInLibrary() {
+    const results = await getFilmFromLocalStorage(arrWatchedFilms);
   console.log(results);
   console.log(arrWatchedFilms);
   try {

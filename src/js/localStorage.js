@@ -1,4 +1,4 @@
-export class MyLibrary {
+export default class MyLibrary {
     myWatchedMovies = "watchedMovies"
     myQueueList = 'queueMovies'
 
