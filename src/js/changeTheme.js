@@ -19,10 +19,13 @@ function onThemeBtnClick(ev) {
   localStorage.setItem('ui-theme', result);
   if (result === 'dark') {
     themeLink.classList.remove('is-hidden');
+
+    console.log('dark:', themeLink.classList);
     ev.currentTarget.value = 'light';
     location.reload();
   } else {
     themeLink.classList.add('is-hidden');
+    console.log('white:', themeLink.classList);
     ev.currentTarget.value = 'dark';
     location.reload();
   }
