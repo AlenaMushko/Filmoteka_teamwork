@@ -33,7 +33,7 @@ scrolToTop();
 // footer
 onTeamModal();
 
-//авторизація (тимчасове рішення)
+//авторизація 
 import { authHandler } from './js/auth';
 authHandler();
 
@@ -42,3 +42,7 @@ import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 homeHeaderLinkBntLogic();
 
 // import { localStorage } from './js/localStorage';
+
+//передача локалстродіж в сховище фаєрбейзу
+import { giveLocalStorageToFirebaseStorage } from './js/firebaseDatastorage';
+giveLocalStorageToFirebaseStorage();
