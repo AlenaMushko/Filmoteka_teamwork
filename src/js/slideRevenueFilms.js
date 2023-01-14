@@ -8,7 +8,7 @@ const apiService = new ApiService();
 
 new Glide('.glide', {
   type: 'slider',
-  startAt: 1,
+  startAt: 0,
   perView: 5,
   gap: 20,
   autoplay: 1500,
