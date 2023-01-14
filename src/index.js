@@ -41,4 +41,11 @@ authHandler();
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 homeHeaderLinkBntLogic();
 
+//завантаження теми
+import { onFirstLoadTheme } from './js/changeTheme';
+import { getChengeThemeByClick } from './js/changeTheme';
+onFirstLoadTheme();
+getChengeThemeByClick();
+
 // import { localStorage } from './js/localStorage';
+

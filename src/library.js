@@ -19,18 +19,15 @@ scrolToTop();
 // кнопка повернення до гори
 
 //авторизація (тимчасове рішення)
-localStorage.auth = "yes";
+localStorage.auth = 'yes';
 
 btnClick();
 // по кліку на кнопки рендериться відповідна інформація
 libraryHeaderLinkBntLogic();
 
-
-
 // footer
 onTeamModal();
 
-
-
-
-
+//завантаження теми
+import { onFirstLoadTheme } from './js/changeTheme';
+onFirstLoadTheme();
