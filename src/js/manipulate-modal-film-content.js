@@ -1,3 +1,4 @@
+import {addEventListenerOnButtonaAddWatchedAndAddQueue} from './localStorage'
 export function renderModalFilmCard(filmInfo) {
   const filmModalContent = document.querySelector('.film-modal__content');
 
@@ -49,14 +50,15 @@ export function renderModalFilmCard(filmInfo) {
       <p class="film-modal__about-txt">${overview}</p>
     </div>
     <div class="film-modal__buttons">
-      <button type="button">add to watched</button>
-      <button type="button">add to queue</button>
+      <button type="button" class="btn__modal js-auth__add-to-watched-btn">add to watched</button>
+      <button type="button" class="btn__modal js-auth__add-to-queue-btn">add to queue</button>
     </div>
     <ul class="trailers-btns-list"></ul>
     </div>`;
 
   filmModalContent.innerHTML = markup;
   filmModalContent.setAttribute('film-modal-id', id);
+  addEventListenerOnButtonaAddWatchedAndAddQueue();
 }
 
 export function clearModalFilmCard() {
@@ -64,4 +66,3 @@ export function clearModalFilmCard() {
   filmModalContent.innerHTML = '';
   filmModalContent.removeAttribute('film-modal-id');
 }
-
