@@ -24,10 +24,10 @@ export const refs = {
   signOutBtn: document.querySelector('.js__sign-out-btn'),
   myLibraryLink: document.querySelector('.js__my-lirbary-link'),
   // !посилання на елементи в хедері
-  // filterByGenre: document.getElementById('genres-container'),
-  // filterByYear: document.getElementById('years-container'),
-  // resetButton: document.getElementById('button-reset'),
-  // warningContainer: document.getElementById('warning'),
+  filterByGenre: document.getElementById('genres-container'),
+  filterByYear: document.getElementById('years-container'),
+  resetButton: document.getElementById('button-reset'),
+  warningContainer: document.getElementById('warning'),
 
   //ссилки для авторизації
 
