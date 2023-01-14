@@ -40,3 +40,5 @@ authHandler();
 // логіка кнопок і посилань навігації хедера
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 homeHeaderLinkBntLogic();
+
+// import { localStorage } from './js/localStorage';
