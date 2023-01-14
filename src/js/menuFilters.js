@@ -44,26 +44,41 @@ const removeLocalStorage = key => {
   }
 };
 
-// !функція яка перетворює данні у валідний JSON
+// !функція додавання в бібіліотеку фільму по id та перевірки наявності за id в localstorage
 
+function addListLibrary(id, select) {
+  const sel = select + 'Data';
+  const moviesData = loadLocalStorage('moviesData');
+  const movieData = moviesData.find(movie => movie.id === id);
+  const libraryArray = loadLocalStorage(select) ? loadLocalStorage(select) : [];
+  const libraryData = loadLocalStorage(sel) ? loadLocalStorage(sel) : [];
+  const index = libraryArray.indexOf(id);
+  if (index < 0) {
+    libraryArray.push(id);
+    libraryData.push(movieData);
+  } else {
+    libraryArray.splice(index, 1);
+    libraryData.splice(index, 1);
+  }
+  saveLocalStorage(select, libraryArray);
+  saveLocalStorage(sel, libraryData);
+}
+
+// !функція яка перетворює данні у валідний JSON
 function dataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
 }
 
-// !змінні для першого відпрацювання фільтрів
-
-let page = loadLocalStorage('page-pg');
+let page = loadLocalStorage('page-value');
 let query = loadLocalStorage('query-pg');
-let genre = loadLocalStorage('genre-pg');
-let year = loadLocalStorage('year-pg');
-
-// !слухачі подій меню фільтрів
+let genre = loadLocalStorage('genre-value');
+let year = loadLocalStorage('year-value');
 
 refs.filterByGenre.addEventListener('click', onSelectGenre);
 refs.filterByYear.addEventListener('click', onSelectYear);
 refs.resetButton.addEventListener('click', onSelectReset);
 
-// !функція яка повертає данні запиту за вибором фільтру
+// !функція запиту при відпрацюванні по кліку фільтра
 
 export const getSearchByFilters = async (
   page = '',
@@ -72,12 +87,11 @@ export const getSearchByFilters = async (
   year = ''
 ) => {
   let f = {
-    year:
-      year !== '' && year !== 'start' ? `&primary_release_year=${year}` : '',
-    genre: genre !== '' && genre !== 'start' ? `&with_genres=${genre}` : '',
+    year: year !== '' ? `&primary_release_year=${year}` : '',
+    genre: genre !== '' ? `&with_genres=${genre}` : '',
     queryFetch: `&query=${query}`,
     discover: `/trending`,
-    week: `/week`, //Женя миньйон переделал так что если нету query, то по дефолту делался запрос на тренды недели
+    week: `/week`,
   };
   if (query === '') {
     f.queryFetch = '';
@@ -102,8 +116,7 @@ export const getSearchByFilters = async (
   return data;
 };
 
-// !фунція скидання фільтраціі і перезавантаження сторінки при натисканні кнопки reset
-
+// !фунція яка робить скидання фільтраціі і перезавантаження сторінки до поточного стану
 function onSelectReset(e) {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
@@ -112,15 +125,15 @@ function onSelectReset(e) {
   year = '';
   page = 1;
 
-  saveLocalStorage('genre-pg', genre);
-  saveLocalStorage('year-pg', year);
-  saveLocalStorage('page-pg', page);
+  saveLocalStorage('genre-value', genre);
+  saveLocalStorage('year-value', year);
+  saveLocalStorage('page-value', page);
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     dataUpdate(data);
     Loading.remove();
   });
-  saveLocalStorage('page-pg', page);
+  saveLocalStorage('page-value', page);
   cleanPagination();
 }
 
@@ -133,8 +146,8 @@ function onSelectGenre(e) {
     });
     genre = e.target.value;
     page = 1;
-    saveLocalStorage('page-pg', page);
-    saveLocalStorage('genre-pg', genre);
+    saveLocalStorage('page-value', page);
+    saveLocalStorage('genre-value', genre);
     getSearchByFilters(page, query, genre, year).then(data => {
       renderFilmCard(data);
       cleanPagination();
@@ -143,16 +156,15 @@ function onSelectGenre(e) {
   }
 }
 
-// !функція фільтраціі за роком
-
+// !Функція фільтраціі за роком
 function onSelectYear(e) {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
   });
   page = 1;
-  saveLocalStorage('page-pg', page);
+  saveLocalStorage('page-value', page);
   year = e.target.value;
-  saveLocalStorage('year-pg', year);
+  saveLocalStorage('year-value', year);
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     cleanPagination();
