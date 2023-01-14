@@ -258,10 +258,8 @@
   // !menu filtres on button
 
   &__filters {
-    position: absolute;
-    bottom: 0;
+    position: relative;
     left: 20%;
-    padding-bottom: 10px;
     @include mq(tablet) {
       left: 27%;
     }
@@ -272,15 +270,9 @@
 
   &__settings {
     flex-direction: row-reverse;
-    position: absolute;
-    bottom: 0;
-    right: 20%;
-    padding-bottom: 10px;
+    position: relative;
     @include mq(tablet) {
       right: 27%;
-    }
-    @include mq(desktop) {
-      right: 37%;
     }
   }
 
@@ -292,14 +284,14 @@
   }
 }
 
-.menu__filters {
+.menu__filters {     
   position: absolute;
-  bottom: -10%;
+bottom: -27px;
   @include mq(mobile-only) {
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
   }
-  left: 30%;
+ left: -17%;
   display: flex;
   z-index: 1;
   background-color: #10181d;
@@ -316,12 +308,12 @@
 
 .menu__settings {
   position: absolute;
-  bottom: -10%;
+  bottom: -27px;
   @include mq(mobile-only) {
-    left: 50%;
+    left: 87%;
     transform: translateX(-50%);
   }
-  left: 54%;
+  left: 70%;
   display: flex;
   z-index: 1;
   background-color: #10181d;
@@ -404,4 +396,17 @@ option {
 .menu-filters--settings {
   display: flex;
   gap: 20px;
+}
+
+
+.settings__list {
+  max-width: 360px;
+  justify-content: space-between;
+  display: flex;
+  position: relative;
+  bottom: -62px;
+margin: 0 auto;
+  @include mq(desktop) {
+      bottom: -55px;
+    }
 }
