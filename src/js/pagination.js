@@ -3,6 +3,8 @@ import { onMyButtonClick } from './scrolToTop';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
+import { getSearchByFilters } from './menuFilters';
+import { onMyButtonClick } from './scrolToTop';
 
 const apiService = new ApiService();
 
@@ -35,18 +37,54 @@ const options = {
 
 export const pagination = new Pagination('pagination', options);
 
-pagination.on('afterMove', loadMoreFilms);
+export function paginationLoadMorePopularFilms(total_results) {
+  pagination.reset(total_results);
+  pagination.on('afterMove', loadMoreFilms);
 
-async function loadMoreFilms(event) {
-  onMyButtonClick();
-  const currentPage = event.page;
-  apiService.pageNum = currentPage;
+  async function loadMoreFilms(event) {
+    onMyButtonClick();
+    const currentPage = event.page;
+    apiService.pageNum = currentPage;
 
-  const results = await apiService.getPopularFilms();
-  renderFilmCard(results);
+    const results = await apiService.getPopularFilms();
+    console.log('Popul film pag');
+    renderFilmCard(results);
+  }
 }
 
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
 
+export function paginatioLoadMoreSerchFilm(total_results) {
+  // cleanPagination();
+  pagination.reset(total_results);
+  pagination.on('afterMove', loadMoreSearchFilms);
+
+  async function loadMoreSearchFilms(event) {
+    onMyButtonClick();
+    const currentPage = event.page;
+    apiService.pageNum = currentPage;
+    const results = await apiService.getSearchFilms();
+    console.log(results);
+    console.log('Serch film pag');
+    renderFilmCard(results);
+  }
+}
+
+export function loadMoreSerchFilters(total_results) {
+  console.log(total_results);
+  pagination.reset(total_results);
+
+  pagination.on('afterMove', loadMoreSelectedGenre);
+
+  async function loadMoreSelectedGenre(event) {
+    onMyButtonClick();
+    const page = event.page;
+
+    const results = await getSearchByFilters(page);
+    console.log(results);
+    console.log('Filtres pag');
+    renderFilmCard(results);
+  }
+}

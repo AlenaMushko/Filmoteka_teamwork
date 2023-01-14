@@ -2,7 +2,7 @@ import { refs } from './refs';
 import { onSearchFormSubmit } from './searchFilms';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
-import { pagination } from './pagination';
+import { paginationLoadMorePopularFilms } from './pagination';
 
 const apiService = new ApiService();
 // екземпляр класу в який пишемо виклики фільмів по потребі
@@ -20,7 +20,8 @@ async function topFilms() {
   const results = await apiService.getPopularFilms();
   try {
     renderFilmCard(results);
-    pagination.reset(results.total_results);
+    //додаю пагінацію та наступні запити по сторінкам
+    paginationLoadMorePopularFilms(results.total_results);
   } catch (error) {
     console.log(error);
   }

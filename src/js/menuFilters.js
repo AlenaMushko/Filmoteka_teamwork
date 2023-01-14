@@ -3,6 +3,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { cleanPagination } from './pagination';
 
+import { loadMoreSerchFilters } from './pagination';
+
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -150,7 +152,10 @@ function onSelectGenre(e) {
     saveLocalStorage('genre-value', genre);
     getSearchByFilters(page, query, genre, year).then(data => {
       renderFilmCard(data);
-      cleanPagination();
+
+      loadMoreSerchFilters(data.total_results);
+
+      // cleanPagination();
       Loading.remove();
     });
   }
