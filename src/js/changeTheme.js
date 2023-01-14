@@ -1,5 +1,4 @@
 const themeBtn = document.querySelector('#theme-btn');
-console.log(themeBtn);
 
 export function onFirstLoadTheme() {
   document.querySelector('.theme-dark').disabled = true;
