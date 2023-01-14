@@ -284,14 +284,14 @@
   }
 }
 
-.menu__filters {     
+.menu__filters {
   position: absolute;
-bottom: -27px;
+  bottom: -27px;
   @include mq(mobile-only) {
     left: 10%;
     transform: translateX(-50%);
   }
- left: -17%;
+  left: -17%;
   display: flex;
   z-index: 1;
   background-color: #10181d;
@@ -398,15 +398,19 @@ option {
   gap: 20px;
 }
 
-
 .settings__list {
   max-width: 360px;
   justify-content: space-between;
   display: flex;
   position: relative;
   bottom: -62px;
-margin: 0 auto;
+  margin: 0 auto;
   @include mq(desktop) {
-      bottom: -55px;
-    }
+    bottom: -55px;
+  }
+}
+
+.btn__modal--library {
+  border-color: $color-extra-text;
+  color: $color-extra-text;
 }
