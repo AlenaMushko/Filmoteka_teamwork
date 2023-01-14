@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { cleanPagination } from './pagination';
+import { refs } from './refs';
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
