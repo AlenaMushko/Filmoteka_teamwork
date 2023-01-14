@@ -41,3 +41,9 @@ authHandler();
 // логіка кнопок і посилань навігації хедера
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 homeHeaderLinkBntLogic();
+
+//завантаження теми
+import { onFirstLoadTheme } from './js/changeTheme';
+import { getChengeThemeByClick } from './js/changeTheme';
+onFirstLoadTheme();
+getChengeThemeByClick();

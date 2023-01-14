@@ -7,7 +7,6 @@ import { onTeamModal } from './js/team_modal';
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnClick } from './js/watched_queue';
 
-
 sliderRevenueFilms();
 // слайлдер з фільмами, що зібрали найбільшу касу
 
@@ -17,18 +16,15 @@ scrolToTop();
 // кнопка повернення до гори
 
 //авторизація (тимчасове рішення)
-localStorage.auth = "yes";
+localStorage.auth = 'yes';
 
 btnClick();
 // по кліку на кнопки рендериться відповідна інформація
 libraryHeaderLinkBntLogic();
 
-
-
 // footer
 onTeamModal();
 
-
-
-
-
+//завантаження теми
+import { onFirstLoadTheme } from './js/changeTheme';
+onFirstLoadTheme();
