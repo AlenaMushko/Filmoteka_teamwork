@@ -41,5 +41,5 @@ export const refs = {
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
 
-  myButton: document.getElementById('myBtn'),
+  goToTop: document.querySelector('.go-Top'),
 };

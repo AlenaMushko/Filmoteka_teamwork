@@ -7,14 +7,13 @@ import { onTeamModal } from './js/team_modal';
 import { registrationModalOpen } from './js/modalRegistrationFunction';
 import { filmCardModalWindow } from './js/modal-film';
 // import { filmTrailerModalWindow } from './js/modal-trailer';
-import 'lazysizes';
-// import a plugin
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-// import { renderTrailersBtns } from './js/getTrailers';
+import  'lazysizes' ; 
+// імпорт плагіна 
+import  'lazysizes/plugins/parent-fit/ls.parent-fit' ;
 
 // renderTrailersBtns();
 
-// Note: Never import/require the *.min.js files from the npm package.
+
 
 // header
 import './js/menuFilters'; /* тимчасово поки імпортую все*/
@@ -47,3 +46,6 @@ import { onFirstLoadTheme } from './js/changeTheme';
 import { getChengeThemeByClick } from './js/changeTheme';
 onFirstLoadTheme();
 getChengeThemeByClick();
+
+// import { localStorage } from './js/localStorage';
+

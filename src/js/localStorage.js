@@ -1,29 +1,25 @@
-import Notiflix from "notiflix";
-const asd = 'this is success!!!!';
-const qwe = '';
-const newMoviesList =[];
-
-class MyLibrary {
+export class MyLibrary {
     myWatchedMovies = "watchedMovies"
-
-    constructor(movieID) {
-        this.movieID = movieID;
-    }
+    myQueueList = 'queueMovies'
 
     getFromWatched() {
-        let watchedMovies = JSON.parse(localStorage.getItem(this.myWatchedMovies));
-        if (watchedMovies) {
-            console.log('Hello!!! ', watchedMovies);
-        } else {
-            Notiflix.Notify.failure("There is no movie");
-            console.log("error");
-        }
+        return JSON.parse(localStorage.getItem(this.myWatchedMovies));
     }
 
-    addToWatched(newMovieID) {
-        this.movieID = newMovieID;
-        localStorage.setItem(this.myWatchedMovies, JSON.stringify(this.movieID));
-        // console.log(this.movieID);
+    addToWatched() {
+        const filmModalContent = document.querySelector('.film-modal__content');
+        let newMovieID = filmModalContent.getAttribute('film-modal-id');
+        let localWatchedMovies = myLybrary.getFromWatched();
+        if (!localWatchedMovies) {
+            localWatchedMovies = [newMovieID]
+            localStorage.setItem(this.myWatchedMovies, JSON.stringify(localWatchedMovies));
+        }
+    else if(localWatchedMovies.includes(newMovieID)){
+            return
+        }else{
+        localWatchedMovies.push(newMovieID);
+        localStorage.setItem(this.myWatchedMovies, JSON.stringify(localWatchedMovies));
+        }
     }
 
     removeFromWatched() {
@@ -31,74 +27,66 @@ class MyLibrary {
     }
 
     addToQueue() {
-        return
+        const filmModalContent = document.querySelector('.film-modal__content');
+        let newMovieID = filmModalContent.getAttribute('film-modal-id');
+        let localQueueList = myLybrary.getFromQueue();
+        if (!localQueueList) {
+            localQueueList = [newMovieID]
+            localStorage.setItem(this.myQueueList, JSON.stringify(localQueueList));
+        }
+    else if(localQueueList.includes(newMovieID)){
+            return
+        }else{
+        localQueueList.push(newMovieID);
+        localStorage.setItem(this.myQueueList, JSON.stringify(localQueueList));
+        }
     }
 
     getFromQueue() {
-        return
+        return JSON.parse(localStorage.getItem(this.myQueueList));
+    }
+
+    removeFromQueue() {
+        localStorage.removeItem(this.myQueueList);
     }
 }
 
-function checkLocalStorage(movieID) {
-    
-}
+// function removeFromLocalStorage(movieID){
+//     let localMoviesList = myLybrary.getFromWatched();
+//     console.log(movieID);
+//     if(!localMoviesList.includes(movieID[0])){
+//         console.log('this film is not there');
+//             return
+//         }else{
+//             let delMovie = localMoviesList.indexOf(movieID[0]);
+//             localMoviesList.splice(delMovie);
+//             myLybrary.addToWatched(localMoviesList);
+//         }
+// }
 
 const myLybrary = new MyLibrary;
 
+// myLybrary.removeFromQueue();
 // myLybrary.removeFromWatched();
-// myLybrary.getFromWatched();
 
-import ApiService from "./fetchProdactsAPI";
-const apiService = new ApiService;
-let moviesList = [];
-const movies = apiService.getPopularFilms();
 
-const STORAGE_KEY = "watchedFilms";
-const parseSTORAGE_KEY = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-function loc(movie){
-    let movieID = movie.id;
-    newMoviesList.push(movieID);
+export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
+    const authAddToWatched = document.querySelector(
+    '.js-auth__add-to-watched-btn'
+    );
+    const authAddToQueue = document.querySelector('.js-auth__add-to-queue-btn');
+    const openReg = document.querySelector('.navigation__open--btn');
+    authAddToWatched.addEventListener('click', checkAuthUser);
+    authAddToQueue.addEventListener('click', checkAuthUser);
+    function checkAuthUser() {
+    if (localStorage.auth === 'no') {
+        authAddToWatched.addEventListener('click', openReg.click());
+        authAddToQueue.addEventListener('click', openReg.click());
+        const overlayLogin = document.querySelector('.overlay__log-in');
+        overlayLogin.style.zIndex = '30';
+    }
+    //логіка додавання в локалсторидж
+        authAddToWatched.addEventListener('click', myLybrary.addToWatched());
+        authAddToQueue.addEventListener('click', myLybrary.addToQueue());
+    }
 }
-
-async function addToLoc(){
-    await movies.then(
-        response => {
-            moviesList = response.results;
-        }
-    )
-    .catch(err => {
-        console.log(err);
-    })
-    
-    moviesList.map(movie => {
-        loc(movie);
-    })
-    console.log(newMoviesList);
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newMoviesList));
-    console.log(parseSTORAGE_KEY);
-
-    myLybrary.addToWatched(newMoviesList);
-    myLybrary.getFromWatched();
-}
-
-addToLoc();
-
-let df = [76600, 315162, 593643, 661374, 800815, 436270, 156902, 119051, 19995, 536554, 361743, 877269, 674324, 112581];
-// , 640146, 899112, 505642, 653851, 111837, 116135];
-
-if (parseSTORAGE_KEY) {
-    console.log(parseSTORAGE_KEY);
-
-    if (parseSTORAGE_KEY.email) {
-        formData.email = parseSTORAGE_KEY.email;
-        inputEmail.value = formData.email;
-    };
-    if (parseSTORAGE_KEY.message) {
-        formData.message = parseSTORAGE_KEY.message;
-        inputTextarea.value = formData.message;
-    };
-}
-
-// import { localStorage } from './js/localStorage';
