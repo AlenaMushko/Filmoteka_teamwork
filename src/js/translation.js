@@ -202,7 +202,15 @@ export const langArr = {
       ua: "Розробник4",
       en: "Developer4",
     },
-  // Modal registration //
+  // Modal registration // 
+  'titel-register': {
+    ua: "Будь ласка, введіть свою електронну пошту та пароль",
+    en: "Please enter your e-mail and password",
+  },
+  'mail': {
+    ua: "Пошта",
+    en: "E-mail",
+  },
   'pass': {
     ua: "Пароль",
     en: "Password",

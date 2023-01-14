@@ -1,9 +1,10 @@
 Подключить в index.js - import {} from './js/language';
 
-на кнопки со сменой языка нужно повесить data-btn='en' и data-btn='ua'
+Hа кнопки які змінюють мову треба повісити data-btn='en' и data-btn='ua' відповідно
 
 1. index.html, my_library.html
-    <title data-lang="home-page-title">Filmoteka</title>
+<title data-lang="home-page-title">Filmoteka</title>
+
 2. home-header.html
 <span data-lang="home">Home</span>
 <span data-lang="library">My library</span>
@@ -68,4 +69,6 @@
 <p class="student__text" data-lang="dev">Developer</p>
 
 6. modal-registration.html
+<p class="modal_login__title_signIn" data-lang="titel-register">Please enter your e-mail and password</p>
+<label for="email" class="modal_login__label" data-lang="mail">E-mail</label>
 <label for="password" class="modal_login__label" data-lang="pass">Password</label>
