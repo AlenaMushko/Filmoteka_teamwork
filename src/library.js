@@ -46,6 +46,8 @@ onFirstLoadTheme();
 import MyLibrary from './js/localStorage';
 import { renderFilmCard } from './js/renderFunction';
 import axios from 'axios';
+import genresId from './genres.json';
+
 
 const myLibrary = new MyLibrary();
 const KEY = '32432509d17cea42104bbb7507a382c7';
@@ -60,17 +62,48 @@ async function getFilmFromLocalStorage(arrWatchedFilms) {
           if (!response) {
             throw new Error(response.status);
           }
-          console.log(response.data);
+          // console.log(response.data);
           return response.data;
         });
       } catch (error) {
         console.error();
       }
     }))
+};
+
+function addFilmCardToLibrary( id, poster_path, title, original_title, original_name, release_date, first_air_date, genre_ids ) {
+  let filmGenreId = '';
+  if (genre_ids) {
+    filmGenreId = genresId
+      .filter(({ id }) => genre_ids.includes(id))
+      .map(({ name }) => name)
+      .join(', ');
   }
+  return `
+      <li class="glide__slide" data-id=${id}>
+      <a class="glide__link" href= "">
+      <div class="glide__container">
+                 <img   class='glide__img' alt= '${title || original_title || original_name}' width='360' loading="lazy"
+                  src='https://image.tmdb.org/t/p/original${poster_path}'/>
+                  <div class="glide__text">
+                  <h2 class="glide__title">${title || original_title || original_name}</h2>
+                  <p class="glide__genres">${filmGenreId}<span>|${(
+        release_date || first_air_date|| 'Not available'
+      ).slice(0, 4)}</span></p></div></div></a>
+              </li>`;
+}
+
 let arrWatchedFilms = myLibrary.getFromWatched();
 
-renderWatchedFilmInLibrary()
+function renderCard() {
+  getFilmFromLocalStorage(arrWatchedFilms).then((film) => {
+    const markup = addFilmCardToLibrary(film);
+    refs.glideSlides.innerHTML = markup;
+    console.log(markup);
+    console.log(film);
+  })
+}
+// renderWatchedFilmInLibrary()
  async function renderWatchedFilmInLibrary() {
     const results = await getFilmFromLocalStorage(arrWatchedFilms);
   console.log(results);
@@ -88,4 +121,4 @@ renderWatchedFilmInLibrary()
 
 
 
-
+renderCard()
