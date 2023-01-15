@@ -29,10 +29,9 @@ export function authWithEmailAndPassword(email, password) {
         if (data.registered === true) {
             localStorage.auth = "yes";
             localStorage.authId = data.localId;
-            location.reload();
-//            takeLocalStorageFromFirebaseStorage();
+            takeLocalStorageFromFirebaseStorage();
+            return;
         }
-        //Notiflix.Notify.failure('There is no such user. Сheck email and password or sign up');
         Notiflix.Report.failure(
 'There is no such user',
 'Сheck email and password or sign up',
@@ -47,5 +46,7 @@ export function authEntranceBtnHandler(e) {
     e.preventDefault();
     authWithEmailAndPassword(email, password);
     homeHeaderLinkBntLogic();
+    Notiflix.Loading.pulse();
     localStorage.mail = refs.authEmailInput.value;
+
 };

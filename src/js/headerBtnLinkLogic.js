@@ -15,10 +15,7 @@ export function homeHeaderLinkBntLogic() {
         refs.signOutBtn.classList.add('is-hidden');
         refs.signOutBtn.removeEventListener('click', signOutBtnHandler);
         refs.myLibraryLink.classList.add('is-hidden');
-
-        //тимчасове рішення, поки немає авторизації
         refs.authEntranceBtn.addEventListener('click', authEntranceBtnHandler);
-        //тимчасове рішення, поки немає авторизації
 
     };
 };

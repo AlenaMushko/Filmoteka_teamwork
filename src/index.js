@@ -44,8 +44,9 @@ showOrHidePasswordonClick();
 onTeamModal();
 
 
+//авторизація
+import { authHandler } from './js/auth';
 
-//авторизація (тимчасове рішення)
 authHandler();
 
 
@@ -53,6 +54,10 @@ authHandler();
 
 
 
+
+//надсилання в сховище фаєрбейз кожні 10 секунд
+/* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
+setInterval(giveLocalStorageToFirebaseStorage, 10000); */
 
 
 
