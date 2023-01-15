@@ -12,7 +12,7 @@
           <a href="/src/index.html" class="navigation__link"
             ><svg width="12" height="12" class="navigation__icon">
               <use href="./images/sprite.svg#home"></use></svg
-            >Home</a
+            ><span data-lang="home">Home</span></a
           >
         </li>
         <li class="navigation__item">
@@ -21,14 +21,14 @@
             class="navigation__link navigation__link--current-page js__my-lirbary-link"
             ><svg width="12" height="12" class="navigation__icon">
               <use href="./images/sprite.svg#book"></use></svg
-            >My library</a
+            ><span data-lang="library">My library</span></a
           >
         </li>
         <li class="navigation__item navigation__item--library js__sign-out-btn">
           <a href="/src/index.html" class="navigation__link"
             ><svg width="12" height="12" class="navigation__icon">
               <use href="./images/sprite.svg#signout"></use></svg
-            >Sign out</a
+            ><span data-lang="singOut">Sign out</span></a
           >
         </li>
       </ul>
@@ -38,12 +38,17 @@
         <button
           type="button"
           class="btn__modal btn__modal--library btn__watched"
+          data-lang="watched"
         >
           Watched
         </button>
       </li>
       <li>
-        <button type="button" class="btn__modal btn__modal--library btn__queue">
+        <button
+          type="button"
+          class="btn__modal btn__modal--library btn__queue"
+          data-lang="queue"
+        >
           Queue
         </button>
       </li>
