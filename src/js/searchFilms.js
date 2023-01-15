@@ -2,10 +2,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
-
+import { pagination } from './pagination';
 import { cleanPagination } from './pagination';
-
-import { PGloadMoreBySerch } from './pagination';
 
 const apiService = new ApiService();
 
@@ -24,6 +22,7 @@ export async function onSearchFormSubmit(e) {
 
   apiService.page = 1;
   apiService.query = refs.inputEl ? refs.inputEl.value.trim() : '';
+  localStorage.setItem('input-value', apiService.query);
 
   if (apiService.query === '') {
     return;
@@ -33,9 +32,9 @@ export async function onSearchFormSubmit(e) {
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
+    //додаю пагінацію
+    pagination.reset(results.total_results);
 
-    //додаю пагінацію для рендерінга додаткових сторінок при пошуку
-    PGloadMoreBySerch(results.total_results, apiService.query);
     if (apiService.totalResults === 0) {
       cleanPagination();
       Notify.failure(

@@ -36,50 +36,36 @@ const options = {
 
 export const pagination = new Pagination('pagination', options);
 
-export function PGloadMorePopFilms(total_results) {
-  pagination.reset(total_results);
-  pagination.on('afterMove', loadMoreFilms);
+pagination.on('afterMove', onPaginationClick);
 
-  async function loadMoreFilms(event) {
-    onMyButtonClick();
-    const currentPage = event.page;
-    apiService.pageNum = currentPage;
+async function onPaginationClick(event) {
+  onMyButtonClick();
+  const page = event.page;
+  if (
+    !localStorage.getItem('year-value') &&
+    !localStorage.getItem('genre-value') &&
+    !localStorage.getItem('input-value')
+  ) {
+    apiService.pageNum = page;
     const results = await apiService.getPopularFilms();
     renderFilmCard(results);
-    console.log('It is PG_More_Pop_Films');
-  }
-}
-
-export function PGloadMoreBySerch(total_results, query) {
-  apiService.query = query;
-  pagination.reset(total_results);
-  pagination.on('afterMove', loadMoreSearchFilms);
-
-  async function loadMoreSearchFilms(event) {
-    console.log(event);
-    onMyButtonClick();
-    const currentPage = event.page;
-    apiService.pageNum = currentPage;
-    console.log(currentPage);
+  } else if (
+    !localStorage.getItem('year-value') &&
+    !localStorage.getItem('genre-value') &&
+    localStorage.getItem('input-value')
+  ) {
+    apiService.query = localStorage.getItem('input-value');
+    apiService.pageNum = page;
     const results = await apiService.getSearchFilms();
-
     renderFilmCard(results);
-    console.log('It is PG by Serch');
-  }
-}
-
-export function PGLoadMoreByFiltres(query, genre, year) {
-  pagination.on('afterMove', loadMoreByFilters);
-
-  async function loadMoreByFilters(event) {
-    onMyButtonClick();
-    const page = event.page;
-    const data = await getSearchByFilters(page, query, genre, year);
-    const results = data.results;
-    pagination.reset(data.total_results);
-
+  } else {
+    const results = await getSearchByFilters(
+      page,
+      localStorage.getItem('input-value'),
+      localStorage.getItem('genre-value'),
+      localStorage.getItem('year-value')
+    );
     renderFilmCard(results);
-    console.log('It is PG by Filters');
   }
 }
 
