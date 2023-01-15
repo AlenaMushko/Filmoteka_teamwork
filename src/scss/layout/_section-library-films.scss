@@ -1,0 +1,45 @@
+ .library-films {
+   position: relative;
+   text-align: center;
+ }
+
+ .library-empty__title {
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-family: 'Lobster', cursive;
+   font-size: 16px;
+   font-style: italic;
+   text-shadow: black 1px 0 10px;
+   color: white;
+
+   @include mq(tablet) {
+     font-size: 24px;
+   }
+
+   @include mq(desktop) {
+     font-size: 30px;
+   }
+ }
+
+ .library-empty__img {
+   width: 90%;
+   height: 90%;
+   border-radius: 40px;
+   box-shadow: 0px 0px 20px 20px black;
+   margin: auto;
+   margin-bottom: 40px;
+
+   @include mq(tablet) {
+     width: 75%;
+     height: 75%;
+   }
+
+   @include mq(desktop) {
+     width: 75%;
+     height: 75%;
+   }
+ }
+
+ 

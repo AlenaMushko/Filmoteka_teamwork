@@ -49,7 +49,7 @@ onTeamModal();
 // ---------------------------------
 
 
-// import MyLibrary from './js/localStorage';
+// import { MyLibrary } from './js/localStorage';
 // import { renderFilmCard } from './js/renderFunction';
 // import axios from 'axios';
 // import genresId from './genres.json';
@@ -60,6 +60,10 @@ onTeamModal();
 // const api_key = `?api_key=${KEY}`;
 // const BASE_URL = 'https://api.themoviedb.org/3/';
 
+// // let arrQueueFilms = myLibrary.getFromQueue();
+//  let arrWatchedFilms = myLibrary.getFromWatched();
+// console.log(arrWatchedFilms);
+
 // async function getFilmFromLocalStorage(arrWatchedFilms) {
 //     Promise.all(arrWatchedFilms.map((idWatchedFilm) => {
 //       try {
@@ -68,7 +72,7 @@ onTeamModal();
 //           if (!response) {
 //             throw new Error(response.status);
 //           }
-//           // console.log(response.data);
+//           console.log(response.data);
 //           return response.data;
 //         });
 //       } catch (error) {
@@ -76,7 +80,7 @@ onTeamModal();
 //       }
 //     }))
 // };
-
+// filmCardToLibrary();
 // function filmCardToLibrary( id, poster_path, title, original_title, original_name, release_date, first_air_date, genre_ids ) {
 //   let filmGenreId = '';
 //   if (genre_ids) {
@@ -85,6 +89,7 @@ onTeamModal();
 //       .map(({ name }) => name)
 //       .join(', ');
 //   }
+//   console.log(filmGenreId);
 //   return `
 //       <li class="glide__slide" data-id=${id}>
 //       <a class="glide__link" href= "">
@@ -99,25 +104,23 @@ onTeamModal();
 //               </li>`;
 // }
 
-// let arrWatchedFilms = myLibrary.getFromWatched();
-
 // function renderCard(film) {
 //     const markup = filmCardToLibrary(film);
 //     refs.glideSlides.innerHTML = markup;
-//     console.log(markup);
-//     console.log(film);
+//     // console.log(markup);
+//     // console.log(film);
 // }
 // renderWatchedFilmInLibrary()
 // function renderWatchedFilmInLibrary() {
 //   getFilmFromLocalStorage(arrWatchedFilms).then(result => {
-//     console.log(result);
+//     // console.log(result);
 //     renderCard(result);
 //    }).catch((error)=> {
 //     console.log(error);
 //   })
 // }
 
-// renderCard()
+// // renderCard()
 
 
 

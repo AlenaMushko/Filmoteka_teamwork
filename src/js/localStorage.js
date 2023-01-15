@@ -1,4 +1,3 @@
-
 export class MyLibrary {
     getFromWatched() {
         return JSON.parse(localStorage.getItem("watchedMovies"));
