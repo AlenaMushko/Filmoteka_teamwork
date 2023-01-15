@@ -1,5 +1,3 @@
-// import './scss/index.scss';
-// import './scss/index-dark.scss';
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';

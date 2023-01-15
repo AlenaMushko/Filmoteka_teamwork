@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
-import { cleanPagination } from './pagination';
 import { refs } from './refs';
+import { pagination } from './pagination';
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
@@ -125,11 +125,12 @@ function onSelectReset(e) {
   saveLocalStorage('page-value', page);
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
+    // додаю пагінацію
+    pagination.reset(data.total_results);
     dataUpdate(data);
     Loading.remove();
   });
   saveLocalStorage('page-value', page);
-  cleanPagination();
 }
 
 // !функція фільтраціі за жанром
@@ -145,7 +146,9 @@ function onSelectGenre(e) {
     saveLocalStorage('genre-value', genre);
     getSearchByFilters(page, query, genre, year).then(data => {
       renderFilmCard(data);
-      cleanPagination();
+      //додаю пагінацію
+      pagination.reset(data.total_results);
+
       Loading.remove();
     });
   }
@@ -162,7 +165,9 @@ function onSelectYear(e) {
   saveLocalStorage('year-value', year);
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
-    cleanPagination();
+    //додаю пагінацію
+    pagination.reset(data.total_results);
+
     Loading.remove();
   });
 }

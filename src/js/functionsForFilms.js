@@ -20,6 +20,7 @@ async function topFilms() {
   const results = await apiService.getPopularFilms();
   try {
     renderFilmCard(results);
+    //додаю пагінацію
     pagination.reset(results.total_results);
   } catch (error) {
     console.log(error);

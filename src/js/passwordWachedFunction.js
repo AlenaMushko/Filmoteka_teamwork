@@ -1,20 +1,4 @@
-// Перенести у  index.js:
-// // Для можливості показувати та приховувати пароль
-// import { showOrHidePasswordonClick } from './js/passwordWachedFunction';
-// Запустити у  index.js:
-// // Для показування або приховування введення паролю
-// showOrHidePasswordonClick();
-
-// Розкоментувати імпорт
-// import { refs } from './refs';
-
-// Додати в refs = {
-//   modalSignIn: document.querySelector('.modal__log-in'),
-//   inputPassword: document.querySelector('#password'),
-//   buttonShowPassword: document.querySelector('#button_show_password'),
-//   iconForShowPassword: document.querySelector('#icon_show_password'),
-//   iconForUnShowPassword: document.querySelector('#icon_un_show_password'),
-// };
+import { refs } from './refs';
 
 export function showOrHidePasswordonClick() {
   refs.buttonShowPassword.addEventListener('click', showPassword);

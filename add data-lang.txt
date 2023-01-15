@@ -1,5 +1,3 @@
-Подключить в index.js - import {} from './js/language';
-
 Hа кнопки які змінюють мову треба повісити data-btn='en' и data-btn='ua' відповідно
 
 1. index.html, my_library.html

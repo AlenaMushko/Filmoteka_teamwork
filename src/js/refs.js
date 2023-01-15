@@ -45,6 +45,12 @@ export const refs = {
   emptyTitle: document.querySelector('.library-empty__title'),
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
+// паролі
+  modalSignIn: document.querySelector('.modal__log-in'),
+  inputPassword: document.querySelector('#password'),
+  buttonShowPassword: document.querySelector('#button_show_password'),
+  iconForShowPassword: document.querySelector('#icon_show_password'),
+  iconForUnShowPassword: document.querySelector('#icon_un_show_password'),
 
   goToTop: document.querySelector('.go-Top'),
 };

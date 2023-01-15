@@ -1,5 +1,4 @@
-// import './scss/index-dark.scss';
-// import './scss/index.scss';
+import { showOrHidePasswordonClick } from './js/passwordWachedFunction';
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { ShowFilms } from './js/functionsForFilms';
@@ -8,46 +7,53 @@ import { registrationModalOpen } from './js/modalRegistrationFunction';
 import { filmCardModalWindow } from './js/modal-film';
 // import { filmTrailerModalWindow } from './js/modal-trailer';
 import  'lazysizes' ; 
-// імпорт плагіна 
 import  'lazysizes/plugins/parent-fit/ls.parent-fit' ;
+import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
+import { authHandler } from './js/auth';
+import { onFirstLoadTheme } from './js/changeTheme';
+import { getChengeThemeByClick } from './js/changeTheme';
+import {} from './js/language';
 
+// -------------------------header
+import './js/menuFilters'; /* тимчасово поки імпортую все*/
+registrationModalOpen();
+// логіка кнопок і посилань навігації хедера
+homeHeaderLinkBntLogic();
+//завантаження теми
+onFirstLoadTheme();
+getChengeThemeByClick();
+
+
+// ---------------------------main
+// слайлдер з фільмами, що зібрали найбільшу касу
+sliderRevenueFilms();
+// фільми топ, фільми за пошуком
+ShowFilms();
+// модалка карточки фільму
+filmCardModalWindow();
+// кнопка повернення до гори
+scrolToTop();
+// форма з паролями
+showOrHidePasswordonClick();
+// модалка з трейлерами
 // renderTrailersBtns();
 
 
 
-// header
-import './js/menuFilters'; /* тимчасово поки імпортую все*/
-registrationModalOpen();
-// main
-sliderRevenueFilms();
-// слайлдер з фільмами, що зібрали найбільшу касу
-ShowFilms();
-// фільми топ, фільми за пошуком
-
-filmCardModalWindow();
-// модалка карточки фільму
-
-scrolToTop();
-// кнопка повернення до гори
-
-// footer
+//----------------------------footer
 onTeamModal();
+
 
 //авторизація
 import { authHandler } from './js/auth';
+
 authHandler();
 
-// логіка кнопок і посилань навігації хедера
-import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
-homeHeaderLinkBntLogic();
 
-//завантаження теми
-import { onFirstLoadTheme } from './js/changeTheme';
-import { getChengeThemeByClick } from './js/changeTheme';
-onFirstLoadTheme();
-getChengeThemeByClick();
 
-// import { localStorage } from './js/localStorage';
+
+
+
 
 //надсилання в сховище фаєрбейз кожні 10 секунд
 /* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
