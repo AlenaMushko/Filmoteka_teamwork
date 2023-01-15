@@ -1,4 +1,4 @@
-import {} from './scss/index.scss'
+import {} from './scss/index.scss';
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';
@@ -11,6 +11,9 @@ import {
 } from './js/firebaseDatastorage';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import { onFirstLoadThemeLibrary } from './js/changeTheme';
+import { renderWatchedFilmInLibrary } from './js/functionsForFilms';
+import { renderQueueFilmInLibrary } from './js/functionsForFilms';
 
 // import {} from './js/language';
 // import { renderWatchedFilmInLibrary } from './js/watched_queue';
@@ -19,11 +22,11 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 libraryHeaderLinkBntLogic();
 // рендириця картка фільму з id що в  localStorage
 // renderWatchedFilmInLibrary();
+// renderQueueFilmInLibrary();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
 
 //завантаження теми
-import { onFirstLoadThemeLibrary } from './js/changeTheme';
 onFirstLoadThemeLibrary();
 
 //надсилання в сховище фаєрбейз кожні 10 секунд
@@ -41,98 +44,4 @@ scrolToTop();
 // footer
 onTeamModal();
 
-// ---------------------------------
 
-import { MyLibrary } from './js/localStorage';
-
-import { renderFilmCard } from './js/renderFunction';
-import axios from 'axios';
-import genresId from './genres.json';
-import { refs } from './js/refs';
-
-const myLibrary = new MyLibrary();
-const KEY = '32432509d17cea42104bbb7507a382c7';
-const api_key = `?api_key=${KEY}`;
-const BASE_URL = 'https://api.themoviedb.org/3/';
-
-let arrWatchedFilms = myLibrary.getFromQueue();
-// let arrWatchedFilms = myLibrary.getFromWatched();
-console.log(arrWatchedFilms);
-
-async function getFilmFromLocalStorage(arrWatchedFilms) {
-  const data = await Promise.all(
-    arrWatchedFilms.map(idWatchedFilm => {
-      try {
-        const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
-        return axios.get(url).then(response => {
-          if (!response) {
-            throw new Error(response.status);
-          }
-          return response.data;
-        });
-      } catch (error) {
-        console.error();
-      }
-    }));
-  return data;
-};
-
-renderWatchedFilmInLibrary();
-async function renderWatchedFilmInLibrary() {
-  const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
-  try {
-    console.log(...filmInfo);
-    renderFilmCard(...filmInfo);
-    // renderFilmCardLibrary(filmInfo)
-
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// renderFilmCardLibrary();
-// function renderFilmCardLibrary(arrWatchedFilms) {
-//   const markup = arrWatchedFilms.map(film => {
-//     cardFilmLibrary(film).join('');})
-// // refs.movieLibrary.innerHTML = markup;
-//   // console.log(markup);
-//   refs.movieLibrary.insertAdjacentHTML('afterbegin', markup);
-//   }
-
-function cardFilmLibrary({ id, poster_path, title, original_title, original_name, release_date, first_air_date, genres, vote_average }) {
-  const filmGenre = genres.slice(0, 3).map(({ name }) => name)
-    .join(', ');
-const voteAverage = Number(vote_average).toFixed(1) 
-const foto = `<img   class='film__img lazyload' alt= '${title || original_title || original_name}' width='100%' loading="lazy"
-      src='./images/poster_photo.png'/>`
-const img = `<img   class='film__img lazyload' alt= '${title || original_title || original_name}' width='100%' loading="lazy"
-      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
-const imgPlug = `<img  class="film__img" '${title || original_title || original_name}' width='100%' 
-       src= '${foto}'`;
-
-return`<li class="film__item" data-id=${id}>
-                  ${poster_path ? img : foto}
-                  <h2 class="films__title">${original_title || title || original_name} </h2>
-                  <p class="films__genres">${filmGenre || 'Not available'
-  }<span>|${(release_date || first_air_date || 'Not available').slice(
-    0,
-    4
-  )}</span></p>
-      <p class="films__voteaverage">${voteAverage}</p>
-              </li>`
-}
-
-
-
-// renderWatchedFilmInLibrary();
-// async function renderWatchedFilmInLibrary() {
-//   const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
-//   try {
-//     console.log(...filmInfo);
-//     // renderFilmCard(filmInfo);
-//     renderFilmCardLibrary(...filmInfo)
-
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
