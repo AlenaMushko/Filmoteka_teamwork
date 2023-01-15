@@ -1,5 +1,8 @@
 import { refs } from './refs';
-
+export function firebaseRealtimeDatabase() {
+  setInterval(deleteDataFromFirebaseStorage, 10000);
+  setInterval(giveLocalStorageToFirebaseStorage, 10000);
+};
 class UserStorage {
 
     // функція, яка додає в базу даних новий запис 
