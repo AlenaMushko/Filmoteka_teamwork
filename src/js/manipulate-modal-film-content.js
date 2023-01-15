@@ -48,7 +48,7 @@ export function renderModalFilmCard(filmInfo) {
     .map(({ name }) => name)
     .join(', ');
 
-  if (poster_path === null) {
+  if (poster_path === "originalnull") {
     imgEl.src = "./images/poster_photo.png";
     imgEl.alt = "poster already on the way";
   };
@@ -65,14 +65,14 @@ export function renderModalFilmCard(filmInfo) {
   if (!vote_average || !vote_count) {
     votesEl.innerHTML = unavailable;
   };
-  votesEl.innerHTML = `<span class="vote-average">${vote_average}</span> / <span class="vote-count">${vote_count}</span>`;
+  votesEl.innerHTML = `<span class="vote-average">${vote_average}</span>/<span class="vote-count">${vote_count}</span>`;
 
   if (!popularity) {
     popularityEl.innerHTML = unavailable;
   };
   popularityEl.innerHTML = popularity;
 
-  if (!genres) {
+  if (genres === []) {
     genresEl.innerHTML = unavailable;
   };
   genresEl.innerHTML = filmGenres;
