@@ -33,7 +33,7 @@ scrolToTop();
 // footer
 onTeamModal();
 
-//авторизація (тимчасове рішення)
+//авторизація
 import { authHandler } from './js/auth';
 authHandler();
 
@@ -48,6 +48,10 @@ onFirstLoadTheme();
 getChengeThemeByClick();
 
 // import { localStorage } from './js/localStorage';
+
+//надсилання в сховище фаєрбейз кожні 10 секунд
+/* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
+setInterval(giveLocalStorageToFirebaseStorage, 10000); */
 
 
 

@@ -29,7 +29,6 @@ export function authWithEmailAndPassword(email, password) {
         if (data.registered === true) {
             localStorage.auth = "yes";
             localStorage.authId = data.localId;
-            //location.reload();
             takeLocalStorageFromFirebaseStorage();
             return;
         }
@@ -47,7 +46,7 @@ export function authEntranceBtnHandler(e) {
     e.preventDefault();
     authWithEmailAndPassword(email, password);
     homeHeaderLinkBntLogic();
-    //дописати нотіфікашку-привіташку входу
+    Notiflix.Loading.pulse();
     localStorage.mail = refs.authEmailInput.value;
 
 };

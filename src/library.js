@@ -35,3 +35,7 @@ onTeamModal();
 //завантаження теми
 import { onFirstLoadTheme } from './js/changeTheme';
 onFirstLoadTheme();
+
+//надсилання в сховище фаєрбейз кожні 10 секунд
+/* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
+setInterval(giveLocalStorageToFirebaseStorage, 10000); */
