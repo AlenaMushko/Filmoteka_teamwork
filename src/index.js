@@ -14,10 +14,9 @@ import { onFirstLoadTheme } from './js/changeTheme';
 import { getChengeThemeByClick } from './js/changeTheme';
 // import {} from './js/language';
 import { authHandler } from './js/auth';
-
-
-// -------------------------header
 import './js/menuFilters'; /* тимчасово поки імпортую все*/
+
+
 registrationModalOpen();
 // логіка кнопок і посилань навігації хедера
 homeHeaderLinkBntLogic();
@@ -26,6 +25,7 @@ onFirstLoadTheme();
 getChengeThemeByClick();
 //авторизація
 authHandler();
+
 
 
 // ---------------------------main
