@@ -42,49 +42,65 @@ onTeamModal();
 
 // ---------------------------------
 
-// import { MyLibrary } from './js/localStorage';
+import { MyLibrary } from './js/localStorage';
 
-// import { renderFilmCard } from './js/renderFunction';
-// import axios from 'axios';
-// import genresId from './genres.json';
-// import { refs } from './js/refs';
+import { renderFilmCard } from './js/renderFunction';
+import axios from 'axios';
+import genresId from './genres.json';
+import { refs } from './js/refs';
 
-// const myLibrary = new MyLibrary();
-// const KEY = '32432509d17cea42104bbb7507a382c7';
-// const api_key = `?api_key=${KEY}`;
-// const BASE_URL = 'https://api.themoviedb.org/3/';
+const myLibrary = new MyLibrary();
+const KEY = '32432509d17cea42104bbb7507a382c7';
+const api_key = `?api_key=${KEY}`;
+const BASE_URL = 'https://api.themoviedb.org/3/';
 
-// // let arrQueueFilms = myLibrary.getFromQueue();
-// let arrWatchedFilms = myLibrary.getFromWatched();
-// console.log(arrWatchedFilms);
+// let arrQueueFilms = myLibrary.getFromQueue();
+let arrWatchedFilms = myLibrary.getFromWatched();
+console.log(arrWatchedFilms);
 //  getFilmFromLocalStorage()
-// async function getFilmFromLocalStorage(arrWatchedFilms) {
-//   Promise.all(
-//     arrWatchedFilms.map(idWatchedFilm => {
-//       try {
-//         const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
-//         return axios.get(url).then(response => {
-//           if (!response) {
-//             throw new Error(response.status);
-//           }
-//           console.log(response.data);
-//           return response.data;
-//         });
-//       } catch (error) {
-//         console.error();
-//       }
-//     })
-//   );
-// }
+async function getFilmFromLocalStorage(arrWatchedFilms) {
+ const data = await Promise.all(
+    arrWatchedFilms.map(idWatchedFilm => {
+      try {
+        const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
+        return axios.get(url).then(response => {
+          if (!response) {
+            throw new Error(response.status);
+          }
+          return response.data;
+        });
+      } catch (error) {
+        console.error();
+      }
+    }));
+    console.log(data);
+    return data;
+};
 
-// function filmCardToLibrary(id, poster_path, title, original_title, original_name,
-//   release_date, first_air_date, popularity, genres,) {
+renderWatchedFilmInLibrary();
+async function renderWatchedFilmInLibrary() {
+  const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
+  try {
+     console.log(filmInfo);
+    renderFilmCard(filmInfo);
+   
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// function filmCardToLibrary({budget,
+  // id, poster_path, title, original_title, original_name,
+  // release_date, first_air_date, popularity,
+//   genres}) {
+//   console.log(budget);
+//   console.log(genres);
 //   const filmGenres = genres
 //     .slice(0, 3)
 //     .map(({ name }) => name)
 //     .join(', ');
   
-//   return `
+//  const markup = `
 //       <li class="glide__slide" data-id=${id}>
 //       <a class="glide__link" href= "">
 //       <div class="glide__container">
@@ -101,27 +117,20 @@ onTeamModal();
 //                          <p class="films__popularity">${popularity}</p>
 //                          </div></div></a>
 //               </li>`;
+//   refs.glideSlides.innerHTML = markup;
 // }
 
 // function renderCardToLibrary(film) {
 //   const markup = filmCardToLibrary(film);
 //   refs.glideSlides.innerHTML = markup;
-//   // console.log(markup);
-//   // console.log(film);
+  // console.log(markup);
+  // console.log(film);
 // }
 
 
-
-// renderWatchedFilmInLibrary();
-// async function renderWatchedFilmInLibrary(e) {
-//   const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
-//   if (!filmId) {
-//     return;
-//   }
-//   try {
-//     renderCardToLibrary(filmInfo);
-//   } catch (error) {
-//     console.log(error);
-//   }
+// function renderWatchedFilmInLibrary() {
+//   getFilmFromLocalStorage(arrWatchedFilms).then((result) => {
+//     console.log(result);
+//   }).catch((error) => {console.log(error)})
 // }
 
