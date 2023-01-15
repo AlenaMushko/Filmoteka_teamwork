@@ -1,7 +1,5 @@
 import { refs } from './refs';
-//import { UserStorage } from './usersBackend';
 
-//const mail = "dfghgjmailru";
 class UserStorage {
 
     // функція, яка додає в базу даних новий запис 
@@ -31,9 +29,9 @@ class UserStorage {
               }));
             const lastSaving = arrayOfSavings[0];
               for(const saving in lastSaving) {
-                console.log(lastSaving[saving]);
                 localStorage.saving = lastSaving[saving];
-            }
+            };
+            location.reload();
         })
     }
 
