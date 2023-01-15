@@ -125,16 +125,3 @@ onTeamModal();
 //   }
 // }
 
-// // renderWatchedFilmInLibrary();
-// // function renderWatchedFilmInLibrary() {
-// //   getFilmFromLocalStorage(arrWatchedFilms)
-// //     .then(result => {
-// //       // console.log(result);
-// //       renderCard(result);
-// //     })
-// //     .catch(error => {
-// //       console.log(error);
-// //     });
-// // }
-
-// // renderCard()
