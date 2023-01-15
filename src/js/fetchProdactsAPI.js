@@ -38,8 +38,8 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-    //  console.log(response.data.results);     
-  // console.log(response.data);
+        //  console.log(response.data.results);
+        // console.log(response.data);
         return response.data;
       });
     } catch (error) {
@@ -81,24 +81,25 @@ export default class ApiService {
     }
   }
 
-//  пошук фільму по масиву id з localStorage
+  //  пошук фільму по масиву id з localStorage
   async getFilmFromLocalStorage(arrWatchedFilms) {
-    Promise.all(arrWatchedFilms.map((idWatchedFilm) => {
-      try {
-        const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
-        return axios.get(url).then(response => {
-          if (!response) {
-            throw new Error(response.status);
-          }
-          console.log(response.data);
-          return response.data;
-        });
-      } catch (error) {
-        console.error();
-      }
-    }))
+    const data = await Promise.all(
+      arrWatchedFilms.map(idWatchedFilm => {
+        try {
+          const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
+          return axios.get(url).then(response => {
+            if (!response) {
+              throw new Error(response.status);
+            }
+            return response.data;
+          });
+        } catch (error) {
+          console.error();
+        }
+      })
+    );
+    return data;
   }
-  
   //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
@@ -114,9 +115,3 @@ export default class ApiService {
     this.page = newPage;
   }
 }
-
-
-
-
-
-
