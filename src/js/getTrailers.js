@@ -4,19 +4,14 @@ const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
 export async function getTrailersByMovieId(movieID) {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}movie/${movieID}/videos${api_key}`
-    );
-    return response.data.results.filter(value => value.type === 'Trailer');
-  } catch (error) {
-    console.log(error.message);
-  }
+  const response = await axios.get(
+    `${BASE_URL}movie/${movieID}/videos${api_key}`
+  );
+  return response.data.results.filter(value => value.type === 'Trailer');
 }
 
 export async function renderTrailersBtns(trailers) {
   const trailersBtnContainer = document.querySelector('.trailers-btns-list');
-  console.log(trailers);
   const markup = trailers
     .slice(0, 3)
     .map(
@@ -24,7 +19,7 @@ export async function renderTrailersBtns(trailers) {
         `<li><button class="trailerButton" data-key=${trailer.key}>Watch ${trailer.name}</button></li>`
     )
     .join('');
-  trailersBtnContainer.innerHTML(markup);
+  trailersBtnContainer.innerHTML = markup;
 }
 
 export function TrailerModal(trailerKey) {
