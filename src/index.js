@@ -42,6 +42,7 @@ showOrHidePasswordonClick();
 //----------------------------footer
 onTeamModal();
 
-//надсилання в сховище фаєрбейз кожні 10 секунд
-/* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
-setInterval(giveLocalStorageToFirebaseStorage, 10000); */
+//надсилання в сховище фаєрбейз кожні 10 секунд і видалення записаного 10 секунд назад
+import { giveLocalStorageToFirebaseStorage, deleteDataFromFirebaseStorage } from './js/firebaseDatastorage';
+setInterval(deleteDataFromFirebaseStorage, 10000);
+setInterval(giveLocalStorageToFirebaseStorage, 10000);

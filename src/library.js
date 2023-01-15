@@ -7,7 +7,7 @@ import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnLibraryWatchedOrQueue } from './js/watched_queue';
 import {
   giveLocalStorageToFirebaseStorage,
-  deleteUserDataInFirebaseStorage,
+  deleteDataFromFirebaseStorage,
 } from './js/firebaseDatastorage';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
@@ -21,7 +21,8 @@ libraryHeaderLinkBntLogic();
 onFirstLoadThemeLibrary();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
-//надсилання в сховище фаєрбейз кожні 10 секунд
+//надсилання в сховище фаєрбейз кожні 10 секунд і видалення записаного 10 секунд назад
+setInterval(deleteDataFromFirebaseStorage, 10000);
 setInterval(giveLocalStorageToFirebaseStorage, 10000);
 
 //--------------------------------------------body
@@ -35,3 +36,4 @@ scrolToTop();
 //------------------------------------------footer
 // footer
 onTeamModal();
+
