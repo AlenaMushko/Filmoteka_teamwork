@@ -57,9 +57,9 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 // let arrQueueFilms = myLibrary.getFromQueue();
 let arrWatchedFilms = myLibrary.getFromWatched();
 console.log(arrWatchedFilms);
-//  getFilmFromLocalStorage()
+
 async function getFilmFromLocalStorage(arrWatchedFilms) {
- const data = await Promise.all(
+  const data = await Promise.all(
     arrWatchedFilms.map(idWatchedFilm => {
       try {
         const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
@@ -73,64 +73,47 @@ async function getFilmFromLocalStorage(arrWatchedFilms) {
         console.error();
       }
     }));
-    console.log(data);
-    return data;
+  return data;
 };
 
 renderWatchedFilmInLibrary();
 async function renderWatchedFilmInLibrary() {
   const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
   try {
-     console.log(filmInfo);
-    renderFilmCard(filmInfo);
-   
+    console.log(...filmInfo);
+    // renderFilmCard(filmInfo);
+    renderFilmCardLibrary(...filmInfo)
+
   } catch (error) {
     console.log(error);
   }
 }
 
-// function filmCardToLibrary({budget,
-  // id, poster_path, title, original_title, original_name,
-  // release_date, first_air_date, popularity,
-//   genres}) {
-//   console.log(budget);
-//   console.log(genres);
-//   const filmGenres = genres
-//     .slice(0, 3)
-//     .map(({ name }) => name)
-//     .join(', ');
-  
-//  const markup = `
-//       <li class="glide__slide" data-id=${id}>
-//       <a class="glide__link" href= "">
-//       <div class="glide__container">
-//                  <img   class='glide__img' alt= '${
-//                    title || original_title || original_name
-//                  }' width='360' loading="lazy"
-//                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
-//                   <div class="glide__text">
-//                   <h2 class="glide__title">${
-//                     title || original_title || original_name
-//                   }</h2>
-//                   <p class="glide__genres">${filmGenres}<span>|${(release_date ||
-//     first_air_date || 'Not available').slice(0, 4)}</span></p>
-//                          <p class="films__popularity">${popularity}</p>
-//                          </div></div></a>
-//               </li>`;
-//   refs.glideSlides.innerHTML = markup;
-// }
+function renderFilmCardLibrary({ id, poster_path, title, original_title, original_name, release_date, first_air_date, genres, vote_average }) {
+  let filmGenre = genres.slice(0, 3).map(({ name }) => name)
+    .join(', ');
 
-// function renderCardToLibrary(film) {
-//   const markup = filmCardToLibrary(film);
-//   refs.glideSlides.innerHTML = markup;
-  // console.log(markup);
-  // console.log(film);
-// }
+const foto = './images/poster_photo.png';
+const img = `<img   class='film__img lazyload' alt= '${title || original_title || original_name}' width='100%' loading="lazy"
+      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
+const imgPlug = `<img  class="film__img" '${title || original_title || original_name}' width='100%' 
+       src= '${foto}'`;
+
+const markup = `<li class="film__item" data-id=${id}>
+                  ${poster_path ? img : foto}
+                  <h2 class="films__title">${original_title || title || original_name} </h2>
+                  <p class="films__genres">${filmGenre || 'Not available'
+  }<span>|${(release_date || first_air_date || 'Not available').slice(
+    0,
+    4
+  )}</span></p>
+      <p class="films__popularity">${vote_average}</p>
+              </li>`;
+// refs.movieLibrary.innerHTML = markup;
+  console.log(markup);
+  refs.movieLibrary.insertAdjacentHTML('afterbegin', markup);
+}
 
 
-// function renderWatchedFilmInLibrary() {
-//   getFilmFromLocalStorage(arrWatchedFilms).then((result) => {
-//     console.log(result);
-//   }).catch((error) => {console.log(error)})
-// }
+
 
