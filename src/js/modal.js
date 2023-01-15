@@ -33,7 +33,7 @@ export class Modal {
   openTrailerModal(e) {
     const trailerKey = e.target.dataset.key;
     TrailerModal(trailerKey);
-    this.addClassAndListener();
+    // this.addClassAndListener();
   }
 
   async openFilmCardModal(e) {
