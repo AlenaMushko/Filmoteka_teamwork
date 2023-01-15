@@ -42,8 +42,6 @@ onTeamModal();
 
 // ---------------------------------
 
-
-
 // import { MyLibrary } from './js/localStorage';
 
 // import { renderFilmCard } from './js/renderFunction';
@@ -57,11 +55,12 @@ onTeamModal();
 // const BASE_URL = 'https://api.themoviedb.org/3/';
 
 // // let arrQueueFilms = myLibrary.getFromQueue();
-//  let arrWatchedFilms = myLibrary.getFromWatched();
+// let arrWatchedFilms = myLibrary.getFromWatched();
 // console.log(arrWatchedFilms);
-
+//  getFilmFromLocalStorage()
 // async function getFilmFromLocalStorage(arrWatchedFilms) {
-//     Promise.all(arrWatchedFilms.map((idWatchedFilm) => {
+//   Promise.all(
+//     arrWatchedFilms.map(idWatchedFilm => {
 //       try {
 //         const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
 //         return axios.get(url).then(response => {
@@ -74,47 +73,68 @@ onTeamModal();
 //       } catch (error) {
 //         console.error();
 //       }
-//     }))
-// };
-// filmCardToLibrary();
-// function filmCardToLibrary( id, poster_path, title, original_title, original_name, release_date, first_air_date, genre_ids ) {
-//   let filmGenreId = '';
-//   if (genre_ids) {
-//     filmGenreId = genresId
-//       .filter(({ id }) => genre_ids.includes(id))
-//       .map(({ name }) => name)
-//       .join(', ');
-//   }
-//   console.log(filmGenreId);
+//     })
+//   );
+// }
+
+// function filmCardToLibrary(id, poster_path, title, original_title, original_name,
+//   release_date, first_air_date, popularity, genres,) {
+//   const filmGenres = genres
+//     .slice(0, 3)
+//     .map(({ name }) => name)
+//     .join(', ');
+  
 //   return `
 //       <li class="glide__slide" data-id=${id}>
 //       <a class="glide__link" href= "">
 //       <div class="glide__container">
-//                  <img   class='glide__img' alt= '${title || original_title || original_name}' width='360' loading="lazy"
+//                  <img   class='glide__img' alt= '${
+//                    title || original_title || original_name
+//                  }' width='360' loading="lazy"
 //                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
 //                   <div class="glide__text">
-//                   <h2 class="glide__title">${title || original_title || original_name}</h2>
-//                   <p class="glide__genres">${filmGenreId}<span>|${(
-//         release_date || first_air_date|| 'Not available'
-//       ).slice(0, 4)}</span></p></div></div></a>
+//                   <h2 class="glide__title">${
+//                     title || original_title || original_name
+//                   }</h2>
+//                   <p class="glide__genres">${filmGenres}<span>|${(release_date ||
+//     first_air_date || 'Not available').slice(0, 4)}</span></p>
+//                          <p class="films__popularity">${popularity}</p>
+//                          </div></div></a>
 //               </li>`;
 // }
 
-// function renderCard(film) {
-//     const markup = filmCardToLibrary(film);
-//     refs.glideSlides.innerHTML = markup;
-//     // console.log(markup);
-//     // console.log(film);
+// function renderCardToLibrary(film) {
+//   const markup = filmCardToLibrary(film);
+//   refs.glideSlides.innerHTML = markup;
+//   // console.log(markup);
+//   // console.log(film);
 // }
-// renderWatchedFilmInLibrary()
-// function renderWatchedFilmInLibrary() {
-//   getFilmFromLocalStorage(arrWatchedFilms).then(result => {
-//     // console.log(result);
-//     renderCard(result);
-//    }).catch((error)=> {
+
+
+
+// renderWatchedFilmInLibrary();
+// async function renderWatchedFilmInLibrary(e) {
+//   const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
+//   if (!filmId) {
+//     return;
+//   }
+//   try {
+//     renderCardToLibrary(filmInfo);
+//   } catch (error) {
 //     console.log(error);
-//   })
+//   }
 // }
+
+// // renderWatchedFilmInLibrary();
+// // function renderWatchedFilmInLibrary() {
+// //   getFilmFromLocalStorage(arrWatchedFilms)
+// //     .then(result => {
+// //       // console.log(result);
+// //       renderCard(result);
+// //     })
+// //     .catch(error => {
+// //       console.log(error);
+// //     });
+// // }
 
 // // renderCard()
-
