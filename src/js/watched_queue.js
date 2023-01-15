@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-import MyLibrary from './localStorage';
+import { MyLibrary } from './localStorage';
 import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 
