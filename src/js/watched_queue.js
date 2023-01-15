@@ -1,68 +1,43 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-import { MyLibrary } from './localStorage';
 import ApiService from './fetchProdactsAPI';
-import { renderFilmCard } from './renderFunction';
+import { MyLibrary } from './localStorage';
+import { renderFilmCardLibrary } from './renderFunction';
 
-
+// екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
 const apiService = new ApiService();
 
-export function btnClick() {
-refs.btnWatched.addEventListener('click', onWatchedBtnClick);
-refs.btnQueue.addEventListener('click', onQueueBtnClick);  
+let arrWatchedFilms = myLibrary.getFromWatched();
+let arrQueueFilms = myLibrary.getFromQueue();
+
+export function btnLibraryWatchedOrQueue() {
+  Notify.info(`Your film list is empty`);
+  if (
+    refs.btnWatched.addEventListener('click', onWatchedBtnClick) ||
+    refs.btnQueue.addEventListener('click', onQueueBtnClick)
+  ) {
+    refs.movieLibrary.innerHTML = '';
+    refs.emptyTitle.classList.add('is-hidden');
+    refs.emptyImg.classList.add('is-hidden');
+  }
 }
 
-export  function onWatchedBtnClick() {
+// фільми Watched
+async function onWatchedBtnClick() {
+  const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
   try {
-    let arrWatchedFilms = myLibrary.getFromQueue();
-
-    if (arrWatchedFilms) {
-          // renderWatchedFilmInLibrary(arrWatchedFilms);
-    } else  {
-            refs.emptyTitle.classList.remove('is-hidden');
-            refs.emptyImg.classList.remove('is-hidden');
-            Notify.info(
-                `Your film list is empty`
-            );
-    } 
-    } catch (error) {
-        console.log(error.message);
-    }
-    return;
-};
-// Queue
-
-export  function onQueueBtnClick() {
-    try {
-        let arrWatchedFilms = myLibrary.getFromWatched();
-        if (queueMovie) {
-          renderWatchedFilmInLibrary();
-          } else {
-            refs.emptyTitle.classList.remove('is-hidden');
-            refs.emptyImg.classList.remove('is-hidden');
-            Notiflix.Notify.info(
-               `Your film list is empty`
-    );
-        }
-    } catch (error) {
-        console.log(error.message);
-    }
-    return;
-};
-// -------------
-let arrWatchedFilms = myLibrary.getFromWatched();
-
-// renderWatchedFilmInLibrary()
- async function renderWatchedFilmInLibrary() {
-    const results = await getFilmFromLocalStorage(arrWatchedFilms);
-  console.log(results);
-  console.log(arrWatchedFilms);
-  try {
-    renderFilmCard(results);
-    pagination.reset(results.total_results);
+    renderFilmCardLibrary(filmInfo);
   } catch (error) {
     console.log(error);
   }
 }
-
+//  фільми Queue
+async function onQueueBtnClick() {
+  const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
+  try {
+    renderFilmCardLibrary(filmInfo);
+  } catch (error) {
+    console.log(error);
+  }
+}

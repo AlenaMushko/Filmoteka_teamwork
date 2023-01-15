@@ -75,7 +75,7 @@ export function renderFilmCard({ results }) {
         const foto = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='100%' loading="lazy"
-      src='./images/poster_photo.png'/>`;
+      src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
         const img = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='100%' loading="lazy"
@@ -86,7 +86,7 @@ export function renderFilmCard({ results }) {
        src= '${foto}'`;
 
         return `<li class="film__item" data-id=${id}>
-                  ${poster_path ? img : foto}
+                  ${poster_path !== null ? img : foto}
                   <h2 class="films__title">${
                     original_title || title || original_name
                   } </h2>
@@ -133,6 +133,7 @@ export function renderFilmCardLibrary(films) {
       data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
 
       return `<li class="film__item" data-id=${id}>
+      <p class="films__voteaverage">${voteAverage}</p>
                            ${poster_path !== null ? img : foto}
                   <h2 class="films__title">${
                     original_title || title || original_name
@@ -144,11 +145,10 @@ export function renderFilmCardLibrary(films) {
         first_air_date ||
         'Not available'
       ).slice(0, 4)}</span></p>
-      <p class="films__voteaverage">${voteAverage}</p>
               </li>`;
     })
     .join('');
-  refs.movieLibrary.insertAdjacentHTML('afterbegin', markup);
+  refs.movieLibrary.innerHTML = markup;
 }
 
 function cleanTopFilmsMarkUp() {
