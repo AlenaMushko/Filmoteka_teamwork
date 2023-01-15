@@ -16,7 +16,7 @@ export async function renderTrailersBtns(trailers) {
     .slice(0, 3)
     .map(
       trailer =>
-        `<li><button class="trailerButton" data-key=${trailer.key}>Watch ${trailer.name}</button></li>`
+        `<li class="trailers-btns-list__item"><button class="trailers-btns-list__btn btn__modal" data-key=${trailer.key}>${trailer.name}</button></li>`
     )
     .join('');
   trailersBtnContainer.innerHTML = markup;
