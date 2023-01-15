@@ -1,3 +1,4 @@
+import * as basicLightbox from 'basiclightbox';
 const axios = require('axios').default;
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
@@ -23,13 +24,8 @@ export async function renderTrailersBtns(trailers) {
 }
 
 export function TrailerModal(trailerKey) {
-  const TrailerModalContainer = document.querySelector('.trailer-modal');
-  const markup = `<iframe
-    class="modal-readMore__video"
-    src="https://www.youtube.com/embed/${trailerKey}"
-    title="YouTube video player"
-    width="640"
-    height="390"
-  ></iframe>`;
-  TrailerModalContainer.insertAdjacentHTML('beforeend', markup);
+  const instance = basicLightbox.create(`
+    <iframe src="https://www.youtube.com/embed/${trailerKey}" width="782" height="515" frameborder="0"></iframe>
+`);
+  instance.show();
 }
