@@ -12,8 +12,8 @@ import {
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
-import { renderWatchedFilmInLibrary } from './js/functionsForFilms';
-import { renderQueueFilmInLibrary } from './js/functionsForFilms';
+// import { renderWatchedFilmInLibrary } from './js/functionsForFilms';
+// import { renderQueueFilmInLibrary } from './js/functionsForFilms';
 
 // import {} from './js/language';
 // import { renderWatchedFilmInLibrary } from './js/watched_queue';
