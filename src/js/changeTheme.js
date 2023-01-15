@@ -9,6 +9,14 @@ export function onFirstLoadTheme() {
   }
 }
 
+export function onFirstLoadThemeLibrary() {
+  document.querySelector('.theme-dark').disabled = true;
+  const result = localStorage.getItem('ui-theme');
+  if (result === 'dark') {
+    document.querySelector('.theme-dark').disabled = false;
+  }
+}
+
 export function getChengeThemeByClick() {
   themeBtn.addEventListener('click', onThemeBtnClick);
 
