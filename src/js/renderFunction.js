@@ -52,7 +52,7 @@ export function renderFilmCard({ results }) {
   //   : (poster = `${poster_path}`);
 
  
-      const foto = `../images/poster_photo.png`;
+      const foto = './images/poster_photo.png';
       const img = `<img   class='film__img lazyload' alt= '${title || original_title || original_name}' width='100%' loading="lazy"
       data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
       const imgPlug = `<img  class="film__img" '${title || original_title || original_name}' width='100%' 
