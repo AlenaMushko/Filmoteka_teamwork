@@ -4,36 +4,51 @@ import { onTeamModal } from './js/team_modal';
 // логіка кнопок і посилань навігації хедера
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnClick } from './js/watched_queue';
+ import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
 import  'lazysizes' ; 
-// імпорт плагіна 
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import { onFirstLoadTheme } from './js/changeTheme';
+// import {} from './js/language';
 // import { renderWatchedFilmInLibrary } from './js/watched_queue';
 
-sliderRevenueFilms();
-// слайлдер з фільмами, що зібрали найбільшу касу
 
-
-scrolToTop();
-// кнопка повернення до гори
-
+// -------------------------------------------header
+libraryHeaderLinkBntLogic();
+// рендириця картка фільму з id що в  localStorage
+// renderWatchedFilmInLibrary();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
 
-btnClick();
-// по кліку на кнопки рендериться відповідна інформація
-libraryHeaderLinkBntLogic();
-
-// рендириця картка фільму з id що в  localStorage
-// renderWatchedFilmInLibrary(); 
-
-
-// footer
-onTeamModal();
-
 //завантаження теми
-import { onFirstLoadTheme } from './js/changeTheme';
 onFirstLoadTheme();
 
 //надсилання в сховище фаєрбейз кожні 10 секунд
-/* import { giveLocalStorageToFirebaseStorage, deleteUserDataInFirebaseStorage } from './js/firebaseDatastorage';
-setInterval(giveLocalStorageToFirebaseStorage, 10000); */
+setInterval(giveLocalStorageToFirebaseStorage, 10000); 
+
+//--------------------------------------------body
+// слайлдер з фільмами, що зібрали найбільшу касу
+sliderRevenueFilms();
+// по кліку на кнопки рендериться відповідна інформація
+btnClick();
+// кнопка повернення догори
+scrolToTop();
+
+
+//------------------------------------------footer
+// footer
+onTeamModal();
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
