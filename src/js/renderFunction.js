@@ -46,12 +46,6 @@ export function renderFilmCard({ results }) {
         }
       }
 
-  //     let poster = '';
-  // poster_path === null
-  //   ? (poster = '/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg')
-  //   : (poster = `${poster_path}`);
-
- 
       const foto = './images/poster_photo.png';
       const img = `<img   class='film__img lazyload' alt= '${title || original_title || original_name}' width='100%' loading="lazy"
       data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
