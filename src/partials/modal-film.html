@@ -1,36 +1,49 @@
 <div class="film-modal__content">
-  <!-- <img src="https://image.tmdb.org/t/p/original${poster_path}" alt="${original_title}"
-    class="film-modal__img" width="240" height="357">
-  <div class="film-modal__info">
-    <h2 class="film-modal__title">${original_title}</h2>
 
+  <img src="./images/poster_photo.png" alt="poster already on the way" class="film-modal__img" width="240"
+    height="357">
+  <div class="film-modal__info">
+    <h2 class="film-modal__title"></h2>
     <ul class="film-modal__stats-list">
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Vote / Votes</p>
-        <p class="film-modal__txt--right"><span>${vote_average}</span> / <span>${vote_count}</span></p>
+        <p class="film-modal__txt--right film-modal__votes"></p>
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Popularity</p>
-        <p class="film-modal__txt--right">${popularity}</p>
+        <p class="film-modal__txt--right film-modal__popularity"></p>
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Original title</p>
-        <p class="film-modal__txt--right uppercase-info">${original_title}</p>
+        <p class="film-modal__txt--right film-modal__title--small"></p>
       </li>
       <li class="film-modal__stats-item">
         <p class="film-modal__txt--left">Genre</p>
-        <p class="film-modal__txt--right">${filmGenres}</p>
+        <p class="film-modal__txt--right film-modal--genres"></p>
       </li>
     </ul>
-
-    <div class="film-modal__about">
-      <h3 class="film-modal__about-title">About</h3>
-      <p class="film-modal__about-txt">${overview}</p>
-    </div>
-  <div class="film-modal__buttons">
-    <button class="button-watched" type="button">add to watched</button>
-    <button class="button-queue" type="button">add to queue</button>
+    <h3 class="film-modal__about-title">About</h3>
+    <p class="film-modal__about-txt"></p>
+    <ul class="film-modal__buttons-list">
+      <li class="film-modal__buttons-item">
+        <button class="button-watched btn__modal" type="button">add to watched</button>
+      </li>
+      <li class="film-modal__buttons-item">
+        <button class="button-queue btn__modal" type="button">add to queue</button>
+      </li>
+    </ul>
+    <ul class="trailers-btns-list">
+      <!-- <li class="trailers-btns-list__item">
+        <button type="button" class="trailers-btns-list__btn btn__modal">Trailer №1</button>
+      </li>
+      <li class="trailers-btns-list__item">
+        <button type="button" class="trailers-btns-list__btn btn__modal">Trailer №2</button>
+      </li>
+      <li class="trailers-btns-list__item">
+        <button type="button" class="trailers-btns-list__btn btn__modal">Trailer №3</button>
+      </li> -->
+    </ul>
   </div>
-    <ul class="trailers-btns-list"></ul>
-  </div> -->
+
+</div>
 

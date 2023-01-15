@@ -1,5 +1,7 @@
 import { homeHeaderLinkBntLogic } from './headerBtnLinkLogic';
 import { refs } from './refs';
+import Notiflix from 'notiflix';
+import { takeLocalStorageFromFirebaseStorage } from './firebaseDatastorage';
 
 export function authHandler() {
     if (localStorage.auth === "yes") {
@@ -26,9 +28,14 @@ export function authWithEmailAndPassword(email, password) {
       .then(data => {
         if (data.registered === true) {
             localStorage.auth = "yes";
-            location. reload();
+            localStorage.authId = data.localId;
+            takeLocalStorageFromFirebaseStorage();
+            return;
         }
-        
+        Notiflix.Report.failure(
+'There is no such user',
+'Сheck email and password or sign up',
+'Okay',);
     })     
 };
 
@@ -37,7 +44,9 @@ export function authEntranceBtnHandler(e) {
     const password = refs.authPasswordInput.value;
 
     e.preventDefault();
-    //logInModalWindow.closeModal(); 
     authWithEmailAndPassword(email, password);
     homeHeaderLinkBntLogic();
+    if (localStorage === "yes") {Notiflix.Loading.pulse();};
+    localStorage.mail = refs.authEmailInput.value;
+
 };

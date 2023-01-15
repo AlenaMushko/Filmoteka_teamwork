@@ -1,25 +1,31 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
- 
+import { MyLibrary } from './localStorage';
+import ApiService from './fetchProdactsAPI';
+import { renderFilmCard } from './renderFunction';
+
+
+const myLibrary = new MyLibrary();
+const apiService = new ApiService();
+
 export function btnClick() {
 refs.btnWatched.addEventListener('click', onWatchedBtnClick);
 refs.btnQueue.addEventListener('click', onQueueBtnClick);  
 }
 
-
 export  function onWatchedBtnClick() {
-    try {
-        let watchedMovies = localStorage.getItem(key);
-        if (watchedMovies.length >= 1) {
-            watchedMovies = JSON.parse(watchedMovies);
-            renderWatchedFilmCard(watchedMovies);
-          } else {
-            emptyTitle.classList.remove('is-hidden');
-            emptyImg.classList.remove('is-hidden');
+  try {
+    let arrWatchedFilms = myLibrary.getFromQueue();
+
+    if (arrWatchedFilms) {
+          // renderWatchedFilmInLibrary(arrWatchedFilms);
+    } else  {
+            refs.emptyTitle.classList.remove('is-hidden');
+            refs.emptyImg.classList.remove('is-hidden');
             Notify.info(
                 `Your film list is empty`
             );
-        }
+    } 
     } catch (error) {
         console.log(error.message);
     }
@@ -29,13 +35,12 @@ export  function onWatchedBtnClick() {
 
 export  function onQueueBtnClick() {
     try {
-        let queueMovie = localStorage.getItem(key);
-        if (queueMovie.length >= 1) {
-            queueMovie = JSON.parse(queueMovie);
-            renderWatchedFilmCard(queueMovie);
+        let arrWatchedFilms = myLibrary.getFromWatched();
+        if (queueMovie) {
+          renderWatchedFilmInLibrary();
           } else {
-            emptyTitle.classList.remove('is-hidden');
-            emptyImg.classList.remove('is-hidden');
+            refs.emptyTitle.classList.remove('is-hidden');
+            refs.emptyImg.classList.remove('is-hidden');
             Notiflix.Notify.info(
                `Your film list is empty`
     );
@@ -45,36 +50,19 @@ export  function onQueueBtnClick() {
     }
     return;
 };
+// -------------
+let arrWatchedFilms = myLibrary.getFromWatched();
 
-function renderWatchedFilmCard(key) {
-  const markup = key
-    .map(({ id, poster_path, title, release_date, genre_ids }) => {
-      let filmGenre = '';
-      if (genre_ids) {
-        let filmGenreId = genresId
-          .filter(({ id }) => genre_ids.includes(id))
-          .map(({ name }) => name);
+// renderWatchedFilmInLibrary()
+ async function renderWatchedFilmInLibrary() {
+    const results = await getFilmFromLocalStorage(arrWatchedFilms);
+  console.log(results);
+  console.log(arrWatchedFilms);
+  try {
+    renderFilmCard(results);
+    pagination.reset(results.total_results);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-        if (filmGenreId.length >= 4) {
-          filmGenre = `${filmGenreId.slice(0, 2).join(', ')},  Others`;
-        } else {
-          filmGenre = filmGenreId.join(', ');
-        }
-      }
-
-      const img = `<img   class='film__img' alt= '${title}' width='100%'
-      src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
-
-      return `<li class="film__item" data-id=${id}>
-                  ${poster_path ? img : '<p>Poster is not available.</p>'}
-                  <h2 class="films__title">${title}</h2>
-                  <p class="films__genres">${filmGenre || 'Not available'
-        }<span>|${(release_date || 'Not available').slice(
-          0,
-          4
-        )}</span></p>
-              </li>`;
-    })
-    .join('');
-  refs.movieLibrary.innerHTML = markup;
-};
