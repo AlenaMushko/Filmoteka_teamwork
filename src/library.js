@@ -5,10 +5,6 @@ import { onTeamModal } from './js/team_modal';
 // логіка кнопок і посилань навігації хедера
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnLibraryWatchedOrQueue } from './js/watched_queue';
-import {
-  giveLocalStorageToFirebaseStorage,
-  deleteDataFromFirebaseStorage,
-} from './js/firebaseDatastorage';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
