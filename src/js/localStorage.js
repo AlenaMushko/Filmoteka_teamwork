@@ -66,8 +66,8 @@ function removeFromLocalStorage(libraryArrey, lybraryName) {
 }
 
 export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
-    const authAddToWatched = document.querySelector('.js-auth__add-to-watched-btn');
-    const authAddToQueue = document.querySelector('.js-auth__add-to-queue-btn');
+    const authAddToWatched = document.querySelector('.button-watched');
+    const authAddToQueue = document.querySelector('.button-queue');
     const openReg = document.querySelector('.navigation__open--btn');
     
     checkAuthUser();
