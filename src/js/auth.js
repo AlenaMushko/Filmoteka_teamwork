@@ -46,7 +46,7 @@ export function authEntranceBtnHandler(e) {
     e.preventDefault();
     authWithEmailAndPassword(email, password);
     homeHeaderLinkBntLogic();
-    Notiflix.Loading.pulse();
+    if (localStorage === "yes") {Notiflix.Loading.pulse();};
     localStorage.mail = refs.authEmailInput.value;
 
 };
