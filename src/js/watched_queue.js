@@ -22,7 +22,7 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
 
-let pageNumber = ApiService.pageNum(newPage);
+let pageNumber = apiService.page;
 const amountFilmsOnPage = 2;
 
 // фільми Watched
