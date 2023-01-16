@@ -9,7 +9,6 @@ export function addNewUser() {
 };
 
 function signUpBtnHandler() {
-    let ifRegistered;
     const email = refs.authEmailInput.value;
     const password = refs.authPasswordInput.value;
     checkUserRegistration(email, password).then(data => {
