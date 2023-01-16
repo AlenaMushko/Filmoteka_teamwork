@@ -40,8 +40,7 @@ class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-        //  console.log(response.data.results);
-        // console.log(response.data);
+
         return response.data;
       });
     } catch (error) {
@@ -70,7 +69,7 @@ class ApiService {
       throw error;
     }
   }
-  // !метод фільтрів
+  // !метод за яким віпрацьовує запит і пагінація при використанні фільтрів
   async getMoviesForMainView() {
     const { primary_release_year, with_genres, query } = getQueryAtributes();
     if (query) {

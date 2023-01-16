@@ -40,30 +40,10 @@ async function onPaginationClick(event) {
   localStorage.setItem('page-value', page);
   apiService.pageNum = page;
 
-  if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    !localStorage.getItem('query-value')
-  ) {
-    const results = await apiService.getPopularFilms();
-    renderFilmCard(results);
-  } else if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    localStorage.getItem('query-value')
-  ) {
-    apiService.query = localStorage.getItem('query-value');
-    const results = await apiService.getSearchFilms();
-    renderFilmCard(results);
-  } else {
-    const results = await apiService.getMoviesForMainView(
-      page,
-      localStorage.getItem('input-value'),
-      localStorage.getItem('genre-value'),
-      localStorage.getItem('year-value')
-    );
-    renderFilmCard(results);
-  }
+  // !вся така логіка яка відповідає за вибор методу апісервіс знаходиься в методі getMoviesForMainView
+  const results = await apiService.getMoviesForMainView();
+  renderFilmCard(results);
+  console.log(results);
 }
 
 export function cleanPagination() {

@@ -13,6 +13,12 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 // !функця запису в локалсторедж
 
 const saveLocalStorage = (key, value) => {
+  // try {
+  //   const serialized = JSON.stringify(value);
+  //   localStorage.setItem(key, serialized);
+  // } catch (error) {
+  //   console.error('Set error: ', error.message);
+  // }
   localStorage.setItem(key, value);
 };
 
@@ -20,6 +26,12 @@ const saveLocalStorage = (key, value) => {
 
 const loadLocalStorage = key => {
   return localStorage.getItem(key);
+  // try {
+  //   const serialized = localStorage.getItem(key);
+  //   return serialized === null ? undefined : JSON.parse(serialized);
+  // } catch (error) {
+  //   console.error('Get error: ', error.message);
+  // }
 };
 
 // !функція яка видаляє з локалсторедж
@@ -74,7 +86,7 @@ let year = loadLocalStorage('year-value');
 refs.filterByGenre.addEventListener('click', onSelectGenre);
 refs.filterByYear.addEventListener('click', onSelectYear);
 refs.resetButton.addEventListener('click', onSelectReset);
-refs.logoBtn.addEventListener('click', onLogoClick);
+// refs.logoBtn.addEventListener('click', onLogoClick);
 
 // !функція запиту при відпрацюванні по кліку фільтра
 
@@ -87,9 +99,14 @@ export const getQueryAtributes = () => ({
 export const getFilterQuery = () => {
   const searchAttributes = getQueryAtributes();
 
+  // тут query нам не потрібен бо він підставляється всередені apiService
+  delete searchAttributes.query;
+
+  // query should always be present even if empty
   const searchKeyValuePairs = Object.entries(searchAttributes).filter(
     ([key, value]) => Boolean(value)
   );
+
   return searchKeyValuePairs.reduce(
     (acc, [filterKey, filterValue]) => `${acc}&${filterKey}=${filterValue}`,
     ''
@@ -104,12 +121,15 @@ function onSelectReset(e) {
   genre = '';
   year = '';
   page = 1;
+
+  // page is stored to localStore within the apiService
   apiService.pageNum = page;
-  resetQuery();
   saveLocalStorage('genre-value', genre);
   saveLocalStorage('year-value', year);
   saveLocalStorage('page-value', page);
-  apiService.getMoviesForMainView().then(data => {
+  resetQuery();
+
+  apiService.getPopularFilms().then(data => {
     renderFilmCard(data);
     // додаю пагінацію
     pagination.reset(data.total_results);
@@ -121,27 +141,28 @@ function onSelectReset(e) {
 // !функція фільтраціі за жанром
 
 async function onSelectGenre(e) {
-  Loading.pulse('Loading...', {
-    backgroundColor: 'rgba(0,0,0,0.8)',
-  });
-  genre = e.target.value;
-  apiService.pageNum = 1;
-  saveLocalStorage('page-value', page);
-  saveLocalStorage('genre-value', genre);
+  if (e) {
+    Loading.pulse('Loading...', {
+      backgroundColor: 'rgba(0,0,0,0.8)',
+    });
+    genre = e.target.value;
+    apiService.pageNum = 1;
+    saveLocalStorage('page-value', page);
+    saveLocalStorage('genre-value', genre);
 
-  try {
-    const data = await apiService.getMoviesForMainView();
-    console.log(data);
-    renderFilmCard(data);
-    //додаю пагінацію
-    pagination.reset(data.total_results);
-  } catch (e) {
-    // decide whether to throw upper or not
-    // decide whether to render 0 items
-    // renderFilmCard({ result: [] });
-    // or leave the page as is
-  } finally {
-    Loading.remove();
+    try {
+      const data = await apiService.getMoviesForMainView();
+      renderFilmCard(data);
+      //додаю пагінацію
+      pagination.reset(data.total_results);
+    } catch (e) {
+      // decide whether to throw upper or not
+      // decide whether to render 0 items
+      // renderFilmCard({ result: [] });
+      // or leave the page as is
+    } finally {
+      Loading.remove();
+    }
   }
 }
 
