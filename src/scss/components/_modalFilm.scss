@@ -1,6 +1,7 @@
 // Підключити цей файл в _components.scss
 
 .film-modal {
+  border-radius: 4px;
   padding: 48px 20px 40px;
 
   @media screen and (max-height: 1069px) and (max-width: 767px) {

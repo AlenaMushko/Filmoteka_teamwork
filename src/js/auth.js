@@ -11,20 +11,23 @@ export function authHandler() {
     };
 };
 
-export function authWithEmailAndPassword(email, password) {
-    const apiKey = 'AIzaSyCh4IOUhN3RY5RpYi3dFrDkgc69KqBpI3o';
-
-    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+export function checkUserRegistration(email, password) {
+  const apiKey = 'AIzaSyCh4IOUhN3RY5RpYi3dFrDkgc69KqBpI3o';
+  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
       method: 'POST',
       body: JSON.stringify({
         email, password,
         returnSecureToken: true
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      })
     })
       .then(response => response.json())
+};
+
+export function authWithEmailAndPassword() {
+  const email = refs.authEmailInput.value;
+  const password = refs.authPasswordInput.value;
+
+    return checkUserRegistration(email, password)
       .then(data => {
         if (data.registered === true) {
             localStorage.auth = "yes";
@@ -40,13 +43,9 @@ export function authWithEmailAndPassword(email, password) {
 };
 
 export function authEntranceBtnHandler(e) {
-    const email = refs.authEmailInput.value;
-    const password = refs.authPasswordInput.value;
-
     e.preventDefault();
     authWithEmailAndPassword(email, password);
     homeHeaderLinkBntLogic();
     if (localStorage === "yes") {Notiflix.Loading.pulse();};
     localStorage.mail = refs.authEmailInput.value;
-
 };
