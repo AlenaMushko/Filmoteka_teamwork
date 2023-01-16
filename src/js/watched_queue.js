@@ -23,7 +23,7 @@ export function btnLibraryWatchedOrQueue() {
 }
 
 let pageNumber = apiService.page;
-const amountFilmsOnPage = 2;
+const amountFilmsOnPage = 12;
 
 // фільми Watched
 async function onWatchedBtnClick() {
@@ -31,13 +31,26 @@ async function onWatchedBtnClick() {
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = Math.ceil(arrWatchedFilms.length / amountFilmsOnPage);
-    let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    console.log(amountFilmsOnPage);
+
+    if(arrWatchedFilms.length < amountFilmsOnPage) {
+      let filmsOnPage = arrWatchedFilms;
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
     } catch (error) {
       console.log(error);
     }
+    } else {
+      let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+    } catch (error) {
+      console.log(error);
+    }
+    };
+    
   } else {
     cleanLibrary();
   }
