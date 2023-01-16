@@ -30,9 +30,9 @@ export function renderSliderFilmCard({ results }) {
                  }' width='360' loading="lazy"
                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
                   <div class="glide__text">
-                  <h2 class="glide__title">${
+                  <h3 class="glide__title">${
                     title || original_title || original_name
-                  }</h2>
+                  }</h3>
                   <p class="glide__genres">${filmGenreId}<span>|${(
           release_date ||
           first_air_date ||
@@ -87,9 +87,9 @@ export function renderFilmCard({ results }) {
 
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
-                  <h2 class="films__title">${
+                  <h3 class="films__title">${
                     original_title || title || original_name
-                  } </h2>
+                  } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
                   }<span>|${(
@@ -135,9 +135,9 @@ export function renderFilmCardLibrary(films) {
       return `<li class="film__item" data-id=${id}>
       <p class="films__voteaverage">${voteAverage}</p>
                            ${poster_path !== null ? img : foto}
-                  <h2 class="films__title">${
+                  <h3 class="films__title">${
                     original_title || title || original_name
-                  } </h2>
+                  } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
                   }<span>|${(
