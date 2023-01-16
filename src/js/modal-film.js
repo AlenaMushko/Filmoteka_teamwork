@@ -3,7 +3,8 @@ import { Modal } from "./modal";
 // ⚠️ Підключити цю функцію в index.js ⚠️
 export function filmCardModalWindow() {
   const filmCardModal = new Modal(
-    ".films",
+    // ".top-films" || ".library-films" || ".glide__slides",
+    ".top-films",
     ".film-modal__close-btn",
     ".film-modal__overlay",
     ".film-modal"

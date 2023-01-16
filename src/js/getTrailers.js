@@ -27,10 +27,13 @@ export async function renderTrailersBtns(trailers) {
   }
   const markup = trailers
     .slice(0, 3)
-    .map(
-      trailer =>
-        `<li class="trailers-btns-list__item"><button class="trailers-btns-list__btn btn__modal" data-key=${trailer.key}>${trailer.name}</button></li>`
-    )
+    .map(trailer => {
+      let name = trailer.name;
+      if (trailer.name.length > 30) {
+        name = trailer.name.slice(0, 30).concat('', '...');
+      }
+      return `<li class="trailers-btns-list__item"><button class="trailers-btns-list__btn btn__modal" data-key=${trailer.key} title="${trailer.name}">${name}</button></li>`;
+    })
     .join('');
   trailersBtnContainer.innerHTML = markup;
 }

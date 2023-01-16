@@ -21,7 +21,6 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
-
 const amountFilmsOnPage = 12;
 let pageNumber = apiService.page;
 
@@ -50,6 +49,8 @@ async function onWatchedBtnClick() {
     } catch (error) {
       console.log(error);
     }
+    };
+    
   } else {
     cleanLibrary();
   }
@@ -59,7 +60,6 @@ async function onQueueBtnClick() {
   let filmsOnPage = [];
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-
     let totalPages = arrQueueFilms.length;
 
     if (pageNumber === 1) {
@@ -77,6 +77,8 @@ async function onQueueBtnClick() {
     } catch (error) {
       console.log(error);
     }
+    };
+    
   } else {
     cleanLibrary();
   }

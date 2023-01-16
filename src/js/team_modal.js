@@ -50,3 +50,15 @@ export function onTeamModal() {
   clickClose.addEventListener('click', teamModalClose);
   clickOverlay.addEventListener('click', teamModalClose);
 }
+
+
+//
+const footerContainer =document.querySelector('.footer__container');
+footerContainer.addEventListener('click', hrefPrevDef)
+function hrefPrevDef(e) {
+ if (e.target.ownerDocument.activeElement.attributes[0].nodeValue == '#'){
+  e.preventDefault();
+}
+   
+}
+

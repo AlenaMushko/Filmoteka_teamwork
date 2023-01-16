@@ -6,7 +6,7 @@
 
   @media screen and (max-height: 1069px) and (max-width: 767px) {
     top: 15px;
-    transform: translateX(-50%) scale(0.7);
+    transform: translateX(-50%) scale(.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -15,7 +15,7 @@
 
   @media screen and (max-height: 681px) and (max-width: 1279px) {
     top: 15px;
-    transform: translateX(-50%) scale(0.7);
+    transform: translateX(-50%) scale(.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -24,7 +24,7 @@
 
   @media screen and (max-height: 616px) and (min-width: 1280px) {
     top: 15px;
-    transform: translateX(-50%) scale(0.7);
+    transform: translateX(-50%) scale(.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -43,8 +43,13 @@
 .film-modal__content {
   display: flex;
   flex-direction: column;
+  row-gap: 20px;
   @include mq(tablet) {
     flex-direction: row;
+    gap: 0 67px;
+  }
+  @include mq(desktop) {
+    column-gap: 16px;
   }
 }
 
@@ -52,16 +57,24 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  margin-bottom: 20px;
   @include mq(tablet) {
     width: 264px;
     height: 374px;
-    margin: 0 68px 0 0;
   }
   @include mq(desktop) {
     width: 375px;
     height: 478px;
-    margin: 0 16px 0 0;
+  }
+}
+
+.film-modal__info {
+  width: 100%;
+  @include mq(tablet) {
+    width: 265px;
+  }
+
+  @include mq(desktop) {
+    width: 391px;
   }
 }
 
@@ -146,8 +159,12 @@
 }
 
 .film-modal__buttons-list {
-  @include flex(flex, flex-start, center);
+  display: flex;
   margin-bottom: 20px;
+  column-gap: 20px;
+  @include mq(tablet) {
+    column-gap: 15px;
+  }
 }
 
 .button-watched,
@@ -156,11 +173,8 @@
   text-transform: uppercase;
 }
 
-.film-modal__buttons-item:first-child {
-  margin-right: 20px;
-  @include mq(tablet) {
-    margin-right: 15px;
-  }
+.film-modal__watch-trailers-title {
+  margin-top: 20px;
 }
 
 .trailers-btns-list {

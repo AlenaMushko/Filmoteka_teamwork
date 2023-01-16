@@ -9,6 +9,7 @@ export default class ApiService {
     this.totalResults = 0;
     this.searchQuery = '';
     this.page = 1;
+    this.filmsOnPage = 12;
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
