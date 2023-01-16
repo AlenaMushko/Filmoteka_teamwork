@@ -1,8 +1,8 @@
 import { refs } from './refs';
 import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
-  setInterval(deleteDataFromFirebaseStorage, 10000);
-  setInterval(giveLocalStorageToFirebaseStorage, 10000);
+  setInterval(deleteDataFromFirebaseStorage, 1000);
+  setInterval(giveLocalStorageToFirebaseStorage, 1000);
   addNewUser();
 };
 class UserStorage {
