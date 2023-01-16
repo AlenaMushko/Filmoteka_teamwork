@@ -1,13 +1,10 @@
 import { langArr } from './translation';
 const allLangs = ['en', 'ua'];
-let currentLang =
-  localStorage.getItem('language') || navigator.language || 'en';
+let currentLang = localStorage.getItem('language') || 'en';
 
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
 let currentText = {};
-
-// console.log(currentLang);
 
 function checkPagePathName() {
   switch (currentPatName) {
@@ -47,10 +44,11 @@ changeLang();
 
 function changeLangPlaceholder() {
   const inputHome = document.querySelector('.search__field');
-  if(!inputHome) {
-    return
+  if (!inputHome) {
+    return;
   }
-    document.querySelector(".search__field").placeholder = langArr['search'][currentLang];
+  document.querySelector('.search__field').placeholder =
+    langArr['search'][currentLang];
 }
 changeLangPlaceholder();
 
@@ -80,7 +78,7 @@ function checkActiveLangBtn() {
       document.querySelector(`[data-btn='en']`).classList.add('btn-active');
       break;
     default:
-        document.querySelector(`[data-btn='en']`).classList.add('btn-active');
+      document.querySelector(`[data-btn='en']`).classList.add('btn-active');
       break;
   }
 }
