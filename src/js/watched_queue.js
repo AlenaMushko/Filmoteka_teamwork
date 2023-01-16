@@ -27,7 +27,7 @@ async function onWatchedBtnClick() {
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = Math.ceil(arrWatchedFilms.length / 12);
-    let filmsOnPage = arrWatchedFilms;
+    // let filmsOnPage = arrWatchedFilms;
     console.log(arrWatchedFilms);
     const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
     try {
