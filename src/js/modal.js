@@ -31,15 +31,20 @@ export class Modal {
 
   async openFilmCardModal(e) {
     e.preventDefault();
-    clearModalFilmCard();
 
     const filmId = e.target.parentNode.dataset.id;
-    const filmIdNumber = Number(filmId);
-    const filmInfo = await apiService.getFilmById(filmIdNumber);
-    const trailers = await getTrailersByMovieId(filmIdNumber);
+    // const filmId = e.target.dataset.id;
     if (!filmId) {
       return;
     }
+
+    clearModalFilmCard();
+
+    
+    const filmIdNumber = Number(filmId);
+    const filmInfo = await apiService.getFilmById(filmIdNumber);
+    const trailers = await getTrailersByMovieId(filmIdNumber);
+    
 
     try {
       renderModalFilmCard(filmInfo);
