@@ -1,9 +1,10 @@
 import Glide from '@glidejs/glide';
 
-import ApiService from './fetchProdactsAPI';
+// import ApiService from './fetchProdactsAPI';
+import apiService from './fetchProdactsAPI';
 import { renderSliderFilmCard } from './renderFunction';
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 // екземпляр класу в який пишемо виклики фільмів по потребі
 
 new Glide('.glide', {

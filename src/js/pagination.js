@@ -1,12 +1,8 @@
 import Pagination from 'tui-pagination';
 import { onMyButtonClick } from './scrolToTop';
-import ApiService from './fetchProdactsAPI';
+import apiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
-import { getSearchByFilters } from './menuFilters';
-
-const apiService = new ApiService();
-
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -41,32 +37,13 @@ pagination.on('afterMove', onPaginationClick);
 async function onPaginationClick(event) {
   onMyButtonClick();
   const page = event.page;
-  if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    !localStorage.getItem('input-value')
-  ) {
-    apiService.pageNum = page;
-    const results = await apiService.getPopularFilms();
-    renderFilmCard(results);
-  } else if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    localStorage.getItem('input-value')
-  ) {
-    apiService.query = localStorage.getItem('input-value');
-    apiService.pageNum = page;
-    const results = await apiService.getSearchFilms();
-    renderFilmCard(results);
-  } else {
-    const results = await getSearchByFilters(
-      page,
-      localStorage.getItem('input-value'),
-      localStorage.getItem('genre-value'),
-      localStorage.getItem('year-value')
-    );
-    renderFilmCard(results);
-  }
+  localStorage.setItem('page-value', page);
+  apiService.pageNum = page;
+
+  // !вся така логіка яка відповідає за вибор методу апісервіс знаходиься в методі getMoviesForMainView
+  const results = await apiService.getMoviesForMainView();
+  renderFilmCard(results);
+  console.log(results);
 }
 
 export function cleanPagination() {
