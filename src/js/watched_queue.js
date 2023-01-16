@@ -1,12 +1,11 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-import ApiService from './fetchProdactsAPI';
+import apiService from './fetchProdactsAPI';
 import { MyLibrary } from './localStorage';
 import { renderFilmCardLibrary } from './renderFunction';
 
 // екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
-const apiService = new ApiService();
 
 let arrWatchedFilms = myLibrary.getFromWatched();
 let arrQueueFilms = myLibrary.getFromQueue();
@@ -85,3 +84,4 @@ function cleanLibrary() {
   refs.libraryEmpty.classList.remove('is-hidden');
   refs.movieLibrary.innerHTML = '';
 }
+

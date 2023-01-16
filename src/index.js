@@ -14,7 +14,9 @@ import { onFirstLoadTheme } from './js/changeTheme';
 import { getChengeThemeByClick } from './js/changeTheme';
 import {} from './js/language';
 import { authHandler } from './js/auth';
-import './js/menuFilters'; /* тимчасово поки імпортую все*/
+
+// -------------------------header
+import * as menuFilters from './js/menuFilters'; /* тимчасово поки імпортую все*/
 
 registrationModalOpen();
 // логіка кнопок і посилань навігації хедера
@@ -45,3 +47,4 @@ onTeamModal();
 //робота зі сховищем фаєрбейз
 import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
 firebaseRealtimeDatabase();
+

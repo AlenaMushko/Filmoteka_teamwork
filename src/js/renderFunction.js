@@ -5,6 +5,7 @@ export function renderSliderFilmCard({ results }) {
   const markup = results
     .map(
       ({
+
         id,
         poster_path,
         title,
@@ -145,8 +146,10 @@ export function renderFilmCardLibrary(films) {
         first_air_date ||
         'Not available'
       ).slice(0, 4)}</span></p>
+
               </li>`;
-    })
+      }
+    )
     .join('');
   refs.movieLibrary.innerHTML = markup;
 }
