@@ -32,7 +32,6 @@ checkPagePathName();
 // console.log(queue.textContent);
 
 function changeLang() {
-  // document.querySelector(".search__field").placeholder = langArr['search'][currentLang];
   // const watched = document.querySelector(".change-lang-watch");
   // watched.textContent = langArr['add-watched'][currentLang];
   // const queue =  document.querySelector(".change-lang-queue");
@@ -45,6 +44,15 @@ function changeLang() {
   }
 }
 changeLang();
+
+function changeLangPlaceholder() {
+  const inputHome = document.querySelector('.search__field');
+  if(!inputHome) {
+    return
+  }
+    document.querySelector(".search__field").placeholder = langArr['search'][currentLang];
+}
+changeLangPlaceholder();
 
 langBtn.forEach(btn => {
   btn.addEventListener('click', e => {
@@ -72,10 +80,10 @@ function checkActiveLangBtn() {
       document.querySelector(`[data-btn='en']`).classList.add('btn-active');
       break;
     default:
-      //   document.querySelector(`[data-btn='en']`).classList.add('btn-active');
+        document.querySelector(`[data-btn='en']`).classList.add('btn-active');
       break;
   }
 }
-checkActiveLangBtn();
+// checkActiveLangBtn();
 
 export {};
