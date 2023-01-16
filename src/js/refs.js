@@ -28,6 +28,7 @@ export const refs = {
   filterByYear: document.getElementById('years-container'),
   resetButton: document.getElementById('button-reset'),
   warningContainer: document.getElementById('warning'),
+  logoBtn: document.getElementById('logo'),
 
   //ссилки для авторизації
 
@@ -45,7 +46,7 @@ export const refs = {
   emptyTitle: document.querySelector('.library-empty__title'),
   emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
-// паролі
+  // паролі
   modalSignIn: document.querySelector('.modal__log-in'),
   inputPassword: document.querySelector('#password'),
   buttonShowPassword: document.querySelector('#button_show_password'),

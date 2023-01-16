@@ -3,6 +3,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
+import apiService from './fetchProdactsAPI';
+import { resetQuery } from './searchFilms';
 
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
@@ -11,23 +13,13 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 // !функця запису в локалсторедж
 
 const saveLocalStorage = (key, value) => {
-  try {
-    const serialized = JSON.stringify(value);
-    localStorage.setItem(key, serialized);
-  } catch (error) {
-    console.error('Set error: ', error.message);
-  }
+  localStorage.setItem(key, value);
 };
 
 // !функція вигрузки з локалсторедж значення за ключем
 
 const loadLocalStorage = key => {
-  try {
-    const serialized = localStorage.getItem(key);
-    return serialized === null ? undefined : JSON.parse(serialized);
-  } catch (error) {
-    console.error('Get error: ', error.message);
-  }
+  return localStorage.getItem(key);
 };
 
 // !функція яка видаляє з локалсторедж
@@ -59,56 +51,49 @@ function addListLibrary(id, select) {
   saveLocalStorage(sel, libraryData);
 }
 
-// !функція яка перетворює данні у валідний JSON
 function dataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
 }
 
+function onLogoClick(e) {
+  page = 1;
+  query = '';
+  genre = '';
+  year = '';
+  saveLocalStorage('page-value', page);
+  saveLocalStorage('query-value', query);
+  saveLocalStorage('genre-value', genre);
+  saveLocalStorage('year-value', year);
+}
+
 let page = loadLocalStorage('page-value');
-let query = loadLocalStorage('query-pg');
+let query = loadLocalStorage('query-value');
 let genre = loadLocalStorage('genre-value');
 let year = loadLocalStorage('year-value');
 
 refs.filterByGenre.addEventListener('click', onSelectGenre);
 refs.filterByYear.addEventListener('click', onSelectYear);
 refs.resetButton.addEventListener('click', onSelectReset);
+refs.logoBtn.addEventListener('click', onLogoClick);
 
 // !функція запиту при відпрацюванні по кліку фільтра
 
-export const getSearchByFilters = async (
-  page = '',
-  query = '',
-  genre = '',
-  year = ''
-) => {
-  let f = {
-    year: year !== '' ? `&primary_release_year=${year}` : '',
-    genre: genre !== '' ? `&with_genres=${genre}` : '',
-    queryFetch: `&query=${query}`,
-    discover: `/trending`,
-    week: `/week`,
-  };
-  if (query === '') {
-    f.queryFetch = '';
-  }
-  if (query !== '' && genre === '') {
-    f.discover = '/search';
-    f.week = '';
-  }
-  if (query === '' && genre !== '') {
-    f.discover = '/discover';
-    f.week = '';
-  }
-  if (query === '' && year !== '') {
-    f.discover = '/discover';
-    f.week = '';
-  }
-  let { data } = await axios.get(
-    `${BASE_URL}${f.discover}/movie${f.week}?api_key=${KEY}${f.genre}${f.year}&language=en-US${f.queryFetch}&page=${page}`
-  );
-  saveLocalStorage('moviesData', data.results);
+export const getQueryAtributes = () => ({
+  primary_release_year: localStorage.getItem('year-value'),
+  with_genres: localStorage.getItem('genre-value'),
+  query: localStorage.getItem('query-value'),
+});
 
-  return data;
+export const getFilterQuery = () => {
+  const searchAttributes = getQueryAtributes();
+
+  const searchKeyValuePairs = Object.entries(searchAttributes).filter(
+    ([key, value]) => Boolean(value)
+  );
+  return searchKeyValuePairs.reduce(
+    (acc, [filterKey, filterValue]) => `${acc}&${filterKey}=${filterValue}`,
+    ''
+  );
 };
 
 // !фунція яка робить скидання фільтраціі і перезавантаження сторінки до поточного стану
@@ -119,38 +104,44 @@ function onSelectReset(e) {
   genre = '';
   year = '';
   page = 1;
-
+  apiService.pageNum = page;
+  resetQuery();
   saveLocalStorage('genre-value', genre);
   saveLocalStorage('year-value', year);
   saveLocalStorage('page-value', page);
-  getSearchByFilters(page, query, genre, year).then(data => {
+  apiService.getMoviesForMainView().then(data => {
     renderFilmCard(data);
     // додаю пагінацію
     pagination.reset(data.total_results);
     dataUpdate(data);
     Loading.remove();
   });
-  saveLocalStorage('page-value', page);
 }
 
 // !функція фільтраціі за жанром
 
-function onSelectGenre(e) {
-  if (e) {
-    Loading.pulse('Loading...', {
-      backgroundColor: 'rgba(0,0,0,0.8)',
-    });
-    genre = e.target.value;
-    page = 1;
-    saveLocalStorage('page-value', page);
-    saveLocalStorage('genre-value', genre);
-    getSearchByFilters(page, query, genre, year).then(data => {
-      renderFilmCard(data);
-      //додаю пагінацію
-      pagination.reset(data.total_results);
+async function onSelectGenre(e) {
+  Loading.pulse('Loading...', {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+  });
+  genre = e.target.value;
+  apiService.pageNum = 1;
+  saveLocalStorage('page-value', page);
+  saveLocalStorage('genre-value', genre);
 
-      Loading.remove();
-    });
+  try {
+    const data = await apiService.getMoviesForMainView();
+    console.log(data);
+    renderFilmCard(data);
+    //додаю пагінацію
+    pagination.reset(data.total_results);
+  } catch (e) {
+    // decide whether to throw upper or not
+    // decide whether to render 0 items
+    // renderFilmCard({ result: [] });
+    // or leave the page as is
+  } finally {
+    Loading.remove();
   }
 }
 
@@ -159,11 +150,10 @@ function onSelectYear(e) {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
   });
-  page = 1;
-  saveLocalStorage('page-value', page);
+  apiService.pageNum = 1;
   year = e.target.value;
   saveLocalStorage('year-value', year);
-  getSearchByFilters(page, query, genre, year).then(data => {
+  apiService.getMoviesForMainView().then(data => {
     renderFilmCard(data);
     //додаю пагінацію
     pagination.reset(data.total_results);

@@ -1,4 +1,5 @@
-import ApiService from './fetchProdactsAPI';
+// import ApiService from './fetchProdactsAPI';
+import apiService from './fetchProdactsAPI';
 import {
   renderModalFilmCard,
   clearModalFilmCard,
@@ -10,7 +11,7 @@ import {
 // } from './getTrailers';
 // import { filmTrailerModalWindow } from './modal-trailer';
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 // Клас, який створює об'єкт модалки з методами закриття/відкриття
 export class Modal {
