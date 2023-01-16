@@ -41,7 +41,6 @@ async function onWatchedBtnClick() {
         12 * pageNumber + 1
       );
     }
-
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
@@ -49,12 +48,11 @@ async function onWatchedBtnClick() {
     } catch (error) {
       console.log(error);
     }
-    };
-    
   } else {
     cleanLibrary();
   }
 }
+
 //  фільми Queue
 async function onQueueBtnClick() {
   let filmsOnPage = [];
@@ -77,8 +75,6 @@ async function onQueueBtnClick() {
     } catch (error) {
       console.log(error);
     }
-    };
-    
   } else {
     cleanLibrary();
   }
