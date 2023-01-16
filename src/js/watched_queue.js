@@ -23,7 +23,7 @@ export function btnLibraryWatchedOrQueue() {
 }
 
 let pageNumber = apiService.page;
-const amountFilmsOnPage = 2;
+const amountFilmsOnPage = 12;
 
 // фільми Watched
 async function onWatchedBtnClick() {
@@ -31,13 +31,25 @@ async function onWatchedBtnClick() {
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = Math.ceil(arrWatchedFilms.length / amountFilmsOnPage);
-    let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+
+    if(arrWatchedFilms.length < amountFilmsOnPage) {
+      let filmsOnPage = arrWatchedFilms;
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
     } catch (error) {
       console.log(error);
     }
+    } else {
+      let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+    } catch (error) {
+      console.log(error);
+    }
+    };
+    
   } else {
     cleanLibrary();
   }
@@ -47,13 +59,25 @@ async function onQueueBtnClick() {
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = Math.ceil(arrQueueFilms.length / amountFilmsOnPage);
-    let filmsOnPage = arrQueueFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    
+    if(arrQueueFilms.length < amountFilmsOnPage) {
+      let filmsOnPage = arrQueueFilms;
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
     } catch (error) {
       console.log(error);
     }
+    } else {
+      let filmsOnPage = arrQueueFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+    } catch (error) {
+      console.log(error);
+    }
+    };
+    
   } else {
     cleanLibrary();
   }
