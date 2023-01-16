@@ -22,16 +22,31 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
 
+const amountFilmsOnPage = 12;
+let pageNumber = apiService.page;
+
 // фільми Watched
 async function onWatchedBtnClick() {
+  let filmsOnPage = [];
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrWatchedFilms.length / 12);
-    let filmsOnPage = arrWatchedFilms;
-    console.log(arrWatchedFilms);
-    const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
+    let totalPages = arrWatchedFilms.length;
+    if (pageNumber === 1) {
+      filmsOnPage = arrWatchedFilms.slice(
+        2 * (pageNumber - 1),
+        12 * pageNumber
+      );
+    } else {
+      filmsOnPage = arrWatchedFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber + 1
+      );
+    }
+
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -41,13 +56,24 @@ async function onWatchedBtnClick() {
 }
 //  фільми Queue
 async function onQueueBtnClick() {
+  let filmsOnPage = [];
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrQueueFilms.length / 12);
 
-    const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
+    let totalPages = arrQueueFilms.length;
+
+    if (pageNumber === 1) {
+      filmsOnPage = arrQueueFilms.slice(2 * (pageNumber - 1), 12 * pageNumber);
+    } else {
+      filmsOnPage = arrQueueFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber - 1 + 1
+      );
+    }
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
