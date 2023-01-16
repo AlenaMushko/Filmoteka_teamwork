@@ -32,8 +32,6 @@ async function onWatchedBtnClick() {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = Math.ceil(arrWatchedFilms.length / amountFilmsOnPage);
     let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-    console.log(arrWatchedFilms);
-    console.log(filmsOnPage);
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
