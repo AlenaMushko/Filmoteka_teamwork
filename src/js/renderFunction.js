@@ -75,7 +75,7 @@ export function renderFilmCard({ results }) {
         const foto = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='100%' loading="lazy"
-      src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
+      data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
         const img = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='100%' loading="lazy"
@@ -126,7 +126,7 @@ export function renderFilmCardLibrary(films) {
       const foto = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name
       }' width='100%' loading="lazy"
-      src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
+      data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
       const img = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name
       }' width='100%' loading="lazy"

@@ -18,7 +18,6 @@ export default class ApiService {
         if (!response) {
           throw new Error(response.status);
         }
-        console.log(response.data);
         return response.data;
       });
     } catch (error) {
@@ -69,11 +68,15 @@ export default class ApiService {
   // пошук фільму по id
   async getFilmById(id) {
     try {
+      Loading.pulse('Loading...', {
+        backgroundColor: 'rgba(0,0,0,0.8)',
+      });
       const url = `${BASE_URL}movie/${id}${api_key}&append_to_response=images`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
+        Loading.remove();
         return response.data;
       });
     } catch (error) {
@@ -86,11 +89,15 @@ export default class ApiService {
     const data = await Promise.all(
       arrWatchedFilms.map(idWatchedFilm => {
         try {
+          Loading.pulse('Loading...', {
+            backgroundColor: 'rgba(0,0,0,0.8)',
+          });
           const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
           return axios.get(url).then(response => {
             if (!response) {
               throw new Error(response.status);
             }
+            Loading.remove();
             return response.data;
           });
         } catch (error) {

@@ -12,32 +12,47 @@ let arrWatchedFilms = myLibrary.getFromWatched();
 let arrQueueFilms = myLibrary.getFromQueue();
 
 export function btnLibraryWatchedOrQueue() {
-  Notify.info(`Your film list is empty`);
-  if (
-    refs.btnWatched.addEventListener('click', onWatchedBtnClick) ||
-    refs.btnQueue.addEventListener('click', onQueueBtnClick)
-  ) {
-    refs.movieLibrary.innerHTML = '';
-    refs.emptyTitle.classList.add('is-hidden');
-    refs.emptyImg.classList.add('is-hidden');
+  if (arrWatchedFilms.length !== 0) {
+    onWatchedBtnClick();
+  } else {
+    Notify.info(`Your film list is empty`);
   }
+
+  refs.btnWatched.addEventListener('click', onWatchedBtnClick);
+  refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
 
 // фільми Watched
 async function onWatchedBtnClick() {
-  const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
-  try {
-    renderFilmCardLibrary(filmInfo);
-  } catch (error) {
-    console.log(error);
+  if (arrWatchedFilms.length !== 0) {
+    refs.libraryEmpty.classList.add('is-hidden');
+    const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
+    try {
+      renderFilmCardLibrary(filmInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    cleanLibrary();
   }
 }
 //  фільми Queue
 async function onQueueBtnClick() {
-  const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
-  try {
-    renderFilmCardLibrary(filmInfo);
-  } catch (error) {
-    console.log(error);
+  if (arrQueueFilms.length !== 0) {
+    refs.libraryEmpty.classList.add('is-hidden');
+    const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
+    try {
+      renderFilmCardLibrary(filmInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    cleanLibrary();
   }
+}
+
+function cleanLibrary() {
+  Notify.info(`Your film list is empty`);
+  refs.libraryEmpty.classList.remove('is-hidden');
+  refs.movieLibrary.innerHTML = '';
 }
