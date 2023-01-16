@@ -18,6 +18,7 @@ export async function renderTrailersBtns(trailers) {
   const trailersHeader = document.querySelector(
     '.film-modal__watch-trailers-title'
   );
+  trailersHeader.classList.remove('visually-hidden__title');
   if (trailers.length === 0) {
     trailersHeader.classList.add('visually-hidden__title');
   }
