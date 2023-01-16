@@ -2,7 +2,10 @@ import { refs } from './refs';
 import genresId from '../genres.json';
 
 export function renderSliderFilmCard({ results }) {
-  const markup = results.map(({
+  const markup = results
+    .map(
+      ({
+
         id,
         poster_path,
         title,
@@ -28,9 +31,9 @@ export function renderSliderFilmCard({ results }) {
                  }' width='360' loading="lazy"
                   src='https://image.tmdb.org/t/p/original${poster_path}'/>
                   <div class="glide__text">
-                  <h2 class="glide__title">${
+                  <h3 class="glide__title">${
                     title || original_title || original_name
-                  }</h2>
+                  }</h3>
                   <p class="glide__genres">${filmGenreId}<span>|${(
           release_date ||
           first_air_date ||
@@ -70,13 +73,10 @@ export function renderFilmCard({ results }) {
             filmGenre = filmGenreId.join(', ');
           }
         }
-
-        //     let poster = '';
-        // poster_path === null
-        //   ? (poster = '/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg')
-        //   : (poster = `${poster_path}`);
-
-        const foto = `../images/poster_photo.png`;
+        const foto = `<img   class='film__img lazyload' alt= '${
+          title || original_title || original_name
+        }' width='100%' loading="lazy"
+      data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
         const img = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='100%' loading="lazy"
@@ -87,10 +87,10 @@ export function renderFilmCard({ results }) {
        src= '${foto}'`;
 
         return `<li class="film__item" data-id=${id}>
-                  ${poster_path ? img : foto}
-                  <h2 class="films__title">${
+                  ${poster_path !== null ? img : foto}
+                  <h3 class="films__title">${
                     original_title || title || original_name
-                  } </h2>
+                  } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
                   }<span>|${(
@@ -103,6 +103,55 @@ export function renderFilmCard({ results }) {
     )
     .join('');
   refs.topFilms.insertAdjacentHTML('afterbegin', markup);
+}
+
+export function renderFilmCardLibrary(films) {
+  const markup = films
+    .map(film => {
+      const {
+        id,
+        poster_path,
+        title,
+        original_title,
+        original_name,
+        release_date,
+        first_air_date,
+        genres,
+        vote_average,
+      } = film;
+      const filmGenre = film.genres
+        .slice(0, 3)
+        .map(({ name }) => name)
+        .join(', ');
+      const voteAverage = Number(vote_average).toFixed(1);
+      const foto = `<img   class='film__img lazyload' alt= '${
+        title || original_title || original_name
+      }' width='100%' loading="lazy"
+      data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
+      const img = `<img   class='film__img lazyload' alt= '${
+        title || original_title || original_name
+      }' width='100%' loading="lazy"
+      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
+
+      return `<li class="film__item" data-id=${id}>
+      <p class="films__voteaverage">${voteAverage}</p>
+                           ${poster_path !== null ? img : foto}
+                  <h3 class="films__title">${
+                    original_title || title || original_name
+                  } </h3>
+                  <p class="films__genres">${
+                    filmGenre || 'Not available'
+                  }<span>|${(
+        release_date ||
+        first_air_date ||
+        'Not available'
+      ).slice(0, 4)}</span></p>
+
+              </li>`;
+      }
+    )
+    .join('');
+  refs.movieLibrary.innerHTML = markup;
 }
 
 function cleanTopFilmsMarkUp() {

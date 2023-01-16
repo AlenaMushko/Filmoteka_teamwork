@@ -1,14 +1,15 @@
 export const langArr = {
-  // Заголовки сторінки //
+  // index Заголовки сторінки //
     'home-page-title': {
       ua: "Фільмотека головна",
       en: "Filmoteka",
     },
+  // my_library Заголовки сторінки //
     'library-page-title': {
         ua: "Фільмотека Моя бібліотека",
         en: "Filmoteka My-library",
       },
-  // Навігація //
+  // home-header Навігація //
     'home': {
       ua: "головна",
       en: "home",
@@ -25,7 +26,7 @@ export const langArr = {
       ua: "Вихід",
       en: "Sing Out",
     },
-  // Пошук //
+  // home-header Пошук //
     'search': {
       ua: "Пошук фільму за назвою",
       en: "Movie search",
@@ -38,7 +39,7 @@ export const langArr = {
       ua: "Рекомендовані фільми",
       en: "Recommended movies",
     },
-  // Фільтр //
+  // home-header Фільтр //
     'filters': {
       ua: "Фільтри",
       en: "Filters",
@@ -143,7 +144,7 @@ export const langArr = {
       ua: "Тема",
       en: "Theme",
     },
-  // Кнопки додавання фільмів //
+  // library-header Кнопки додавання фільмів //
     'watched': {
       ua: "Переглянути",
       en: "Watched",
@@ -181,28 +182,7 @@ export const langArr = {
       ua: "Студенти GoIT",
       en: "GoIT Students",
     },
-  // Розробники //
-    'dev': {
-      ua: "Розробник",
-      en: "Developer",
-    },
-    'dev1': {
-      ua: "Розробник1",
-      en: "Developer1",
-    },
-    'dev2': {
-      ua: "Розробник2",
-      en: "Developer2",
-    },
-    'dev3': {
-      ua: "Розробник3",
-      en: "Developer3",
-    },
-    'dev4': {
-      ua: "Розробник4",
-      en: "Developer4",
-    },
-  // Modal registration // 
+  // modal-registration // 
   'titel-register': {
     ua: "Будь ласка, введіть свою електронну пошту та пароль",
     en: "Please enter your e-mail and password",
@@ -222,6 +202,49 @@ export const langArr = {
   'sign-in': {
     ua: "Увійти",
     en: "Sign in",
+  },
+  // Home section films // 
+  'new-movies': {
+    ua: 'нові найкращі фільми онлайн',
+    en: 'new best movies online',
+  },
+  // Library section films // 
+  'error-page': {
+    ua: 'Вибачте :( Ця сторінка порожня',
+    en: 'Sorry :( This page is empty',
+  },
+  // Modal Film //
+  'vote': {
+    ua: 'Голосувати / Голосувати',
+    en: 'Vote / Votes',
+  },
+  'popularity': {
+    ua: 'Популярність',
+    en: 'Popularity',
+  },
+  'genre': {
+    ua: 'Жанр',
+    en: 'Genre',
+  },
+  'about': {
+    ua: 'Про фільм',
+    en: 'About',
+  },
+  'genre': {
+    ua: 'Жанр',
+    en: 'Genre',
+  },
+  'add-watched': {
+    ua: 'додати до переглянутого',
+    en: 'add to watched',
+  },
+  'add-queue': {
+    ua: 'додати в чергу',
+    en: 'add to queue',
+  },
+  'watch-trailers': {
+    ua: 'Дивіться трейлери',
+    en: 'Watch trailers',
   },
   };
   

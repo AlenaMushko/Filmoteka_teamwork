@@ -1,109 +1,146 @@
 :root {
-    --timing-function: cubic-bezier(0.2, 0, 0.2, 1);
-    --animation-duration: 150ms;
+  --timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+  --animation-duration: 150ms;
 }
 
 .film-section {
-    width: 100%;
-    .films {
-        margin: 0 auto;
-        max-width: 420px;
-        padding: 0 20px;
-    .top-films {
-        margin-top: 20px;
-        margin-bottom: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        @include mq(tablet) {
-            margin-top: 60px;
-            margin-bottom: 60px;
+  width: 100%;
+
+  .films {
+    margin: 0 auto;
+    max-width: 420px;
+    padding: 0 20px;
+
+    .top-films,
+    .library-films {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      @include mq(tablet) {
+        margin-top: 60px;
+        margin-bottom: 60px;
         @include flex(flex, center, center);
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 32px;
-            align-items: unset;
-        }
-        @include mq(desktop) {
-            column-gap: 16px;
-            row-gap: 32px;
-            align-items: unset;
-        }
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+        align-items: unset;
+      }
+
+      @include mq(desktop) {
+        column-gap: 16px;
+        row-gap: 32px;
+        align-items: unset;
+      }
     }
+
     .film__item {
-    .film__img {
+      cursor: pointer;
+        position: relative;
+      .film__img {
         border-radius: 5px;
+
         @include mq(desktop) {
-            height: 90%;
-        //     &:hover {
-        //     transform: scale(1.02);
-        //     transition: transform var(--animation-duration) var(--timing-function);
-        // }
-    }
-    }
-    .films__title {
+          height: 90%;
+          //     &:hover {
+          //     transform: scale(1.02);
+          //     transition: transform var(--animation-duration) var(--timing-function);
+          // }
+        }
+      }
+
+      .films__title {
         margin-top: 10px;
         text-transform: uppercase;
         @include font(500, 12px, 1.33, 0.04em);
+
         @include mq(desktop) {
-            @include font(500, 20px, 1.2, 0.04em);
-            margin-top: 12px;
+          @include font(500, 20px, 1.2, 0.04em);
+          margin-top: 12px;
         }
-    }
-        .films__genres {
-            color: $color-brand-text;
-            @include font(500, 12px, 1.33, 0.04em);
+      }
+
+      .films__genres {
+        color: $color-brand-text;
+        @include font(500, 12px, 1.33, 0.04em);
+
         @include mq(desktop) {
-                @include font(500, 20px, 1.2, 0.04em);
-            }
+          @include font(500, 20px, 1.2, 0.04em);
         }
-        @include mq(tablet) {
-            width: calc((100% - 32px) / 2);
-        }
-        @include mq(desktop) {
-            width: calc((100% - 32px) / 3);
+      }
+
+      @include mq(tablet) {
+        width: calc((100% - 32px) / 2);
+      }
+
+      @include mq(desktop) {
+        width: calc((100% - 32px) / 3);
+
         &:hover {
-            .film__img {
-//             box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-// 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+          .film__img {
+            //             box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            // 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
             transform: scale(1.02);
-            transition: transform var(--animation-duration) var(--timing-function);
-            }
+            transition: transform var(--animation-duration)
+              var(--timing-function);
+          }
+        }
+      }
     }
-    }
-    }
+
     @include mq(tablet) {
-        max-width: 780px;
-        padding: 0 32px;
+      max-width: 780px;
+      padding: 0 32px;
     }
+
     @include mq(desktop) {
-        max-width: 1600px;
+      max-width: 1600px;
     }
-}
+  }
+
+  .films__voteaverage {
+    position: absolute;
+    z-index: 40;
+    top: 2%;
+    right: 4%;
+    display: block;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: $color-brand-background;
+    color: $color-extra-text;
+    text-align: center;
+    @include font(500, 12px, 1.33, 0.04em);
+
+    @include mq(desktop) {
+      @include font(500, 20px, 1.2, 0.04em);
+    }
+  }
 }
 
 .go-Top {
-    top: 93%;
-    right: 0px;
-    position: fixed;
-    background-color: transparent;
-    border: none;
-cursor: pointer;
+  top: 93%;
+  right: 0px;
+  position: fixed;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .go-Top .icon {
-    display: inline-flex;
-    fill: $color-slider;
-    transition: box-shadow 250ms linear, transform 250ms ease-in-out;
+  display: inline-flex;
+  fill: $color-slider;
+  transition: box-shadow 250ms linear, transform 250ms ease-in-out;
 }
 
 .go-Top .icon:hover {
-    fill: $color-brand-background;
+  fill: $color-brand-background;
 }
-.icon {
-    display: inline-flex;
-    width: 50px;
-    height: 50px;
-}
- 
 
+.icon {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+}

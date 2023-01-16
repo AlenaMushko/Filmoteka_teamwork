@@ -4,12 +4,11 @@ import {
   renderModalFilmCard,
   clearModalFilmCard,
 } from './manipulate-modal-film-content';
-// import {
-//   getTrailersByMovieId,
-//   renderTrailersBtns,
-//   TrailerModal,
-// } from './getTrailers';
-// import { filmTrailerModalWindow } from './modal-trailer';
+import {
+  getTrailersByMovieId,
+  renderTrailersBtns,
+  trailerBtnsEventWorker,
+} from './getTrailers';
 
 // const apiService = new ApiService();
 
@@ -31,27 +30,26 @@ export class Modal {
     this.removeClassAndListener();
   }
 
-  // openTrailerModal(e) {
-  //   const trailerKey = e.target.dataset.key;
-  //   // TrailerModal(trailerKey);
-  //   this.addClassAndListener();
-  // }
-
   async openFilmCardModal(e) {
     e.preventDefault();
-    clearModalFilmCard();
 
     const filmId = e.target.parentNode.dataset.id;
-    const filmIdNumber = Number(filmId);
-    const filmInfo = await apiService.getFilmById(filmIdNumber);
-    // const trailers = await getTrailersByMovieId(filmIdNumber);
+    // const filmId = e.target.dataset.id;
     if (!filmId) {
       return;
     }
 
+    clearModalFilmCard();
+
+    
+    const filmIdNumber = Number(filmId);
+    const filmInfo = await apiService.getFilmById(filmIdNumber);
+    const trailers = await getTrailersByMovieId(filmIdNumber);
+    
+
     try {
       renderModalFilmCard(filmInfo);
-      // renderTrailersBtns(trailers).then(filmTrailerModalWindow());
+      renderTrailersBtns(trailers).then(trailerBtnsEventWorker());
     } catch (error) {
       console.log(error);
     }

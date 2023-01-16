@@ -43,8 +43,7 @@ export const refs = {
   // my-libtary
   btnWatched: document.querySelector('.btn__watched'),
   movieLibrary: document.querySelector('.library-films'),
-  emptyTitle: document.querySelector('.library-empty__title'),
-  emptyImg: document.querySelector('.library-empty__img'),
+  libraryEmpty: document.querySelector('.library-empty'),
   btnQueue: document.querySelector('.btn__queue'),
   // паролі
   modalSignIn: document.querySelector('.modal__log-in'),

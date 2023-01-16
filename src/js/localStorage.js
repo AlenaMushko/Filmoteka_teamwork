@@ -19,7 +19,16 @@ export class MyLibrary {
     }
 
     removeFromWatched() {
-        removeFromLocalStorage(myLybrary.getFromWatched, 'watchedMovies');
+        let newMovieID = getMovieID();
+        if (!newMovieID) {
+            return;
+        } else {
+            removeFromLocalStorage(myLybrary.getFromWatched, 'watchedMovies');
+        }
+    }
+    
+    getFromQueue() {
+        return JSON.parse(localStorage.getItem('queueMovies'));
     }
 
     addToQueue() {
@@ -37,12 +46,13 @@ export class MyLibrary {
         }
     }
 
-    getFromQueue() {
-        return JSON.parse(localStorage.getItem('queueMovies'));
-    }
-
     removeFromQueue() {
-        removeFromLocalStorage(myLybrary.getFromQueue, 'queueMovies');
+        let newMovieID = getMovieID();
+        if (!newMovieID) {
+            return;
+        } else {
+            removeFromLocalStorage(myLybrary.getFromQueue, 'queueMovies');
+        }
     }
 }
 const myLybrary = new MyLibrary;
@@ -97,20 +107,23 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
     function addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc) {
         btnName.textContent = `add to ${lybraryName}`;
         const newAddFunction = addFunc;
-        btnName.addEventListener('click', () => {
+        function onClick() {
             newAddFunction();
             chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
-        });
+            btnName.removeEventListener('click', onClick);
+        };
+        btnName.addEventListener('click', onClick);
     }
 
     function chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc) {
         const newRemoveFunction = removeFunc;
         btnName.textContent = `Remove from ${lybraryName}`;
-        btnName.addEventListener('click', () => {
+        function onClick() {
             newRemoveFunction();
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
-        });
-        return;
+            btnName.removeEventListener('click', onClick);
+        };
+        btnName.addEventListener('click', onClick);
     }
 
     function checkLocalMoviesList(libraryArrey, lybraryName, btnName, removeFunc, addFunc) {
@@ -118,9 +131,11 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         const newMovieID = getMovieID();
         if (!newLibraryArrey()) {
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
+            return;
         }
         else if (newLibraryArrey().includes(newMovieID)) {
             chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
+            return;
         }
         else {
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);

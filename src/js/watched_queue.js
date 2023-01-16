@@ -1,63 +1,87 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
-import { MyLibrary } from './localStorage';
-// import ApiService from './fetchProdactsAPI';
 import apiService from './fetchProdactsAPI';
-import { renderFilmCard } from './renderFunction';
+import { MyLibrary } from './localStorage';
+import { renderFilmCardLibrary } from './renderFunction';
 
+// екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
-// const apiService = new ApiService();
 
-export function btnClick() {
+let arrWatchedFilms = myLibrary.getFromWatched();
+let arrQueueFilms = myLibrary.getFromQueue();
+
+export function btnLibraryWatchedOrQueue() {
+  if (arrWatchedFilms.length !== 0) {
+    onWatchedBtnClick();
+  } else {
+    Notify.info(`Your film list is empty`);
+  }
+
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
+const amountFilmsOnPage = 12;
+let pageNumber = apiService.page;
 
-export function onWatchedBtnClick() {
-  try {
-    let arrWatchedFilms = myLibrary.getFromQueue();
-
-    if (arrWatchedFilms) {
-      // renderWatchedFilmInLibrary(arrWatchedFilms);
+// фільми Watched
+async function onWatchedBtnClick() {
+  let filmsOnPage = [];
+  if (arrWatchedFilms.length !== 0) {
+    refs.libraryEmpty.classList.add('is-hidden');
+    let totalPages = arrWatchedFilms.length;
+    if (pageNumber === 1) {
+      filmsOnPage = arrWatchedFilms.slice(
+        2 * (pageNumber - 1),
+        12 * pageNumber
+      );
     } else {
-      refs.emptyTitle.classList.remove('is-hidden');
-      refs.emptyImg.classList.remove('is-hidden');
-      Notify.info(`Your film list is empty`);
+      filmsOnPage = arrWatchedFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber + 1
+      );
     }
-  } catch (error) {
-    console.log(error.message);
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    cleanLibrary();
   }
-  return;
 }
-// Queue
 
-export function onQueueBtnClick() {
-  try {
-    let arrWatchedFilms = myLibrary.getFromWatched();
-    if (queueMovie) {
-      renderWatchedFilmInLibrary();
+//  фільми Queue
+async function onQueueBtnClick() {
+  let filmsOnPage = [];
+  if (arrQueueFilms.length !== 0) {
+    refs.libraryEmpty.classList.add('is-hidden');
+    let totalPages = arrQueueFilms.length;
+
+    if (pageNumber === 1) {
+      filmsOnPage = arrQueueFilms.slice(2 * (pageNumber - 1), 12 * pageNumber);
     } else {
-      refs.emptyTitle.classList.remove('is-hidden');
-      refs.emptyImg.classList.remove('is-hidden');
-      Notiflix.Notify.info(`Your film list is empty`);
+      filmsOnPage = arrQueueFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber - 1 + 1
+      );
     }
-  } catch (error) {
-    console.log(error.message);
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    cleanLibrary();
   }
-  return;
 }
-// -------------
-let arrWatchedFilms = myLibrary.getFromWatched();
 
-// renderWatchedFilmInLibrary()
-async function renderWatchedFilmInLibrary() {
-  const results = await getFilmFromLocalStorage(arrWatchedFilms);
-  console.log(results);
-  console.log(arrWatchedFilms);
-  try {
-    renderFilmCard(results);
-    pagination.reset(results.total_results);
-  } catch (error) {
-    console.log(error);
-  }
+function cleanLibrary() {
+  Notify.info(`Your film list is empty`);
+  refs.libraryEmpty.classList.remove('is-hidden');
+  refs.movieLibrary.innerHTML = '';
 }
+

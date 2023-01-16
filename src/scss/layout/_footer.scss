@@ -83,8 +83,8 @@
 }
 .team-modal {
   background-color: $color-extra-background;
-  border-radius: 30px;
-}
+  border-radius: 5px;
+ }
 .glide__slide__block_in {
   padding: 20px;
 }
@@ -118,6 +118,7 @@
   display: inline-block;
   padding: 3px;
   text-align: center;
+  color: $color-base-text;
 }
 .student__text_name {
   border-bottom: 1px solid $color-brand-text;
