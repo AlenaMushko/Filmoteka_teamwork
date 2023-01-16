@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import { checkUserRegistration } from './auth';
+import { checkUserRegistration, authWithEmailAndPassword } from './auth';
 import Notiflix from 'notiflix';
 
 export function addNewUser() {
@@ -34,6 +34,7 @@ function signUpBtnHandler() {
       .then(data => {
         console.log(data.localId);
         localStorage.auth === "yes";
+        authWithEmailAndPassword();
         Notiflix.Report.success(
             'Successful registration ',
             'Welcome to more opportunities',
