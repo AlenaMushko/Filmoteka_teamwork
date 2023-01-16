@@ -1,17 +1,19 @@
 import { langArr } from "./translation";
-const allLengs = ['en', 'ua'];
+const allLangs = ['en', 'ua'];
 let currentLang = localStorage.getItem('language') || navigator.language || 'en';
 
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
 let currentText = {};
 
+// console.log(currentLang);
+
 function checkPagePathName() {
     switch (currentPatName) {
-        case '/index.html':
+        case `/index.html`:
             currentText = langArr;
             break;        
-        case '/my_library.html':
+        case `/my_library.html`:
             currentText = langArr;
             break;     
         default:
@@ -22,8 +24,7 @@ function checkPagePathName() {
 checkPagePathName();
 
 function changeLang() {
-    // document.querySelector.placeholder[(`[data-lang=${key}]`)];
-    for (const key in currentText) {
+    for (const key in currentText) {        
         const e = document.querySelector(`[data-lang=${key}]`);
         if(e) {
             e.textContent = currentText[key][currentLang];
@@ -31,6 +32,12 @@ function changeLang() {
     }
 }
 changeLang();
+
+// const inputSearch = document.querySelector('.search__field');
+// const inputPlaceholder = inputSearch.getAttribute('placeholder');
+// inputPlaceholder.textContent = langArr['search'][currentLang];
+
+// console.log(inputPlaceholder);
 
 langBtn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
