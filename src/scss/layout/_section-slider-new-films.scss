@@ -1,6 +1,7 @@
 .glide {
   position: relative;
   margin: 0 auto;
+  margin-top: 25px;
   // @include mq(mobile) {
   //   min-width: 480px;
   // }
@@ -19,7 +20,6 @@
   text-shadow: 0.2px 0.2px 0.5px $color-extra, 0 0 5px $color-brand-background,
     0 0 5px $color-brand-text;
   text-align: center;
-  margin-top: 25px;
   cursor: default;
 }
 .glide__track {
@@ -91,7 +91,7 @@
   overflow: hidden;
   // &:hover,
   // &:focus {
-  // box-shadow $transitionDuration $cubic;
+  //   box-shadow: $transitionDuration $cubic;
   //   box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
   //     0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
   // }
