@@ -22,14 +22,19 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
 
+let pageNumber = ApiService.pageNum(newPage);
+const amountFilmsOnPage = 2;
+
 // фільми Watched
 async function onWatchedBtnClick() {
+
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrWatchedFilms.length / 12);
-    let filmsOnPage = arrWatchedFilms;
+    let totalPages = Math.ceil(arrWatchedFilms.length / amountFilmsOnPage);
+    let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
     console.log(arrWatchedFilms);
-    const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
+    console.log(filmsOnPage);
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
     } catch (error) {
@@ -43,9 +48,9 @@ async function onWatchedBtnClick() {
 async function onQueueBtnClick() {
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrQueueFilms.length / 12);
-
-    const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
+    let totalPages = Math.ceil(arrQueueFilms.length / amountFilmsOnPage);
+    let filmsOnPage = arrQueueFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
     } catch (error) {
