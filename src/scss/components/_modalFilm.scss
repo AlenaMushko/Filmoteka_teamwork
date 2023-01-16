@@ -6,7 +6,7 @@
 
   @media screen and (max-height: 1069px) and (max-width: 767px) {
     top: 15px;
-    transform: translateX(-50%) scale(.7);
+    transform: translateX(-50%) scale(0.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -15,7 +15,7 @@
 
   @media screen and (max-height: 681px) and (max-width: 1279px) {
     top: 15px;
-    transform: translateX(-50%) scale(.7);
+    transform: translateX(-50%) scale(0.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -24,7 +24,7 @@
 
   @media screen and (max-height: 616px) and (min-width: 1280px) {
     top: 15px;
-    transform: translateX(-50%) scale(.7);
+    transform: translateX(-50%) scale(0.7);
 
     &.active {
       transform: translateX(-50%) scale(1);
@@ -127,7 +127,8 @@
   text-transform: uppercase;
 }
 
-.film-modal__about-title {
+.film-modal__about-title,
+.film-modal__watch-trailers-title {
   @include font(500, 12px, 16px, normal);
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -146,6 +147,7 @@
 
 .film-modal__buttons-list {
   @include flex(flex, flex-start, center);
+  margin-bottom: 20px;
 }
 
 .button-watched,

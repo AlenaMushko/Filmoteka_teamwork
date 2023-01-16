@@ -6,9 +6,8 @@ import {
 import {
   getTrailersByMovieId,
   renderTrailersBtns,
-  TrailerModal,
+  trailerBtnsEventWorker,
 } from './getTrailers';
-import { filmTrailerModalWindow } from './modal-trailer';
 
 const apiService = new ApiService();
 
@@ -30,12 +29,6 @@ export class Modal {
     this.removeClassAndListener();
   }
 
-  openTrailerModal(e) {
-    const trailerKey = e.target.dataset.key;
-    TrailerModal(trailerKey);
-    // this.addClassAndListener();
-  }
-
   async openFilmCardModal(e) {
     e.preventDefault();
     clearModalFilmCard();
@@ -50,7 +43,7 @@ export class Modal {
 
     try {
       renderModalFilmCard(filmInfo);
-      renderTrailersBtns(trailers).then(filmTrailerModalWindow());
+      renderTrailersBtns(trailers).then(trailerBtnsEventWorker());
     } catch (error) {
       console.log(error);
     }
