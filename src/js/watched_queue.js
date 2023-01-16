@@ -21,30 +21,31 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
-
-let pageNumber = apiService.page;
 const amountFilmsOnPage = 12;
+let pageNumber = apiService.page;
 
 // фільми Watched
 async function onWatchedBtnClick() {
-
+  let filmsOnPage = [];
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrWatchedFilms.length / amountFilmsOnPage);
-
-    if(arrWatchedFilms.length < amountFilmsOnPage) {
-      let filmsOnPage = arrWatchedFilms;
-      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
-    try {
-      renderFilmCardLibrary(filmInfo);
-    } catch (error) {
-      console.log(error);
-    }
+    let totalPages = arrWatchedFilms.length;
+    if (pageNumber === 1) {
+      filmsOnPage = arrWatchedFilms.slice(
+        2 * (pageNumber - 1),
+        12 * pageNumber
+      );
     } else {
-      let filmsOnPage = arrWatchedFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+      filmsOnPage = arrWatchedFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber + 1
+      );
+    }
+
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -56,23 +57,23 @@ async function onWatchedBtnClick() {
 }
 //  фільми Queue
 async function onQueueBtnClick() {
+  let filmsOnPage = [];
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
-    let totalPages = Math.ceil(arrQueueFilms.length / amountFilmsOnPage);
-    
-    if(arrQueueFilms.length < amountFilmsOnPage) {
-      let filmsOnPage = arrQueueFilms;
-      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
-    try {
-      renderFilmCardLibrary(filmInfo);
-    } catch (error) {
-      console.log(error);
-    }
+    let totalPages = arrQueueFilms.length;
+
+    if (pageNumber === 1) {
+      filmsOnPage = arrQueueFilms.slice(2 * (pageNumber - 1), 12 * pageNumber);
     } else {
-      let filmsOnPage = arrQueueFilms.slice((amountFilmsOnPage*pageNumber-2), (amountFilmsOnPage*pageNumber-2+amountFilmsOnPage));
-      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+      filmsOnPage = arrQueueFilms.slice(
+        12 * (pageNumber - 1),
+        12 * pageNumber - 1 + 1
+      );
+    }
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
