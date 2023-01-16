@@ -92,12 +92,13 @@ export default class ApiService {
           Loading.pulse('Loading...', {
             backgroundColor: 'rgba(0,0,0,0.8)',
           });
-          const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images`;
+          const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images&page=${this.page}`;
           return axios.get(url).then(response => {
             if (!response) {
               throw new Error(response.status);
             }
             Loading.remove();
+            this.page += 1;
             return response.data;
           });
         } catch (error) {
