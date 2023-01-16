@@ -1,17 +1,19 @@
 import { langArr } from "./translation";
-const allLengs = ['en', 'ua'];
+const allLangs = ['en', 'ua'];
 let currentLang = localStorage.getItem('language') || navigator.language || 'en';
 
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
 let currentText = {};
 
+// console.log(currentLang);
+
 function checkPagePathName() {
     switch (currentPatName) {
-        case '/index.html':
+        case `/index.html`:
             currentText = langArr;
             break;        
-        case '/my_library.html':
+        case `/my_library.html`:
             currentText = langArr;
             break;     
         default:
@@ -21,9 +23,20 @@ function checkPagePathName() {
 }
 checkPagePathName();
 
+// const watched = document.querySelector(".change-lang-watch");
+// watched.textContent = langArr['add-watched'][currentLang];
+// const queue =  document.querySelector(".change-lang-queue");
+// queue.textContent = langArr['add-queue'][currentLang];
+// console.log(watched.textContent);
+// console.log(queue.textContent);
+
 function changeLang() {
-    // document.querySelector.placeholder[(`[data-lang=${key}]`)];
-    for (const key in currentText) {
+    document.querySelector(".search__field").placeholder = langArr['search'][currentLang];
+    // const watched = document.querySelector(".change-lang-watch");
+    // watched.textContent = langArr['add-watched'][currentLang];
+    // const queue =  document.querySelector(".change-lang-queue");
+    // queue.textContent = langArr['add-queue'][currentLang];    
+    for (const key in currentText) {        
         const e = document.querySelector(`[data-lang=${key}]`);
         if(e) {
             e.textContent = currentText[key][currentLang];
