@@ -28,6 +28,8 @@ export default class ApiService {
   async getPopularFilms() {
     try {
       Loading.pulse('Loading...', {
+        clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
@@ -48,6 +50,8 @@ export default class ApiService {
   async getSearchFilms() {
     try {
       Loading.pulse('Loading...', {
+        clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
@@ -66,6 +70,8 @@ export default class ApiService {
   async getFilmById(id) {
     try {
       Loading.pulse('Loading...', {
+          clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}movie/${id}${api_key}&append_to_response=images`;
@@ -86,6 +92,8 @@ export default class ApiService {
       arrWatchedFilms.map(idWatchedFilm => {
         try {
           Loading.pulse('Loading...', {
+              clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
             backgroundColor: 'rgba(0,0,0,0.8)',
           });
           const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images&page=${this.page}`;
@@ -94,7 +102,6 @@ export default class ApiService {
               throw new Error(response.status);
             }
             Loading.remove();
-            this.page += 1;
             return response.data;
           });
         } catch (error) {
