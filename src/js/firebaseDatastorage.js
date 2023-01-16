@@ -1,5 +1,8 @@
 import { refs } from './refs';
-
+export function firebaseRealtimeDatabase() {
+  setInterval(deleteDataFromFirebaseStorage, 10000);
+  setInterval(giveLocalStorageToFirebaseStorage, 10000);
+};
 class UserStorage {
 
     // функція, яка додає в базу даних новий запис 
@@ -34,7 +37,21 @@ class UserStorage {
             };
             location.reload();
         })
-    }
+    };
+
+    static delete(dataToDelete) {
+      const previousSavingId = localStorage.savingId;
+      return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}/${previousSavingId}.json?x-http-method-override=DELETE`, {
+        method: 'POST',
+        body: JSON.stringify(dataToDelete),
+
+      })
+        .then(response => response.json())
+        .then(response => {
+                 
+      })
+  };
+
 }
 
 // створення сховища для нового користувача на бекенді
@@ -55,3 +72,7 @@ export function changeLocalStorageInFirebaseStorage() {
         UserStorage.change(localStorage);
     };
 };
+
+export function deleteDataFromFirebaseStorage() {
+  UserStorage.delete();
+}

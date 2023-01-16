@@ -5,10 +5,6 @@ import { onTeamModal } from './js/team_modal';
 // логіка кнопок і посилань навігації хедера
 import { libraryHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { btnLibraryWatchedOrQueue } from './js/watched_queue';
-import {
-  giveLocalStorageToFirebaseStorage,
-  deleteUserDataInFirebaseStorage,
-} from './js/firebaseDatastorage';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
@@ -21,8 +17,9 @@ libraryHeaderLinkBntLogic();
 onFirstLoadThemeLibrary();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
-//надсилання в сховище фаєрбейз кожні 10 секунд
-setInterval(giveLocalStorageToFirebaseStorage, 10000);
+//робота зі сховищем фаєрбейз
+import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
+firebaseRealtimeDatabase();
 
 //--------------------------------------------body
 // слайлдер з фільмами, що зібрали найбільшу касу
@@ -35,3 +32,4 @@ scrolToTop();
 //------------------------------------------footer
 // footer
 onTeamModal();
+
