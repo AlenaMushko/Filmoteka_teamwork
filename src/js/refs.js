@@ -42,10 +42,11 @@ export const refs = {
   // my-libtary
   btnWatched: document.querySelector('.btn__watched'),
   movieLibrary: document.querySelector('.library-films'),
-  emptyTitle: document.querySelector('.library-empty__title'),
-  emptyImg: document.querySelector('.library-empty__img'),
+  libraryEmpty: document.querySelector('.library-empty'),
+  // emptyTitle: document.querySelector('.library-empty__title'),
+  // emptyImg: document.querySelector('.library-empty__img'),
   btnQueue: document.querySelector('.btn__queue'),
-// паролі
+  // паролі
   modalSignIn: document.querySelector('.modal__log-in'),
   inputPassword: document.querySelector('#password'),
   buttonShowPassword: document.querySelector('#button_show_password'),
