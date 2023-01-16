@@ -12,7 +12,7 @@ import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { authHandler } from './js/auth';
 import { onFirstLoadTheme } from './js/changeTheme';
 import { getChengeThemeByClick } from './js/changeTheme';
-// import {} from './js/language';
+import {} from './js/language';
 import { authHandler } from './js/auth';
 import './js/menuFilters'; /* тимчасово поки імпортую все*/
 
