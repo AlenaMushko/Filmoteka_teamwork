@@ -3,7 +3,7 @@ import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
   setInterval(deleteDataFromFirebaseStorage, 1000);
   setInterval(giveLocalStorageToFirebaseStorage, 1000);
-  addNewUser();
+  addNewUser()
 };
 class UserStorage {
 
@@ -48,7 +48,6 @@ class UserStorage {
       })
         .then(response => response.json())
         .then(response => {
-
       })
   };
 
