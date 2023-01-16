@@ -23,7 +23,19 @@ function checkPagePathName() {
 }
 checkPagePathName();
 
+// const watched = document.querySelector(".change-lang-watch");
+// watched.textContent = langArr['add-watched'][currentLang];
+// const queue =  document.querySelector(".change-lang-queue");
+// queue.textContent = langArr['add-queue'][currentLang];
+// console.log(watched.textContent);
+// console.log(queue.textContent);
+
 function changeLang() {
+    document.querySelector(".search__field").placeholder = langArr['search'][currentLang];
+    // const watched = document.querySelector(".change-lang-watch");
+    // watched.textContent = langArr['add-watched'][currentLang];
+    // const queue =  document.querySelector(".change-lang-queue");
+    // queue.textContent = langArr['add-queue'][currentLang];    
     for (const key in currentText) {        
         const e = document.querySelector(`[data-lang=${key}]`);
         if(e) {
@@ -32,12 +44,6 @@ function changeLang() {
     }
 }
 changeLang();
-
-// const inputSearch = document.querySelector('.search__field');
-// const inputPlaceholder = inputSearch.getAttribute('placeholder');
-// inputPlaceholder.textContent = langArr['search'][currentLang];
-
-// console.log(inputPlaceholder);
 
 langBtn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
