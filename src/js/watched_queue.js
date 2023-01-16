@@ -26,6 +26,9 @@ export function btnLibraryWatchedOrQueue() {
 async function onWatchedBtnClick() {
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
+    let totalPages = Math.ceil(arrWatchedFilms.length / 12);
+    let filmsOnPage = arrWatchedFilms;
+    console.log(arrWatchedFilms);
     const filmInfo = await apiService.getFilmFromLocalStorage(arrWatchedFilms);
     try {
       renderFilmCardLibrary(filmInfo);
@@ -40,6 +43,8 @@ async function onWatchedBtnClick() {
 async function onQueueBtnClick() {
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
+    let totalPages = Math.ceil(arrQueueFilms.length / 12);
+
     const filmInfo = await apiService.getFilmFromLocalStorage(arrQueueFilms);
     try {
       renderFilmCardLibrary(filmInfo);
