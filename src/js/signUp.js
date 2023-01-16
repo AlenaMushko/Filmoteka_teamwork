@@ -32,8 +32,15 @@ function signUpBtnHandler() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('ура');
-
+        console.log(data.localId);
+        localStorage.auth === "yes";
+        Notiflix.Report.success(
+            'Successful registration ',
+            'Welcome to more opportunities',
+            'Let`s start',
+            () => {
+                    location.reload();
+            },);
     })
 
 
