@@ -2,7 +2,7 @@ body {
   background-color: #182025dd;
   color: rgb(236, 233, 233);
 }
-
+//Кнопка "до гори"
 .go-Top .icon {
   fill: #ff6b01;
 }
@@ -10,14 +10,14 @@ body {
 .go-Top .icon:hover {
   fill: #182025b1;
 }
-
+//Футер
 .footer__container {
   background-color: #182025b1;
 }
 .team_modal_btn {
   color: rgb(236, 233, 233);
 }
-
+//Пагінація
 .tui-pagination .tui-page-btn {
   color: rgb(236, 233, 233);
 }
@@ -28,4 +28,62 @@ body {
 
 .is-hidden {
   display: none;
+}
+//Модалки
+.modal {
+  background-color: #182025;
+}
+
+.modal_login__title_signIn {
+  color: rgb(236, 233, 233);
+}
+
+.modal_login__label {
+  color: rgb(236, 233, 233);
+}
+
+.modal_login__input {
+  background-color: #caced2;
+}
+
+.modal_login__icon,
+.icon_show_password {
+  fill: #182025;
+}
+
+.btn__modal {
+  height: 44px;
+  background-color: transparent;
+  color: rgb(236, 233, 233);
+  border-radius: 5px;
+  border: 1px solid rgb(236, 233, 233);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  &:hover,
+  &:focus {
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #ff6b01;
+    border-color: #ff6b01;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
+}
+
+.modal__close-icon {
+  fill: rgb(236, 233, 233);
+  background-color: #182025;
+
+  border: 1px solid rgb(236, 233, 233);
+  &:hover,
+  &:focus {
+    fill: #ff6b08;
+    border-color: #ff6b08;
+  }
+}
+
+.student__text {
+  color: rgb(236, 233, 233);
 }
