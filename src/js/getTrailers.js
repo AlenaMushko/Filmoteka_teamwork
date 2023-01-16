@@ -10,7 +10,10 @@ export async function getTrailersByMovieId(movieID) {
   const response = await axios.get(
     `${BASE_URL}movie/${movieID}/videos${api_key}`
   );
-  return response.data.results.filter(value => value.type === 'Trailer');
+  const result = response.data.results.filter(
+    value => value.type === 'Trailer' && value.site === 'YouTube'
+  );
+  return result;
 }
 
 export async function renderTrailersBtns(trailers) {
