@@ -1,11 +1,9 @@
 import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { getFilterQuery, getQueryAtributes } from './menuFilters';
-
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
-class ApiService {
+export default class ApiService {
   constructor() {
     this.totalResults = 0;
     this.searchQuery = '';
@@ -13,11 +11,9 @@ class ApiService {
     this.filmsOnPage = 12;
   }
   //  фільми з більшим доходом
-  async getRevenueFilms(useFilters = false) {
+  async getRevenueFilms() {
     try {
-      // carousel should not use filters
-      const filterParams = useFilters ? getFilterQuery() : '';
-      const url = `${BASE_URL}discover/movie${api_key}${filterParams}&page=${this.page}&append_to_response=images&sort_by=revenue.desc`;
+      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&sort_by=revenue.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
@@ -28,7 +24,6 @@ class ApiService {
       console.error();
     }
   }
-
   // фільми топові
   async getPopularFilms() {
     try {
@@ -41,22 +36,21 @@ class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
+        //  console.log(response.data.results);
+        // console.log(response.data);
         return response.data;
       });
     } catch (error) {
       console.error();
     }
   }
-
   // фільми, що шукають за назвою
   async getSearchFilms() {
-    // debugger;
     try {
-      const filterParams = getFilterQuery();
       Loading.pulse('Loading...', {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url = `${BASE_URL}search/movie${api_key}${filterParams}&query=${this.searchQuery}&page=${this.page}`;
+      const url = `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
@@ -65,23 +59,9 @@ class ApiService {
         return response.data;
       });
     } catch (error) {
-      console.error(error);
-      throw error;
+      console.error();
     }
   }
-  // !метод за яким віпрацьовує запит і пагінація при використанні фільтрів
-  async getMoviesForMainView() {
-    const { primary_release_year, with_genres, query } = getQueryAtributes();
-    if (query) {
-      // якщо є query незалежно від наявності genre, year
-      return this.getSearchFilms();
-    } else if (!query && (with_genres || primary_release_year)) {
-      // якщо немає query але є жанр або рік
-      return this.getRevenueFilms(true);
-    }
-    return this.getPopularFilms();
-  }
-
   // пошук фільму по id
   async getFilmById(id) {
     try {
@@ -100,7 +80,6 @@ class ApiService {
       console.error();
     }
   }
-
   //  пошук фільму по масиву id з localStorage
   async getFilmFromLocalStorage(arrWatchedFilms) {
     const data = await Promise.all(
@@ -115,7 +94,7 @@ class ApiService {
               throw new Error(response.status);
             }
             Loading.remove();
-           // this.page += 1;
+            this.page += 1;
             return response.data;
           });
         } catch (error) {
@@ -123,9 +102,8 @@ class ApiService {
         }
       })
     );
-  //  return data;
+    return data;
   }
-
   //  отримуємо символи для пошуку фільму
   get query() {
     return this.searchQuery;
@@ -138,11 +116,6 @@ class ApiService {
     return this.page;
   }
   set pageNum(newPage) {
-    localStorage.setItem('page-value', newPage);
     this.page = newPage;
   }
 }
-
-
-export default new ApiService();
-
