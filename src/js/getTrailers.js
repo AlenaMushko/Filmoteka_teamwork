@@ -4,6 +4,8 @@ const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
+let trailerKey = '';
+
 export async function getTrailersByMovieId(movieID) {
   const response = await axios.get(
     `${BASE_URL}movie/${movieID}/videos${api_key}`
@@ -13,6 +15,13 @@ export async function getTrailersByMovieId(movieID) {
 
 export async function renderTrailersBtns(trailers) {
   const trailersBtnContainer = document.querySelector('.trailers-btns-list');
+  const trailersHeader = document.querySelector(
+    '.film-modal__watch-trailers-title'
+  );
+  trailersHeader.classList.remove('visually-hidden__title');
+  if (trailers.length === 0) {
+    trailersHeader.classList.add('visually-hidden__title');
+  }
   const markup = trailers
     .slice(0, 3)
     .map(
@@ -23,7 +32,17 @@ export async function renderTrailersBtns(trailers) {
   trailersBtnContainer.innerHTML = markup;
 }
 
-export function TrailerModal(trailerKey) {
+export function trailerBtnsEventWorker() {
+  const trailersBtnsList = document.querySelector('.trailers-btns-list');
+  trailersBtnsList.addEventListener('click', onTrailerBtnClick);
+}
+
+function onTrailerBtnClick(e) {
+  trailerKey = e.target.dataset.key;
+  trailerModal(trailerKey);
+}
+
+export function trailerModal(trailerKey) {
   const instance = basicLightbox.create(`
     <iframe src="https://www.youtube.com/embed/${trailerKey}" width="782" height="515" frameborder="0"></iframe>
 `);
