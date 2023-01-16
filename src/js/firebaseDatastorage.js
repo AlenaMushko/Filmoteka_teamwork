@@ -1,7 +1,9 @@
 import { refs } from './refs';
+import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
-  setInterval(deleteDataFromFirebaseStorage, 10000);
-  setInterval(giveLocalStorageToFirebaseStorage, 10000);
+  setInterval(deleteDataFromFirebaseStorage, 1000);
+  setInterval(giveLocalStorageToFirebaseStorage, 1000);
+  addNewUser()
 };
 class UserStorage {
 
@@ -13,7 +15,6 @@ class UserStorage {
         return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json`, {
           method: 'POST',
           body: JSON.stringify(newSaving),
-
         })
           .then(response => response.json())
           .then(response => {
@@ -21,7 +22,6 @@ class UserStorage {
             
         })
     };
-
     // функція, яка забирає з бази даних
     static take() {
         return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json?auth=${localStorage.authId}`)
@@ -48,7 +48,6 @@ class UserStorage {
       })
         .then(response => response.json())
         .then(response => {
-                 
       })
   };
 
@@ -60,12 +59,10 @@ export function giveLocalStorageToFirebaseStorage() {
     UserStorage.create(localStorage);
   };
 };
-
 // підтягування з бекенду сховища користувача, при авторизації
 export function takeLocalStorageFromFirebaseStorage() {
     UserStorage.take();
 };
-
 //зміна сховища користувача на бекенді 
 export function changeLocalStorageInFirebaseStorage() {
     if(localStorage.auth === "yes") {
