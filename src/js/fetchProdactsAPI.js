@@ -10,7 +10,7 @@ export default class ApiService {
     this.searchQuery = '';
     this.page = 1;
     this.filmsOnPage = 12;
-    this.currentLang;
+    this.currentLang ;
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
@@ -19,6 +19,7 @@ export default class ApiService {
     console.log(this.currentLang === 'ua');
     try {
       const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=${this.currentLang}&sort_by=revenue.desc`;
+      console.log(this.currentLang);
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
@@ -39,6 +40,8 @@ export default class ApiService {
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&language=${this.currentLang}&append_to_response=images&sort_by = popularity.desc`;
+       console.log(this.currentLang);
+  
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);

@@ -12,6 +12,8 @@ export function renderSliderFilmCard({ results }) {
         release_date,
         first_air_date,
         genre_ids,
+        original_language
+
       }) => {
         let filmGenreId = '';
         if (genre_ids) {
@@ -20,6 +22,7 @@ export function renderSliderFilmCard({ results }) {
             .map(({ name }) => name)
             .join(', ');
         }
+        console.log(original_language);
         return `
       <li class="glide__slide" data-id=${id}>
       <a class="glide__link" href= "">
@@ -56,6 +59,7 @@ export function renderFilmCard({ results }) {
         release_date,
         first_air_date,
         genre_ids,
+        original_language
       }) => {
         let filmGenre = '';
         if (genre_ids) {
@@ -80,6 +84,7 @@ export function renderFilmCard({ results }) {
           title || original_title || original_name
         }' width='100%'
        src= '${foto}'`;
+        console.log(original_language);
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
                   <h3 class="films__title">${
