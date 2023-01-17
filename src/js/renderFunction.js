@@ -146,3 +146,5 @@ export function renderFilmCardLibrary(films) {
 function cleanTopFilmsMarkUp() {
   refs.topFilms.innerHTML = '';
 }
+
+
