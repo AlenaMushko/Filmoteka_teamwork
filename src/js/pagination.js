@@ -11,6 +11,7 @@ const options = {
   visiblePages: 5,
   page: 1,
   centerAlign: true,
+  usageStatistics: false,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
