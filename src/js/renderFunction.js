@@ -21,7 +21,7 @@ export function renderSliderFilmCard({ results }) {
             .join(', ');
         }
         return `
-      <li class="glide__slide" data-id=${id}>
+      <li class="glide__slide revenue__slider" data-id=${id}>
       <a class="glide__link" href= "">
       <div class="glide__container">
                  <img   class='glide__img' alt= '${
