@@ -9,15 +9,25 @@ export default class ApiService {
     this.searchQuery = '';
     this.page = 1;
     this.filmsOnPage = 12;
+    // this.currentLang = ;
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
+    let currentLang = localStorage.getItem('language') || 'en';
+      console.log(currentLang === 'en');
+    console.log(currentLang === 'ua');
     try {
-      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&sort_by=revenue.desc`;
+      if (currentLang === 'ua') {
+  const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=ua-UA&sort_by=revenue.desc`;
+} else {
+      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=en-US&sort_by=revenue.desc`;
+}
+      // const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=en-US&sort_by=revenue.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
+        console.log(response.data);
         return response.data;
       });
     } catch (error) {
@@ -125,4 +135,12 @@ export default class ApiService {
   set pageNum(newPage) {
     this.page = newPage;
   }
+  // отримуємо мову із localStorage
+get currentLang() {
+    return this.currentLang;
+  }
+  set currentLang(newCurrentLang) {
+    this.currentLang = newCurrentLang;
+  }
+
 }
