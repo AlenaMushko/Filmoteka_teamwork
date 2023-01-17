@@ -13,10 +13,7 @@ Hа кнопки які змінюють мову треба повісити da
 <span data-lang="library">My library</span>
 <span data-lang="singIn">Sign in</span>
 <span data-lang="singOut">Sign out</span>
-Не разобрался - placeholder="Movie search"
-<div class="header__warning is-hidden" data-lang="searchError">
-Search result not successful. Enter the correct movie name
-</div>
+<div class="header__warning is-hidden" data-lang="searchError">Search result not successful. Enter the correct movie name</div>
 <span data-lang="filters">Filters</span>
 <span data-lang="genres">Genres</span>
 <span data-lang="singOut">Sign out</span>
@@ -50,19 +47,8 @@ Search result not successful. Enter the correct movie name
 <span data-lang="home">Home</span>
 <span data-lang="library">My library</span>
 
-<button
-type="button"
-class="btn__modal btn__modal--library btn__watched"
-data-lang="watched">
-Watched
-</button>
-
-<button 
-type="button" 
-class="btn__modal btn__modal--library btn__queue"
-data-lang="queue">
-Queue
-</button>
+<button type="button" class="btn__modal btn__modal--library btn__watched" data-lang="watched">Watched</button>
+<button type="button" class="btn__modal btn__modal--library btn__queue" data-lang="queue">Queue</button>
 
 5. slider-new-films.html
 <h1 class="caption" data-lang="recomend">Recommended most revenue movies</h1>
@@ -71,6 +57,7 @@ Queue
 <span data-lang="home">Home</span>
 <span data-lang="library">My library</span>
 <span data-lang="singOut">Sign out</span>
+
 <li><button type="button" class="" data-lang="watched">Watched</button></li>
 <li><button type="button" class="" data-lang="queue">Queue</button></li>
 
@@ -94,6 +81,8 @@ Queue
 <p class="modal_login__title_signIn" data-lang="titel-register">Please enter your e-mail and password</p>
 <label for="email" class="modal_login__label" data-lang="mail">E-mail</label>
 <label for="password" class="modal_login__label" data-lang="pass">Password</label>
+<button type="submit" class="modal_login__button_register btn__modal js-auth__registration-btn" disabled data-lang="sign-up">Sign up</button>
+<button type="submit" class="modal_login__button_confirm btn__modal js-auth__entrance-btn" data-lang="sign-in">Sign in</button>
 
 9. home-section-films.html
 <h1 class="visually-hidden__title" data-lang="new-movies">new best movies online</h1>
@@ -110,5 +99,3 @@ Queue
 <span data-lang='add-watched'>add to watched</span>
 <span data-lang='add-queue'>add to queue</span>
 <h3 class="film-modal__watch-trailers-title" data-lang='watch-trailers'>Watch trailers</h3>
-
-12.
