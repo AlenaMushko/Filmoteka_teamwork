@@ -31,6 +31,7 @@ export class Modal {
 
   async openFilmCardModal(e) {
     e.preventDefault();
+    console.log("CLICK");
 
     const filmId = e.target.parentNode.dataset.id;
     // const filmId = e.target.dataset.id;

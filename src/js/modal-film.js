@@ -4,7 +4,12 @@ import { Modal } from "./modal";
 export function filmCardModalWindow() {
   const filmCardModal = new Modal(
     // ".top-films" || ".library-films" || ".glide__slides",
-    ".top-films",
+    // ".library-films" || ".top-films" || ".glide__slides",
+    // (".top-films") || (".library-films") || (".glide__slides"),
+    // ".top-films, .library-films, .glide__slides",
+    // ".top-films",
+    ".library-films",
+    // ".glide__slides",
     ".film-modal__close-btn",
     ".film-modal__overlay",
     ".film-modal"
