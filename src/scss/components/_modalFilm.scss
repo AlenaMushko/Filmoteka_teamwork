@@ -53,18 +53,19 @@
   }
 }
 
-.film-modal__img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+.film-modal__img-container {
   @include mq(tablet) {
     width: 264px;
-    height: 374px;
   }
+
   @include mq(desktop) {
     width: 375px;
-    height: 478px;
   }
+}
+
+.film-modal__img {
+  width: 100%;
+  border-radius: 4px;
 }
 
 .film-modal__info {
