@@ -25,6 +25,7 @@ export async function onSearchFormSubmit(e) {
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
+    // resetQuery();
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
@@ -51,4 +52,10 @@ export async function onSearchFormSubmit(e) {
     console.log(error);
   }
 }
+
+// export const resetQuery = () => {
+//   refs.inputEl.value = '';
+//   localStorage.removeItem('query-value');
+//   apiService.query = '';
+// };
 
