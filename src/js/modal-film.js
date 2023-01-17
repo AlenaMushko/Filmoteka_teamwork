@@ -14,5 +14,4 @@ export function filmCardModalWindow() {
   modalFilmBtn.forEach(btn => {
     btn.addEventListener('click', filmCardModal.openFilmCardModal.bind(filmCardModal));
   });
-  // filmCardModal.openBtn.addEventListener('click', filmCardModal.openFilmCardModal.bind(filmCardModal));
 }

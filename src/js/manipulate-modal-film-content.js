@@ -32,6 +32,8 @@ export function renderModalFilmCard(filmInfo) {
     return;
   }
 
+  const imgPlaceholder = new URL('../images/poster_photo-400x600.webp', import.meta.url);
+
   const {
     id,
     poster_path,
@@ -48,37 +50,9 @@ export function renderModalFilmCard(filmInfo) {
     .map(({ name }) => name)
     .join(', ');
 
-  // poster_path === null
-  //   ? (imgEl.src = "https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg")
-  //   : (imgEl.src = `https://image.tmdb.org/t/p/original${poster_path}`);
-  
-  // original_title === ""
-  //   ? ((titleBigEl.innerHTML = unavailable)
-  //     && (titleSmallEl.innerHTML = unavailable)
-  //     && (imgEl.alt = "no poster available"))
-  //   : ((titleBigEl.innerHTML = original_title)
-  //     && (titleSmallEl.innerHTML = original_title)
-  //     && (imgEl.alt = original_title));
-  
-  // (vote_average === "" || vote_count === "")
-  //   ? (votesEl.innerHTML = unavailable)
-  //   : (votesEl.innerHTML = `<span class="vote-average">${vote_average}</span>/<span class="vote-count">${vote_count}</span>`);
-
-  // popularity === ""
-  //   ? (popularityEl.innerHTML = unavailable)
-  //   : (popularityEl.innerHTML = popularity);
-
-  // genres.length === 0
-  //   ? (genresEl.innerHTML = unavailable)
-  //   : (genresEl.innerHTML = filmGenres);
-
-  // overview === ""
-  //   ? (overviewEl.innerHTML = unavailable)
-  //   : (overviewEl.innerHTML = overview);
-
   poster_path === null
-    ? ((imgEl.src = "https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg")
-      && (imgEl.alt = "no poster available"))
+    ? ((imgEl.src = imgPlaceholder)
+      && (imgEl.alt = "poster already on the way"))
     : ((imgEl.src = `https://image.tmdb.org/t/p/w500${poster_path}`)
       && (imgEl.alt = original_title));
 
