@@ -79,7 +79,7 @@ export function renderModalFilmCard(filmInfo) {
   poster_path === null
     ? ((imgEl.src = "https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg")
       && (imgEl.alt = "no poster available"))
-    : ((imgEl.src = `https://image.tmdb.org/t/p/original${poster_path}`)
+    : ((imgEl.src = `https://image.tmdb.org/t/p/w500${poster_path}`)
       && (imgEl.alt = original_title));
 
   genres.length === 0
