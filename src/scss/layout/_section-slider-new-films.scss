@@ -1,16 +1,21 @@
+.glide.container {
+  @include mq(mobile) {
+    display: none;
+  }
+  @include mq(tablet) {
+    display: block;
+    // height: 400px;
+    width: 768px;
+  }
+  @include mq(desktop) {
+    width: 1280px;
+  }
+}
+
 .glide {
   position: relative;
   margin: 0 auto;
   margin-top: 25px;
-  // @include mq(mobile) {
-  //   min-width: 480px;
-  // }
-  // @include mq(tablet) {
-  //   width: 768px;
-  // }
-  // @include mq(desktop) {
-  //   width: 1280px;
-  // }
 }
 .caption {
   font-weight: 500;
