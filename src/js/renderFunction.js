@@ -82,8 +82,8 @@ export function renderFilmCard({ results }) {
        src= '${foto}'`;
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
-                  <h3 class="films__title">${
-                    original_title || title || original_name
+                  <h3 class="films__title">${ title ||
+                    original_title || original_name
                   } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
