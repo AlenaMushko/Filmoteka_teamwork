@@ -73,7 +73,7 @@ export const langArr = {
       en: "Crime",
     },
     'documentary': {
-      ua: "Документальний фільм",
+      ua: "Документальні",
       en: "Documentary",
     },
     'drama': {
@@ -133,7 +133,7 @@ export const langArr = {
       en: "Date",
     },
     'reset': {
-      ua: "Скинути фільтр",
+      ua: "Оновити",
       en: "Reset",
     },
     'settings': {
