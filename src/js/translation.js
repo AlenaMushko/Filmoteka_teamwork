@@ -4,12 +4,12 @@ export const langArr = {
       ua: "Фільмотека головна",
       en: "Filmoteka",
     },
-  // my_library Заголовки сторінки //
+    // my_library Заголовки сторінки //
     'library-page-title': {
-        ua: "Фільмотека Моя бібліотека",
-        en: "Filmoteka My-library",
-      },
-  // home-header Навігація //
+      ua: "Фільмотека Моя бібліотека",
+      en: "Filmoteka My-library",
+    },
+    // home-header Навігація //
     'home': {
       ua: "головна",
       en: "home",
@@ -26,7 +26,7 @@ export const langArr = {
       ua: "Вихід",
       en: "Sing Out",
     },
-  // home-header Пошук //
+    // home-header Пошук //
     'search': {
       ua: "Пошук фільму за назвою",
       en: "Movie search",
@@ -36,10 +36,10 @@ export const langArr = {
       en: "Search result not successful. Enter the correct movie name",
     },
     'recomend': {
-      ua: "Рекомендовані фільми",
-      en: "Recommended movies",
+      ua: 'Рекомендовані найбільш касові фільми',
+      en: 'Recommended most revenue movies',
     },
-  // home-header Фільтр //
+    // home-header Фільтр //
     'filters': {
       ua: "Фільтри",
       en: "Filters",
@@ -49,7 +49,7 @@ export const langArr = {
       en: "Genres",
     },
     'action': {
-      ua: "Екшен",
+      ua: "Бойовик",
       en: "Action",
     },
     'genre': {
@@ -61,7 +61,7 @@ export const langArr = {
       en: "Adventure",
     },
     'animation': {
-      ua: "Анімація",
+      ua: "Мультфільм",
       en: "Animation",
     },
     'comedy': {
@@ -69,35 +69,35 @@ export const langArr = {
       en: "Comedy",
     },
     'crime': {
-      ua: "Детектив",
+      ua: "Кримінал",
       en: "Crime",
     },
     'documentary': {
-      ua: "Документальні",
+      ua: "Документальний",
       en: "Documentary",
     },
     'drama': {
-      ua: "Драма",
+      ua: "Драми",
       en: "Drama",
     },
     'family': {
-      ua: "Сімейний фільм",
+      ua: "Сімейний",
       en: "Family",
     },
     'fantasy': {
-      ua: "Фантастика",
+      ua: "Фентезі",
       en: "Fantasy",
     },
     'history': {
-      ua: "Історичні",
+      ua: "Історичний",
       en: "History",
     },
     'horror': {
-      ua: "Фільм жахів",
+      ua: "Жахи",
       en: "Horror",
     },
     'music': {
-      ua: "Мьюзикли",
+      ua: "Музика",
       en: "Music",
     },
     'mystery': {
@@ -113,7 +113,7 @@ export const langArr = {
       en: "Science Fiction",
     },
     'tvMovie': {
-      ua: "Телевызійні програми",
+      ua: "Телевізійні програми",
       en: "History",
     },
     'thriller': {
@@ -121,7 +121,7 @@ export const langArr = {
       en: "Thriller",
     },
     'war': {
-      ua: "Фільми про війну",
+      ua: "Військовий",
       en: "War",
     },
     'western': {
@@ -144,16 +144,21 @@ export const langArr = {
       ua: "Тема",
       en: "Theme",
     },
-  // library-header Кнопки додавання фільмів //
-    'watched': {
-      ua: "Переглянути",
-      en: "Watched",
+    // home-header new film // 
+    'new-movies': {
+      ua: 'нові найкращі фільми онлайн',
+      en: 'new best movies online',
     },
-    'queue': {
-      ua: "В черзі",
-      en: "Queue",
-    },
-  // Footer //
+    // library-header Кнопки додавання фільмів //
+      'watched': {
+        ua: "Переглянути",
+        en: "Watched",
+      },
+      'queue': {
+        ua: "В черзі",
+        en: "Queue",
+      },
+    // Footer //
     'application': {
       ua: "Наш додаток",
       en: "Our Application",
@@ -203,11 +208,6 @@ export const langArr = {
     ua: "Увійти",
     en: "Sign in",
   },
-  // Home section films // 
-  'new-movies': {
-    ua: 'нові найкращі фільми онлайн',
-    en: 'new best movies online',
-  },
   // Library section films // 
   'error-page': {
     ua: 'Вибачте :( Ця сторінка порожня',
@@ -215,24 +215,20 @@ export const langArr = {
   },
   // Modal Film //
   'vote': {
-    ua: 'Голосувати / Голосувати',
+    ua: 'Рейтинг/Голоси',
     en: 'Vote / Votes',
   },
   'popularity': {
     ua: 'Популярність',
     en: 'Popularity',
   },
-  'genre': {
+  'genre-card-fim': {
     ua: 'Жанр',
     en: 'Genre',
   },
   'about': {
     ua: 'Про фільм',
     en: 'About',
-  },
-  'genre': {
-    ua: 'Жанр',
-    en: 'Genre',
   },
   'add-watched': {
     ua: 'переглянуто',
