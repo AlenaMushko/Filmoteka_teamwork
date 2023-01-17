@@ -4,20 +4,26 @@ const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 export default class ApiService {
+ currentLang = localStorage.getItem('language');
   constructor() {
     this.totalResults = 0;
     this.searchQuery = '';
     this.page = 1;
     this.filmsOnPage = 12;
+    this.currentLang;
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
+    
+      console.log(this.currentLang === 'en');
+    console.log(this.currentLang === 'ua');
     try {
-      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&sort_by=revenue.desc`;
+      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=${this.currentLang}&sort_by=revenue.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
         }
+        console.log(response.data);
         return response.data;
       });
     } catch (error) {
@@ -32,7 +38,7 @@ export default class ApiService {
         svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
-      const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
+      const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&language=${this.currentLang}&append_to_response=images&sort_by = popularity.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
@@ -125,4 +131,12 @@ export default class ApiService {
   set pageNum(newPage) {
     this.page = newPage;
   }
+  // отримуємо мову із localStorage
+get currentLang() {
+    return this.currentLang;
+  }
+  set currentLang(newCurrentLang) {
+    this.currentLang = newCurrentLang;
+  }
+
 }
