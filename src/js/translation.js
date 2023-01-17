@@ -184,7 +184,7 @@ export const langArr = {
       en: "by",
     },
     'students': {
-      ua: "Студенти GoIT",
+      ua: "студентами GoIT",
       en: "GoIT Students",
     },
   // modal-registration // 
@@ -222,7 +222,7 @@ export const langArr = {
     ua: 'Популярність',
     en: 'Popularity',
   },
-  'genre-card-fim': {
+  'genre': {
     ua: 'Жанр',
     en: 'Genre',
   },
@@ -247,7 +247,7 @@ export const langArr = {
     en: 'remove to queue',
   },
   'watch-trailers': {
-    ua: 'Дивіться трейлери',
+    ua: 'Дивитись трейлер',
     en: 'Watch trailers',
   },
   };
