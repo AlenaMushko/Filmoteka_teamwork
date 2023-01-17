@@ -1,4 +1,4 @@
-import { addEventListenerOnButtonaAddWatchedAndAddQueue } from './localStorage'
+import { addEventListenerOnButtonaAddWatchedAndAddQueue } from "./localStorageMovieManipulate";
 
 const refs = {
   imgEl: document.querySelector(".film-modal__img"),
