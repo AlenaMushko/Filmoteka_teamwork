@@ -94,12 +94,6 @@
 .glide__container {
   position: relative;
   overflow: hidden;
-  // &:hover,
-  // &:focus {
-  //   box-shadow: $transitionDuration $cubic;
-  //   box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
-  //     0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
-  // }
 }
 .glide__title {
   color: $color-extra-text;
@@ -140,8 +134,3 @@
   background-color: rgba(47, 48, 58, 0.8);
   transition: transform $transitionDuration $cubic;
 }
-
-// .glide__slides .glide__slide-biger{
-//   height: 466px;
-
-// }
