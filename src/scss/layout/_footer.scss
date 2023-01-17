@@ -278,3 +278,15 @@
 .glide__bullet--active {
   background-color: $color-brand-text;
 }
+.team__slider{
+  gap:0;
+}
+.glide__bullets {
+  z-index: 2;
+  list-style: none;
+  display: inline-flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
