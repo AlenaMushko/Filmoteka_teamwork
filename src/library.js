@@ -8,7 +8,8 @@ import { btnLibraryWatchedOrQueue } from './js/watched_queue';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
-import {} from './js/language';
+import { } from './js/language';
+import { filmCardModalWindow } from './js/modal-film';
 
 // -------------------------------------------header
 // рендириця картка фільму з id що в  localStorage
@@ -28,6 +29,8 @@ sliderRevenueFilms();
 btnLibraryWatchedOrQueue();
 // кнопка повернення догори
 scrolToTop();
+// модалка карточки фільму
+filmCardModalWindow();
 
 //------------------------------------------footer
 // footer

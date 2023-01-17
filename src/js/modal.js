@@ -26,8 +26,14 @@ export class Modal {
   }
   async openFilmCardModal(e) {
     e.preventDefault();
-    const filmId = e.target.parentNode.dataset.id;
-    // const filmId = e.target.dataset.id;
+
+    const targetOne = e.target.parentNode.dataset.id;
+    const targetTwo = e.target.parentNode.parentNode.dataset.id;
+    const targetThree = e.target.parentNode.parentNode.parentNode.dataset.id;
+    const targetFour = e.target.parentNode.parentNode.parentNode.parentNode.dataset.id;
+    const targetFive = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.id;
+    const filmId = targetOne || targetTwo || targetThree || targetFour || targetFive;
+
     if (!filmId) {
       return;
     }
