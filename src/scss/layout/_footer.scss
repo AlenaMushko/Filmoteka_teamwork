@@ -258,3 +258,23 @@
     color: $color-brand-text;
   }
 }
+
+.glide__bullet {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  border: 0.25px solid $color-brand-text;
+  border-radius: 50%;
+  margin: 0px 0.25em;
+  padding: 0;
+  line-height: 0;
+  transition: all .3s ease-in-out;
+  box-shadow: 0 0.25em 0.5em #0000001a;
+  &:hover,
+  &:focus {
+      background-color: $color-brand-text;
+  }
+}
+.glide__bullet--active {
+  background-color: $color-brand-text;
+}
