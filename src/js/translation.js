@@ -235,12 +235,20 @@ export const langArr = {
     en: 'Genre',
   },
   'add-watched': {
-    ua: 'додати до переглянутого',
+    ua: 'переглянуто',
     en: 'add to watched',
+  },
+  'remove-watched': {
+    ua: 'видалити з переглянутих',
+    en: 'remove to watched',
   },
   'add-queue': {
     ua: 'додати в чергу',
     en: 'add to queue',
+  },
+  'remove-queue': {
+    ua: 'видалити з черги',
+    en: 'remove to queue',
   },
   'watch-trailers': {
     ua: 'Дивіться трейлери',
