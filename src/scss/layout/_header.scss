@@ -22,7 +22,7 @@
     background-size: cover;
   }
 
-  &--library {
+  &.library {
     color: $color-extra-text;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/library-bg-mobile.jpg);
@@ -338,12 +338,13 @@
 .settings__list {
   position: absolute;
   top: 30%;
-  right: 7%;
+  right: 15px;
   display: flex;
   justify-content: center;
   gap: 10px;
   @include mq(tablet) {
-    top: 35%;
+    top: 87%;
+    right: 4%;
   }
 }
 
