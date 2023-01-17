@@ -27,7 +27,7 @@ export function renderSliderFilmCard({ results }) {
                  <img   class='glide__img' alt= '${
                    title || original_title || original_name
                  }' width='360' height='345px' loading="lazy"
-                  src='https://image.tmdb.org/t/p/w500${poster_path}'/>
+                  src='https://image.tmdb.org/t/p/w342${poster_path}'/>
                   <div class="glide__text">
                   <h3 class="glide__title">${
                     title || original_title || original_name
