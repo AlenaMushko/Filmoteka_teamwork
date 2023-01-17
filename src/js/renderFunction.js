@@ -141,7 +141,7 @@ export function renderFilmCardLibrary(films) {
               </li>`;
     })
     .join('');
-  refs.movieLibrary.innerHTML = markup;
+  refs.movieLibrary.insertAdjacentHTML('beforeend', markup);
 }
 function cleanTopFilmsMarkUp() {
   refs.topFilms.innerHTML = '';

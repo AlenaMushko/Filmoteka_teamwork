@@ -8,7 +8,7 @@ import { btnLibraryWatchedOrQueue } from './js/watched_queue';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
-import { } from './js/language';
+import {} from './js/language';
 import { filmCardModalWindow } from './js/modal-film';
 
 // -------------------------------------------header

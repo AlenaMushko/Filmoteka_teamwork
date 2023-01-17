@@ -17,10 +17,11 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
-const amountFilmsOnPage = 12;
-let pageNumber = apiService.page;
+const amountFilmsOnPage = 6;
+console.log('befor function', apiService.page);
 // фільми Watched
-async function onWatchedBtnClick() {
+export async function onWatchedBtnClick(pageNumber = 1) {
+  // let pageNumber = apiService.page;
   let filmsOnPage = [];
   if (arrWatchedFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
@@ -28,18 +29,19 @@ async function onWatchedBtnClick() {
     if (pageNumber === 1) {
       filmsOnPage = arrWatchedFilms.slice(
         2 * (pageNumber - 1),
-        12 * pageNumber
+        amountFilmsOnPage * pageNumber
       );
     } else {
       filmsOnPage = arrWatchedFilms.slice(
-        12 * (pageNumber - 1),
-        12 * pageNumber + 1
+        amountFilmsOnPage * (pageNumber - 1),
+        amountFilmsOnPage * pageNumber + 1
       );
     }
+    console.log('in fetch function', apiService.page);
+    console.log('in fetch pageNum', pageNumber);
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -47,24 +49,27 @@ async function onWatchedBtnClick() {
     cleanLibrary();
   }
 }
+
 //  фільми Queue
-async function onQueueBtnClick() {
+async function onQueueBtnClick(pageNumber = 1) {
   let filmsOnPage = [];
   if (arrQueueFilms.length !== 0) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;
     if (pageNumber === 1) {
-      filmsOnPage = arrQueueFilms.slice(2 * (pageNumber - 1), 12 * pageNumber);
+      filmsOnPage = arrQueueFilms.slice(
+        2 * (pageNumber - 1),
+        amountFilmsOnPage * pageNumber
+      );
     } else {
       filmsOnPage = arrQueueFilms.slice(
-        12 * (pageNumber - 1),
-        12 * pageNumber - 1 + 1
+        amountFilmsOnPage * (pageNumber - 1),
+        amountFilmsOnPage * pageNumber - 1 + 1
       );
     }
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
