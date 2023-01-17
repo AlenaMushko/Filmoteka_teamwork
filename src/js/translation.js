@@ -36,8 +36,8 @@ export const langArr = {
     en: 'Search result not successful. Enter the correct movie name',
   },
   recomend: {
-    ua: 'Рекомендовані найбільш касові фільми',
-    en: 'Recommended most revenue movies',
+    ua: 'Рекомендовані фільми',
+    en: 'Recommended movies',
   },
   // home-header Фільтр //
   filters: {
