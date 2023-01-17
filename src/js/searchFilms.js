@@ -25,37 +25,37 @@ export async function onSearchFormSubmit(e) {
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
-    // resetQuery();
+    resetQuery();
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
       cleanPagination();
       if (localStorage.getItem('language') === 'en') {
-    Notify.failure(
-        'Sorry, there are no films matching your search query. Please try again.'
-      );
-    console.log('en');
-  } else if (localStorage.getItem('language') === 'ua') {
-    Notify.info(`Вибачте, не знайдено жодного філльму по вашому запиту. Будь ласка, спробуйте ще`);
-  }
-     
+        Notify.failure(
+          'Sorry, there are no films matching your search query. Please try again.'
+        );
+        console.log('en');
+      } else if (localStorage.getItem('language') === 'ua') {
+        Notify.info(`Вибачте, не знайдено жодного філльму по вашому запиту. Будь ласка, спробуйте ще`);
+      }
+
       return;
     }
     if (apiService.totalResults >= 1) {
-       if (localStorage.getItem('language') === 'en') {
-  Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
-  } else if (localStorage.getItem('language') === 'ua') {
-  Notify.success(`Ура! Ми знайшли по вашому запиту ${apiService.totalResults} результатів.`);
-  }   
+      if (localStorage.getItem('language') === 'en') {
+        Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
+      } else if (localStorage.getItem('language') === 'ua') {
+        Notify.success(`Ура! Ми знайшли по вашому запиту ${apiService.totalResults} результатів.`);
+      }
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-// export const resetQuery = () => {
-//   refs.inputEl.value = '';
-//   localStorage.removeItem('query-value');
-//   apiService.query = '';
-// };
+const resetQuery = () => {
+  refs.inputEl.value = '';
+  localStorage.removeItem('query-value');
+  apiService.query = '';
+};
 
