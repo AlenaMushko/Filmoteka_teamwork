@@ -1,5 +1,5 @@
 <header class="header library">
-  <div class="container header__container">
+  <div class="container header__container--library">
     <nav class="navigation library">
       <a href="/src/index.html" class="navigation__logo logo">
         <svg width="24" height="24">
@@ -50,6 +50,40 @@
           data-lang="queue"
         >
           Queue
+        </button>
+      </li>
+    </ul>
+    <ul class="settings__list">
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button"
+          id="theme-btn"
+          value="dark"
+        >
+          <svg class="settings__icon" width="14" height="14">
+            <use href="./images/sprite.svg#theme"></use>
+          </svg>
+        </button>
+      </li>
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button btn-ua"
+          value="ua"
+          data-btn="ua"
+        >
+          Ua
+        </button>
+      </li>
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button btn-en active-select"
+          value="en"
+          data-btn="en"
+        >
+          En
         </button>
       </li>
     </ul>

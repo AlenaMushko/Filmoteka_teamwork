@@ -29,20 +29,29 @@
         <li class="navigation__item navigation__item--library js__sign-in-btn">
           <button
             type="button"
-            class="button navigation__link navigation__open--btn"
+            class="button navigation__button navigation__open--btn"
+            title="sign in"
           >
-            <svg width="12" height="12" class="navigation__icon">
+            <svg
+              width="12"
+              height="12"
+              class="navigation__icon navigation__icon--log"
+            >
               <use href="./images/sprite.svg#enter"></use></svg
-            ><span data-lang="singIn">Sign in</span>
+            ><span class="wrap-is-hidden" data-lang="sigIn">Sign in</span>
           </button>
         </li>
         <li
           class="navigation__item navigation__item--library js__sign-out-btn is-hidden"
         >
-          <a href="/src/index.html" class="navigation__link"
-            ><svg width="12" height="12" class="navigation__icon">
+          <a href="/src/index.html" class="navigation__link" title="sign out"
+            ><svg
+              width="12"
+              height="12"
+              class="navigation__icon navigation__icon--log"
+            >
               <use href="./images/sprite.svg#signout"></use></svg
-            ><span>Sign out</span></a
+            ><span class="wrap-is-hidden" data-lang="singOut">Sign out</span></a
           >
         </li>
       </ul>
@@ -73,246 +82,243 @@
 
     <!-- !button-settings-filtres -->
 
-    <div class="header__settings settings">
-      <ul class="settings__list">
-        <li class="settings__item">
-          <button
-            type="button"
-            class="button__filters button"
-            id="button-filters"
-          >
-            <svg class="filters__icon" width="12" height="12">
-              <use href="./images/sprite.svg#filters"></use>
-            </svg>
-            <span data-lang="filters">Filters</span>
+    <div class="filters-wrap">
+      <ul class="filters-list">
+        <li class="filter__item">
+          <button type="button" class="button filters__button">
+            <svg class="filters__icon" width="14" height="14">
+              <use href="./images/sprite.svg#genres"></use></svg
+            ><span data-lang="genres">Genres</span>
           </button>
-          <!-- is-hidden -->
-          <div class="menu__filters">
-            <div class="menu-filters--genres">
-              <button type="button" class="button button__genres">
-                <svg class="settings__icon" width="14" height="14">
-                  <use href="./images/sprite.svg#genres"></use></svg
-                ><span data-lang="genres">Genres</span>
-              </button>
-              <div class="genres-container" id="genres-container">
-                <button
-                  type="button"
-                  class="button"
-                  value="28"
-                  data-lang="action"
-                >
-                  Action
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="12"
-                  data-lang="adventure"
-                >
-                  Adventure
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="16"
-                  data-lang="animation"
-                >
-                  Animation
-                </button>
-                <button type="button" class="button" value="35">Comedy</button>
-                <button
-                  type="button"
-                  class="button"
-                  value="80"
-                  data-lang="crime"
-                >
-                  Crime
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="99"
-                  data-lang="documentary"
-                >
-                  Documentary
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="18"
-                  data-lang="drama"
-                >
-                  Drama
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="10751"
-                  data-lang="family"
-                >
-                  Family
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="14"
-                  data-lang="fantasy"
-                >
-                  Fantasy
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="36"
-                  data-lang="history"
-                >
-                  History
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="27"
-                  data-lang="horror"
-                >
-                  Horror
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="10402"
-                  data-lang="music"
-                >
-                  Music
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="9648"
-                  data-lang="mystery"
-                >
-                  Mystery
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="10749"
-                  data-lang="romance"
-                >
-                  Romance
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="878"
-                  data-lang="scienceFiction"
-                >
-                  Science Fiction
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="10770"
-                  data-lang="tvMovie"
-                >
-                  TV Movie
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="53"
-                  data-lang="thriller"
-                >
-                  Thriller
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="10752"
-                  data-lang="war"
-                >
-                  War
-                </button>
-                <button
-                  type="button"
-                  class="button"
-                  value="37"
-                  data-lang="western"
-                >
-                  Western
-                </button>
-              </div>
-            </div>
-            <div class="menu-filters--years">
-              <button type="button" class="button" id="">
-                <svg class="settings__icon" width="14" height="14">
-                  <use href="./images/sprite.svg#date"></use></svg
-                ><span data-lang="date">Date</span>
-              </button>
-              <div class="years-container" id="years-container">
-                <button type="button" class="button" value="2023">2023</button>
-                <button type="button" class="button" value="2022">2022</button>
-                <button type="button" class="button" value="2021">2021</button>
-                <button type="button" class="button" value="2020">2020</button>
-                <button type="button" class="button" value="2019">2019</button>
-                <button type="button" class="button" value="2018">2018</button>
-                <button type="button" class="button" value="2017">2017</button>
-                <button type="button" class="button" value="2016">2016</button>
-                <button type="button" class="button" value="2015">2015</button>
-                <button type="button" class="button" value="2014">2014</button>
-                <button type="button" class="button" value="2013">2013</button>
-                <button type="button" class="button" value="2012">2012</button>
-                <button type="button" class="button" value="2011">2011</button>
-                <button type="button" class="button" value="2010">2010</button>
-                <button type="button" class="button" value="2009">2009</button>
-                <button type="button" class="button" value="2008">2008</button>
-                <button type="button" class="button" value="2007">2007</button>
-                <button type="button" class="button" value="2006">2006</button>
-                <button type="button" class="button" value="2005">2005</button>
-              </div>
-            </div>
-            <button type="button" class="button" id="button-reset">
-              <svg class="settings__icon" width="14" height="14">
-                <use href="./images/sprite.svg#reset"></use></svg
-              ><span data-lang="reset">Reset</span>
+
+          <!-- !genres-list -->
+
+          <div class="genres-container" id="genres-container">
+            <button type="button" class="button" value="28" data-lang="action">
+              Action
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="12"
+              data-lang="adventure"
+            >
+              Adventure
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="16"
+              data-lang="animation"
+            >
+              Animation
+            </button>
+
+            <button type="button" class="button" value="35" data-lang="comedy">
+              Comedy
+            </button>
+
+            <button type="button" class="button" value="80" data-lang="crime">
+              Crime
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="99"
+              data-lang="documentary"
+            >
+              Documentary
+            </button>
+
+            <button type="button" class="button" value="18" data-lang="drama">
+              Drama
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="10751"
+              data-lang="family"
+            >
+              Family
+            </button>
+
+            <button type="button" class="button" value="14" data-lang="fantasy">
+              Fantasy
+            </button>
+
+            <button type="button" class="button" value="36" data-lang="history">
+              History
+            </button>
+
+            <button type="button" class="button" value="27" data-lang="horror">
+              Horror
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="10402"
+              data-lang="music"
+            >
+              Music
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="9648"
+              data-lang="mystery"
+            >
+              Mystery
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="10749"
+              data-lang="romance"
+            >
+              Romance
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="878"
+              data-lang="scienceFiction"
+            >
+              Science Fiction
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="10770"
+              data-lang="tvMovie"
+            >
+              TV Movie
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              value="53"
+              data-lang="thriller"
+            >
+              Thriller
+            </button>
+
+            <button type="button" class="button" value="10752" data-lang="war">
+              War
+            </button>
+
+            <button type="button" class="button" value="37" data-lang="western">
+              Western
             </button>
           </div>
         </li>
-        <li class="settings__item">
-          <button type="button" class="button__settings button">
+        <li class="filter__item">
+          <button type="button" class="button filters__button" id="">
             <svg class="settings__icon" width="14" height="14">
-              <use href="./images/sprite.svg#settings"></use></svg
-            ><span data-lang="settings">Settings</span>
+              <use href="./images/sprite.svg#date"></use></svg
+            ><span data-lang="date">Date</span>
           </button>
-          <div class="menu__settings">
-            <button
-              type="button"
-              class="button button__genres"
-              id="theme-btn"
-              value="dark"
-            >
-              <svg class="settings__icon" width="14" height="14">
-                <use href="./images/sprite.svg#theme"></use>
-              </svg>
-            </button>
-            <button
-              type="button"
-              class="button btn-ua"
-              value="ua"
-              data-btn="ua"
-            >
-              Ua
-            </button>
-            <button
-              type="button"
-              class="button btn-en active-select"
-              value="en"
-              data-btn="en"
-            >
-              En
-            </button>
+          <!-- !years-list -->
+
+          <div class="years-container" id="years-container">
+            <button type="button" class="button" value="2023">2023</button>
+
+            <button type="button" class="button" value="2022">2022</button>
+
+            <button type="button" class="button" value="2021">2021</button>
+
+            <button type="button" class="button" value="2020">2020</button>
+
+            <button type="button" class="button" value="2019">2019</button>
+
+            <button type="button" class="button" value="2018">2018</button>
+
+            <button type="button" class="button" value="2017">2017</button>
+
+            <button type="button" class="button" value="2016">2016</button>
+
+            <button type="button" class="button" value="2015">2015</button>
+
+            <button type="button" class="button" value="2014">2014</button>
+
+            <button type="button" class="button" value="2013">2013</button>
+
+            <button type="button" class="button" value="2012">2012</button>
+
+            <button type="button" class="button" value="2011">2011</button>
+
+            <button type="button" class="button" value="2010">2010</button>
+
+            <button type="button" class="button" value="2009">2009</button>
+
+            <button type="button" class="button" value="2008">2008</button>
+
+            <button type="button" class="button" value="2007">2007</button>
+
+            <button type="button" class="button" value="2006">2006</button>
+
+            <button type="button" class="button" value="2005">2005</button>
           </div>
+        </li>
+
+        <!-- !button-reset -->
+        <li class="filter__item">
+          <button
+            type="button"
+            class="button filters__button"
+            id="button-reset"
+          >
+            <svg class="settings__icon" width="14" height="14">
+              <use href="./images/sprite.svg#reset"></use></svg
+            ><span data-lang="reset">Reset</span>
+          </button>
         </li>
       </ul>
     </div>
+
+    <!-- !buttons settings -->
+    <ul class="settings__list">
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button"
+          id="theme-btn"
+          value="dark"
+        >
+          <svg class="settings__icon" width="14" height="14">
+            <use href="./images/sprite.svg#theme"></use>
+          </svg>
+        </button>
+      </li>
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button btn-ua"
+          value="ua"
+          data-btn="ua"
+        >
+          Ua
+        </button>
+      </li>
+      <li class="settings__item">
+        <button
+          type="button"
+          class="button settings__button btn-en active-select"
+          value="en"
+          data-btn="en"
+        >
+          En
+        </button>
+      </li>
+    </ul>
   </div>
 </header>
