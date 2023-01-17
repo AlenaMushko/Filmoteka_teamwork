@@ -6,11 +6,11 @@
 
 .library-empty__title {
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Lobster', cursive;
-  font-size: 16px;
+  font-family: Lobster, 'cursive';
+  font-size: 14px;
   font-style: italic;
   text-shadow: black 0px 11px 7px, 0 0 1em black;
   color: rgb(255 182 182 / 80%);
@@ -39,5 +39,50 @@
   @include mq(desktop) {
     width: 75%;
     height: 75%;
+  }
+}
+
+.library-empty__link {
+  font-family: Roboto, 'sans-serif';
+  transform: scale(1);
+  transition: transform $transitionDuration $cubic,
+    text-shadow $transitionDuration $cubic;
+  font-size: 14px;
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 2px;
+    width: 93%;
+
+    background-color: currentColor;
+    border-radius: 10px;
+  }
+
+  @include mq(tablet) {
+    font-size: 24px;
+
+    &::after {
+      height: 3px;
+    }
+  }
+
+  @include mq(desktop) {
+    font-size: 30px;
+
+    &::after {
+      height: 4px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    text-shadow: 0 5px 10px black;
+    transform: scale(1.25);
   }
 }
