@@ -26,8 +26,8 @@ export function renderSliderFilmCard({ results }) {
       <div class="glide__container">
                  <img   class='glide__img' alt= '${
                    title || original_title || original_name
-                 }' width='360' loading="lazy"
-                  src='https://image.tmdb.org/t/p/original${poster_path}'/>
+                 }' width='360' height='345px' loading="lazy"
+                  src='https://image.tmdb.org/t/p/w500${poster_path}'/>
                   <div class="glide__text">
                   <h3 class="glide__title">${
                     title || original_title || original_name
@@ -70,12 +70,12 @@ export function renderFilmCard({ results }) {
         }
         const foto = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
-        }' width='100%' loading="lazy"
+        }' width='390px' height='580px' loading="lazy"
       data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
         const img = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
-        }' width='100%' loading="lazy"
-      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
+        }' width='390px' height='580px'  loading="lazy"
+      data-src='https://image.tmdb.org/t/p/w500${poster_path}'/>`;
         const imgPlug = `<img  class="film__img" '${
           title || original_title || original_name
         }' width='100%'
@@ -119,12 +119,12 @@ export function renderFilmCardLibrary(films) {
       const voteAverage = Number(vote_average).toFixed(1);
       const foto = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name
-      }' width='100%' loading="lazy"
+      }' width='390px' height='580px' loading="lazy"
       data-src="https://image.tmdb.org/t/p/w500/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg"/>`;
       const img = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name
-      }' width='100%' loading="lazy"
-      data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
+      }' width='390px' height='580px' loading="lazy"
+      data-src='https://image.tmdb.org/t/p/w500${poster_path}'/>`;
       return `<li class="film__item" data-id=${id}>
       <p class="films__voteaverage">${voteAverage}</p>
                            ${poster_path !== null ? img : foto}
