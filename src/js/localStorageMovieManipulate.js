@@ -59,7 +59,8 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         btnName.textContent = newBtnName;
         function onClick() {
             newRemoveFunction();
-            btnLibraryWatchedOrQueue();
+            // this function makes my library page render
+            // btnLibraryWatchedOrQueue();
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };
