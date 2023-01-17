@@ -9,10 +9,10 @@ const apiService = new ApiService();
 let arrWatchedFilms = myLibrary.getFromWatched();
 let arrQueueFilms = myLibrary.getFromQueue();
 export function btnLibraryWatchedOrQueue() {
-  if (arrWatchedFilms.length !== 0) {
+  if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
   } else {
-    Notify.info(`Your film list is empty`);
+    notifyInfo()
   }
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
@@ -22,7 +22,7 @@ let pageNumber = apiService.page;
 // фільми Watched
 async function onWatchedBtnClick() {
   let filmsOnPage = [];
-  if (arrWatchedFilms.length !== 0) {
+  if (arrWatchedFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrWatchedFilms.length;
     if (pageNumber === 1) {
@@ -50,7 +50,7 @@ async function onWatchedBtnClick() {
 //  фільми Queue
 async function onQueueBtnClick() {
   let filmsOnPage = [];
-  if (arrQueueFilms.length !== 0) {
+  if (arrWatchedFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;
     if (pageNumber === 1) {
@@ -73,7 +73,15 @@ async function onQueueBtnClick() {
   }
 }
 function cleanLibrary() {
-  Notify.info(`Your film list is empty`);
+  notifyInfo();
   refs.libraryEmpty.classList.remove('is-hidden');
   refs.movieLibrary.innerHTML = '';
+}
+
+function notifyInfo() {
+  if (localStorage.getItem('language') === 'en') {
+    Notify.info(`Your film list is empty`);
+  } else if (localStorage.getItem('language') === 'ua') {
+    Notify.info(`Покищо, ваша бібліотека порожня`);
+  }
 }
