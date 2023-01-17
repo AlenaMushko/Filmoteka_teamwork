@@ -1,6 +1,5 @@
 import { refs } from './refs';
 import genresId from '../genres.json';
-
 export function renderSliderFilmCard({ results }) {
   const markup = results
     .map(
@@ -44,10 +43,8 @@ export function renderSliderFilmCard({ results }) {
     .join('');
   refs.glideSlides.innerHTML = markup;
 }
-
 export function renderFilmCard({ results }) {
   cleanTopFilmsMarkUp();
-
   const markup = results
     .map(
       ({
@@ -65,7 +62,6 @@ export function renderFilmCard({ results }) {
           let filmGenreId = genresId
             .filter(({ id }) => genre_ids.includes(id))
             .map(({ name }) => name);
-
           if (filmGenreId.length >= 4) {
             filmGenre = `${filmGenreId.slice(0, 2).join(', ')},  Others`;
           } else {
@@ -82,9 +78,8 @@ export function renderFilmCard({ results }) {
       data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
         const imgPlug = `<img  class="film__img" '${
           title || original_title || original_name
-        }' width='100%' 
+        }' width='100%'
        src= '${foto}'`;
-
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
                   <h3 class="films__title">${
@@ -103,7 +98,6 @@ export function renderFilmCard({ results }) {
     .join('');
   refs.topFilms.insertAdjacentHTML('afterbegin', markup);
 }
-
 export function renderFilmCardLibrary(films) {
   const markup = films
     .map(film => {
@@ -131,7 +125,6 @@ export function renderFilmCardLibrary(films) {
         title || original_title || original_name
       }' width='100%' loading="lazy"
       data-src='https://image.tmdb.org/t/p/original${poster_path}'/>`;
-
       return `<li class="film__item" data-id=${id}>
       <p class="films__voteaverage">${voteAverage}</p>
                            ${poster_path !== null ? img : foto}
@@ -150,7 +143,6 @@ export function renderFilmCardLibrary(films) {
     .join('');
   refs.movieLibrary.innerHTML = markup;
 }
-
 function cleanTopFilmsMarkUp() {
   refs.topFilms.innerHTML = '';
 }

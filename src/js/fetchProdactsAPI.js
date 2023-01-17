@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -25,11 +24,12 @@ export default class ApiService {
       console.error();
     }
   }
-
   // фільми топові
   async getPopularFilms() {
     try {
       Loading.pulse('Loading...', {
+        clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}trending/movie/week${api_key}&page=${this.page}&append_to_response=images&sort_by = popularity.desc`;
@@ -46,11 +46,12 @@ export default class ApiService {
       console.error();
     }
   }
-
   // фільми, що шукають за назвою
   async getSearchFilms() {
     try {
       Loading.pulse('Loading...', {
+        clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}search/movie${api_key}&query=${this.searchQuery}&page=${this.page}`;
@@ -65,11 +66,12 @@ export default class ApiService {
       console.error();
     }
   }
-
   // пошук фільму по id
   async getFilmById(id) {
     try {
       Loading.pulse('Loading...', {
+          clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
         backgroundColor: 'rgba(0,0,0,0.8)',
       });
       const url = `${BASE_URL}movie/${id}${api_key}&append_to_response=images`;
@@ -84,13 +86,14 @@ export default class ApiService {
       console.error();
     }
   }
-
   //  пошук фільму по масиву id з localStorage
   async getFilmFromLocalStorage(arrWatchedFilms) {
     const data = await Promise.all(
       arrWatchedFilms.map(idWatchedFilm => {
         try {
           Loading.pulse('Loading...', {
+              clickToClose: true,
+        svgColor: 'rgba(255, 107, 1, 0.6)',
             backgroundColor: 'rgba(0,0,0,0.8)',
           });
           const url = `${BASE_URL}movie/${idWatchedFilm}${api_key}&append_to_response=images&page=${this.page}`;
@@ -99,7 +102,6 @@ export default class ApiService {
               throw new Error(response.status);
             }
             Loading.remove();
-            this.page += 1;
             return response.data;
           });
         } catch (error) {

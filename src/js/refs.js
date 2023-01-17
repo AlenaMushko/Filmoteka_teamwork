@@ -28,6 +28,7 @@ export const refs = {
   filterByYear: document.getElementById('years-container'),
   resetButton: document.getElementById('button-reset'),
   warningContainer: document.getElementById('warning'),
+  logoBtn: document.getElementById('logo'),
 
   //ссилки для авторизації
 

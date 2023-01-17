@@ -226,8 +226,6 @@
     &:hover,
     &:focus {
       transform: scale(1.25);
-      background-color: #ff6b0169;
-      border-radius: 5px;
     }
   }
 }
@@ -367,28 +365,6 @@
 
 // !menu filters on form
 
-.form-filters {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  @include mq(tablet) {
-    flex-direction: row;
-    gap: 20px;
-  }
-  &__select {
-    background-color: transparent;
-    color: $color-extra-text;
-    border: none;
-    @include font(null, 12, 1.17, null);
-    text-transform: uppercase;
-    outline: none;
-  }
-}
-option {
-  background-color: #10181d;
-}
 .is-hidden {
   display: none;
 }
@@ -397,7 +373,7 @@ option {
   display: flex;
   gap: 20px;
 }
-
+// !1111111111111111111111111111111
 .settings__list {
   max-width: 360px;
   justify-content: space-between;

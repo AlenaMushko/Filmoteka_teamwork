@@ -4,9 +4,7 @@ import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { getSearchByFilters } from './menuFilters';
-
 const apiService = new ApiService();
-
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -33,11 +31,8 @@ const options = {
       '</a>',
   },
 };
-
 export const pagination = new Pagination('pagination', options);
-
 pagination.on('afterMove', onPaginationClick);
-
 async function onPaginationClick(event) {
   onMyButtonClick();
   const page = event.page;
@@ -68,7 +63,6 @@ async function onPaginationClick(event) {
     renderFilmCard(results);
   }
 }
-
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
