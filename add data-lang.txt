@@ -16,7 +16,6 @@ Hа кнопки які змінюють мову треба повісити da
 <div class="header__warning is-hidden" data-lang="searchError">Search result not successful. Enter the correct movie name</div>
 <span data-lang="filters">Filters</span>
 <span data-lang="genres">Genres</span>
-<span data-lang="singOut">Sign out</span>
 
 <button type="button" class="button" value="start" data-lang="genre">Genre</button>
 <button type="button" class="button" value="12" data-lang="adventure">adventure</button>
@@ -103,3 +102,27 @@ Hа кнопки які змінюють мову треба повісити da
 <p class="film-modal__txt--left" data-lang='genre'>Genre</p>
 <h3 class="film-modal__about-title" data-lang='about'>About</h3>
 <h3 class="film-modal__watch-trailers-title" data-lang='watch-trailers'>Watch trailers</h3>
+
+12. modal-team.html
+<p class="student__text student__text_name" data-lang="mushko">Альона Мишко</p>
+<p class="student__text" data-lang="team-lead">Team Lead</p>
+<p class="student__text student__text_name" data-lang="vodvud">Надія Водвуд</p>
+<p class="student__text" data-lang="scrum-master">Scrum master</p>
+<p class="student__text student__text_name" data-lang="bezsiniy">Павло Безсінний</p>
+<p class="student__text" data-lang="developer1">Developer</p>
+<p class="student__text student__text_name" data-lang="kovalenko">СвітланаКоваленко</p>
+<p class="student__text" data-lang="developer2">Developer</p>
+<p class="student__text student__text_name" data-lang="nikonov">ОлександрНіконов</p>
+<p class="student__text" data-lang="developer3">Developer</p>
+<p class="student__text student__text_name" data-lang="volodko">Денис Володько</p>
+<p class="student__text" data-lang="developer4">Developer</p>
+<p class="student__text student__text_name" data-lang="katishev">ОлександрКатишев</p>
+<p class="student__text" data-lang="developer5">Developer</p>
+<p class="student__text student__text_name" data-lang="filipenko">АнастасіяФіліпенко</p>
+<p class="student__text" data-lang="developer6">Developer</p>
+<p class="student__text student__text_name" data-lang="shkilniuk">Дмитро Шкільнюк</p>
+<p class="student__text" data-lang="developer7">Developer</p>
+<p class="student__text student__text_name" data-lang="protas">Тетяна Протас</p>
+<p class="student__text" data-lang="developer8">Developer</p>
+<p class="student__text student__text_name" data-lang="stolbin">Микита Столбін</p>
+<p class="student__text" data-lang="developer9">Developer</p>
