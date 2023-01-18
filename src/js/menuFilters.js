@@ -9,7 +9,7 @@ const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 let page = localStorage.getItem('page-value');
-let query = localStorage.getItem('query-pg');
+let query = localStorage.getItem('query-value');
 let genre = localStorage.getItem('genre-value');
 let year = localStorage.getItem('year-value');
 refs.filterByGenre.addEventListener('click', onSelectGenre);
@@ -55,17 +55,18 @@ function onSelectReset(e) {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
   });
+  query = '';
   genre = '';
   year = '';
   page = 1;
   localStorage.setItem('genre-value', genre);
   localStorage.setItem('year-value', year);
   localStorage.setItem('page-value', page);
+  localStorage.setItem('query-value', query);
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     // додаю пагінацію
     pagination.reset(data.total_results);
-    dataUpdate(data);
     Loading.remove();
   });
   localStorage.setItem('page-value', page);
@@ -111,5 +112,11 @@ export const getMovieGenres = async () => {
   );
   localStorage.setItem('genresList', data);
   return data;
+};
+
+const resetQuery = () => {
+  refs.inputEl.value = '';
+  localStorage.removeItem('query-value');
+  apiService.query = '';
 };
 export {};
