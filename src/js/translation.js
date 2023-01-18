@@ -52,10 +52,6 @@ export const langArr = {
       ua: "Бойовик",
       en: "Action",
     },
-    'genre': {
-      ua: "Жанр",
-      en: "Genre",
-    },
     'adventure': {
       ua: "Пригоди",
       en: "Adventure",

@@ -102,6 +102,4 @@ Hа кнопки які змінюють мову треба повісити da
 <p class="film-modal__txt--left" data-lang='org-title'>Original title</p>
 <p class="film-modal__txt--left" data-lang='genre'>Genre</p>
 <h3 class="film-modal__about-title" data-lang='about'>About</h3>
-<span data-lang='add-watched'>add to watched</span>
-<span data-lang='add-queue'>add to queue</span>
 <h3 class="film-modal__watch-trailers-title" data-lang='watch-trailers'>Watch trailers</h3>
