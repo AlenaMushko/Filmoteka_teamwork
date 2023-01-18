@@ -53,4 +53,6 @@ export const refs = {
   iconForUnShowPassword: document.querySelector('#icon_un_show_password'),
 
   goToTop: document.querySelector('.go-Top'),
+
+  btnTheme: document.querySelector('#theme-btn'),
 };

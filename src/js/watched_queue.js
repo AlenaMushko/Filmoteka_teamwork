@@ -12,7 +12,7 @@ export function btnLibraryWatchedOrQueue() {
   if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
   } else {
-    Notify.info(`Your film list is empty`);
+    notifyInfo();
   }
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
@@ -76,4 +76,12 @@ function cleanLibrary() {
   notifyInfo();
   refs.libraryEmpty.classList.remove('is-hidden');
   refs.movieLibrary.innerHTML = '';
+}
+
+function notifyInfo() {
+  if (localStorage.getItem('language') === 'en') {
+    Notify.info(`Your film list is empty`);
+  } else if (localStorage.getItem('language') === 'ua') {
+    Notify.info(`Покищо, ваша бібліотека порожня`);
+  }
 }

@@ -1,5 +1,7 @@
 import { refs } from './refs';
 import genresId from '../genres.json';
+
+let currentLang = localStorage.getItem('language');
 export function renderSliderFilmCard({ results }) {
   const markup = results
     .map(
@@ -83,7 +85,7 @@ export function renderFilmCard({ results }) {
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
                   <h3 class="films__title">${
-                    original_title || title || original_name
+                    title || original_title || original_name
                   } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
@@ -112,10 +114,19 @@ export function renderFilmCardLibrary(films) {
         genres,
         vote_average,
       } = film;
-      const filmGenre = film.genres
-        .slice(0, 3)
-        .map(({ name }) => name)
-        .join(', ');
+      let filmGenre = '';
+      let filmGenreAll = film.genres.map(({ name }) => name);
+      if (film.genres.length >= 4) {
+        if (currentLang === 'en') {
+          filmGenre = `${filmGenreAll.join(', ')},  Others`;
+        } else if (currentLang === 'ua') {
+          filmGenre = `${filmGenreAll.slice(0, 2).join(', ')}, інші`;
+        }
+      } else {
+        filmGenre = `${filmGenreAll}`;
+      }
+      console.log(film.genres.length);
+      console.log(filmGenre);
       const voteAverage = Number(vote_average).toFixed(1);
       const foto = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name
@@ -129,7 +140,7 @@ export function renderFilmCardLibrary(films) {
       <p class="films__voteaverage">${voteAverage}</p>
                            ${poster_path !== null ? img : foto}
                   <h3 class="films__title">${
-                    original_title || title || original_name
+                    title || original_title || original_name
                   } </h3>
                   <p class="films__genres">${
                     filmGenre || 'Not available'
@@ -146,5 +157,3 @@ export function renderFilmCardLibrary(films) {
 function cleanTopFilmsMarkUp() {
   refs.topFilms.innerHTML = '';
 }
-
-

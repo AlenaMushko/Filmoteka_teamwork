@@ -69,10 +69,8 @@ export async function onSearchFormSubmit(e) {
   }
 }
 
-// !функуія скидання буде виконуватися при сабміті пустого поля та при натисканні reset
-export const resetQuery = () => {
+const resetQuery = () => {
   refs.inputEl.value = '';
-  // localStorage.removeItem('query-value');
+  localStorage.removeItem('query-value');
   apiService.query = '';
 };
-// !
