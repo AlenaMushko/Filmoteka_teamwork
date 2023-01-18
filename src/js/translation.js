@@ -215,7 +215,7 @@ export const langArr = {
   },
   // Modal Film //
   'vote': {
-    ua: 'Рейтинг/Голоси',
+    ua: 'Рейтинг / Голоси',
     en: 'Vote / Votes',
   },
   'popularity': {
@@ -250,5 +250,9 @@ export const langArr = {
     ua: 'Дивитись трейлер',
     en: 'Watch trailers',
   },
+  'org-title': {
+    ua: 'Оригінальна назва',
+    en: 'Original title',
+  }
   };
   

@@ -1,4 +1,5 @@
 import { addEventListenerOnButtonaAddWatchedAndAddQueue } from "./localStorageMovieManipulate";
+import { currentLang } from "./language";
 
 const refs = {
   imgEl: document.querySelector(".film-modal__img"),
@@ -19,12 +20,28 @@ let {
     genresEl,
   overviewEl } = refs;
 
-const unavailable = "Info unavailable";
 const empty = "";
 
 export function renderModalFilmCard(filmInfo) {
 
   const filmModalContent = document.querySelector('.film-modal__content');
+  let unavailable = "";
+  let posterAlt = "";
+
+  switch (currentLang) {
+    case "en":
+      unavailable = "Info unavaliable";
+      posterAlt = "Poster already on the way";
+      break;
+    
+    case "ua":
+      unavailable = "Інформація недоступна";
+      posterAlt = "Постер вже на шляху до вас"
+      break;
+    
+    default:
+      unavailable = "Info unavaliable";
+  }
 
   if (!filmInfo) {
     filmModalContent.innerHTML =
@@ -52,7 +69,7 @@ export function renderModalFilmCard(filmInfo) {
 
   poster_path === null
     ? ((imgEl.src = imgPlaceholder)
-      && (imgEl.alt = "poster already on the way"))
+      && (imgEl.alt = posterAlt))
     : ((imgEl.src = `https://image.tmdb.org/t/p/w500${poster_path}`)
       && (imgEl.alt = original_title));
 
