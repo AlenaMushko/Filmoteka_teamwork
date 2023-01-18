@@ -18,6 +18,12 @@
   flex-direction: column;
   background: $color-extra-background;
 }
+.fix_bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  }
 .icon__heart {
   width: 14px;
   height: 13px;

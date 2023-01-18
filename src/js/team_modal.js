@@ -59,6 +59,13 @@ function hrefPrevDef(e) {
  if (e.target.ownerDocument.activeElement.attributes[0].nodeValue == '#'){
   e.preventDefault();
 }
-   
 }
 
+function checkClientHeigth() {
+  if (document.documentElement.clientHeight >= document.body.clientHeight) {
+    footerContainer.classList.add('fix_bottom');
+  } else {
+    footerContainer.classList.remove('fix_bottom');
+  }
+}
+setInterval(checkClientHeigth, 500);
