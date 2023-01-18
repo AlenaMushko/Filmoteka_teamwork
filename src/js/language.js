@@ -1,7 +1,7 @@
 import { langArr } from './translation';
 const allLangs = ['en', 'ua'];
-let currentLang = localStorage.getItem('language') || 'en';
-// console.log(currentLang);
+export let currentLang = localStorage.getItem('language') || 'en';
+
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
 let currentText = {};
@@ -70,6 +70,6 @@ function checkActiveLangBtn() {
       break;
   }
 }
-// checkActiveLangBtn();
+checkActiveLangBtn();
 
 export {};
