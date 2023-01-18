@@ -45,9 +45,10 @@ langBtn.forEach(btn => {
     currentLang = e.target.dataset.btn;
     localStorage.setItem('language', e.target.dataset.btn);
     resetActiveClass(langBtn, 'btn-active');
-    btn.classList.add('btn-active');
+    btn.classList.add('btn-active');    
     changeLangPlaceholder();
     changeLang();
+    location.reload();
   });
 });
 
