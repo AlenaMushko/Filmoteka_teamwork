@@ -374,3 +374,9 @@
   border-color: $color-extra-text;
   color: $color-extra-text;
 }
+
+.btn-active {
+  color: $color-extra-text;
+  text-shadow: 0 5px 10px $color-brand-text, 0 10px 15px $color-brand-text;
+  transform: scale(1.25);
+}

@@ -1,4 +1,4 @@
-import {} from './scss/index.scss';
+import { } from './scss/index.scss';
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';
