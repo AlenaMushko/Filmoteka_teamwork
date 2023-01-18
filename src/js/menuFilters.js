@@ -46,7 +46,7 @@ function dataUpdate(data) {
 
 let page = localStorage.getItem('page-value');
 
-+=======
+
 // !це мій файл, закоментовувати цей рядок не буду тут вилазила помилка
 
 let query = localStorage.getItem('query-value');
