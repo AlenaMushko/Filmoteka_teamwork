@@ -1,26 +1,26 @@
 import { refs } from './refs';
 import { addNewUser } from './signUp';
+
 export function firebaseRealtimeDatabase() {
   /* setInterval(deleteDataFromFirebaseStorage, 1000);
   setInterval(giveLocalStorageToFirebaseStorage, 1000); */
-  deleteDataFromFirebaseStorage();
-  giveLocalStorageToFirebaseStorage();
-  //перезаписування сховища
-  function rewritingStorage() {
+
+  if(localStorage.auth === "yes") {
     deleteDataFromFirebaseStorage();
     giveLocalStorageToFirebaseStorage();
-  };
-
-  //відслідковуння змін по натисканням клавіш
-    refs.buttonWatched.addEventListener('click', rewritingStorage);
-    refs.buttonQueue.addEventListener('click', rewritingStorage); 
-    refs.btnTheme.addEventListener('click', rewritingStorage);
-  
+  }
+    
   //відслідковування змін в інших вкладках
   //window.addEventListener('storage', deleteDataFromFirebaseStorage);
   //window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
   
   addNewUser();
+};
+
+//перезаписування сховища
+export function rewritingStorage() {
+  deleteDataFromFirebaseStorage();
+  giveLocalStorageToFirebaseStorage();
 };
 
 class UserStorage {
@@ -40,6 +40,7 @@ class UserStorage {
             
         }).catch();
     };
+
     // функція, яка забирає з бази даних
     static take() {
         return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json?auth=${localStorage.authId}`)
