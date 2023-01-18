@@ -62,7 +62,7 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-         console.log(response.data.results[7]);
+        //  console.log(response.data.results);
         // console.log(response.data);
         return response.data;
       });

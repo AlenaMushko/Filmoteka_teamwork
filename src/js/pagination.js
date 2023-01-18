@@ -62,7 +62,7 @@ async function onPaginationClick(event) {
       apiService.pageNum = page;
       const results = await apiService.getSearchFilms();
       renderFilmCard(results);
-      console.log('Serch films');
+      // console.log('Serch films');
     } else {
       const results = await getSearchByFilters(
         page,
@@ -71,11 +71,11 @@ async function onPaginationClick(event) {
         localStorage.getItem('year-value')
       );
       renderFilmCard(results);
-      console.log('Filtered films');
+      // console.log('Filtered films');
     }
-    console.log('Home');
+    // console.log('Home');
   } else {
-    console.log('Library');
+    // console.log('Library');
   }
 }
 
