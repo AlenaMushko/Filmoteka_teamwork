@@ -17,15 +17,25 @@ export async function onSearchFormSubmit(e) {
   e.preventDefault();
   apiService.page = 1;
   apiService.query = refs.inputEl ? refs.inputEl.value.trim() : '';
-  localStorage.setItem('input-value', apiService.query);
+  localStorage.setItem('query-value', apiService.query);
   if (apiService.query === '') {
+    // !
+    Notify.failure(
+      'Sorry, You need to write something in search query. Please try again.'
+    );
+    // попередження яке є на макеті хочеш розкоментує а хочеш не
+    refs.warningContainer.classList.remove('is-hidden');
+    // !
     return;
   }
   const results = await apiService.getSearchFilms();
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
-    resetQuery();
+    // !замість фунціі яка закоментована внизу просто ресетимо інпут
+    refs.inputEl.value = '';
+    // resetQuery();
+
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
@@ -36,7 +46,9 @@ export async function onSearchFormSubmit(e) {
         );
         console.log('en');
       } else if (localStorage.getItem('language') === 'ua') {
-        Notify.info(`Вибачте, не знайдено жодного філльму по вашому запиту. Будь ласка, спробуйте ще`);
+        Notify.info(
+          `Вибачте, не знайдено жодного філльму по вашому запиту. Будь ласка, спробуйте ще`
+        );
       }
 
       return;
@@ -45,7 +57,9 @@ export async function onSearchFormSubmit(e) {
       if (localStorage.getItem('language') === 'en') {
         Notify.success(`Hooray! We found ${apiService.totalResults} films.`);
       } else if (localStorage.getItem('language') === 'ua') {
-        Notify.success(`Ура! Ми знайшли по вашому запиту ${apiService.totalResults} результатів.`);
+        Notify.success(
+          `Ура! Ми знайшли по вашому запиту ${apiService.totalResults} результатів.`
+        );
       }
     }
   } catch (error) {
@@ -53,9 +67,4 @@ export async function onSearchFormSubmit(e) {
   }
 }
 
-const resetQuery = () => {
-  refs.inputEl.value = '';
-  localStorage.removeItem('query-value');
-  apiService.query = '';
-};
 

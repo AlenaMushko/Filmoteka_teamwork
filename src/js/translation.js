@@ -61,7 +61,7 @@ export const langArr = {
       en: "Adventure",
     },
     'animation': {
-      ua: "Мультфільм",
+      ua: "Мультфільми",
       en: "Animation",
     },
     'comedy': {
@@ -151,7 +151,7 @@ export const langArr = {
     },
     // library-header Кнопки додавання фільмів //
       'watched': {
-        ua: "Переглянути",
+        ua: "Переглянуті",
         en: "Watched",
       },
       'queue': {
@@ -209,9 +209,17 @@ export const langArr = {
     en: "Sign in",
   },
   // Library section films // 
-  'error-page': {
-    ua: 'Вибачте :( Ця сторінка порожня',
-    en: 'Sorry :( This page is empty',
+  'movies-list-library-1': {
+    ua: 'Тут буде ваш список фільмів. Ви можете наповнити його на',
+    en: 'Here will be your list of movies. You can fill them',
+  }, 
+  'movies-list-library-2': {
+    ua: 'ГОЛОВНІЙ',
+    en: 'HOME',
+  }, 
+  'movies-list-library-3': {
+    ua: 'сторінці',
+    en: 'page',
   },
   // Modal Film //
   'vote': {

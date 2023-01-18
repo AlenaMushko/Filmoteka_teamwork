@@ -1,3 +1,3 @@
-btnModalLibrary =  document.querySelector('.btn__modal--library');
+// btnModalLibrary =  document.querySelector('.btn__modal--library');
 
-console.log(btnModalLibrary);
+// console.log(btnModalLibrary);

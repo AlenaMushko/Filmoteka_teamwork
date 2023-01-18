@@ -88,7 +88,13 @@ Hа кнопки які змінюють мову треба повісити da
 <h1 class="visually-hidden__title" data-lang="new-movies">new best movies online</h1>
 
 10. library-section-films.html
-<h2 class="library-empty__title" data-lang="error-page">Sorry :( This page is empty</h2>
+<h2 class="library-empty__title">
+<span data-lang="movies-list-library-1">Here will be your list of movies. You can fill them</span>
+<a href="/src/index.html" class="library-empty__link">
+<span data-lang="movies-list-library-2">HOME</span>
+</a>
+<span data-lang="movies-list-library-3">page</span>
+</h2>
 
 11. modal-film.html
 <p class="film-modal__txt--left" data-lang='vote'>Vote / Votes</p>

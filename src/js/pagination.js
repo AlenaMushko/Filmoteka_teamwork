@@ -39,7 +39,7 @@ async function onPaginationClick(event) {
   if (
     !localStorage.getItem('year-value') &&
     !localStorage.getItem('genre-value') &&
-    !localStorage.getItem('input-value')
+    !localStorage.getItem('query-value')
   ) {
     apiService.pageNum = page;
     const results = await apiService.getPopularFilms();
@@ -47,16 +47,16 @@ async function onPaginationClick(event) {
   } else if (
     !localStorage.getItem('year-value') &&
     !localStorage.getItem('genre-value') &&
-    localStorage.getItem('input-value')
+    localStorage.getItem('query-value')
   ) {
-    apiService.query = localStorage.getItem('input-value');
+    apiService.query = localStorage.getItem('query-value');
     apiService.pageNum = page;
     const results = await apiService.getSearchFilms();
     renderFilmCard(results);
   } else {
     const results = await getSearchByFilters(
       page,
-      localStorage.getItem('input-value'),
+      localStorage.getItem('query-value'),
       localStorage.getItem('genre-value'),
       localStorage.getItem('year-value')
     );
