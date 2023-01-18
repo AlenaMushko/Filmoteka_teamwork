@@ -27,25 +27,30 @@ export function renderModalFilmCard(filmInfo) {
   const filmModalContent = document.querySelector('.film-modal__content');
   let unavailable = "";
   let posterAlt = "";
+  let modalError = "";
 
   switch (currentLang) {
     case "en":
       unavailable = "Info unavaliable";
       posterAlt = "Poster already on the way";
+      modalError = "We are sorry but we couldn't find detailed info about this movie.";
       break;
     
     case "ua":
       unavailable = "Інформація недоступна";
       posterAlt = "Постер вже на шляху до вас"
+      modalError = "Вибачте, але ми не можемо знайти детальної інформації про цей фільм."
       break;
     
     default:
       unavailable = "Info unavaliable";
+      posterAlt = "Poster already on the way";
+      modalError = "We are sorry but we couldn't find detailed info about this movie.";
   }
 
   if (!filmInfo) {
     filmModalContent.innerHTML =
-      "<p class='film-modal__error'>We are sorry but there is no detailed info about this movie.</p>";
+      `<p class='film-modal__error'>${modalError}</p>`;
     return;
   }
 
