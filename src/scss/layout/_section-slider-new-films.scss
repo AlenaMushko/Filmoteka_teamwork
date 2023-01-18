@@ -1,6 +1,9 @@
 .glide.container {
-  @include mq(mobile) {
+  @media screen and (max-width: 530px){
     display: none;
+  }
+  @media screen and (min-width: 531px){
+    display: block;
   }
   @include mq(tablet) {
     display: block;
@@ -145,3 +148,14 @@
 //   height: 466px;
 
 // }
+
+.revenue__slider{
+   @media screen and (min-width: 531px){
+    width: 150px;}
+    @include mq(tablet) {
+      width: 190px
+    }
+   @include mq(desktop) {
+    width: 210px;
+  }
+}
