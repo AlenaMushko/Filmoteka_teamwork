@@ -3,18 +3,57 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
-
+import ApiService from './fetchProdactsAPI';
+import { resetQuery } from './searchFilms';
+const apiService = new ApiService();
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
+// !функця запису в локалсторедж
+const saveLocalStorage = (key, value) => {
+  try {
+    const serialized = JSON.stringify(value);
+    localStorage.setItem(key, serialized);
+  } catch (error) {
+    console.error('Set error: ', error.message);
+  }
+};
+
+// !функція вигрузки з локалсторедж значення за ключем
+const loadLocalStorage = key => {
+  try {
+    const serialized = localStorage.getItem(key);
+    return serialized === null ? undefined : JSON.parse(serialized);
+  } catch (error) {
+    console.error('Get error: ', error.message);
+  }
+};
+
+// !функція яка видаляє з локалсторедж
+const removeLocalStorage = key => {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error('Get error: ', error.message);
+  }
+};
+
+// !функція яка перетворює данні у валідний JSON
+function dataUpdate(data) {
+  localStorage.setItem('moviesData', JSON.stringify(data.results));
+}
+
 let page = localStorage.getItem('page-value');
-let query = localStorage.getItem('query-pg');
+// !це мій файл, закоментовувати цей рядок не буду тут вилазила помилка
+let query = localStorage.getItem('query-value');
 let genre = localStorage.getItem('genre-value');
 let year = localStorage.getItem('year-value');
+
 refs.filterByGenre.addEventListener('click', onSelectGenre);
 refs.filterByYear.addEventListener('click', onSelectYear);
 refs.resetButton.addEventListener('click', onSelectReset);
+
 // !функція запиту при відпрацюванні по кліку фільтра
 export const getSearchByFilters = async (
   page = '',
@@ -47,7 +86,7 @@ export const getSearchByFilters = async (
   let { data } = await axios.get(
     `${BASE_URL}${f.discover}/movie${f.week}?api_key=${KEY}${f.genre}${f.year}&language=en-US${f.queryFetch}&page=${page}`
   );
-  localStorage.setItem('moviesData', JSON.stringify(data.results));
+  saveLocalStorage('moviesData', data.results);
   return data;
 };
 // !фунція яка робить скидання фільтраціі і перезавантаження сторінки до поточного стану
@@ -55,20 +94,23 @@ function onSelectReset(e) {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
   });
+  query = '';
   genre = '';
   year = '';
   page = 1;
+  localStorage.setItem('query-value', query);
   localStorage.setItem('genre-value', genre);
   localStorage.setItem('year-value', year);
   localStorage.setItem('page-value', page);
-  getSearchByFilters(page, query, genre, year).then(data => {
+  apiService.getPopularFilms().then(data => {
     renderFilmCard(data);
     // додаю пагінацію
     pagination.reset(data.total_results);
     dataUpdate(data);
+
     Loading.remove();
   });
-  localStorage.setItem('page-value', page);
+  saveLocalStorage('page-value', page);
 }
 // !функція фільтраціі за жанром
 function onSelectGenre(e) {
@@ -109,7 +151,7 @@ export const getMovieGenres = async () => {
   const { data } = await axios.get(
     `${BASE_URL}/genre/movie/list?api_key=${KEY}`
   );
-  localStorage.setItem('genresList', data);
+  saveLocalStorage('genresList', data);
   return data;
 };
 export {};

@@ -17,8 +17,9 @@ export function firebaseRealtimeDatabase() {
     refs.btnTheme.addEventListener('click', rewritingStorage);
   
   //відслідковування змін в інших вкладках
-  window.addEventListener('storage', deleteDataFromFirebaseStorage);
-  window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
+  //window.addEventListener('storage', deleteDataFromFirebaseStorage);
+  //window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
+  
   addNewUser();
 };
 
