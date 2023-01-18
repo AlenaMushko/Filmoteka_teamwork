@@ -50,6 +50,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         const newBtnName = changeBtnName(btnAction, lybraryName);
         btnName.textContent = newBtnName;
         function onClick() {
+// !
             const currentLibrary = document.querySelector('.current').getAttribute('data-lang');
             const currentPageTitle = document.querySelector('title');
             const currentFunction = renderFunctions[lybraryName];
@@ -71,7 +72,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         const newBtnName = changeBtnName(btnAction, lybraryName);
         btnName.textContent = newBtnName;
         function onClick() {
-            // 
+            // !
             const currentLibrary = document.querySelector('.current').getAttribute('data-lang');
             const currentPageTitle = document.querySelector('title');
             const currentFunction = renderFunctions[lybraryName];
