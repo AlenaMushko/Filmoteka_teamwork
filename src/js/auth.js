@@ -28,6 +28,11 @@ export function authWithEmailAndPassword() {
   const email = refs.authEmailInput.value;
   const password = refs.authPasswordInput.value;
 
+  if(email === "" || password === "") {
+    Notiflix.Notify.warning('For signing in you need to enter both E-mail and Password');
+    return;
+  };
+
     return checkUserRegistration(email, password)
       .then(data => {
         if (data.registered === true) {
@@ -35,12 +40,11 @@ export function authWithEmailAndPassword() {
             localStorage.authId = data.localId;
             takeLocalStorageFromFirebaseStorage();
             return;
-        }
-        Notiflix.Report.failure(
-'There is no such user',
-'Сheck email and password or sign up',
-'Okay',);
-    }).catch();     
+        }  
+    }).catch(Notiflix.Report.failure(
+      'There is no such user',
+      'Сheck email and password or sign up',
+      'Okay',));     
 };
 
 export function authEntranceBtnHandler(e) {

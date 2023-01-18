@@ -11,6 +11,11 @@ export function addNewUser() {
 function signUpBtnHandler() {
     const email = refs.authEmailInput.value;
     const password = refs.authPasswordInput.value;
+    if(email === "" || password === "") {
+      Notiflix.Notify.warning('For signing up you need to enter both E-mail and Password');
+      return;
+    };
+
     checkUserRegistration(email, password).then(data => {
         if(data.registered === true){
             Notiflix.Report.failure(
