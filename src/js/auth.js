@@ -29,18 +29,18 @@ export function authWithEmailAndPassword() {
   const password = refs.authPasswordInput.value;
 
   if(email === "" || password === "") {
-    /* Notiflix.Notify.warning('For signing in you need to enter both E-mail and Password');
-    return; */
-
-
 
     if (localStorage.language === 'en') {
       Notiflix.Notify.warning('For signing in you need to enter both E-mail and Password');
-    return;
+    
     } else if (localStorage.language === 'ua') {
       Notiflix.Notify.warning('Для авторизації необхідно ввести логін та пароль');
+
+    } else {
+      Notiflix.Notify.warning('For signing in you need to enter both E-mail and Password');
+
+    };
     return;
-    }
   };
 
     return checkUserRegistration(email, password)
@@ -51,10 +51,6 @@ export function authWithEmailAndPassword() {
             takeLocalStorageFromFirebaseStorage();
             return;
         }
-        /* Notiflix.Report.failure(
-          'There is no such user',
-          'Сheck email and password or sign up',
-          'Okay',); */
 
           if (localStorage.language === 'en') {
             Notiflix.Report.failure(
@@ -66,6 +62,11 @@ export function authWithEmailAndPassword() {
               'Невірно веедені дані',
               'Перевірте правильність введення пошти та пароля або зареєструйтеся',
               'Ок',);
+          } else {
+            Notiflix.Report.failure(
+              'There is no such user',
+              'Сheck email and password or sign up',
+              'Okay',);
           }
           
     }).catch();     
