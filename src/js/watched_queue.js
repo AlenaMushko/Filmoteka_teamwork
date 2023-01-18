@@ -8,9 +8,8 @@ import { pagination } from './pagination';
 // екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
 const apiService = new ApiService();
-let arrWatchedFilms = myLibrary.getFromWatched();
-let arrQueueFilms = myLibrary.getFromQueue();
 export function btnLibraryWatchedOrQueue() {
+  let arrWatchedFilms = myLibrary.getFromWatched();
   if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
     // apiService.onWatchedBtnClick();
@@ -25,6 +24,10 @@ export function btnLibraryWatchedOrQueue() {
 let pageNumber = apiService.page;
 // фільми Watched
 async function onWatchedBtnClick() {
+  let arrWatchedFilms = myLibrary.getFromWatched();
+  refs.btnQueue.classList.remove('current');
+  refs.btnWatched.classList.add('current');
+
   let filmsOnPage = [];
   if (arrWatchedFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
@@ -53,7 +56,10 @@ async function onWatchedBtnClick() {
 }
 //  фільми Queue
 async function onQueueBtnClick() {
-  let filmsOnPage = [];
+let arrQueueFilms = myLibrary.getFromQueue();
+  refs.btnWatched.classList.remove('current');
+  refs.btnQueue.classList.add('current');
+   let filmsOnPage = [];
   if (arrQueueFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;

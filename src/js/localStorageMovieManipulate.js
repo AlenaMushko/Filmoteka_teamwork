@@ -1,8 +1,13 @@
 import { MyLibrary } from './localStorage';
 import { langArr } from './translation';
-import { btnLibraryWatchedOrQueue } from './watched_queue';
+import { onWatchedBtnClick } from './watched_queue';
+import { onQueueBtnClick } from './watched_queue';
 
 const myLibrary = new MyLibrary();
+const renderFunctions = {
+    watched: onWatchedBtnClick,
+    queue: onQueueBtnClick
+}
 
 export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
     const authAddToWatched = document.querySelector('.button-watched');
@@ -45,8 +50,15 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         const newBtnName = changeBtnName(btnAction, lybraryName);
         btnName.textContent = newBtnName;
         function onClick() {
+            const currentLibrary = document.querySelector('.current').getAttribute('data-lang');
+            const currentPageTitle = document.querySelector('title');
+            const currentFunction = renderFunctions[lybraryName];
             newAddFunction();
-            // location.reload();
+            if (currentPageTitle.textContent === 'My-library') {
+                if(currentLibrary === lybraryName){
+                    currentFunction();
+                }
+            }
             chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };
@@ -59,8 +71,16 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         const newBtnName = changeBtnName(btnAction, lybraryName);
         btnName.textContent = newBtnName;
         function onClick() {
+            // 
+            const currentLibrary = document.querySelector('.current').getAttribute('data-lang');
+            const currentPageTitle = document.querySelector('title');
+            const currentFunction = renderFunctions[lybraryName];
             newRemoveFunction();
-            // location.reload();
+            if (currentPageTitle.textContent === 'My-library') {
+                if(currentLibrary === lybraryName){
+                    currentFunction();
+                }
+            }
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };
