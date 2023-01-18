@@ -192,3 +192,13 @@
 .trailers-btns-list__btn {
   cursor: pointer;
 }
+
+.film-modal__error {
+  @include font(500, 20px, 23px, normal);
+  text-transform: uppercase;
+  text-align: center;
+
+  @include mq(desktop) {
+    @include font(500, 30px, 35px, normal);
+  }
+}
