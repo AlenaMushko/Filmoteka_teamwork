@@ -1,5 +1,6 @@
 import { refs } from './refs';
 import genresId from '../genres.json';
+import genresIdUa from '../genres-ua.json';
 
 let currentLang = localStorage.getItem('language');
 export function renderSliderFilmCard({ results }) {
@@ -17,10 +18,15 @@ export function renderSliderFilmCard({ results }) {
       }) => {
         let filmGenreId = '';
         if (genre_ids) {
-          filmGenreId = genresId
-            .filter(({ id }) => genre_ids.includes(id))
-            .map(({ name }) => name)
-            .join(', ');
+          currentLang === "en"
+            ? (filmGenreId = genresId
+              .filter(({ id }) => genre_ids.includes(id))
+              .map(({ name }) => name)
+              .join(', '))
+            : filmGenreId = genresIdUa
+              .filter(({ id }) => genre_ids.includes(id))
+              .map(({ name }) => name)
+              .join(', ');
         }
         return `
       <li class="glide__slide revenue__slider" data-id=${id}>
@@ -61,9 +67,14 @@ export function renderFilmCard({ results }) {
       }) => {
         let filmGenre = '';
         if (genre_ids) {
-          let filmGenreId = genresId
+          let filmGenreId = "";
+          currentLang === "en"
+            ? (filmGenreId = genresId
             .filter(({ id }) => genre_ids.includes(id))
-            .map(({ name }) => name);
+            .map(({ name }) => name))
+            : (filmGenreId = genresIdUa
+            .filter(({ id }) => genre_ids.includes(id))
+            .map(({ name }) => name));
           if (filmGenreId.length >= 4) {
             filmGenre = `${filmGenreId.slice(0, 2).join(', ')},  Others`;
           } else {

@@ -12,7 +12,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
     checkAuthUser();
 
     function changeBtnName(btnAction, lybraryName) {
-        const currentLang = localStorage.getItem('language');
+        const currentLang = localStorage.getItem('language') || 'en';
         const newBtnName = langArr[`${btnAction}-${lybraryName}`][currentLang];
         return newBtnName
     }

@@ -5,18 +5,19 @@
   color: $color-extra-text;
   border-radius: 5px;
   border: 1px solid $color-extra-text;
-  transition: $transitionDuration $cubic;
+  transition: background-color $transitionDuration $cubic;
   text-transform: uppercase;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  cursor: pointer;
   &:hover,
   &:focus {
-    transition: $transitionDuration $cubic;
     background-color: $color-brand-background;
     border-color: $color-brand-background;
     box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+    transition: background-color $transitionDuration $cubic;
   }
   @include mq(mobile) {
     width: 130px;

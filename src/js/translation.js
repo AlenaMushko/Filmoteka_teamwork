@@ -257,6 +257,94 @@ export const langArr = {
   'org-title': {
     ua: 'Оригінальна назва',
     en: 'Original title',
-  }
-  };
-  
+  },
+  // modal-team.html //
+'mushko': {
+  ua: 'Альона Мишко',
+  en: 'Alena Mushko',
+},
+'team-lead': {
+  ua: 'Тімлід',
+  en: 'Team Lead',
+},
+'vodvud': {
+  ua: 'Надія Водвуд',
+  en: 'Vodvud Nadiya',
+},
+'scrum-master': {
+  ua: 'Скрам майстер',
+  en: 'Scrum master',
+},
+'bezsiniy': {
+  ua: 'Павло Безсінний',
+  en: 'Pavlo Bezsinniy',
+},
+'developer1': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'kovalenko': {
+  ua: 'Світлана Коваленко',
+  en: 'Svitlana Kovalenko',
+},
+'developer2': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'nikonov': {
+  ua: 'Олександр Ніконов',
+  en: 'Alexander Nikonov',
+},
+'developer3': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'volodko': {
+  ua: 'Денис Володько',
+  en: 'Denys Volodko',
+},
+'developer4': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'katishev': {
+  ua: 'Олександр Катишев',
+  en: 'Olexandr Katyshev',
+},
+'developer5': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'filipenko': {
+  ua: 'Анастасія Філіпенко',
+  en: 'Anastasiya Filipenko',
+},
+'developer6': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'shkilniuk': {
+  ua: 'Дмитро Шкільнюк',
+  en: 'Dmytro Shkilniuk',
+},
+'developer7': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'protas': {
+  ua: 'Тетяна Протас',
+  en: 'Tetyana Protas',
+},
+'developer8': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+'stolbin': {
+  ua: 'Микита Столбін',
+  en: 'Mykyta Stolbin',
+},
+'developer9': {
+  ua: 'Розробник',
+  en: 'Developer',
+},
+};
