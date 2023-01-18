@@ -72,7 +72,7 @@ export function renderModalFilmCard(filmInfo) {
     ? ((imgEl.src = imgPlaceholder)
       && (imgEl.alt = posterAlt))
     : ((imgEl.src = `https://image.tmdb.org/t/p/w500${poster_path}`)
-      && (imgEl.alt = original_title));
+      && (imgEl.alt = title));
 
   genres.length === 0
     ? (genresEl.innerHTML = unavailable)
