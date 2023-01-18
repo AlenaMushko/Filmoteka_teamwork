@@ -60,6 +60,7 @@ export function renderModalFilmCard(filmInfo) {
     popularity,
     genres,
     overview,
+    title
   } = filmInfo;
 
   const filmGenres = genres
@@ -71,7 +72,7 @@ export function renderModalFilmCard(filmInfo) {
     ? ((imgEl.src = imgPlaceholder)
       && (imgEl.alt = posterAlt))
     : ((imgEl.src = `https://image.tmdb.org/t/p/w500${poster_path}`)
-      && (imgEl.alt = original_title));
+      && (imgEl.alt = title));
 
   genres.length === 0
     ? (genresEl.innerHTML = unavailable)
@@ -81,7 +82,7 @@ export function renderModalFilmCard(filmInfo) {
     ? (overviewEl.innerHTML = unavailable)
     : (overviewEl.innerHTML = overview);
   
-  titleBigEl.innerHTML = original_title;
+  titleBigEl.innerHTML = title;
   titleSmallEl.innerHTML = original_title; 
   popularityEl.innerHTML = popularity;
   votesEl.innerHTML = `<span class="vote-average">${vote_average}</span>/<span class="vote-count">${vote_count}</span>`;
