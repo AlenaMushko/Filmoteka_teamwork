@@ -4,8 +4,11 @@ import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { getSearchByFilters } from './menuFilters';
+import { MyLibrary } from './localStorage';
+import { renderFilmCardLibrary } from './renderFunction';
 
 const apiService = new ApiService();
+const myLibrary = new MyLibrary();
 const myLibraryBtnCurrent = refs.myLibraryLink.classList.contains(
   'navigation__link--current-page'
 );
@@ -62,7 +65,7 @@ async function onPaginationClick(event) {
       apiService.pageNum = page;
       const results = await apiService.getSearchFilms();
       renderFilmCard(results);
-      // console.log('Serch films');
+      console.log('Serch films');
     } else {
       const results = await getSearchByFilters(
         page,
@@ -70,12 +73,24 @@ async function onPaginationClick(event) {
         localStorage.getItem('genre-value'),
         localStorage.getItem('year-value')
       );
-      renderFilmCard(results);
-      // console.log('Filtered films');
+
+      console.log('Filtered films');
     }
-    // console.log('Home');
+    console.log('Home');
   } else {
-    // console.log('Library');
+    apiService.pageNum = page;
+    refs.btnQueue.onclick = async function (event) {
+      let filmsOnPage = apiService.getArrQueueId();
+      const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+      renderFilmCardLibrary(filmInfo);
+      console.log('Library Queue');
+    };
+
+    let filmsOnPage = apiService.getArrWatchedId();
+    console.log(filmsOnPage);
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    renderFilmCardLibrary(filmInfo);
+    console.log('Library Watched');
   }
 }
 

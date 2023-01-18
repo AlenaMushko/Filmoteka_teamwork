@@ -118,9 +118,9 @@ export default class ApiService {
     }
   }
   //  пошук фільму по масиву id з localStorage
-  async getFilmFromLocalStorage(arrWatchedFilms) {
+  async getFilmFromLocalStorage(arrayFilms) {
     const data = await Promise.all(
-      arrWatchedFilms.map(idWatchedFilm => {
+      arrayFilms.map(idWatchedFilm => {
         try {
           if (this.currentLang === 'en') {
             this.lang = 'en';
