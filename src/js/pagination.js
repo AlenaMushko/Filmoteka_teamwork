@@ -111,6 +111,6 @@ async function onPaginationClick(event) {
 //     renderFilmCard(results);
 //   }
 // }
-// export function cleanPagination() {
-//   refs.paginationList.innerHTML = '';
-// }
+export function cleanPagination() {
+  refs.paginationList.innerHTML = '';
+}
