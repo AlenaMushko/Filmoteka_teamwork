@@ -21,7 +21,7 @@ function signUpBtnHandler() {
             Notiflix.Report.failure(
                 'User with such data already exists',
                 'Please, sign in with your password or sign up with another mail',
-                'Okay',).catch();
+                'Okay',);
             return;
         }
 

@@ -40,11 +40,12 @@ export function authWithEmailAndPassword() {
             localStorage.authId = data.localId;
             takeLocalStorageFromFirebaseStorage();
             return;
-        }  
-    }).catch(Notiflix.Report.failure(
-      'There is no such user',
-      'Сheck email and password or sign up',
-      'Okay',));     
+        }
+        Notiflix.Report.failure(
+          'There is no such user',
+          'Сheck email and password or sign up',
+          'Okay',);
+    }).catch();     
 };
 
 export function authEntranceBtnHandler(e) {

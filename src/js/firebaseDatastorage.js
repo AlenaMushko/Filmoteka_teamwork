@@ -4,8 +4,11 @@ import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
   /* setInterval(deleteDataFromFirebaseStorage, 1000);
   setInterval(giveLocalStorageToFirebaseStorage, 1000); */
-  deleteDataFromFirebaseStorage();
-  giveLocalStorageToFirebaseStorage();
+
+  if(localStorage.auth === "yes") {
+    deleteDataFromFirebaseStorage();
+    giveLocalStorageToFirebaseStorage();
+  }
     
   //відслідковування змін в інших вкладках
   //window.addEventListener('storage', deleteDataFromFirebaseStorage);
@@ -37,7 +40,7 @@ class UserStorage {
             
         }).catch();
     };
-    
+
     // функція, яка забирає з бази даних
     static take() {
         return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json?auth=${localStorage.authId}`)
