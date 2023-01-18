@@ -1,10 +1,27 @@
 import { refs } from './refs';
 import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
-  setInterval(deleteDataFromFirebaseStorage, 1000);
-  setInterval(giveLocalStorageToFirebaseStorage, 1000);
-  addNewUser()
+  /* setInterval(deleteDataFromFirebaseStorage, 1000);
+  setInterval(giveLocalStorageToFirebaseStorage, 1000); */
+  deleteDataFromFirebaseStorage();
+  giveLocalStorageToFirebaseStorage();
+  //перезаписування сховища
+  function rewritingStorage() {
+    deleteDataFromFirebaseStorage();
+    giveLocalStorageToFirebaseStorage();
+  };
+
+  //відслідковуння змін по натисканням клавіш
+    refs.buttonWatched.addEventListener('click', rewritingStorage);
+    refs.buttonQueue.addEventListener('click', rewritingStorage); 
+    refs.btnTheme.addEventListener('click', rewritingStorage);
+  
+  //відслідковування змін в інших вкладках
+  window.addEventListener('storage', deleteDataFromFirebaseStorage);
+  window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
+  addNewUser();
 };
+
 class UserStorage {
 
     // функція, яка додає в базу даних новий запис 
@@ -20,7 +37,7 @@ class UserStorage {
           .then(response => {
             localStorage.savingId = response.name;
             
-        })
+        }).catch();
     };
     // функція, яка забирає з бази даних
     static take() {
@@ -36,7 +53,7 @@ class UserStorage {
                 localStorage.setItem(saving, lastSaving[saving]);
             };
             location.reload();
-        })
+        }).catch();
     };
 
     static delete(dataToDelete) {
@@ -48,7 +65,7 @@ class UserStorage {
       })
         .then(response => response.json())
         .then(response => {
-      })
+      }).catch();
   };
 
 }
