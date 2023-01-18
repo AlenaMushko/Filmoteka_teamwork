@@ -12,7 +12,7 @@ export function btnLibraryWatchedOrQueue() {
   if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
   } else {
-    notifyInfo()
+    notifyInfo();
   }
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
