@@ -18,13 +18,13 @@ export const langArr = {
       ua: "моя бібліотека",
       en: "my library",
     },
-    'singIn': {
+    'signIn': {
       ua: "Вхід",
-      en: "Sing In",
+      en: "Sign In",
     },
-    'singOut': {
+    'signOut': {
       ua: "Вихід",
-      en: "Sing Out",
+      en: "Sign Out",
     },
     // home-header Пошук //
     'search': {
