@@ -17,10 +17,11 @@ export function checkUserRegistration(email, password) {
       method: 'POST',
       body: JSON.stringify({
         email, password,
-        returnSecureToken: true
+        returnSecureToken: true,
       })
     })
       .then(response => response.json())
+      .catch();
 };
 
 export function authWithEmailAndPassword() {
@@ -39,7 +40,7 @@ export function authWithEmailAndPassword() {
 'There is no such user',
 'Сheck email and password or sign up',
 'Okay',);
-    })     
+    }).catch();     
 };
 
 export function authEntranceBtnHandler(e) {
