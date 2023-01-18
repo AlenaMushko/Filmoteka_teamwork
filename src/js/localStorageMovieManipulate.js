@@ -46,7 +46,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         btnName.textContent = newBtnName;
         function onClick() {
             newAddFunction();
-            location.reload();
+            // location.reload();
             chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };
@@ -60,7 +60,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         btnName.textContent = newBtnName;
         function onClick() {
             newRemoveFunction();
-            location.reload();
+            // location.reload();
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };

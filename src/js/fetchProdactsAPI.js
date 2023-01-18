@@ -10,11 +10,7 @@ const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
 const myLibrary = new MyLibrary();
-// let arrWatchedFilms = myLibrary.getFromWatched();
-// console.log(arrWatchedFilms);
 export default class ApiService {
-  currentLang = localStorage.getItem('language');
-  arrWatchedFilms = myLibrary.getFromWatched();
   constructor() {
     this.totalResults = 0;
     this.searchQuery = '';
@@ -22,6 +18,7 @@ export default class ApiService {
     this.filmsOnPage = 12;
     this.currentLang;
     this.lang;
+    this.amountOfPages = 20;
   }
   //  фільми з більшим доходом
   async getRevenueFilms() {
@@ -153,66 +150,47 @@ export default class ApiService {
 
   // ! Для рендеру фільмів на library Watched
   getArrWatchedId() {
-    const amountOfPages = 20;
     let arrWatchedFilms = myLibrary.getFromWatched();
     let filmsOnPage = [];
     console.log(arrWatchedFilms);
     if (arrWatchedFilms !== null) {
       refs.libraryEmpty.classList.add('is-hidden');
-      let totalPages = arrWatchedFilms.length;
       if (this.page === 1) {
         filmsOnPage = arrWatchedFilms.slice(
           2 * (this.page - 1),
-          amountOfPages * this.page
+          this.amountOfPages * this.page
         );
       } else {
         filmsOnPage = arrWatchedFilms.slice(
-          amountOfPages* (this.page - 1),
-          amountOfPages * this.page + 1
+          this.amountOfPages * (this.page - 1),
+          this.amountOfPages * this.page + 1
         );
       }
     }
+    return filmsOnPage;
   }
 
-  // // ! Для рендеру фільмів на library Watched
-  // async onQueueBtnClick() {
-  //   let filmsOnPage = [];
-  //   if (arrWatchedFilms !== null) {
-  //     refs.libraryEmpty.classList.add('is-hidden');
-  //     let totalPages = arrQueueFilms.length;
-  //     if (this.page === 1) {
-  //       filmsOnPage = arrQueueFilms.slice(2 * (this.page - 1), 12 * this.page);
-  //     } else {
-  //       filmsOnPage = arrQueueFilms.slice(
-  //         12 * (this.page - 1),
-  //         12 * this.page - 1 + 1
-  //       );
-  //     }
-  //     const filmInfo = await apiService.getFilmFromLocalStorage(this);
-  //     try {
-  //       renderFilmCardLibrary(filmInfo);
-  //       // pagination.reset(totalPages);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } else {
-  //     cleanLibrary();
-  //   }
-  // }
-
-  // cleanLibrary() {
-  //   notifyInfo();
-  //   refs.libraryEmpty.classList.remove('is-hidden');
-  //   refs.movieLibrary.innerHTML = '';
-  // }
-
-  // notifyInfo() {
-  //   if (localStorage.getItem('language') === 'en') {
-  //     Notify.info(`Your film list is empty`);
-  //   } else if (localStorage.getItem('language') === 'ua') {
-  //     Notify.info(`Покищо, ваша бібліотека порожня`);
-  //   }
-  // }
+  // ! Для рендеру фільмів на library Queue
+  getArrQueueId() {
+    let arrQueueFilms = myLibrary.getFromQueue();
+    let filmsOnPage = [];
+    console.log(arrQueueFilms);
+    if (arrQueueFilms !== null) {
+      refs.libraryEmpty.classList.add('is-hidden');
+      if (this.page === 1) {
+        filmsOnPage = arrQueueFilms.slice(
+          2 * (this.page - 1),
+          this.amountOfPages * this.page
+        );
+      } else {
+        filmsOnPage = arrQueueFilms.slice(
+          this.amountOfPages * (this.page - 1),
+          this.amountOfPages * this.page + 1
+        );
+      }
+    }
+    return filmsOnPage;
+  }
 
   //  отримуємо символи для пошуку фільму
   get query() {
