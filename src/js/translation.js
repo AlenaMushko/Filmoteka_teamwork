@@ -240,7 +240,7 @@ export const langArr = {
   },
   'remove-watched': {
     ua: 'видалити з переглянутих',
-    en: 'remove to watched',
+    en: 'remove from watched',
   },
   'add-queue': {
     ua: 'додати в чергу',
@@ -248,7 +248,7 @@ export const langArr = {
   },
   'remove-queue': {
     ua: 'видалити з черги',
-    en: 'remove to queue',
+    en: 'remove from queue',
   },
   'watch-trailers': {
     ua: 'Дивитись трейлер',
