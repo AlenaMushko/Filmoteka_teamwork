@@ -1,6 +1,6 @@
 import { langArr } from './translation';
 const allLangs = ['en', 'ua'];
-let currentLang = localStorage.getItem('language') || 'en';
+export let currentLang = localStorage.getItem('language') || 'en';
 // console.log(currentLang);
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
