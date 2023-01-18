@@ -23,7 +23,7 @@ export function btnLibraryWatchedOrQueue() {
 
 let pageNumber = apiService.page;
 // фільми Watched
-async function onWatchedBtnClick() {
+export async function onWatchedBtnClick() {
   let arrWatchedFilms = myLibrary.getFromWatched();
   refs.btnQueue.classList.remove('current');
   refs.btnWatched.classList.add('current');
@@ -55,7 +55,7 @@ async function onWatchedBtnClick() {
   }
 }
 //  фільми Queue
-async function onQueueBtnClick() {
+export async function onQueueBtnClick() {
 let arrQueueFilms = myLibrary.getFromQueue();
   refs.btnWatched.classList.remove('current');
   refs.btnQueue.classList.add('current');
