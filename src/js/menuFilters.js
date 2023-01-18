@@ -45,7 +45,10 @@ function dataUpdate(data) {
 }
 
 let page = localStorage.getItem('page-value');
+
++=======
 // !це мій файл, закоментовувати цей рядок не буду тут вилазила помилка
+
 let query = localStorage.getItem('query-value');
 let genre = localStorage.getItem('genre-value');
 let year = localStorage.getItem('year-value');
@@ -102,12 +105,11 @@ function onSelectReset(e) {
   localStorage.setItem('genre-value', genre);
   localStorage.setItem('year-value', year);
   localStorage.setItem('page-value', page);
-  apiService.getPopularFilms().then(data => {
+  localStorage.setItem('query-value', query);
+  getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     // додаю пагінацію
     pagination.reset(data.total_results);
-    dataUpdate(data);
-
     Loading.remove();
   });
   saveLocalStorage('page-value', page);
@@ -153,5 +155,11 @@ export const getMovieGenres = async () => {
   );
   saveLocalStorage('genresList', data);
   return data;
+};
+
+const resetQuery = () => {
+  refs.inputEl.value = '';
+  localStorage.removeItem('query-value');
+  apiService.query = '';
 };
 export {};
