@@ -211,7 +211,8 @@
     color: $color-extra-text;
     outline: none;
     border-radius: 10px;
-    transition: text-shadow 500ms $cubic, border $transitionDuration $cubic,
+    transition: text-shadow $transitionDuration $cubic,
+      border $transitionDuration $cubic,
       background-color $transitionDuration $cubic;
     @include mq(tablet) {
       width: 50%;
@@ -237,6 +238,7 @@
     position: absolute;
     top: 11px;
     right: 10px;
+    transition: scale $transitionDuration $cubic;
     @include mq(tablet) {
       right: 185px;
     }
@@ -307,7 +309,8 @@
   left: -14px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  display: none;
+  transition: opacity $transitionDuration $cubic;
+  opacity: 0;
 }
 
 .years-container {
@@ -320,7 +323,8 @@
   left: 90px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  display: none;
+  transition: opacity $transitionDuration $cubic;
+  opacity: 0;
 }
 
 .genres-container .button,
@@ -332,6 +336,7 @@
 .filter__item:first-of-type:focus .genres-container,
 .filter__item:nth-of-type(2):hover .years-container,
 .filter__item:nth-of-type(2):focus .years-container {
+  opacity: 1;
   display: flex;
 }
 
@@ -383,8 +388,4 @@
 
 .settings__button--light {
   fill: #0000009c;
-}
-// !світлані
-.settings__button--dark {
-  stroke: #ffffff;
 }
