@@ -347,5 +347,4 @@ export const langArr = {
   ua: 'Розробник',
   en: 'Developer',
 },
-  };
-  
+};
