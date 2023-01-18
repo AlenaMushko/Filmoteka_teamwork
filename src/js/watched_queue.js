@@ -24,7 +24,6 @@ export function btnLibraryWatchedOrQueue() {
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
 
-// let pageNumber = apiService.page;
 // // фільми Watched
 // async function onWatchedBtnClick() {
 //   refs.btnQueue.classList.remove('current');
@@ -95,9 +94,9 @@ export function btnLibraryWatchedOrQueue() {
 //   } else if (localStorage.getItem('language') === 'ua') {
 //     Notify.info(`Покищо, ваша бібліотека порожня`);
 //   }
+
 // }
 
-// ================================================================================
 
 // фільми Watched
 export async function onWatchedBtnClick() {
@@ -142,3 +141,5 @@ function notifyInfo() {
     Notify.info(`Покищо, ваша бібліотека порожня`);
   }
 }
+
+
