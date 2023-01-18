@@ -8,7 +8,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
     const authAddToWatched = document.querySelector('.button-watched');
     const authAddToQueue = document.querySelector('.button-queue');
     const openReg = document.querySelector('.navigation__open--btn');
-    
+
     checkAuthUser();
 
     function changeBtnName(btnAction, lybraryName) {
@@ -46,12 +46,13 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         btnName.textContent = newBtnName;
         function onClick() {
             newAddFunction();
+            // location.reload();
             chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };
         btnName.addEventListener('click', onClick);
     }
-    
+
     function chengeBtnToRemove(libraryArrey, lybraryName, btnName, removeFunc, addFunc) {
         const newRemoveFunction = removeFunc;
         const btnAction = 'remove';
@@ -59,8 +60,7 @@ export function addEventListenerOnButtonaAddWatchedAndAddQueue() {
         btnName.textContent = newBtnName;
         function onClick() {
             newRemoveFunction();
-            // this function makes my library page render
-            // btnLibraryWatchedOrQueue();
+            // location.reload();
             addMovieToLocalStorage(libraryArrey, lybraryName, btnName, removeFunc, addFunc);
             btnName.removeEventListener('click', onClick);
         };

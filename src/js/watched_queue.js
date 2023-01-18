@@ -20,9 +20,6 @@ export function btnLibraryWatchedOrQueue() {
 
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
-
-  // refs.btnWatched.addEventListener('click', apiService.onWatchedBtnClick);
-  // refs.btnQueue.addEventListener('click', apiService.onQueueBtnClick);
 }
 
 let pageNumber = apiService.page;
@@ -57,7 +54,7 @@ async function onWatchedBtnClick() {
 //  фільми Queue
 async function onQueueBtnClick() {
   let filmsOnPage = [];
-  if (arrWatchedFilms !== null) {
+  if (arrQueueFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;
     if (pageNumber === 1) {
@@ -92,3 +89,49 @@ function notifyInfo() {
     Notify.info(`Покищо, ваша бібліотека порожня`);
   }
 }
+
+// ================================================================================
+
+// // фільми Watched
+// async function onWatchedBtnClick() {
+//   let filmsOnPage = apiService.getArrWatchedId();
+//  let arrWatchedFilms = myLibrary.getFromWatched();
+//   console.log(filmsOnPage );
+//     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+//     try {
+//       renderFilmCardLibrary(filmInfo);
+//       pagination.reset(arrWatchedFilms.length);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+
+// //  фільми Queue
+// async function onQueueBtnClick() {
+//   let filmsOnPage = apiService.getArrQueueId();
+//   let arrQueueFilms = myLibrary.getFromQueue();
+//   console.log(filmsOnPage);
+//     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+//     try {
+//       renderFilmCardLibrary(filmInfo);
+//       pagination.reset(arrQueueFilms.length);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   } 
+
+
+
+// function cleanLibrary() {
+//   notifyInfo();
+//   refs.libraryEmpty.classList.remove('is-hidden');
+//   refs.movieLibrary.innerHTML = '';
+// }
+
+// function notifyInfo() {
+//   if (localStorage.getItem('language') === 'en') {
+//     Notify.info(`Your film list is empty`);
+//   } else if (localStorage.getItem('language') === 'ua') {
+//     Notify.info(`Покищо, ваша бібліотека порожня`);
+//   }
+// }

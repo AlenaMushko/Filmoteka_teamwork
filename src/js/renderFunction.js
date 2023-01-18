@@ -70,6 +70,10 @@ export function renderFilmCard({ results }) {
             filmGenre = filmGenreId.join(', ');
           }
         }
+        if (title.length > 25 || original_title > 25) {
+          title = title.slice(0, 25).concat('', '...');
+          original_title = original_title.slice(0, 25).concat('', '...');
+        }
         const foto = `<img   class='film__img lazyload' alt= '${
           title || original_title || original_name
         }' width='390px' height='580px' loading="lazy"
