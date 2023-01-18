@@ -125,8 +125,8 @@ export function renderFilmCardLibrary(films) {
       } else {
         filmGenre = `${filmGenreAll}`;
       }
-      console.log(film.genres.length);
-      console.log(filmGenre);
+      // console.log(film.genres.length);
+      // console.log(filmGenre);
       const voteAverage = Number(vote_average).toFixed(1);
       const foto = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name

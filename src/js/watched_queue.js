@@ -11,13 +11,18 @@ let arrQueueFilms = myLibrary.getFromQueue();
 export function btnLibraryWatchedOrQueue() {
   if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
+    // apiService.onWatchedBtnClick();
   } else {
     notifyInfo();
   }
+
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
+
+  // refs.btnWatched.addEventListener('click', apiService.onWatchedBtnClick);
+  // refs.btnQueue.addEventListener('click', apiService.onQueueBtnClick);
 }
-const amountFilmsOnPage = 12;
+
 let pageNumber = apiService.page;
 // фільми Watched
 async function onWatchedBtnClick() {
