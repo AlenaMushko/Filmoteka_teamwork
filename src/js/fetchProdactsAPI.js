@@ -119,9 +119,9 @@ export default class ApiService {
     }
   }
   //  пошук фільму по масиву id з localStorage
-  async getFilmFromLocalStorage(arrWatchedFilms) {
+  async getFilmFromLocalStorage(arrayFilms) {
     const data = await Promise.all(
-      arrWatchedFilms.map(idWatchedFilm => {
+      arrayFilms.map(idWatchedFilm => {
         try {
           if (this.currentLang === 'en') {
             this.lang = 'en';
@@ -153,7 +153,6 @@ export default class ApiService {
   getArrWatchedId() {
     let arrWatchedFilms = myLibrary.getFromWatched();
     let filmsOnPage = [];
-    console.log(arrWatchedFilms);
     if (arrWatchedFilms !== null) {
       refs.libraryEmpty.classList.add('is-hidden');
       if (this.page === 1) {
@@ -175,7 +174,6 @@ export default class ApiService {
   getArrQueueId() {
     let arrQueueFilms = myLibrary.getFromQueue();
     let filmsOnPage = [];
-    console.log(arrQueueFilms);
     if (arrQueueFilms !== null) {
       refs.libraryEmpty.classList.add('is-hidden');
       if (this.page === 1) {

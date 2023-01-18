@@ -1,11 +1,14 @@
 import Pagination from 'tui-pagination';
 import { onMyButtonClick } from './scrolToTop';
 import ApiService from './fetchProdactsAPI';
+import { MyLibrary } from './localStorage';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { getSearchByFilters } from './menuFilters';
+import { renderFilmCardLibrary } from './renderFunction';
 
 const apiService = new ApiService();
+const myLibrary = new MyLibrary();
 const myLibraryBtnCurrent = refs.myLibraryLink.classList.contains(
   'navigation__link--current-page'
 );
@@ -52,7 +55,6 @@ async function onPaginationClick(event) {
       apiService.pageNum = page;
       const results = await apiService.getPopularFilms();
       renderFilmCard(results);
-      console.log('Popular films');
     } else if (
       !localStorage.getItem('year-value') &&
       !localStorage.getItem('genre-value') &&
@@ -62,7 +64,6 @@ async function onPaginationClick(event) {
       apiService.pageNum = page;
       const results = await apiService.getSearchFilms();
       renderFilmCard(results);
-      // console.log('Serch films');
     } else {
       const results = await getSearchByFilters(
         page,
@@ -71,46 +72,26 @@ async function onPaginationClick(event) {
         localStorage.getItem('year-value')
       );
       renderFilmCard(results);
-      // console.log('Filtered films');
     }
-    // console.log('Home');
   } else {
-    // console.log('Library');
+    if (!refs.btnQueue) {
+      return;
+    } else {
+      const QueueBtn = refs.btnQueue.classList.contains('current');
+      apiService.pageNum = page;
+      if (QueueBtn) {
+        let filmsOnPage = apiService.getArrQueueId();
+        const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+        renderFilmCardLibrary(filmInfo);
+      } else {
+        let filmsOnPage = apiService.getArrWatchedId();
+        const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+        renderFilmCardLibrary(filmInfo);
+      }
+    }
   }
 }
 
-//  Стара логіка
-
-// async function onPaginationClick(event) {
-//   onMyButtonClick();
-//   const page = event.page;
-//   if (
-//     !localStorage.getItem('year-value') &&
-//     !localStorage.getItem('genre-value') &&
-//     !localStorage.getItem('query-value')
-//   ) {
-//     apiService.pageNum = page;
-//     const results = await apiService.getPopularFilms();
-//     renderFilmCard(results);
-//   } else if (
-//     !localStorage.getItem('year-value') &&
-//     !localStorage.getItem('genre-value') &&
-//     localStorage.getItem('query-value')
-//   ) {
-//     apiService.query = localStorage.getItem('query-value');
-//     apiService.pageNum = page;
-//     const results = await apiService.getSearchFilms();
-//     renderFilmCard(results);
-//   } else {
-//     const results = await getSearchByFilters(
-//       page,
-//       localStorage.getItem('query-value'),
-//       localStorage.getItem('genre-value'),
-//       localStorage.getItem('year-value')
-//     );
-//     renderFilmCard(results);
-//   }
-// }
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
