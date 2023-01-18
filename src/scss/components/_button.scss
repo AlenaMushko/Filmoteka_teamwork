@@ -49,3 +49,9 @@
     height: 44px;
   }
 }
+
+button.trailers-btns-list__btn {
+  min-height: 44px;
+  height: fit-content;
+  overflow: hidden;
+}

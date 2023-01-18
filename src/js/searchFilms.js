@@ -19,6 +19,13 @@ export async function onSearchFormSubmit(e) {
   apiService.query = refs.inputEl ? refs.inputEl.value.trim() : '';
   localStorage.setItem('query-value', apiService.query);
   if (apiService.query === '') {
+    // !
+    Notify.failure(
+      'Sorry, You need to write something in search query. Please try again.'
+    );
+    // попередження яке є на макеті хочеш розкоментує а хочеш не
+    refs.warningContainer.classList.remove('is-hidden');
+    // !
     return;
   }
   const results = await apiService.getSearchFilms();
@@ -28,6 +35,7 @@ export async function onSearchFormSubmit(e) {
     // !замість фунціі яка закоментована внизу просто ресетимо інпут
     refs.inputEl.value = '';
     // resetQuery();
+
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
@@ -59,10 +67,4 @@ export async function onSearchFormSubmit(e) {
   }
 }
 
-// !ця функція тут виявилася безкорисною, цю функцію я буду
-// !створювати у себе і викликати її там при натисканні кнопки оновлення
-// const resetQuery = () => {
-// refs.inputEl.value = '';
-// localStorage.removeItem('query-value');
-// apiService.query = '';
-// };
+
