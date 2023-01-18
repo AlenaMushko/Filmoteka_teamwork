@@ -41,10 +41,11 @@ export const refs = {
   authForm: document.querySelector('.js-auth__form'),
 
   // my-libtary
+ btnQueue: document.querySelector('.btn__queue'),
   btnWatched: document.querySelector('.btn__watched'),
   movieLibrary: document.querySelector('.library-films'),
   libraryEmpty: document.querySelector('.library-empty'),
-  btnQueue: document.querySelector('.btn__queue'),
+ 
   // паролі
   modalSignIn: document.querySelector('.modal__log-in'),
   inputPassword: document.querySelector('#password'),

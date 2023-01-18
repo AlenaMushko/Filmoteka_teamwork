@@ -25,6 +25,9 @@ export function btnLibraryWatchedOrQueue() {
 let pageNumber = apiService.page;
 // фільми Watched
 async function onWatchedBtnClick() {
+  refs.btnQueue.classList.remove('current');
+  refs.btnWatched.classList.add('current');
+
   let filmsOnPage = [];
   if (arrWatchedFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
@@ -53,7 +56,9 @@ async function onWatchedBtnClick() {
 }
 //  фільми Queue
 async function onQueueBtnClick() {
-  let filmsOnPage = [];
+  refs.btnWatched.classList.remove('current');
+  refs.btnQueue.classList.add('current');
+   let filmsOnPage = [];
   if (arrQueueFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;
