@@ -10,9 +10,9 @@ const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
 const myLibrary = new MyLibrary();
-const arrWatchedFilms = myLibrary.getFromWatched();
+// let arrWatchedFilms = myLibrary.getFromWatched();
+// console.log(arrWatchedFilms);
 export default class ApiService {
-  // myLibrary = new MyLibrary();
   currentLang = localStorage.getItem('language');
   arrWatchedFilms = myLibrary.getFromWatched();
   constructor() {
@@ -152,34 +152,27 @@ export default class ApiService {
   }
 
   // ! Для рендеру фільмів на library Watched
-  // async onWatchedBtnClick() {
-  //   let filmsOnPage = [];
-  //   // console.log(arrWatchedFilms);
-  //   if (arrWatchedFilms !== null) {
-  //     refs.libraryEmpty.classList.add('is-hidden');
-  //     let totalPages = arrWatchedFilms.length;
-  //     if (this.page === 1) {
-  //       filmsOnPage = arrWatchedFilms.slice(
-  //         2 * (this.page - 1),
-  //         12 * this.page
-  //       );
-  //     } else {
-  //       filmsOnPage = arrWatchedFilms.slice(
-  //         12 * (this.page - 1),
-  //         12 * this.page + 1
-  //       );
-  //     }
-  //     const filmInfo = await getFilmFromLocalStorage(arrWatchedFilms);
-  //     try {
-  //       renderFilmCardLibrary(filmInfo);
-  //       // pagination.reset(totalPages);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } else {
-  //     cleanLibrary();
-  //   }
-  // }
+  getArrWatchedId() {
+    const amountOfPages = 20;
+    let arrWatchedFilms = myLibrary.getFromWatched();
+    let filmsOnPage = [];
+    console.log(arrWatchedFilms);
+    if (arrWatchedFilms !== null) {
+      refs.libraryEmpty.classList.add('is-hidden');
+      let totalPages = arrWatchedFilms.length;
+      if (this.page === 1) {
+        filmsOnPage = arrWatchedFilms.slice(
+          2 * (this.page - 1),
+          amountOfPages * this.page
+        );
+      } else {
+        filmsOnPage = arrWatchedFilms.slice(
+          amountOfPages* (this.page - 1),
+          amountOfPages * this.page + 1
+        );
+      }
+    }
+  }
 
   // // ! Для рендеру фільмів на library Watched
   // async onQueueBtnClick() {
