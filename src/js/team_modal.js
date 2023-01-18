@@ -69,6 +69,6 @@ function checkClientHeigth() {
 
 
 }
-// setInterval(checkClientHeigth, 500);
-window.addEventListener('load', checkClientHeigth);
-window.addEventListener('resize', checkClientHeigth);
+setInterval(checkClientHeigth, 500);
+// window.addEventListener('load', checkClientHeigth);
+// window.addEventListener('resize', checkClientHeigth);
