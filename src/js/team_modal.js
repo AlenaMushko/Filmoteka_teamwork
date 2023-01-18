@@ -60,15 +60,15 @@ function hrefPrevDef(e) {
   }
 }
 
-function checkClientHeigth() {
-  if (document.documentElement.clientHeight >= document.body.clientHeight) {
-    footerContainer.classList.add('fix_bottom');
-  } else {
-    footerContainer.classList.remove('fix_bottom');
-  }
+// function checkClientHeigth() {
+//   if (document.documentElement.clientHeight >= document.body.clientHeight) {
+//     footerContainer.classList.add('fix_bottom');
+//   } else {
+//     footerContainer.classList.remove('fix_bottom');
+//   }
 
 
-}
-setInterval(checkClientHeigth, 500);
+// }
+// setInterval(checkClientHeigth, 500);
 // window.addEventListener('load', checkClientHeigth);
 // window.addEventListener('resize', checkClientHeigth);

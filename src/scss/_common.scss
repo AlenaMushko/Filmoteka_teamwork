@@ -5,3 +5,8 @@ body {
   font-weight: 500;
   transition: background-color 250ms linear;
 }
+main {
+  @media screen and (min-width: 320px){
+    min-height: calc(100vh - 448px);
+  }
+ }
