@@ -381,10 +381,7 @@
   transform: scale(1.25);
 }
 
-.settings__button--light {
-  fill: #0000009c;
-}
-// !світлані
-.settings__button--dark {
-  stroke: #ffffff;
+.settings__button--ligth {
+  fill: #10181d;
+  stroke: $color-extra-text;
 }
