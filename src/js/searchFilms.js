@@ -25,13 +25,20 @@ export async function onSearchFormSubmit(e) {
   apiService.query = refs.inputEl ? refs.inputEl.value.trim() : '';
   localStorage.setItem('query-value', apiService.query);
   if (apiService.query === '') {
-    // !
-    Notify.failure(
+    if (localStorage.getItem('language') === 'en') {
+        Notify.failure(
       'Sorry, You need to write something in search query. Please try again.'
     );
+        console.log('en');
+      } else if (localStorage.getItem('language') === 'ua') {
+       Notify.failure(
+      'Вибачте, вам потрібно написати щось в пошуковому полі. Спробуйте знову.'
+    );
+      }
+
     // попередження яке є на макеті хочеш розкоментує а хочеш не
     refs.warningContainer.classList.remove('is-hidden');
-    // !
+   
     return;
   }
   const results = await apiService.getSearchFilms();
