@@ -1,7 +1,7 @@
 import { langArr } from './translation';
 const allLangs = ['en', 'ua'];
 export let currentLang = localStorage.getItem('language') || 'en';
-// console.log(currentLang);
+
 const langBtn = document.querySelectorAll('[data-btn]');
 const currentPatName = window.localStorage.pathname;
 let currentText = {};
@@ -45,9 +45,10 @@ langBtn.forEach(btn => {
     currentLang = e.target.dataset.btn;
     localStorage.setItem('language', e.target.dataset.btn);
     resetActiveClass(langBtn, 'btn-active');
-    btn.classList.add('btn-active');
+    btn.classList.add('btn-active');    
     changeLangPlaceholder();
     changeLang();
+    location.reload();
   });
 });
 
@@ -70,6 +71,6 @@ function checkActiveLangBtn() {
       break;
   }
 }
-// checkActiveLangBtn();
+checkActiveLangBtn();
 
 export {};

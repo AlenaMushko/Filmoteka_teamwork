@@ -51,14 +51,13 @@ export function onTeamModal() {
   clickOverlay.addEventListener('click', teamModalClose);
 }
 
-
 //
-const footerContainer =document.querySelector('.footer__container');
-footerContainer.addEventListener('click', hrefPrevDef)
+const footerContainer = document.querySelector('.footer__container');
+footerContainer.addEventListener('click', hrefPrevDef);
 function hrefPrevDef(e) {
- if (e.target.ownerDocument.activeElement.attributes[0].nodeValue == '#'){
-  e.preventDefault();
-}
+  if (e.target.ownerDocument.activeElement.attributes[0].nodeValue == '#') {
+    e.preventDefault();
+  }
 }
 
 function checkClientHeigth() {
@@ -67,5 +66,9 @@ function checkClientHeigth() {
   } else {
     footerContainer.classList.remove('fix_bottom');
   }
+
+
 }
 setInterval(checkClientHeigth, 500);
+// window.addEventListener('load', checkClientHeigth);
+// window.addEventListener('resize', checkClientHeigth);

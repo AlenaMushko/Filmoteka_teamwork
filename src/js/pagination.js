@@ -4,7 +4,12 @@ import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { getSearchByFilters } from './menuFilters';
+
 const apiService = new ApiService();
+const myLibraryBtnCurrent = refs.myLibraryLink.classList.contains(
+  'navigation__link--current-page'
+);
+
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -33,36 +38,79 @@ const options = {
 };
 export const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', onPaginationClick);
+
 async function onPaginationClick(event) {
   onMyButtonClick();
   const page = event.page;
-  if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    !localStorage.getItem('query-value')
-  ) {
-    apiService.pageNum = page;
-    const results = await apiService.getPopularFilms();
-    renderFilmCard(results);
-  } else if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
-    localStorage.getItem('query-value')
-  ) {
-    apiService.query = localStorage.getItem('query-value');
-    apiService.pageNum = page;
-    const results = await apiService.getSearchFilms();
-    renderFilmCard(results);
+
+  if (!myLibraryBtnCurrent) {
+    if (
+      !localStorage.getItem('year-value') &&
+      !localStorage.getItem('genre-value') &&
+      !localStorage.getItem('query-value')
+    ) {
+      apiService.pageNum = page;
+      const results = await apiService.getPopularFilms();
+      renderFilmCard(results);
+      console.log('Popular films');
+    } else if (
+      !localStorage.getItem('year-value') &&
+      !localStorage.getItem('genre-value') &&
+      localStorage.getItem('query-value')
+    ) {
+      apiService.query = localStorage.getItem('query-value');
+      apiService.pageNum = page;
+      const results = await apiService.getSearchFilms();
+      renderFilmCard(results);
+      // console.log('Serch films');
+    } else {
+      const results = await getSearchByFilters(
+        page,
+        localStorage.getItem('query-value'),
+        localStorage.getItem('genre-value'),
+        localStorage.getItem('year-value')
+      );
+      renderFilmCard(results);
+      // console.log('Filtered films');
+    }
+    // console.log('Home');
   } else {
-    const results = await getSearchByFilters(
-      page,
-      localStorage.getItem('query-value'),
-      localStorage.getItem('genre-value'),
-      localStorage.getItem('year-value')
-    );
-    renderFilmCard(results);
+    // console.log('Library');
   }
 }
+
+//  Стара логіка
+
+// async function onPaginationClick(event) {
+//   onMyButtonClick();
+//   const page = event.page;
+//   if (
+//     !localStorage.getItem('year-value') &&
+//     !localStorage.getItem('genre-value') &&
+//     !localStorage.getItem('query-value')
+//   ) {
+//     apiService.pageNum = page;
+//     const results = await apiService.getPopularFilms();
+//     renderFilmCard(results);
+//   } else if (
+//     !localStorage.getItem('year-value') &&
+//     !localStorage.getItem('genre-value') &&
+//     localStorage.getItem('query-value')
+//   ) {
+//     apiService.query = localStorage.getItem('query-value');
+//     apiService.pageNum = page;
+//     const results = await apiService.getSearchFilms();
+//     renderFilmCard(results);
+//   } else {
+//     const results = await getSearchByFilters(
+//       page,
+//       localStorage.getItem('query-value'),
+//       localStorage.getItem('genre-value'),
+//       localStorage.getItem('year-value')
+//     );
+//     renderFilmCard(results);
+//   }
+// }
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';
 }
