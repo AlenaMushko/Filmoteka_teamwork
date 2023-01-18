@@ -8,14 +8,16 @@ import { btnLibraryWatchedOrQueue } from './js/watched_queue';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
-import { } from './js/language';
+import {} from './js/language';
 import { filmCardModalWindow } from './js/modal-film';
 
 // -------------------------------------------header
 // рендириця картка фільму з id що в  localStorage
 libraryHeaderLinkBntLogic();
 //завантаження теми
+import { getChengeLibraryThemeByClick } from './js/changeTheme';
 onFirstLoadThemeLibrary();
+getChengeLibraryThemeByClick();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
 //робота зі сховищем фаєрбейз
