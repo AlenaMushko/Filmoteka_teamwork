@@ -4,7 +4,7 @@ import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
 import ApiService from './fetchProdactsAPI';
-import { resetQuery } from './searchFilms';
+// import { resetQuery } from './searchFilms';
 const apiService = new ApiService();
 const KEY = '32432509d17cea42104bbb7507a382c7';
 const api_key = `?api_key=${KEY}`;
