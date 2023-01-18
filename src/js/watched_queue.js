@@ -3,6 +3,8 @@ import { refs } from './refs';
 import ApiService from './fetchProdactsAPI';
 import { MyLibrary } from './localStorage';
 import { renderFilmCardLibrary } from './renderFunction';
+import { pagination } from './pagination';
+
 // екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
 const apiService = new ApiService();
@@ -39,7 +41,7 @@ async function onWatchedBtnClick() {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
+      pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +66,7 @@ async function onQueueBtnClick() {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
+      pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
