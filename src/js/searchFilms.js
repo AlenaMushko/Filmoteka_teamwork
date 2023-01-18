@@ -17,15 +17,27 @@ export async function onSearchFormSubmit(e) {
   e.preventDefault();
   apiService.page = 1;
   apiService.query = refs.inputEl ? refs.inputEl.value.trim() : '';
-  localStorage.setItem('input-value', apiService.query);
+  localStorage.setItem('query-value', apiService.query);
   if (apiService.query === '') {
+    // !
+    Notify.failure(
+      'Sorry, You need to write something in search query. Please try again.'
+    );
+    // попередження яке є на макеті хочеш розкоментує а хочеш не
+    refs.warningContainer.classList.remove('is-hidden');
+    // !
     return;
   }
   const results = await apiService.getSearchFilms();
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
-    // resetQuery();
+    // !
+    // тут прибирає попередження
+    refs.warningContainer.classList.add('is-hidden');
+    //!виклик функціі скидання при сабміті пустого поля
+    resetQuery();
+    // !
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
@@ -43,8 +55,10 @@ export async function onSearchFormSubmit(e) {
   }
 }
 
-// export const resetQuery = () => {
-//   refs.inputEl.value = '';
-//   localStorage.removeItem('query-value');
-//   apiService.query = '';
-// };
+// !функуія скидання буде виконуватися при сабміті пустого поля та при натисканні reset
+export const resetQuery = () => {
+  refs.inputEl.value = '';
+  // localStorage.removeItem('query-value');
+  apiService.query = '';
+};
+// !
