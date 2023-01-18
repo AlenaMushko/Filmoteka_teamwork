@@ -82,12 +82,7 @@ export function giveLocalStorageToFirebaseStorage() {
 export function takeLocalStorageFromFirebaseStorage() {
     UserStorage.take();
 };
-//зміна сховища користувача на бекенді 
-export function changeLocalStorageInFirebaseStorage() {
-    if(localStorage.auth === "yes") {
-        UserStorage.change(localStorage);
-    };
-};
+//видаленняостаннього запису на бекенді 
 
 export function deleteDataFromFirebaseStorage() {
   UserStorage.delete();

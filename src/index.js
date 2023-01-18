@@ -10,7 +10,7 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { homeHeaderLinkBntLogic } from './js/headerBtnLinkLogic';
 import { authHandler } from './js/auth';
 import { onFirstLoadTheme } from './js/changeTheme';
-import { getChengeThemeByClick } from './js/changeTheme';
+
 import {} from './js/language';
 import { authHandler } from './js/auth';
 import './js/menuFilters'; /* тимчасово поки імпортую все*/
@@ -19,8 +19,9 @@ registrationModalOpen();
 // логіка кнопок і посилань навігації хедера
 homeHeaderLinkBntLogic();
 //завантаження теми
+import { getChengeMainThemeByClick } from './js/changeTheme';
 onFirstLoadTheme();
-getChengeThemeByClick();
+getChengeMainThemeByClick();
 //авторизація
 authHandler();
 
