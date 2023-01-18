@@ -11,6 +11,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 
 const myLibrary = new MyLibrary();
 export default class ApiService {
+  currentLang = localStorage.getItem('language');
   constructor() {
     this.totalResults = 0;
     this.searchQuery = '';
