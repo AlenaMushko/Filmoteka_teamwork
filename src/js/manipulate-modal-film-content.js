@@ -55,7 +55,6 @@ export function renderModalFilmCard(filmInfo) {
   }
 
   const imgPlaceholder = new URL('../images/poster_photo-400x600.webp', import.meta.url);
-
   const {
     id,
     poster_path,
