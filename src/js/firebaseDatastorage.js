@@ -3,16 +3,25 @@ import { addNewUser } from './signUp';
 export function firebaseRealtimeDatabase() {
   /* setInterval(deleteDataFromFirebaseStorage, 1000);
   setInterval(giveLocalStorageToFirebaseStorage, 1000); */
-  /* deleteDataFromFirebaseStorage();
-  giveLocalStorageToFirebaseStorage(); */
+  deleteDataFromFirebaseStorage();
+  giveLocalStorageToFirebaseStorage();
+  //перезаписування сховища
+  function rewritingStorage() {
+    deleteDataFromFirebaseStorage();
+    giveLocalStorageToFirebaseStorage();
+  };
+
+  //відслідковуння змін по натисканням клавіш
+    refs.buttonWatched.addEventListener('click', rewritingStorage);
+    refs.buttonQueue.addEventListener('click', rewritingStorage); 
+    refs.btnTheme.addEventListener('click', rewritingStorage);
+  
+  //відслідковування змін в інших вкладках
   window.addEventListener('storage', deleteDataFromFirebaseStorage);
   window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
   addNewUser();
 };
 
-function storageChanging(e) {
-  console.log('e');
-}
 class UserStorage {
 
     // функція, яка додає в базу даних новий запис 
