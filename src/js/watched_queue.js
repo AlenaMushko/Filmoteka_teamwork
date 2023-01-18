@@ -57,7 +57,7 @@ async function onWatchedBtnClick() {
 //  фільми Queue
 async function onQueueBtnClick() {
   let filmsOnPage = [];
-  if (arrWatchedFilms !== null) {
+  if (arrQueueFilms !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     let totalPages = arrQueueFilms.length;
     if (pageNumber === 1) {
