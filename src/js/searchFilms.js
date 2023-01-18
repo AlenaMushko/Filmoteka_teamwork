@@ -5,8 +5,14 @@ import { refs } from './refs';
 import { pagination } from './pagination';
 import { cleanPagination } from './pagination';
 const apiService = new ApiService();
-refs.inputEl.addEventListener('click', onSearchFormReset);
-refs.searchForm.addEventListener('submit', onSearchFormSubmit);
+
+if (!refs.inputEl) {
+  return;
+} else {
+  refs.inputEl.addEventListener('click', onSearchFormReset);
+  refs.searchForm.addEventListener('submit', onSearchFormSubmit);
+}
+
 function onSearchFormReset() {
   if (apiService.query !== '') {
     refs.searchForm.reset();
@@ -66,5 +72,4 @@ export async function onSearchFormSubmit(e) {
     console.log(error);
   }
 }
-
 

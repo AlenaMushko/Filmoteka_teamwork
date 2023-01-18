@@ -53,9 +53,13 @@ let query = localStorage.getItem('query-value');
 let genre = localStorage.getItem('genre-value');
 let year = localStorage.getItem('year-value');
 
-refs.filterByGenre.addEventListener('click', onSelectGenre);
-refs.filterByYear.addEventListener('click', onSelectYear);
-refs.resetButton.addEventListener('click', onSelectReset);
+if (!refs.filterByGenre) {
+  return;
+} else {
+  refs.filterByGenre.addEventListener('click', onSelectGenre);
+  refs.filterByYear.addEventListener('click', onSelectYear);
+  refs.resetButton.addEventListener('click', onSelectReset);
+}
 
 // !функція запиту при відпрацюванні по кліку фільтра
 export const getSearchByFilters = async (
