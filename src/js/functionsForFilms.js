@@ -18,6 +18,7 @@ async function topFilms() {
   try {
     renderFilmCard(results);
     //додаю пагінацію
+    console.log(results.total_results);
     pagination.reset(results.total_results);
   } catch (error) {
     console.log(error);

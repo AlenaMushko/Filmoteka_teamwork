@@ -3,6 +3,8 @@ import { refs } from './refs';
 import ApiService from './fetchProdactsAPI';
 import { MyLibrary } from './localStorage';
 import { renderFilmCardLibrary } from './renderFunction';
+import { pagination } from './pagination';
+
 // екземпляп класу який працює з localStorage
 const myLibrary = new MyLibrary();
 const apiService = new ApiService();
@@ -12,7 +14,7 @@ export function btnLibraryWatchedOrQueue() {
   if (arrWatchedFilms !== null) {
     onWatchedBtnClick();
   } else {
-    notifyInfo()
+    notifyInfo();
   }
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
@@ -28,18 +30,18 @@ async function onWatchedBtnClick() {
     if (pageNumber === 1) {
       filmsOnPage = arrWatchedFilms.slice(
         2 * (pageNumber - 1),
-        12 * pageNumber
+        amountFilmsOnPage * pageNumber
       );
     } else {
       filmsOnPage = arrWatchedFilms.slice(
-        12 * (pageNumber - 1),
-        12 * pageNumber + 1
+        amountFilmsOnPage * (pageNumber - 1),
+        amountFilmsOnPage * pageNumber + 1
       );
     }
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
+      pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +66,7 @@ async function onQueueBtnClick() {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      // pagination.reset(totalPages);
+      pagination.reset(totalPages);
     } catch (error) {
       console.log(error);
     }

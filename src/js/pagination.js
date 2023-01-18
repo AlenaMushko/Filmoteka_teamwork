@@ -4,7 +4,14 @@ import ApiService from './fetchProdactsAPI';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { getSearchByFilters } from './menuFilters';
+import { refs } from './refs';
+import { renderFilmCardLibrary } from './renderFunction';
+import { onWatchedBtnClick } from './watched_queue';
+
 const apiService = new ApiService();
+const myLibraryBtn = refs.myLibraryLink.classList.contains(
+  'navigation__link--current-page'
+);
 const options = {
   totalItems: 0,
   itemsPerPage: 20,
@@ -31,8 +38,10 @@ const options = {
       '</a>',
   },
 };
+
 export const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', onPaginationClick);
+
 async function onPaginationClick(event) {
   onMyButtonClick();
   const page = event.page;
@@ -43,25 +52,39 @@ async function onPaginationClick(event) {
   ) {
     apiService.pageNum = page;
     const results = await apiService.getPopularFilms();
+    console.log('Popular Films');
     renderFilmCard(results);
   } else if (
-    !localStorage.getItem('year-value') &&
-    !localStorage.getItem('genre-value') &&
+    // !localStorage.getItem('year-value') &&
+    // !localStorage.getItem('genre-value') &&
     localStorage.getItem('input-value')
   ) {
     apiService.query = localStorage.getItem('input-value');
     apiService.pageNum = page;
     const results = await apiService.getSearchFilms();
+    console.log('Serch Films');
     renderFilmCard(results);
-  } else {
-    const results = await getSearchByFilters(
-      page,
-      localStorage.getItem('input-value'),
-      localStorage.getItem('genre-value'),
-      localStorage.getItem('year-value')
-    );
-    renderFilmCard(results);
+  } else if (refs.buttonWatched.onclick) {
+    // onWatchedBtnClick(page);
+    console.log('Watched films');
+  } else if (myLibraryBtn === 'true') {
+    console.log('Queue films');
   }
+
+  // else if (
+  //   localStorage.getItem('year-value') ||
+  //   localStorage.getItem('genre-value') ||
+  //   localStorage.getItem('input-value')
+  // ) {
+  //   console.log('Filter films');
+  //   // const results = await getSearchByFilters(
+  //   //   page,
+  //   //   localStorage.getItem('input-value'),
+  //   //   localStorage.getItem('genre-value'),
+  //   //   localStorage.getItem('year-value')
+  //   // );
+  //   // renderFilmCard(results);
+  // }
 }
 export function cleanPagination() {
   refs.paginationList.innerHTML = '';

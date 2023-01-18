@@ -12,10 +12,14 @@ let page = localStorage.getItem('page-value');
 let query = localStorage.getItem('query-pg');
 let genre = localStorage.getItem('genre-value');
 let year = localStorage.getItem('year-value');
-refs.filterByGenre.addEventListener('click', onSelectGenre);
-refs.filterByYear.addEventListener('click', onSelectYear);
-refs.resetButton.addEventListener('click', onSelectReset);
+console.log(refs.filterByGenre);
+
+// refs.filterByGenre.addEventListener('click', onSelectGenre);
+// refs.filterByYear.addEventListener('click', onSelectYear);
+// refs.resetButton.addEventListener('click', onSelectReset);
+
 // !функція запиту при відпрацюванні по кліку фільтра
+
 export const getSearchByFilters = async (
   page = '',
   query = '',
@@ -64,7 +68,7 @@ function onSelectReset(e) {
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     // додаю пагінацію
-    pagination.reset(data.total_results);
+    // pagination.reset(data.total_results);
     dataUpdate(data);
     Loading.remove();
   });
@@ -83,7 +87,7 @@ function onSelectGenre(e) {
     getSearchByFilters(page, query, genre, year).then(data => {
       renderFilmCard(data);
       //додаю пагінацію
-      pagination.reset(data.total_results);
+      // pagination.reset(data.total_results);
       Loading.remove();
     });
   }
@@ -100,7 +104,7 @@ function onSelectYear(e) {
   getSearchByFilters(page, query, genre, year).then(data => {
     renderFilmCard(data);
     //додаю пагінацію
-    pagination.reset(data.total_results);
+    // pagination.reset(data.total_results);
     Loading.remove();
   });
 }
@@ -112,4 +116,4 @@ export const getMovieGenres = async () => {
   localStorage.setItem('genresList', data);
   return data;
 };
-export {};
+// export {};
