@@ -38,12 +38,10 @@ export async function onSearchFormSubmit(e) {
   apiService.totalResults = results.total_results;
   try {
     renderFilmCard(results);
-    // !
-    // тут прибирає попередження
-    refs.warningContainer.classList.add('is-hidden');
-    //!виклик функціі скидання при сабміті пустого поля
-    resetQuery();
-    // !
+    // !замість фунціі яка закоментована внизу просто ресетимо інпут
+    refs.inputEl.value = '';
+    // resetQuery();
+
     //додаю пагінацію
     pagination.reset(results.total_results);
     if (apiService.totalResults === 0) {
@@ -75,8 +73,3 @@ export async function onSearchFormSubmit(e) {
   }
 }
 
-const resetQuery = () => {
-  refs.inputEl.value = '';
-  // localStorage.removeItem('query-value');
-  apiService.query = '';
-};
