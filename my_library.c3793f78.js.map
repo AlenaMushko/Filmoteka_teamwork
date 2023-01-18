@@ -1,1 +1,0 @@
-{"mappings":"AAAAA,gBAAmBC,SAASC,cAAc,wBAE1CC,QAAQC,IAAIJ","sources":["src/js/libraryPagination.js"],"sourcesContent":["btnModalLibrary =  document.querySelector('.btn__modal--library');\n\nconsole.log(btnModalLibrary);"],"names":["btnModalLibrary","document","querySelector","console","log"],"version":3,"file":"my_library.c3793f78.js.map"}
