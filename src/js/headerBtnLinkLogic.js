@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { authEntranceBtnHandler } from './auth';
-
+import { rewritingStorage } from './firebaseDatastorage';
 
 export function homeHeaderLinkBntLogic() {
     
@@ -10,6 +10,9 @@ export function homeHeaderLinkBntLogic() {
         refs.signOutBtn.classList.remove('is-hidden');
         refs.signOutBtn.addEventListener('click', signOutBtnHandler);
         refs.myLibraryLink.classList.remove('is-hidden');
+        refs.buttonWatched.addEventListener('click', rewritingStorage);
+        refs.buttonQueue.addEventListener('click', rewritingStorage); 
+        refs.btnTheme.addEventListener('click', rewritingStorage);
 
     } else if(localStorage.auth === "no") {
         
@@ -19,6 +22,9 @@ export function homeHeaderLinkBntLogic() {
         refs.signOutBtn.removeEventListener('click', signOutBtnHandler);
         refs.myLibraryLink.classList.add('is-hidden');
         refs.authEntranceBtn.addEventListener('click', authEntranceBtnHandler);
+        refs.buttonWatched.removeEventListener('click', rewritingStorage);
+        refs.buttonQueue.removeEventListener('click', rewritingStorage); 
+        refs.btnTheme.removeEventListener('click', rewritingStorage);
 
     };
 };
