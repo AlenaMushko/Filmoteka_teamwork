@@ -62,13 +62,14 @@ function hrefPrevDef(e) {
 
 function checkClientHeigth() {
   if (document.documentElement.clientHeight >= document.body.clientHeight) {
-    footerContainer.classList.add('fix_bottom');
+    footerContainer.classList ='fix_bottom footer__container';
   } else {
-    footerContainer.classList.remove('fix_bottom');
+    footerContainer.classList = 'footer__container';
   }
 
-
+// console.log(document.documentElement.clientHeight);
+// console.log(document.body.clientHeight);
 }
-setInterval(checkClientHeigth, 500);
-// window.addEventListener('load', checkClientHeigth);
-// window.addEventListener('resize', checkClientHeigth);
+// setInterval(checkClientHeigth, 500);
+window.addEventListener('load', checkClientHeigth);
+window.addEventListener('resize', checkClientHeigth);
