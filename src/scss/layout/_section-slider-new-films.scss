@@ -1,13 +1,12 @@
 .glide.container {
-  @media screen and (max-width: 530px){
+  @media screen and (max-width: 530px) {
     display: none;
   }
-  @media screen and (min-width: 531px){
+  @media screen and (min-width: 531px) {
     display: block;
   }
   @include mq(tablet) {
     display: block;
-    // height: 400px;
     width: 768px;
   }
   @include mq(desktop) {
@@ -55,14 +54,14 @@
 .glide__slide {
   width: 350px;
   object-fit: cover;
-  box-shadow: $transitionDuration $cubic;
+  transition: box-shadow $transitionDuration $cubic;
   overflow: hidden;
   &:hover,
   &:focus {
-    box-shadow: $transitionDuration $cubic;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow $transitionDuration $cubic;
   }
 }
 
@@ -76,10 +75,14 @@
   font-size: 25px;
   border-radius: 5px;
   border: none;
+  transition: background-color $transitionDuration $cubic,
+    color $transitionDuration $cubic;
   &:hover,
   &:focus {
     background-color: $color-brand-text;
     color: $color-extra-text;
+    transition: background-color $transitionDuration $cubic,
+      color $transitionDuration $cubic;
   }
 }
 .glide__arrow--right,
@@ -97,12 +100,6 @@
 .glide__container {
   position: relative;
   overflow: hidden;
-  // &:hover,
-  // &:focus {
-  //   box-shadow: $transitionDuration $cubic;
-  //   box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
-  //     0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
-  // }
 }
 .glide__title {
   color: $color-extra-text;
@@ -116,7 +113,6 @@
   padding: 5px;
 }
 .glide__genres {
-  text-align: end;
   color: $color-brand-text;
   font-size: 12px;
 }
@@ -132,7 +128,6 @@
   padding: 10px;
   border-radius: 10px;
   transform: translateY(100%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform $transitionDuration $cubic,
     box-shadow $transitionDuration $cubic;
 }
@@ -141,21 +136,18 @@
 .glide__link:focus .glide__text {
   transform: translateY(0%);
   background-color: rgba(47, 48, 58, 0.8);
-  transition: transform $transitionDuration $cubic;
+  transition: transform $transitionDuration $cubic,
+    box-shadow $transitionDuration $cubic;
 }
 
-// .glide__slides .glide__slide-biger{
-//   height: 466px;
-
-// }
-
-.revenue__slider{
-   @media screen and (min-width: 531px){
-    width: 150px;}
-    @include mq(tablet) {
-      width: 190px
-    }
-   @include mq(desktop) {
+.revenue__slider {
+  @media screen and (min-width: 531px) {
+    width: 150px;
+  }
+  @include mq(tablet) {
+    width: 190px;
+  }
+  @include mq(desktop) {
     width: 210px;
   }
 }

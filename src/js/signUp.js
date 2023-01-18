@@ -63,9 +63,9 @@ function signUpBtnHandler() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.localId);
-        localStorage.auth === "yes";
-        authWithEmailAndPassword();
+        localStorage.authId = data.localId;
+        localStorage.auth = "yes";
+        //authWithEmailAndPassword();
 
             if (localStorage.language === 'en') {
               Notiflix.Report.success(
