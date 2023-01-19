@@ -11,15 +11,15 @@ const myLibrary = new MyLibrary();
 const apiService = new ApiService();
 
 export function btnLibraryWatchedOrQueue() {
+  let listCount = refs.movieLibrary.childElementCount;
   let arrWatchedFilms = myLibrary.getFromWatched();
-  if (arrWatchedFilms !== null) {
-    onWatchedBtnClick();
-    // apiService.onWatchedBtnClick();
-  } else {
-    notifyInfo();
+  if (arrWatchedFilms === null || arrWatchedFilms.length === 0) {
+    notifyInfoEmpty();
     cleanPagination();
+    refs.libraryEmpty.classList.remove('is-hidden');
+  } else {
+    onWatchedBtnClick();
   }
-
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
 }
@@ -30,17 +30,22 @@ export async function onWatchedBtnClick() {
   refs.btnQueue.classList.remove('current');
   refs.btnWatched.classList.add('current');
   let filmsOnPage = apiService.getArrWatchedId();
-  if (filmsOnPage !== null) {
+  if (arrWatchedFilms === null || arrWatchedFilms.length === 0) {
+    cleanLibrary();
+  } else {
     refs.libraryEmpty.classList.add('is-hidden');
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      if (localStorage.getItem('language') === 'en') {
+        Notify.info(`Your have ${arrWatchedFilms.length} films`);
+      } else if (localStorage.getItem('language') === 'ua') {
+        Notify.info(`Ви маєте ${arrWatchedFilms.length} фільмів`);
+      }
       pagination.reset(arrWatchedFilms.length);
     } catch (error) {
       console.log(error);
     }
-  } else {
-    cleanLibrary();
   }
 }
 
@@ -50,51 +55,35 @@ export async function onQueueBtnClick() {
   refs.btnWatched.classList.remove('current');
   refs.btnQueue.classList.add('current');
   let filmsOnPage = apiService.getArrQueueId();
-  if (filmsOnPage !== null) {
+  if (arrQueueFilms === null || arrQueueFilms.length === 0) {
+    cleanLibrary();
+  } else {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
+      if (localStorage.getItem('language') === 'en') {
+        Notify.info(`Your have ${arrQueueFilms.length} films`);
+      } else if (localStorage.getItem('language') === 'ua') {
+        Notify.info(`Ви маєте ${arrQueueFilms.length} фільмів`);
+      }
       pagination.reset(arrQueueFilms.length);
     } catch (error) {
       console.log(error);
     }
-  } else {
-    cleanLibrary();
   }
 }
 
 function cleanLibrary() {
-  notifyInfo();
+  notifyInfoEmpty();
   refs.libraryEmpty.classList.remove('is-hidden');
-  // refs.movieLibrary.innerHTML = '';
+  refs.movieLibrary.innerHTML = '';
   cleanPagination();
 }
 
-function notifyInfo() {
+function notifyInfoEmpty() {
   if (localStorage.getItem('language') === 'en') {
     Notify.info(`Your film list is empty`);
   } else if (localStorage.getItem('language') === 'ua') {
     Notify.info(`Покищо, ваша бібліотека порожня`);
-  }
-}
-
-// const btnCurrent = refs.btnWatched.classList.contains('current');
-
-export function addImgAtCurrentBtn() {
-  // const timerId = setInterval(
-  // function addImg() {
-  let listCount = refs.movieLibrary.childElementCount;
-  //   console.log(listCount);
-  let arrWatchedFilms = myLibrary.getFromWatched();
-
-  if (arrWatchedFilms !== null || listCount !== 0) {
-    refs.libraryEmpty.classList.add('is-hidden');
-    return;
-  }
-  if (listCount === 0) {
-    refs.libraryEmpty.classList.remove('is-hidden');
-    console.log('0');
-    cleanLibrary();
-    return;
   }
 }
