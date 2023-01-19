@@ -56,3 +56,10 @@ button.trailers-btns-list__btn {
   height: fit-content;
   overflow: hidden;
 }
+
+.btn__modal.current {
+  background-color: $color-brand-background;
+  border-color: $color-brand-background;
+  box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+  transition: background-color $transitionDuration $cubic;
+}
