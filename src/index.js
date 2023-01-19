@@ -40,5 +40,5 @@ showOrHidePasswordonClick();
 //----------------------------footer
 onTeamModal();
 //робота зі сховищем фаєрбейз
-import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
-firebaseRealtimeDatabase();
+// import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
+// firebaseRealtimeDatabase();

@@ -21,8 +21,8 @@ getChengeLibraryThemeByClick();
 //авторизація (тимчасове рішення)
 localStorage.auth = 'yes';
 //робота зі сховищем фаєрбейз
-import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
-firebaseRealtimeDatabase();
+// import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
+// firebaseRealtimeDatabase();
 
 //--------------------------------------------body
 // слайлдер з фільмами, що зібрали найбільшу касу
