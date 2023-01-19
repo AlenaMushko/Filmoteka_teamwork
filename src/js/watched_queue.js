@@ -30,7 +30,9 @@ export async function onWatchedBtnClick() {
   refs.btnQueue.classList.remove('current');
   refs.btnWatched.classList.add('current');
   let filmsOnPage = apiService.getArrWatchedId();
+  console.log(arrWatchedFilms !== null);
   if (arrWatchedFilms !== null) {
+    console.log(refs.libraryEmpty);
     refs.libraryEmpty.classList.add('is-hidden');
   const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
   try {
@@ -81,4 +83,31 @@ function notifyInfo() {
   }
 }
 
+// const btnCurrent = refs.btnWatched.classList.contains('current');
 
+export function addImgAtCurrentBtn(){
+
+  // const timerId = setInterval(
+    // function addImg() {
+    let listCount = refs.movieLibrary.childElementCount;   
+    //   console.log(listCount);
+        let arrWatchedFilms = myLibrary.getFromWatched();
+
+    if (arrWatchedFilms !== null || listCount !== 0) {
+      
+    console.log('null');
+      refs.libraryEmpty.classList.add('is-hidden');
+      return;
+  };   
+  if (listCount === 0) {
+    refs.libraryEmpty.classList.remove('is-hidden');
+    console.log('0')
+    cleanLibrary();
+      // clearInterval(timerId);
+    return;
+  };
+  
+   }
+    //  , 1);
+  // };
+  
