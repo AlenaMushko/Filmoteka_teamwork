@@ -30,17 +30,15 @@ export async function onWatchedBtnClick() {
   refs.btnQueue.classList.remove('current');
   refs.btnWatched.classList.add('current');
   let filmsOnPage = apiService.getArrWatchedId();
-  console.log(arrWatchedFilms !== null);
   if (arrWatchedFilms !== null) {
-    console.log(refs.libraryEmpty);
     refs.libraryEmpty.classList.add('is-hidden');
-  const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
-  try {
-    renderFilmCardLibrary(filmInfo);
-    pagination.reset(arrWatchedFilms.length);
-  } catch (error) {
-    console.log(error);
-    } 
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+      pagination.reset(arrWatchedFilms.length);
+    } catch (error) {
+      console.log(error);
+    }
   } else {
     cleanLibrary();
   }
@@ -53,17 +51,14 @@ export async function onQueueBtnClick() {
   refs.btnQueue.classList.add('current');
   let filmsOnPage = apiService.getArrQueueId();
   if (arrQueueFilms !== null) {
-  const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
-  try {
-    renderFilmCardLibrary(filmInfo);
-    pagination.reset(arrQueueFilms.length);
-    console.log('if');
-    console.log(arrQueueFilms);
-  } catch (error) {
-    console.log(error);
-  }
+    const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
+    try {
+      renderFilmCardLibrary(filmInfo);
+      pagination.reset(arrQueueFilms.length);
+    } catch (error) {
+      console.log(error);
+    }
   } else {
-    console.log('else');
     cleanLibrary();
   }
 }
@@ -85,29 +80,24 @@ function notifyInfo() {
 
 // const btnCurrent = refs.btnWatched.classList.contains('current');
 
-export function addImgAtCurrentBtn(){
-
+export function addImgAtCurrentBtn() {
   // const timerId = setInterval(
-    // function addImg() {
-    let listCount = refs.movieLibrary.childElementCount;   
-    //   console.log(listCount);
-        let arrWatchedFilms = myLibrary.getFromWatched();
+  // function addImg() {
+  let listCount = refs.movieLibrary.childElementCount;
+  //   console.log(listCount);
+  let arrWatchedFilms = myLibrary.getFromWatched();
 
-    if (arrWatchedFilms !== null || listCount !== 0) {
-      
-    console.log('null');
-      refs.libraryEmpty.classList.add('is-hidden');
-      return;
-  };   
+  if (arrWatchedFilms !== null || listCount !== 0) {
+    refs.libraryEmpty.classList.add('is-hidden');
+    return;
+  }
   if (listCount === 0) {
     refs.libraryEmpty.classList.remove('is-hidden');
-    console.log('0')
+    console.log('0');
     cleanLibrary();
-      // clearInterval(timerId);
+    // clearInterval(timerId);
     return;
-  };
-  
-   }
-    //  , 1);
-  // };
-  
+  }
+}
+//  , 1);
+// };
