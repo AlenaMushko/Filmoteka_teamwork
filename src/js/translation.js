@@ -293,7 +293,7 @@ export const langArr = {
 },
 'nikonov': {
   ua: 'Олександр Ніконов',
-  en: 'Alexander Nikonov',
+  en: 'Alexandr Nikonov',
 },
 'developer3': {
   ua: 'Розробник',
