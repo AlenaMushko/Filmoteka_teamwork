@@ -1,4 +1,4 @@
-import { } from './scss/index.scss';
+import {} from './scss/index.scss';
 import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';
@@ -22,7 +22,7 @@ getChengeLibraryThemeByClick();
 localStorage.auth = 'yes';
 //робота зі сховищем фаєрбейз
 import { firebaseRealtimeDatabase } from './js/firebaseDatastorage';
-//firebaseRealtimeDatabase();
+firebaseRealtimeDatabase();
 
 //--------------------------------------------body
 // слайлдер з фільмами, що зібрали найбільшу касу
@@ -40,4 +40,3 @@ onTeamModal();
 
 import { addImgAtCurrentBtn } from './js/watched_queue';
 addImgAtCurrentBtn();
-

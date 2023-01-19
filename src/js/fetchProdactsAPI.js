@@ -29,7 +29,7 @@ export default class ApiService {
       this.lang = 'uk';
     }
     try {
-      const url = `${BASE_URL}discover/movie${api_key}&page=2&append_to_response=images&language=${this.lang}&sort_by=revenue.desc`;
+      const url = `${BASE_URL}discover/movie${api_key}&page=1&append_to_response=images&language=${this.lang}&sort_by=revenue.desc`;
       return await axios.get(url).then(response => {
         if (!response) {
           throw new Error(response.status);
