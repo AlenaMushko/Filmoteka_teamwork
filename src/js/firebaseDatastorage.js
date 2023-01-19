@@ -5,10 +5,10 @@ export function firebaseRealtimeDatabase() {
   /* setInterval(deleteDataFromFirebaseStorage, 1000);
   setInterval(giveLocalStorageToFirebaseStorage, 1000); */
 
- /*  if(localStorage.auth === "yes") {
+  if(localStorage.auth === "yes") {
     deleteDataFromFirebaseStorage();
     giveLocalStorageToFirebaseStorage();
-  } */
+  }
     
   //відслідковування змін в інших вкладках
   //window.addEventListener('storage', deleteDataFromFirebaseStorage);
@@ -19,8 +19,8 @@ export function firebaseRealtimeDatabase() {
 
 //перезаписування сховища
 export function rewritingStorage() {
-  setTimeout(deleteDataFromFirebaseStorage, 1000);
-  setTimeout(giveLocalStorageToFirebaseStorage, 1000);
+  deleteDataFromFirebaseStorage();
+  giveLocalStorageToFirebaseStorage();
 };
 
 class UserStorage {
@@ -29,10 +29,8 @@ class UserStorage {
     // з вмістом newSaving 
     // під ім'ям response.name 
     // в папці users
-    //https://[PROJECT_ID].firebaseio.com/message_list.json
-    //https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json
     static create(newSaving) {
-        return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json?x-http-method-override=POST`, {
+        return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json`, {
           method: 'POST',
           body: JSON.stringify(newSaving),
         })
@@ -62,7 +60,7 @@ class UserStorage {
 
     static delete(dataToDelete) {
       const previousSavingId = localStorage.savingId;
-      return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json?x-http-method-override=DELETE`, {
+      return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}/${previousSavingId}.json?x-http-method-override=DELETE`, {
         method: 'POST',
         body: JSON.stringify(dataToDelete),
 

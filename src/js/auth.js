@@ -48,7 +48,8 @@ export function authWithEmailAndPassword() {
         if (data.registered === true) {
             localStorage.auth = "yes";
             localStorage.authId = data.localId;
-            takeLocalStorageFromFirebaseStorage();
+            //takeLocalStorageFromFirebaseStorage();
+            location.reload();
             return;
         }
 
