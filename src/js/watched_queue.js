@@ -30,7 +30,7 @@ export async function onWatchedBtnClick() {
   refs.btnQueue.classList.remove('current');
   refs.btnWatched.classList.add('current');
   let filmsOnPage = apiService.getArrWatchedId();
-  if (arrWatchedFilms !== null) {
+  if (filmsOnPage !== null) {
     refs.libraryEmpty.classList.add('is-hidden');
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
@@ -50,7 +50,7 @@ export async function onQueueBtnClick() {
   refs.btnWatched.classList.remove('current');
   refs.btnQueue.classList.add('current');
   let filmsOnPage = apiService.getArrQueueId();
-  if (arrQueueFilms !== null) {
+  if (filmsOnPage !== null) {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
@@ -66,7 +66,7 @@ export async function onQueueBtnClick() {
 function cleanLibrary() {
   notifyInfo();
   refs.libraryEmpty.classList.remove('is-hidden');
-  refs.movieLibrary.innerHTML = '';
+  // refs.movieLibrary.innerHTML = '';
   cleanPagination();
 }
 
@@ -95,9 +95,6 @@ export function addImgAtCurrentBtn() {
     refs.libraryEmpty.classList.remove('is-hidden');
     console.log('0');
     cleanLibrary();
-    // clearInterval(timerId);
     return;
   }
 }
-//  , 1);
-// };
