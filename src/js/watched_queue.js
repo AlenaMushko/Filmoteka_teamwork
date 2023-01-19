@@ -19,6 +19,11 @@ export function btnLibraryWatchedOrQueue() {
     refs.libraryEmpty.classList.remove('is-hidden');
   } else {
     onWatchedBtnClick();
+    if (localStorage.getItem('language') === 'en') {
+        Notify.info(`Your have ${arrWatchedFilms.length} films`);
+      } else if (localStorage.getItem('language') === 'ua') {
+        Notify.info(`Ви маєте ${arrWatchedFilms.length} фільмів`);
+      }
   }
   refs.btnWatched.addEventListener('click', onWatchedBtnClick);
   refs.btnQueue.addEventListener('click', onQueueBtnClick);
@@ -37,11 +42,6 @@ export async function onWatchedBtnClick() {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      if (localStorage.getItem('language') === 'en') {
-        Notify.info(`Your have ${arrWatchedFilms.length} films`);
-      } else if (localStorage.getItem('language') === 'ua') {
-        Notify.info(`Ви маєте ${arrWatchedFilms.length} фільмів`);
-      }
       pagination.reset(arrWatchedFilms.length);
     } catch (error) {
       console.log(error);
@@ -61,11 +61,6 @@ export async function onQueueBtnClick() {
     const filmInfo = await apiService.getFilmFromLocalStorage(filmsOnPage);
     try {
       renderFilmCardLibrary(filmInfo);
-      if (localStorage.getItem('language') === 'en') {
-        Notify.info(`Your have ${arrQueueFilms.length} films`);
-      } else if (localStorage.getItem('language') === 'ua') {
-        Notify.info(`Ви маєте ${arrQueueFilms.length} фільмів`);
-      }
       pagination.reset(arrQueueFilms.length);
     } catch (error) {
       console.log(error);
@@ -74,7 +69,6 @@ export async function onQueueBtnClick() {
 }
 
 function cleanLibrary() {
-  notifyInfoEmpty();
   refs.libraryEmpty.classList.remove('is-hidden');
   refs.movieLibrary.innerHTML = '';
   cleanPagination();
@@ -87,3 +81,4 @@ function notifyInfoEmpty() {
     Notify.info(`Покищо, ваша бібліотека порожня`);
   }
 }
+
