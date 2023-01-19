@@ -37,6 +37,3 @@ filmCardModalWindow();
 //------------------------------------------footer
 // footer
 onTeamModal();
-
-import { addImgAtCurrentBtn } from './js/watched_queue';
-addImgAtCurrentBtn();
