@@ -142,12 +142,166 @@
 
 .revenue__slider {
   @media screen and (min-width: 531px) {
-    width: 150px;
+    min-width: 150px;
   }
   @include mq(tablet) {
-    width: 190px;
+    min-width: 190px;
   }
   @include mq(desktop) {
-    width: 210px;
+    min-width: 210px;
+  }
+}
+
+.glide.container {
+  @media screen and (max-width: 530px) {
+    display: none;
+  }
+  @media screen and (min-width: 531px) {
+    display: block;
+  }
+  @include mq(tablet) {
+    display: block;
+    width: 768px;
+  }
+  @include mq(desktop) {
+    width: 1280px;
+  }
+}
+
+.glide-lb {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.caption {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $color-base-text;
+  text-shadow: 0.2px 0.2px 0.5px $color-extra, 0 0 5px $color-brand-background,
+    0 0 5px $color-brand-text;
+  text-align: center;
+  cursor: default;
+}
+.glide-lb__track {
+  max-width: 1200px;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+}
+.glide-lb__slides {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 10px;
+
+  @include mq(mobile) {
+    gap: 5px;
+  }
+  @include mq(tablet) {
+    gap: 10px;
+  }
+  @include mq(desktop) {
+    gap: 15px;
+  }
+}
+.glide-lb__slide {
+  width: 350px;
+  object-fit: cover;
+  transition: box-shadow $transitionDuration $cubic;
+  overflow: hidden;
+  &:hover,
+  &:focus {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow $transitionDuration $cubic;
+  }
+}
+
+.glide-lb__arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7c6;
+  color: $color-brand-text;
+  font-size: 25px;
+  border-radius: 5px;
+  border: none;
+  transition: background-color $transitionDuration $cubic,
+    color $transitionDuration $cubic;
+  &:hover,
+  &:focus {
+    background-color: $color-brand-text;
+    color: $color-extra-text;
+    transition: background-color $transitionDuration $cubic,
+      color $transitionDuration $cubic;
+  }
+}
+.glide-lb__arrow--right,
+.glide-lb__arrow--left {
+  width: 40px;
+  height: 40px;
+  top: 50%;
+}
+.glide-lb__arrow--right {
+  right: 5%;
+}
+.glide__arrow--left {
+  left: 5%;
+}
+.glide-lb__container {
+  position: relative;
+  overflow: hidden;
+}
+.glide-lb__title {
+  color: $color-extra-text;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.glide-lb__genres {
+  color: $color-brand-text;
+  font-size: 12px;
+}
+.glide-lb__img {
+  border-radius: 8px;
+}
+.glide-lb__text {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  border-radius: 10px;
+  transform: translateY(100%);
+  transition: transform $transitionDuration $cubic,
+    box-shadow $transitionDuration $cubic;
+}
+
+.glide-lb__link:hover .glide-lb__text,
+.glide-lb__link:focus .glide-lb__text {
+  transform: translateY(0%);
+  background-color: rgba(47, 48, 58, 0.8);
+  transition: transform $transitionDuration $cubic,
+    box-shadow $transitionDuration $cubic;
+}
+
+.revenue__slider-lb {
+  @media screen and (min-width: 531px) {
+    min-width: 150px;
+  }
+  @include mq(tablet) {
+    min-width: 190px;
+  }
+  @include mq(desktop) {
+    min-width: 210px;
   }
 }

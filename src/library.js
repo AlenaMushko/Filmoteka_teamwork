@@ -1,5 +1,4 @@
 import {} from './scss/index.scss';
-import { sliderRevenueFilms } from './js/slideRevenueFilms';
 import { scrolToTop } from './js/scrolToTop';
 import { onTeamModal } from './js/team_modal';
 // логіка кнопок і посилань навігації хедера
@@ -10,6 +9,7 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import { onFirstLoadThemeLibrary } from './js/changeTheme';
 import {} from './js/language';
 import { filmCardModalWindow } from './js/modal-film';
+import { sliderRevenueFilmsLB } from './js/sliderLb';
 
 // -------------------------------------------header
 // рендириця картка фільму з id що в  localStorage
@@ -26,7 +26,7 @@ localStorage.auth = 'yes';
 
 //--------------------------------------------body
 // слайлдер з фільмами, що зібрали найбільшу касу
-sliderRevenueFilms();
+sliderRevenueFilmsLB();
 // по кліку на кнопки рендириця картка фільму з id що в  localStorage
 btnLibraryWatchedOrQueue();
 // кнопка повернення догори

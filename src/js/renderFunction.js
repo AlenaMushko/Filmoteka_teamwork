@@ -2,6 +2,8 @@ import { refs } from './refs';
 import genresId from '../genres.json';
 import genresIdUa from '../genres-ua.json';
 
+const sliderLBEl = document.querySelector('.glide-lb__slides');
+
 let currentLang = localStorage.getItem('language');
 export function renderSliderFilmCard({ results }) {
   const markup = results
@@ -18,15 +20,15 @@ export function renderSliderFilmCard({ results }) {
       }) => {
         let filmGenreId = '';
         if (genre_ids) {
-          currentLang === "en"
+          currentLang === 'en'
             ? (filmGenreId = genresId
-              .filter(({ id }) => genre_ids.includes(id))
-              .map(({ name }) => name)
-              .join(', '))
-            : filmGenreId = genresIdUa
-              .filter(({ id }) => genre_ids.includes(id))
-              .map(({ name }) => name)
-              .join(', ');
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+                .join(', '))
+            : (filmGenreId = genresIdUa
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+                .join(', '));
         }
         return `
       <li class="glide__slide revenue__slider" data-id=${id}>
@@ -49,8 +51,61 @@ export function renderSliderFilmCard({ results }) {
       }
     )
     .join('');
+  refs.sliderLBEl.innerHTML = markup;
+}
+
+export function renderSliderFilmCardLB({ results }) {
+  console.log(results);
+  const markup = results
+    .map(
+      ({
+        id,
+        poster_path,
+        title,
+        original_title,
+        original_name,
+        release_date,
+        first_air_date,
+        genre_ids,
+      }) => {
+        let filmGenreId = '';
+        if (genre_ids) {
+          currentLang === 'en'
+            ? (filmGenreId = genresId
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+                .join(', '))
+            : (filmGenreId = genresIdUa
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name)
+                .join(', '));
+        }
+
+        return `
+      <li class="glide-lb__slide revenue__slider" data-id=${id}>
+      <a class="glide-lb__link" href= "">
+      <div class="glide-lb__container">
+                 <img   class='glide-lb__img' alt= '${
+                   title || original_title || original_name
+                 }' width='360' height='345px' loading="lazy"
+                  src='https://image.tmdb.org/t/p/w342${poster_path}'/>
+                  <div class="glide-lb__text">
+                  <h3 class="glide-lb__title">${
+                    title || original_title || original_name
+                  }</h3>
+                  <p class="glide-lb__genres">${filmGenreId}<span>|${(
+          release_date ||
+          first_air_date ||
+          'Not available'
+        ).slice(0, 4)}</span></p></div></div></a>
+              </li>`;
+      }
+    )
+    .join('');
+
   refs.glideSlides.innerHTML = markup;
 }
+
 export function renderFilmCard({ results }) {
   cleanTopFilmsMarkUp();
   const markup = results
@@ -67,14 +122,14 @@ export function renderFilmCard({ results }) {
       }) => {
         let filmGenre = '';
         if (genre_ids) {
-          let filmGenreId = "";
-          currentLang === "en"
+          let filmGenreId = '';
+          currentLang === 'en'
             ? (filmGenreId = genresId
-            .filter(({ id }) => genre_ids.includes(id))
-            .map(({ name }) => name))
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name))
             : (filmGenreId = genresIdUa
-            .filter(({ id }) => genre_ids.includes(id))
-            .map(({ name }) => name));
+                .filter(({ id }) => genre_ids.includes(id))
+                .map(({ name }) => name));
           if (filmGenreId.length >= 4) {
             filmGenre = `${filmGenreId.slice(0, 2).join(', ')},  Others`;
           } else {

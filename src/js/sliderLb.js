@@ -1,10 +1,10 @@
 import Glide from '@glidejs/glide';
 import ApiService from './fetchProdactsAPI';
-import { renderSliderFilmCard } from './renderFunction';
 import { renderSliderFilmCardLB } from './renderFunction';
+
 const apiService = new ApiService();
-// екземпляр класу в який пишемо виклики фільмів по потребі
-const sliderH = new Glide('.glide', {
+
+const sliderLB = new Glide('.glide-lb', {
   type: 'slider',
   startAt: 0,
   perView: 5,
@@ -14,14 +14,13 @@ const sliderH = new Glide('.glide', {
   hoverpause: true,
   bound: true,
 }).mount();
-// слайдер
-export function sliderRevenueFilms(films) {
+
+export function sliderRevenueFilmsLB(films) {
   apiService
     .getRevenueFilms(films)
-    .then(renderSliderFilmCard)
+    .then(renderSliderFilmCardLB)
     .catch(error => {
       console.log(error);
       return;
     });
-  console.log('I am done');
 }
