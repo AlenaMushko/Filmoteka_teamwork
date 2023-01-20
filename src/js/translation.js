@@ -171,9 +171,9 @@ export const langArr = {
       ua: "Усі права захищено",
       en: "All Rights Reserved",
     },
-    'developereloped': {
-      ua: "Розроблено з",
-      en: "Developereloped with",
+    'developed': {
+      ua: "розроблено з",
+      en: "Developed with",
     },
     'by': {
       ua: "",
