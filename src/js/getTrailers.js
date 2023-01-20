@@ -27,6 +27,7 @@ export async function renderTrailersBtns(trailers) {
   }
   const markup = trailers
     .slice(0, 3)
+    .reverse()
     .map(trailer => {
       let name = trailer.name;
       if (trailer.name.length > 30) {
