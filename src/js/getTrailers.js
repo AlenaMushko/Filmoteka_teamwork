@@ -26,7 +26,7 @@ export async function renderTrailersBtns(trailers) {
     trailersHeader.classList.add('visually-hidden__title');
   }
   const markup = trailers
-    .slice(0, 3)
+    .slice(0, 4)
     .reverse()
     .map(trailer => {
       let name = trailer.name;
