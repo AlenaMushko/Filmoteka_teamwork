@@ -118,7 +118,13 @@
 }
 .glide__img {
   border-radius: 8px;
-}
+    @media screen and (min-width: 768px) {
+      height: 174.4px;
+    }
+    @media screen and (min-width: 1280px) {
+      height: 315px;
+  }
+  }
 .glide__text {
   position: absolute;
   width: 100%;
