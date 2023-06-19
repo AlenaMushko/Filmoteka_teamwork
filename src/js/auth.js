@@ -1,7 +1,6 @@
 import { homeHeaderLinkBntLogic } from './headerBtnLinkLogic';
 import { refs } from './refs';
 import Notiflix from 'notiflix';
-import { takeLocalStorageFromFirebaseStorage } from './firebaseDatastorage';
 
 export function authHandler() {
     if (localStorage.auth === "yes") {
@@ -32,7 +31,7 @@ export function authWithEmailAndPassword() {
 
     if (localStorage.language === 'en') {
       Notiflix.Notify.warning('For signing in you need to enter both E-mail and Password');
-    
+
     } else if (localStorage.language === 'ua') {
       Notiflix.Notify.warning('Для авторизації необхідно ввести логін та пароль');
 
@@ -48,7 +47,6 @@ export function authWithEmailAndPassword() {
         if (data.registered === true) {
             localStorage.auth = "yes";
             localStorage.authId = data.localId;
-            //takeLocalStorageFromFirebaseStorage();
             location.reload();
             return;
         }
@@ -69,8 +67,8 @@ export function authWithEmailAndPassword() {
               'Сheck email and password or sign up',
               'Okay',);
           }
-          
-    }).catch();     
+
+    }).catch();
 };
 
 export function authEntranceBtnHandler(e) {

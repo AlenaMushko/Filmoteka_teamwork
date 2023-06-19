@@ -1,6 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 const axios = require('axios').default;
-const KEY = '32432509d17cea42104bbb7507a382c7';
+const KEY = '8d41be39d2696eeff12b89d916a6c984';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 

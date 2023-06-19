@@ -3,11 +3,8 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { renderFilmCard } from './renderFunction';
 import { refs } from './refs';
 import { pagination } from './pagination';
-import ApiService from './fetchProdactsAPI';
-// import { resetQuery } from './searchFilms';
-const apiService = new ApiService();
-const KEY = '32432509d17cea42104bbb7507a382c7';
-const api_key = `?api_key=${KEY}`;
+
+const KEY = '8d41be39d2696eeff12b89d916a6c984';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // !функця запису в локалсторедж
@@ -19,30 +16,6 @@ const saveLocalStorage = (key, value) => {
     console.error('Set error: ', error.message);
   }
 };
-
-// !функція вигрузки з локалсторедж значення за ключем
-const loadLocalStorage = key => {
-  try {
-    const serialized = localStorage.getItem(key);
-    return serialized === null ? undefined : JSON.parse(serialized);
-  } catch (error) {
-    console.error('Get error: ', error.message);
-  }
-};
-
-// !функція яка видаляє з локалсторедж
-const removeLocalStorage = key => {
-  try {
-    localStorage.removeItem(key);
-  } catch (error) {
-    console.error('Get error: ', error.message);
-  }
-};
-
-// !функція яка перетворює данні у валідний JSON
-function dataUpdate(data) {
-  localStorage.setItem('moviesData', JSON.stringify(data.results));
-}
 
 let page = localStorage.getItem('page-value');
 
@@ -97,7 +70,7 @@ export const getSearchByFilters = async (
   return data;
 };
 // !фунція яка робить скидання фільтраціі і перезавантаження сторінки до поточного стану
-function onSelectReset(e) {
+function onSelectReset() {
   Loading.pulse('Loading...', {
     backgroundColor: 'rgba(0,0,0,0.8)',
   });
@@ -161,9 +134,3 @@ export const getMovieGenres = async () => {
   return data;
 };
 
-const resetQuery = () => {
-  refs.inputEl.value = '';
-  localStorage.removeItem('query-value');
-  apiService.query = '';
-};
-export {};

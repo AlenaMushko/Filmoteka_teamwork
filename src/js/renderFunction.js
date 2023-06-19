@@ -93,10 +93,7 @@ export function renderFilmCard({ results }) {
           title || original_title || original_name
         }' width='390px' height='580px'  loading="lazy"
       data-src='https://image.tmdb.org/t/p/w500${poster_path}'/>`;
-        const imgPlug = `<img  class="film__img" '${
-          title || original_title || original_name
-        }' width='100%'
-       src= '${foto}'`;
+
         return `<li class="film__item" data-id=${id}>
                   ${poster_path !== null ? img : foto}
                   <h3 class="films__title">${
@@ -126,7 +123,6 @@ export function renderFilmCardLibrary(films) {
         original_name,
         release_date,
         first_air_date,
-        genres,
         vote_average,
       } = film;
       let filmGenre = '';
@@ -140,8 +136,7 @@ export function renderFilmCardLibrary(films) {
       } else {
         filmGenre = `${filmGenreAll}`;
       }
-      // console.log(film.genres.length);
-      // console.log(filmGenre);
+
       const voteAverage = Number(vote_average).toFixed(1);
       const foto = `<img   class='film__img lazyload' alt= '${
         title || original_title || original_name

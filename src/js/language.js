@@ -1,5 +1,4 @@
 import { langArr } from './translation';
-const allLangs = ['en', 'ua'];
 export let currentLang = localStorage.getItem('language') || 'en';
 
 const langBtn = document.querySelectorAll('[data-btn]');
@@ -45,7 +44,7 @@ langBtn.forEach(btn => {
     currentLang = e.target.dataset.btn;
     localStorage.setItem('language', e.target.dataset.btn);
     resetActiveClass(langBtn, 'btn-active');
-    btn.classList.add('btn-active');    
+    btn.classList.add('btn-active');
     changeLangPlaceholder();
     changeLang();
     location.reload();

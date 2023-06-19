@@ -1,19 +1,10 @@
-import { refs } from './refs';
 import { addNewUser } from './signUp';
 
 export function firebaseRealtimeDatabase() {
-  /* setInterval(deleteDataFromFirebaseStorage, 1000);
-  setInterval(giveLocalStorageToFirebaseStorage, 1000); */
-
   if(localStorage.auth === "yes") {
     deleteDataFromFirebaseStorage();
     giveLocalStorageToFirebaseStorage();
   }
-    
-  //відслідковування змін в інших вкладках
-  //window.addEventListener('storage', deleteDataFromFirebaseStorage);
-  //window.addEventListener('storage', giveLocalStorageToFirebaseStorage);
-  
   addNewUser();
 };
 
@@ -25,9 +16,9 @@ export function rewritingStorage() {
 
 class UserStorage {
 
-    // функція, яка додає в базу даних новий запис 
-    // з вмістом newSaving 
-    // під ім'ям response.name 
+    // функція, яка додає в базу даних новий запис
+    // з вмістом newSaving
+    // під ім'ям response.name
     // в папці users
     static create(newSaving) {
         return fetch(`https://filmoteka-25bd4-default-rtdb.firebaseio.com/${localStorage.authId}.json`, {
@@ -37,7 +28,7 @@ class UserStorage {
           .then(response => response.json())
           .then(response => {
             localStorage.savingId = response.name;
-            
+
         }).catch();
     };
 
@@ -66,8 +57,7 @@ class UserStorage {
 
       })
         .then(response => response.json())
-        .then(response => {
-      }).catch();
+        .catch();
   };
 
 }
@@ -82,7 +72,7 @@ export function giveLocalStorageToFirebaseStorage() {
 export function takeLocalStorageFromFirebaseStorage() {
     UserStorage.take();
 };
-//видаленняостаннього запису на бекенді 
+//видаленняостаннього запису на бекенді
 
 export function deleteDataFromFirebaseStorage() {
   UserStorage.delete();

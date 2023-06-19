@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MyLibrary } from './localStorage';
 import { refs } from './refs';
 
-const KEY = '32432509d17cea42104bbb7507a382c7';
+const KEY = '8d41be39d2696eeff12b89d916a6c984';
 const api_key = `?api_key=${KEY}`;
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
@@ -34,7 +33,6 @@ export default class ApiService {
         if (!response) {
           throw new Error(response.status);
         }
-        // console.log(response.data);
         return response.data;
       });
     } catch (error) {
@@ -43,6 +41,7 @@ export default class ApiService {
   }
   // фільми топові
   async getPopularFilms() {
+
     try {
       if (this.currentLang === 'en') {
         this.lang = 'en';
@@ -60,8 +59,6 @@ export default class ApiService {
           throw new Error(response.status);
         }
         Loading.remove();
-        //  console.log(response.data.results);
-        // console.log(response.data);
         return response.data;
       });
     } catch (error) {

@@ -76,17 +76,4 @@ export class Modal {
     document.removeEventListener('keydown', this.onEscPress);
   }
 }
-// Імпортуємо клас Modal в свій js-файл і створюємо його екземпляр.
-// При створенні нового екземпляра модалки, прописуємо селектори елементів ("кнопка відкриття модалки", "кнопка закриття модалки", "оверлей/бекдроп модалки", "контейнер модалки").
-// Приклад створення модалки
-// const exampleModalWindow = new Modal(
-//   '.example-modal-open',
-//   '.example-modal-close',
-//   '.example-modal-overlay',
-//   '.example-modal'
-// );
-// Щоб модалка відкривалась, вішаємо слухача кліка на кнопку відкриття модалки
-// exampleModalWindow.openBtn.addEventListener(
-//   'click',
-//   exampleModalWindow.openModal.bind(exampleModalWindow)
-// );
+

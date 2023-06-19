@@ -16,6 +16,4 @@ export function showOrHidePasswordonClick() {
       refs.iconForUnShowPassword.classList.add('visually-hidden');
     }
   }
-
-  //   refs.buttonShowPassword.removeEventListener('click', showPassword);
 }
